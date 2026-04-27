@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Immigration Intake & Analysis Tool</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #f0f4f8;
+  color: #2d3748;
+  min-height: 100vh;
+}
+
+/* ── HEADER ─────────────────────────────────────────────────────── */
+#header {
+  background: linear-gradient(135deg, #1a3a5c 0%, #2e6da4 100%);
+  color: white;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  position: sticky; top: 0; z-index: 100;
+}
+#header h1 { font-size: 1.2rem; font-weight: 600; letter-spacing: 0.3px; }
+#header .subtitle { font-size: 0.8rem; opacity: 0.75; margin-top: 2px; }
+
+/* Progress bar */
+#progress-bar {
+  display: flex; gap: 8px; align-items: center;
+}
+.step-dot {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 700; cursor: pointer;
+  transition: all 0.2s; color: rgba(255,255,255,0.6);
+  border: 2px solid rgba(255,255,255,0.2);
+}
+.step-dot.active {
+  background: #c8a951; color: #1a3a5c;
+  border-color: #c8a951; transform: scale(1.15);
+}
+.step-dot.done {
+  background: rgba(255,255,255,0.9); color: #1a3a5c;
+  border-color: white;
+}
+.step-connector {
+  width: 20px; height: 2px;
+  background: rgba(255,255,255,0.2);
+}
+.step-connector.done { background: rgba(255,255,255,0.7); }
+
+/* ── LAYOUT ─────────────────────────────────────────────────────── */
+#layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 0 24px;
+}
+
+/* ── MAIN FORM ──────────────────────────────────────────────────── */
+#main-panel {
+  display: flex; flex-direction: column; gap: 16px;
+}
+
+.section-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.section-header {
+  background: linear-gradient(90deg, #1a3a5c, #2e6da4);
+  color: white;
+  padding: 14px 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-header .icon { font-size: 1.3rem; }
+.section-header h2 { font-size: 1rem; font-weight: 600; }
+.section-header .section-num {
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%; width: 24px; height: 24px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 700; flex-shrink: 0;
+}
+
+.section-body { padding: 20px; display: flex; flex-direction: column; gap: 18px; }
+
+/* Question */
+.question-block { display: flex; flex-direction: column; gap: 6px; }
+
+.question-label {
+  font-size: 0.9rem; font-weight: 600; color: #2d3748;
+  display: flex; align-items: center; gap: 8px;
+}
+
+.info-btn {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: #2e6da4; color: white;
+  border: none; cursor: pointer; font-size: 0.65rem; font-weight: 700;
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: background 0.15s;
+}
+.info-btn:hover { background: #1a3a5c; }
+
+.info-panel {
+  display: none;
+  background: #f0f7ff;
+  border-left: 3px solid #2e6da4;
+  border-radius: 0 6px 6px 0;
+  padding: 12px 14px;
+  font-size: 0.83rem;
+  line-height: 1.6;
+  color: #2d3748;
+}
+.info-panel.open { display: block; }
+
+.info-panel .why-label {
+  font-weight: 700; color: #1a3a5c;
+  font-size: 0.8rem; margin-bottom: 4px;
+}
+
+.cite {
+  display: inline-block;
+  background: #1a3a5c;
+  color: white;
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-size: 0.72rem;
+  font-family: monospace;
+  margin: 2px 2px;
+}
+
+.flag {
+  display: inline-block;
+  border-radius: 3px;
+  padding: 1px 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin: 2px 2px;
+}
+.flag.green { background: #d4edda; color: #155724; }
+.flag.yellow { background: #fff3cd; color: #856404; }
+.flag.red { background: #f8d7da; color: #721c24; }
+.flag.blue { background: #d1ecf1; color: #0c5460; }
+
+/* Inputs */
+input[type="text"], input[type="date"], input[type="number"],
+select, textarea {
+  width: 100%; padding: 9px 12px;
+  border: 1.5px solid #cbd5e0; border-radius: 7px;
+  font-size: 0.9rem; color: #2d3748;
+  background: #fafafa;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  font-family: inherit;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #2e6da4;
+  box-shadow: 0 0 0 3px rgba(46,109,164,0.12);
+  background: white;
+}
+
+.radio-group, .checkbox-group {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.radio-opt, .check-opt {
+  display: flex; align-items: center; gap: 6px;
+  background: #f7fafc; border: 1.5px solid #cbd5e0;
+  border-radius: 7px; padding: 7px 12px; cursor: pointer;
+  font-size: 0.87rem; transition: all 0.15s; user-select: none;
+}
+.radio-opt:hover, .check-opt:hover {
+  border-color: #2e6da4; background: #ebf4ff;
+}
+.radio-opt input, .check-opt input { margin: 0; accent-color: #2e6da4; }
+.radio-opt.selected, .check-opt.selected {
+  border-color: #2e6da4; background: #ebf4ff;
+  color: #1a3a5c; font-weight: 600;
+}
+
+/* Flag chips that appear dynamically */
+.live-flags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  min-height: 0; transition: all 0.2s;
+}
+.live-flag {
+  font-size: 0.75rem; font-weight: 600;
+  padding: 3px 8px; border-radius: 4px;
+  animation: fadein 0.3s;
+}
+@keyframes fadein { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; } }
+.live-flag.warn { background: #fff3cd; color: #856404; border: 1px solid #ffc107; }
+.live-flag.good { background: #d4edda; color: #155724; border: 1px solid #28a745; }
+.live-flag.bad  { background: #f8d7da; color: #721c24; border: 1px solid #dc3545; }
+.live-flag.info { background: #d1ecf1; color: #0c5460; border: 1px solid #17a2b8; }
+
+/* ── NAVIGATION ─────────────────────────────────────────────────── */
+#nav-bar {
+  display: flex; justify-content: space-between; align-items: center;
+  background: white; border-radius: 12px; padding: 14px 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.nav-btn {
+  padding: 9px 22px; border-radius: 7px; border: none;
+  font-size: 0.9rem; font-weight: 600; cursor: pointer;
+  transition: all 0.15s;
+}
+.nav-btn.primary {
+  background: linear-gradient(135deg, #1a3a5c, #2e6da4);
+  color: white;
+}
+.nav-btn.primary:hover { opacity: 0.9; transform: translateY(-1px); }
+.nav-btn.secondary {
+  background: #f7fafc; color: #4a5568;
+  border: 1.5px solid #cbd5e0;
+}
+.nav-btn.secondary:hover { background: #edf2f7; }
+.nav-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+#section-indicator { font-size: 0.85rem; color: #718096; font-weight: 500; }
+
+/* ── SIDEBAR ─────────────────────────────────────────────────────── */
+#sidebar {
+  display: flex; flex-direction: column; gap: 16px;
+  position: sticky; top: 88px; align-self: start;
+  max-height: calc(100vh - 110px); overflow-y: auto;
+}
+
+.sidebar-card {
+  background: white; border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); overflow: hidden;
+}
+.sidebar-card-header {
+  background: #1a3a5c; color: white;
+  padding: 10px 14px; font-size: 0.85rem; font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Relief tracker */
+.relief-item {
+  padding: 9px 14px; border-bottom: 1px solid #f0f4f8;
+  display: flex; align-items: flex-start; gap: 10px;
+  transition: background 0.15s;
+}
+.relief-item:last-child { border-bottom: none; }
+.relief-item:hover { background: #f7fafc; }
+
+.relief-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 4px;
+  transition: background 0.3s;
+}
+.relief-dot.eligible { background: #27ae60; box-shadow: 0 0 0 3px rgba(39,174,96,0.2); }
+.relief-dot.possible { background: #f39c12; box-shadow: 0 0 0 3px rgba(243,156,18,0.2); }
+.relief-dot.ineligible { background: #e74c3c; box-shadow: 0 0 0 3px rgba(231,76,60,0.1); }
+.relief-dot.unknown { background: #cbd5e0; }
+
+.relief-info { flex: 1; min-width: 0; }
+.relief-name { font-size: 0.82rem; font-weight: 600; color: #2d3748; }
+.relief-status { font-size: 0.72rem; color: #718096; margin-top: 1px; }
+.relief-status.eligible { color: #27ae60; font-weight: 600; }
+.relief-status.possible { color: #d69e2e; font-weight: 600; }
+.relief-status.ineligible { color: #e74c3c; }
+.relief-cite { font-size: 0.68rem; color: #a0aec0; margin-top: 2px; font-family: monospace; }
+
+/* Legend */
+.legend { padding: 10px 14px; display: flex; flex-wrap: wrap; gap: 10px; }
+.legend-item { display: flex; align-items: center; gap: 5px; font-size: 0.72rem; color: #718096; }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+/* Notes card */
+#notes-area {
+  width: 100%; border: 1.5px solid #cbd5e0; border-radius: 7px;
+  padding: 10px; font-size: 0.85rem; resize: vertical;
+  min-height: 80px; font-family: inherit;
+}
+
+/* Section visibility */
+.form-section { display: none; }
+.form-section.active { display: flex; flex-direction: column; gap: 16px; }
+
+/* Conditional fields */
+.conditional { display: none; }
+.conditional.show { display: flex; flex-direction: column; gap: 18px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div id="header">
+  <div>
+    <div class="subtitle">ATTORNEY INTAKE TOOL — CONFIDENTIAL WORK PRODUCT</div>
+    <h1>Immigration Client Intake &amp; Analysis</h1>
+  </div>
+  <div id="progress-bar">
+    <div class="step-dot active" id="dot-1" onclick="goTo(1)">1</div>
+    <div class="step-connector" id="conn-1"></div>
+    <div class="step-dot" id="dot-2" onclick="goTo(2)">2</div>
+    <div class="step-connector" id="conn-2"></div>
+    <div class="step-dot" id="dot-3" onclick="goTo(3)">3</div>
+    <div class="step-connector" id="conn-3"></div>
+    <div class="step-dot" id="dot-4" onclick="goTo(4)">4</div>
+    <div class="step-connector" id="conn-4"></div>
+    <div class="step-dot" id="dot-5" onclick="goTo(5)">5</div>
+    <div class="step-connector" id="conn-5"></div>
+    <div class="step-dot" id="dot-6" onclick="goTo(6)">6</div>
+    <div class="step-connector" id="conn-6"></div>
+    <div class="step-dot" id="dot-7" onclick="goTo(7)">7</div>
+    <div class="step-connector" id="conn-7"></div>
+    <div class="step-dot" id="dot-8" onclick="goTo(8)">8</div>
+    <div class="step-connector" id="conn-8"></div>
+    <div class="step-dot" id="dot-9" onclick="goTo(9)">9</div>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div id="layout">
+
+  <!-- MAIN FORM -->
+  <div id="main-panel">
+
+    <!-- ═══ SECTION 1: BASIC INFO ═══ -->
+    <div class="form-section active" id="sec-1">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-num">1</div>
+          <div class="icon">👤</div>
+          <h2>Basic Personal Information</h2>
+        </div>
+        <div class="section-body">
+
+          <div class="question-block">
+            <div class="question-label">
+              Full Legal Name
+              <button class="info-btn" onclick="toggleInfo('info-name')">?</button>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+              <input type="text" id="firstName" placeholder="First name" oninput="update('firstName', this.value)">
+              <input type="text" id="lastName" placeholder="Last name" oninput="update('lastName', this.value)">
+            </div>
+            <div class="info-panel" id="info-name">
+              <div class="why-label">Why we ask</div>
+              Must match exactly what appears on all immigration documents. Any discrepancy — including nickname vs. legal name, maiden name, or translation variations — can cause adjudication delays or denials.
+              <span class="cite">8 CFR § 103.2(b)(1)</span>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Date of Birth
+              <button class="info-btn" onclick="toggleInfo('info-dob')">?</button>
+            </div>
+            <input type="date" id="dob" oninput="update('dob', this.value)">
+            <div class="info-panel" id="info-dob">
+              <div class="why-label">Why we ask</div>
+              Age determines eligibility for several forms of relief:
+              <br><br>
+              <span class="flag green">Asylum one-year bar</span> does not begin running until age 18 — minors are exempt.
+              <span class="cite">INA § 208(a)(2)(E)</span>
+              <br>
+              <span class="flag green">CSPA</span> Child Status Protection Act freezes age for derivative beneficiaries; formula depends on exact DOB.
+              <span class="cite">INA § 203(h)</span>
+              <br>
+              <span class="flag blue">Automatic citizenship</span> may have accrued if under 18 when parent naturalized.
+              <span class="cite">INA § 320</span>
+            </div>
+            <div class="live-flags" id="flags-dob"></div>
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Country of Birth
+              <button class="info-btn" onclick="toggleInfo('info-cob')">?</button>
+            </div>
+            <input type="text" id="countryBirth" placeholder="e.g. El Salvador" oninput="update('countryBirth', this.value)">
+            <div class="info-panel" id="info-cob">
+              <div class="why-label">Why we ask</div>
+              Country of birth determines "chargeability" — which per-country annual quota applies to family and employment preference categories.
+              <span class="cite">INA § 202(b)</span>
+              <br><br>
+              For asylum, country of birth is often (but not always) the country of persecution. Country of citizenship may differ — both are relevant.
+              <span class="cite">INA § 208(b)(1)(A)</span>
+              <br><br>
+              <span class="flag yellow">EB categories:</span> India and China face decades-long backlogs due to per-country caps.
+              Nationals of less-backlogged countries can wait as little as months.
+              <span class="cite">INA § 202(a)(2)</span>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Country of Citizenship / Nationality
+              <button class="info-btn" onclick="toggleInfo('info-coc')">?</button>
+            </div>
+            <input type="text" id="countryCitizenship" placeholder="e.g. El Salvador" oninput="update('countryCitizenship', this.value)">
+            <div class="info-panel" id="info-coc">
+              <div class="why-label">Why we ask</div>
+              For asylum, the applicant must demonstrate persecution or a well-founded fear of persecution by the government of their country of nationality, or — if stateless — the country of last habitual residence.
+              <span class="cite">INA § 208(b)(1)(B)(i); 8 CFR § 208.13(b)</span>
+              <br><br>
+              Dual nationals: if the applicant can access protection in either country of nationality, asylum may be barred unless persecution exists in both.
+              <span class="cite">INA § 208(b)(2)(A)(vi); 8 CFR § 208.15</span>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              A-Number (if known)
+              <button class="info-btn" onclick="toggleInfo('info-anum')">?</button>
+            </div>
+            <input type="text" id="aNumber" placeholder="A-XXX-XXX-XXX" oninput="update('aNumber', this.value)">
+            <div class="info-panel" id="info-anum">
+              <div class="why-label">Why we ask</div>
+              The Alien Registration Number is a unique 9-digit identifier assigned when a person first comes into contact with USCIS or immigration court. Existence of an A-number means prior USCIS contact, prior proceedings, or a prior application. Pull the A-file via FOIA before any hearing — it contains all prior filings and often reveals critical facts (prior applications, old addresses, prior orders) that the client may not remember or may not volunteer.
+              <br><br>
+              FOIA requests for A-files: <span class="cite">5 U.S.C. § 552; 6 CFR § 5.3</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ SECTION 2: ENTRY HISTORY ═══ -->
+    <div class="form-section" id="sec-2">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-num">2</div>
+          <div class="icon">✈️</div>
+          <h2>Entry History</h2>
+        </div>
+        <div class="section-body">
+
+          <div class="question-block">
+            <div class="question-label">
+              Date of First Entry to United States
+              <button class="info-btn" onclick="toggleInfo('info-entrydate')">?</button>
+            </div>
+            <input type="date" id="firstEntryDate" oninput="update('firstEntryDate', this.value)">
+            <div class="info-panel" id="info-entrydate">
+              <div class="why-label">Why we ask</div>
+              Entry date is the starting point for multiple continuous-presence calculations:
+              <br><br>
+              <span class="flag green">Non-LPR Cancellation</span> requires 10 years continuous physical presence.
+              <span class="cite">INA § 240A(b)(1)(A)</span>
+              <br>
+              <span class="flag green">VAWA Cancellation</span> requires only 3 years continuous presence.
+              <span class="cite">INA § 240A(b)(2)(A)(i)</span>
+              <br>
+              <span class="flag yellow">Asylum one-year bar</span> — application must be filed within one year of arrival. Clock starts on entry date (or 18th birthday if entered as minor).
+              <span class="cite">INA § 208(a)(2)(B); 8 CFR § 208.4(a)(2)</span>
+              <br>
+              <span class="flag yellow">Unlawful presence</span> for 3/10 year bars begins accruing from the date authorized stay expires (or entry without inspection).
+              <span class="cite">INA § 212(a)(9)(B)(ii)</span>
+            </div>
+            <div class="live-flags" id="flags-entry"></div>
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Manner of Entry — First Entry
+              <button class="info-btn" onclick="toggleInfo('info-manner')">?</button>
+            </div>
+            <div class="radio-group" id="rg-manner">
+              <label class="radio-opt"><input type="radio" name="manner" value="visa" onchange="update('mannerOfEntry','visa'); styleRadio('rg-manner', this)"> Visa (inspected &amp; admitted)</label>
+              <label class="radio-opt"><input type="radio" name="manner" value="ewi" onchange="update('mannerOfEntry','ewi'); styleRadio('rg-manner', this)"> Without inspection (EWI)</label>
+              <label class="radio-opt"><input type="radio" name="manner" value="parole" onchange="update('mannerOfEntry','parole'); styleRadio('rg-manner', this)"> Parole / CBP One</label>
+              <label class="radio-opt"><input type="radio" name="manner" value="b1b2" onchange="update('mannerOfEntry','b1b2'); styleRadio('rg-manner', this)"> B-1/B-2 Tourist</label>
+              <label class="radio-opt"><input type="radio" name="manner" value="lpr" onchange="update('mannerOfEntry','lpr'); styleRadio('rg-manner', this)"> LPR returning</label>
+              <label class="radio-opt"><input type="radio" name="manner" value="other" onchange="update('mannerOfEntry','other'); styleRadio('rg-manner', this)"> Other</label>
+            </div>
+            <div class="info-panel" id="info-manner">
+              <div class="why-label">Why this is critical</div>
+              Manner of entry is one of the most consequential facts in an immigration case.
+              <br><br>
+              <span class="flag red">EWI (Entry Without Inspection)</span> bars adjustment of status under § 245(a) because the applicant was never "inspected and admitted or paroled." This eliminates adjustment for most family and employment-based categories.
+              <span class="cite">INA § 245(a)</span>
+              <br><br>
+              <span class="flag green">EWI Cures available:</span>
+              (1) <strong>§ 245(i) grandfathering</strong> — if a qualifying petition was filed on or before 4/30/2001, EWI is excused (with $1,000 penalty).
+              <span class="cite">INA § 245(i)</span>
+              (2) <strong>VAWA exception</strong> — VAWA-based adjustment explicitly exempts EWI.
+              <span class="cite">INA § 245(a) VAWA carve-out</span>
+              (3) <strong>Advance parole cure</strong> — if AP is obtained, client departs, and returns as parolee, EWI is cured.
+              <span class="cite">8 CFR § 245.2; Matter of Arrabally, 25 I&amp;N Dec. 771 (BIA 2012)</span>
+              <br><br>
+              <span class="flag yellow">Unlawful presence bars</span> — EWI triggers unlawful presence from the date of entry, not from expiration of authorized stay. Departure after 180+ days triggers 3-year bar; after 1 year triggers 10-year bar.
+              <span class="cite">INA § 212(a)(9)(B)</span>
+              <br><br>
+              <span class="flag blue">Note:</span> These bars ONLY trigger on departure. Remaining in the US and adjusting without leaving avoids them entirely.
+            </div>
+            <div class="live-flags" id="flags-manner"></div>
+          </div>
+
+          <div class="question-block conditional" id="cond-visatype">
+            <div class="question-label">
+              Visa Type (if entered with visa)
+              <button class="info-btn" onclick="toggleInfo('info-visatype')">?</button>
+            </div>
+            <input type="text" id="visaType" placeholder="e.g. F-1, B-2, H-1B, J-1, K-1..." oninput="update('visaType', this.value)">
+            <div class="info-panel" id="info-visatype">
+              <div class="why-label">Why we ask</div>
+              Visa type determines the terms of authorized stay, any bars to adjustment, and grounds of inadmissibility potentially applicable. Key flags:
+              <br><br>
+              <span class="flag yellow">J-1 visa holders</span> with 2-year home residence requirement must fulfill the requirement or obtain a waiver before changing to most other statuses.
+              <span class="cite">INA § 212(e)</span>
+              <br>
+              <span class="flag yellow">F-1 students</span> who fall out of status cannot typically adjust through family (§ 245(c)(2) bars adjustment for those who failed to maintain status). § 245(i) or departure for consular processing may be required.
+              <span class="cite">INA § 245(c)(2)</span>
+              <br>
+              <span class="flag red">K-1 fiancé(e) visa holders</span> must marry the petitioning USC within 90 days — failure to do so renders the person deportable.
+              <span class="cite">INA § 101(a)(15)(K); 8 CFR § 214.2(k)</span>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Has the client made multiple entries to the US?
+              <button class="info-btn" onclick="toggleInfo('info-multiple')">?</button>
+            </div>
+            <div class="radio-group" id="rg-multiple">
+              <label class="radio-opt"><input type="radio" name="multiple" value="yes" onchange="update('multipleEntries', true); styleRadio('rg-multiple', this); showCond('cond-lastentry')"> Yes</label>
+              <label class="radio-opt"><input type="radio" name="multiple" value="no" onchange="update('multipleEntries', false); styleRadio('rg-multiple', this); hideCond('cond-lastentry')"> No</label>
+            </div>
+            <div class="info-panel" id="info-multiple">
+              <div class="why-label">Why we ask</div>
+              Multiple entries create several issues:
+              <br><br>
+              <span class="flag yellow">Continuous presence</span> for cancellation may be "broken" by absences of more than 90 days (single) or 180 days (aggregate).
+              <span class="cite">INA § 240A(d)(2)</span>
+              <br>
+              <span class="flag red">Prior removal + reentry</span> — if client was previously removed and reentered without inspection, this is a potential aggravated felony under 8 USC § 1326, creating severe criminal and immigration consequences.
+              <span class="cite">INA § 241(a)(5); 8 USC § 1326</span>
+              <br>
+              <span class="flag yellow">Reinstatement of removal</span> — a prior removal order can be reinstated upon a subsequent EWI, eliminating most forms of relief.
+              <span class="cite">INA § 241(a)(5); 8 CFR § 241.8</span>
+            </div>
+          </div>
+
+          <div class="question-block conditional" id="cond-lastentry">
+            <div class="question-label">Date of Most Recent Entry</div>
+            <input type="date" id="lastEntryDate" oninput="update('lastEntryDate', this.value)">
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Estimated total time in the United States (years)
+              <button class="info-btn" onclick="toggleInfo('info-totaltime')">?</button>
+            </div>
+            <input type="number" id="totalYears" placeholder="e.g. 12" min="0" max="80" oninput="update('totalYears', this.value)">
+            <div class="info-panel" id="info-totaltime">
+              <div class="why-label">Why we ask</div>
+              Total time in US is used to evaluate:
+              <br><br>
+              <span class="flag green">Non-LPR Cancellation</span> — 10 years continuous physical presence required. Absences matter; see § 240A(d)(2).
+              <span class="cite">INA § 240A(b)(1)(A)</span>
+              <br>
+              <span class="flag green">Naturalization</span> — 5 years as LPR (3 years if married to USC), with continuous residence and physical presence requirements.
+              <span class="cite">INA § 316(a); INA § 319(a)</span>
+              <br>
+              <span class="flag yellow">Equities for discretionary relief</span> — length of residence is a major positive equity in any discretionary relief analysis.
+            </div>
+            <div class="live-flags" id="flags-time"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ SECTION 3: CURRENT/PRIOR STATUS ═══ -->
+    <div class="form-section" id="sec-3">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-num">3</div>
+          <div class="icon">📋</div>
+          <h2>Current &amp; Prior Immigration Status</h2>
+        </div>
+        <div class="section-body">
+
+          <div class="question-block">
+            <div class="question-label">
+              Current Immigration Status
+              <button class="info-btn" onclick="toggleInfo('info-curstatus')">?</button>
+            </div>
+            <div class="radio-group" id="rg-status">
+              <label class="radio-opt"><input type="radio" name="status" value="undocumented" onchange="setStatus('undocumented')"> Undocumented / No status</label>
+              <label class="radio-opt"><input type="radio" name="status" value="lpr" onchange="setStatus('lpr')"> Lawful Permanent Resident</label>
+              <label class="radio-opt"><input type="radio" name="status" value="visa" onchange="setStatus('visa')"> Visa holder (valid)</label>
+              <label class="radio-opt"><input type="radio" name="status" value="overstay" onchange="setStatus('overstay')"> Visa overstay</label>
+              <label class="radio-opt"><input type="radio" name="status" value="tps" onchange="setStatus('tps')"> TPS</label>
+              <label class="radio-opt"><input type="radio" name="status" value="daca" onchange="setStatus('daca')"> DACA</label>
+              <label class="radio-opt"><input type="radio" name="status" value="asylee" onchange="setStatus('asylee')"> Asylee / Asylum granted</label>
+              <label class="radio-opt"><input type="radio" name="status" value="refugee" onchange="setStatus('refugee')"> Refugee</label>
+              <label class="radio-opt"><input type="radio" name="status" value="parole" onchange="setStatus('parole')"> Parolee</label>
+            </div>
+            <div class="info-panel" id="info-curstatus">
+              <div class="why-label">Why we ask</div>
+              Current status determines: (1) which grounds of removal apply (§ 212 inadmissibility vs. § 237 deportability); (2) whether client is in removal proceedings; (3) what threshold has been crossed for unlawful presence bars.
+              <br><br>
+              <span class="flag green">LPR</span> status triggers § 237 deportability grounds (not § 212 inadmissibility) for conduct occurring after admission.
+              <span class="cite">INA § 237(a)</span>
+              <br>
+              <span class="flag yellow">Undocumented / overstay</span> — unlawful presence accruing; departure will trigger 3 or 10-year bar.
+              <span class="cite">INA § 212(a)(9)(B)</span>
+              <br>
+              <span class="flag green">TPS holders</span> can travel with advance parole and return in parolee status — potentially curing EWI for adjustment.
+              <span class="cite">INA § 244; Ramirez v. Brown, 852 F.3d 954 (9th Cir. 2017)</span>
+            </div>
+            <div class="live-flags" id="flags-status"></div>
+          </div>
+
+          <div class="question-block conditional" id="cond-lpr">
+            <div class="question-label">
+              Date LPR Status Obtained
+              <button class="info-btn" onclick="toggleInfo('info-lprdate')">?</button>
+            </div>
+            <input type="date" id="lprDate" oninput="update('lprDate', this.value)">
+            <div class="info-panel" id="info-lprdate">
+              <div class="why-label">Why we ask</div>
+              LPR date is the starting point for:
+              <br><br>
+              <span class="flag green">Naturalization</span> — 5-year LPR residency requirement (3 years for spousal).
+              <span class="cite">INA § 316(a); § 319(a)</span>
+              <br>
+              <span class="flag yellow">LPR cancellation</span> — 7 years continuous residence and 5 years as LPR required.
+              <span class="cite">INA § 240A(a)</span>
+              <br>
+              <span class="flag yellow">§ 212(c) relief</span> — available for pleas entered before April 24, 1996 for LPRs with 7+ years lawful domicile.
+              <span class="cite">Former INA § 212(c); INS v. St. Cyr, 533 U.S. 289 (2001)</span>
+            </div>
+          </div>
+
+          <div class="question-block conditional" id="cond-lpr-how">
+            <div class="question-label">
+              How was LPR status obtained?
+            </div>
+            <select id="lprBasis" onchange="update('lprBasis', this.value)">
+              <option value="">-- Select --</option>
+              <option value="family">Family petition (immediate relative)</option>
+              <option value="familyPref">Family preference category</option>
+              <option value="employment">Employment-based</option>
+              <option value="asylum">Asylum/refugee</option>
+              <option value="diversity">Diversity visa</option>
+              <option value="vawa">VAWA</option>
+              <option value="special">Special immigrant</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Has the client ever had any prior lawful status that has since expired or been lost?
+              <button class="info-btn" onclick="toggleInfo('info-priorstatus')">?</button>
+            </div>
+            <div class="radio-group" id="rg-priorstatus">
+              <label class="radio-opt"><input type="radio" name="priorstatus" value="yes" onchange="update('hadPriorStatus', true); styleRadio('rg-priorstatus', this)"> Yes</label>
+              <label class="radio-opt"><input type="radio" name="priorstatus" value="no" onchange="update('hadPriorStatus', false); styleRadio('rg-priorstatus', this)"> No</label>
+              <label class="radio-opt"><input type="radio" name="priorstatus" value="unknown" onchange="update('hadPriorStatus', 'unknown'); styleRadio('rg-priorstatus', this)"> Unknown</label>
+            </div>
+            <div class="info-panel" id="info-priorstatus">
+              <div class="why-label">Why we ask</div>
+              Prior status that lapsed creates unlawful presence from the date it expired. The exact date of status expiration determines when the 3/10 year bars' clock began. Also relevant:
+              <br><br>
+              <span class="flag yellow">Authorized stay vs. date-certain</span> — those admitted for "duration of status" (D/S — e.g., F-1, J-1) only begin accruing unlawful presence after a formal USCIS or immigration judge finding that status was violated, not automatically on visa expiration.
+              <span class="cite">INA § 212(a)(9)(B)(ii); 8 CFR § 214.1(l)</span>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Has the client ever had a petition filed on their behalf (I-130, I-140, labor certification) on or before April 30, 2001?
+              <button class="info-btn" onclick="toggleInfo('info-245i')">?</button>
+            </div>
+            <div class="radio-group" id="rg-245i">
+              <label class="radio-opt"><input type="radio" name="r245i" value="yes" onchange="update('has245i', true); styleRadio('rg-245i', this)"> Yes</label>
+              <label class="radio-opt"><input type="radio" name="r245i" value="no" onchange="update('has245i', false); styleRadio('rg-245i', this)"> No</label>
+              <label class="radio-opt"><input type="radio" name="r245i" value="unknown" onchange="update('has245i', 'unknown'); styleRadio('rg-245i', this)"> Unknown / Need to check</label>
+            </div>
+            <div class="info-panel" id="info-245i">
+              <div class="why-label">Why this can be a game-changer</div>
+              If any qualifying petition (I-130, I-140, or labor certification) was filed on behalf of this person <strong>on or before April 30, 2001</strong>, they are permanently "grandfathered" and may adjust status regardless of EWI, unlawful presence, or most immigration violations — upon payment of a $1,000 penalty fee.
+              <span class="cite">INA § 245(i); LIFE Act Pub. L. 106-553 (2000)</span>
+              <br><br>
+              The grandfathering is permanent — it does not expire. The person need not be the ultimate beneficiary of the original petition; any qualifying petition by that date is sufficient.
+              <br><br>
+              <span class="flag yellow">Action item:</span> For any long-term client with US family, pull FOIA A-file to check for any qualifying petition. Many exist that the client doesn't know about.
+            </div>
+            <div class="live-flags" id="flags-245i"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ SECTION 4: PRIOR PROCEEDINGS ═══ -->
+    <div class="form-section" id="sec-4">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-num">4</div>
+          <div class="icon">⚖️</div>
+          <h2>Prior Immigration Proceedings &amp; Orders</h2>
+        </div>
+        <div class="section-body">
+
+          <div class="question-block">
+            <div class="question-label">
+              Has the client ever received a Notice to Appear (NTA)?
+              <button class="info-btn" onclick="toggleInfo('info-nta')">?</button>
+            </div>
+            <div class="radio-group" id="rg-nta">
+              <label class="radio-opt"><input type="radio" name="nta" value="yes" onchange="update('ntaReceived', true); styleRadio('rg-nta', this); showCond('cond-ntadetails')"> Yes</label>
+              <label class="radio-opt"><input type="radio" name="nta" value="no" onchange="update('ntaReceived', false); styleRadio('rg-nta', this); hideCond('cond-ntadetails')"> No</label>
+              <label class="radio-opt"><input type="radio" name="nta" value="unknown" onchange="update('ntaReceived', 'unknown'); styleRadio('rg-nta', this)"> Unknown</label>
+            </div>
+            <div class="info-panel" id="info-nta">
+              <div class="why-label">Why the NTA is critical</div>
+              The NTA is the charging document that initiates removal proceedings. It is also the trigger for the <strong>stop-time rule</strong> — service of a proper NTA stops accrual of continuous physical presence for cancellation of removal.
+              <span class="cite">INA § 240A(d)(1)</span>
+              <br><br>
+              <span class="flag green">Pereira / Niz-Chavez bug:</span> An NTA that lacks a specific hearing date and time is <strong>defective</strong> and does not stop the clock.
+              <span class="cite">Pereira v. Sessions, 585 U.S. 198 (2018); Niz-Chavez v. Garland, 593 U.S. 155 (2021)</span>
+              <br><br>
+              Furthermore, <em>Niz-Chavez</em> held that notice must be contained in a <strong>single document</strong>. An NTA without a hearing date, followed later by a separate notice of hearing, is still defective — two documents cannot be combined to make one valid NTA.
+              <br><br>
+              <span class="flag yellow">Action item:</span> Pull the original NTA and check: (1) does it contain the date, time, and location of the first hearing? (2) Was it served by personal service or mail? If defective, the stop-time rule was never triggered and continuous presence kept accruing — potentially converting an ineligible case into a cancellation case.
+            </div>
+          </div>
+
+          <div class="conditional" id="cond-ntadetails">
+            <div class="question-block">
+              <div class="question-label">
+                Approximate date NTA was served
+              </div>
+              <input type="date" id="ntaDate" oninput="update('ntaDate', this.value)">
+            </div>
+
+            <div class="question-block">
+              <div class="question-label">
+                Did the NTA contain a specific hearing date and time?
+                <button class="info-btn" onclick="toggleInfo('info-ntadate')">?</button>
+              </div>
+              <div class="radio-group" id="rg-ntadate">
+                <label class="radio-opt"><input type="radio" name="ntadate" value="yes" onchange="update('ntaHasHearingDate', true); styleRadio('rg-ntadate', this)"> Yes — had specific date/time</label>
+                <label class="radio-opt"><input type="radio" name="ntadate" value="no" onchange="update('ntaHasHearingDate', false); styleRadio('rg-ntadate', this)"> No — said "date to be set" or similar</label>
+                <label class="radio-opt"><input type="radio" name="ntadate" value="unknown" onchange="update('ntaHasHearingDate', 'unknown'); styleRadio('rg-ntadate', this)"> Unknown / Need to pull document</label>
+              </div>
+              <div class="info-panel" id="info-ntadate">
+                <div class="why-label">The Pereira issue</div>
+                This is possibly the most important single question in a cancellation case. If the NTA lacked a hearing date/time, the stop-time rule was <strong>never triggered</strong>, and continuous presence continued accruing until the government serves a valid, complete NTA.
+                <span class="cite">Pereira v. Sessions, 585 U.S. 198 (2018)</span>
+                <br><br>
+                In practice: NTAs issued in the 1990s and 2000s frequently lacked hearing information because courts scheduled hearings separately after filing. Pull the original NTA document. Look for language like "a date to be calendared" or "TBD" in the hearing date field — that is a defective NTA.
+              </div>
+              <div class="live-flags" id="flags-ntadate"></div>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Has there been an order of removal issued?
+              <button class="info-btn" onclick="toggleInfo('info-order')">?</button>
+            </div>
+            <div class="radio-group" id="rg-order">
+              <label class="radio-opt"><input type="radio" name="order" value="none" onchange="setOrder('none')"> No order</label>
+              <label class="radio-opt"><input type="radio" name="order" value="inAbsentia" onchange="setOrder('inAbsentia')"> In absentia order</label>
+              <label class="radio-opt"><input type="radio" name="order" value="merits" onchange="setOrder('merits')"> Order after merits hearing</label>
+              <label class="radio-opt"><input type="radio" name="order" value="stipulated" onchange="setOrder('stipulated')"> Stipulated removal</label>
+              <label class="radio-opt"><input type="radio" name="order" value="unknown" onchange="setOrder('unknown')"> Unknown</label>
+            </div>
+            <div class="info-panel" id="info-order">
+              <div class="why-label">Why order type matters enormously</div>
+              <span class="flag green">In absentia orders</span> are the most attackable type. Under INA § 240(b)(5)(C), an in absentia order can be rescinded:
+              <br>• At <strong>any time</strong> — no time limit — if the respondent did not receive proper notice of the hearing.
+              <br>• Within <strong>180 days</strong> if exceptional circumstances caused the failure to appear.
+              <span class="cite">INA § 240(b)(5)(C); 8 CFR § 1003.23(b)(4)(ii)</span>
+              <br><br>
+              <span class="flag yellow">VAWA exception</span> — regardless of order type, a VAWA-based MTR has no time limit and no numerical limitation.
+              <span class="cite">INA § 240(c)(7)(C)(iv)</span>
+              <br><br>
+              <span class="flag red">Orders after merits hearing</span> are more difficult to attack — require new evidence or changed law under 8 CFR § 1003.23(b)(3).
+              <br><br>
+              <span class="flag red">Stipulated removal</span> — client waived all rights. Very difficult to reopen; must show coercion, ineffective assistance, or lack of understanding.
+            </div>
+            <div class="live-flags" id="flags-order"></div>
+          </div>
+
+          <div class="question-block conditional" id="cond-orderdate">
+            <div class="question-label">Approximate date of removal order</div>
+            <input type="date" id="orderDate" oninput="update('orderDate', this.value)">
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Has the client ever been physically removed / deported from the US?
+              <button class="info-btn" onclick="toggleInfo('info-removed')">?</button>
+            </div>
+            <div class="radio-group" id="rg-removed">
+              <label class="radio-opt"><input type="radio" name="removed" value="yes" onchange="update('priorRemoval', true); styleRadio('rg-removed', this); showCond('cond-removeddetails')"> Yes</label>
+              <label class="radio-opt"><input type="radio" name="removed" value="no" onchange="update('priorRemoval', false); styleRadio('rg-removed', this); hideCond('cond-removeddetails')"> No</label>
+            </div>
+            <div class="info-panel" id="info-removed">
+              <div class="why-label">Why prior removal is severe</div>
+              A prior removal creates a bar to admission under INA § 212(a)(9)(A):
+              <br>• <strong>10-year bar</strong> after first removal (standard)
+              <br>• <strong>20-year bar</strong> after second removal
+              <br>• <strong>Permanent bar</strong> if removed after an aggravated felony conviction
+              <span class="cite">INA § 212(a)(9)(A)</span>
+              <br><br>
+              To return legally, client must file Form I-212 (Permission to Reapply for Admission). The I-212 standard is discretionary — no statutory list of factors, but BIA has articulated equities.
+              <span class="cite">8 CFR § 212.2</span>
+              <br><br>
+              <span class="flag red">Reentry after removal (EWI)</span> is a federal crime under 8 USC § 1326, potentially an aggravated felony, and triggers reinstatement of the prior removal order without new proceedings.
+              <span class="cite">INA § 241(a)(5); 8 USC § 1326</span>
+              <br><br>
+              <span class="flag yellow">VAWA exception:</span> VAWA self-petitioners may be eligible for a waiver of the § 212(a)(9)(A) bar.
+              <span class="cite">INA § 212(a)(9)(C)(iii)</span>
+            </div>
+            <div class="live-flags" id="flags-removed"></div>
+          </div>
+
+          <div class="conditional" id="cond-removeddetails">
+            <div class="question-block">
+              <div class="question-label">Date of prior removal</div>
+              <input type="date" id="removalDate" oninput="update('removalDate', this.value)">
+            </div>
+            <div class="question-block">
+              <div class="question-label">
+                Did client reenter the US after that removal?
+                <button class="info-btn" onclick="toggleInfo('info-reentry')">?</button>
+              </div>
+              <div class="radio-group" id="rg-reentry">
+                <label class="radio-opt"><input type="radio" name="reentry" value="yes" onchange="update('reenteredAfterRemoval', true); styleRadio('rg-reentry', this)"> Yes</label>
+                <label class="radio-opt"><input type="radio" name="reentry" value="no" onchange="update('reenteredAfterRemoval', false); styleRadio('rg-reentry', this)"> No — still outside</label>
+              </div>
+              <div class="info-panel" id="info-reentry">
+                <div class="why-label">Reinstatement of removal</div>
+                If a client with a prior removal order reentered without inspection, immigration authorities may <strong>reinstate</strong> the prior order without any new hearing. The reinstated order cannot be appealed or reviewed, and bars nearly all forms of relief <em>except</em> withholding/CAT proceedings if fear of return exists.
+                <span class="cite">INA § 241(a)(5); 8 CFR § 241.8</span>
+                <br><br>
+                The only question the officer must answer before reinstating is: (1) identity, (2) prior order, (3) illegal reentry. No hearing, no IJ.
+              </div>
+              <div class="live-flags" id="flags-reentry"></div>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Has a prior MTR been filed in this case?
+              <button class="info-btn" onclick="toggleInfo('info-mtr')">?</button>
+            </div>
+            <div class="radio-group" id="rg-mtr">
+              <label class="radio-opt"><input type="radio" name="mtrf" value="yes" onchange="update('priorMTR', true); styleRadio('rg-mtr', this)"> Yes</label>
+              <label class="radio-opt"><input type="radio" name="mtrf" value="no" onchange="update('priorMTR', false); styleRadio('rg-mtr', this)"> No</label>
+              <label class="radio-opt"><input type="radio" name="mtrf" value="unknown" onchange="update('priorMTR', 'unknown'); styleRadio('rg-mtr', this)"> Unknown</label>
+            </div>
+            <div class="info-panel" id="info-mtr">
+              <div class="why-label">Prior MTR and numerical limits</div>
+              Normally, a party is limited to <strong>one motion to reopen</strong> per proceeding, filed within <strong>90 days</strong> of the final order.
+              <span class="cite">INA § 240(c)(7)(A),(C); 8 CFR § 1003.23(b)(1)</span>
+              <br><br>
+              <span class="flag green">VAWA exception:</span> These limits do NOT apply to VAWA-based MTRs. A VAWA MTR can be filed regardless of: (1) how many prior MTRs were filed, and (2) how old the final order is.
+              <span class="cite">INA § 240(c)(7)(C)(iv)</span>
+              <br><br>
+              <span class="flag green">In absentia / notice:</span> MTRs based on lack of notice also have no time limit.
+              <span class="cite">INA § 240(b)(5)(C)(ii)</span>
+            </div>
+            <div class="live-flags" id="flags-mtr"></div>
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Has the case been appealed to the BIA or any federal court?
+              <button class="info-btn" onclick="toggleInfo('info-appeal')">?</button>
+            </div>
+            <div class="radio-group" id="rg-appeal">
+              <label class="radio-opt"><input type="radio" name="appeal" value="bia" onchange="update('appealLevel', 'bia'); styleRadio('rg-appeal', this)"> BIA only</label>
+              <label class="radio-opt"><input type="radio" name="appeal" value="circuit" onchange="update('appealLevel', 'circuit'); styleRadio('rg-appeal', this)"> Circuit Court</label>
+              <label class="radio-opt"><input type="radio" name="appeal" value="both" onchange="update('appealLevel', 'both'); styleRadio('rg-appeal', this)"> Both</label>
+              <label class="radio-opt"><input type="radio" name="appeal" value="none" onchange="update('appealLevel', 'none'); styleRadio('rg-appeal', this)"> No appeals filed</label>
+            </div>
+            <div class="info-panel" id="info-appeal">
+              <div class="why-label">Why appeal history matters</div>
+              Prior appeals affect: (1) which court currently has jurisdiction; (2) whether the case can be remanded; (3) res judicata issues on refiled claims.
+              <br><br>
+              <span class="flag yellow">BIA jurisdiction:</span> Once a BIA decision is issued, jurisdiction moves to the circuit court. A new MTR must be filed with whichever body last had jurisdiction — IJ (8 CFR § 1003.23) or BIA (8 CFR § 1003.2).
+              <br><br>
+              <span class="flag yellow">Voluntary departure + appeal:</span> If voluntary departure was granted and an appeal was filed, the voluntary departure period is stayed in some circuits. Failure to depart after the BIA rules triggers a 10-year bar on relief.
+              <span class="cite">INA § 240B(d); 8 CFR § 1240.26(i)</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Coming soon sections placeholder -->
+    <div class="form-section" id="sec-5">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-num">5</div>
+          <div class="icon">👨‍👩‍👧</div>
+          <h2>Family Connections</h2>
+        </div>
+        <div class="section-body">
+          <div style="padding: 20px; text-align:center; color:#718096; font-style:italic;">
+            Section 5 — Family Connections — coming in next iteration.<br><br>
+            Will cover: USC/LPR family members, qualifying relatives for hardship analysis, VAWA relationship, dependent children.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section" id="sec-6">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-num">6</div>
+          <div class="icon">⚠️</div>
+          <h2>Criminal History</h2>
+        </div>
+        <div class="section-body">
+          <div style="padding: 20px; text-align:center; color:#718096; font-style:italic;">
+            Section 6 — Criminal History — coming in next iteration.<br><br>
+            Will cover: arrests/convictions, CIMT analysis, aggravated felony determination, drug offenses, DV convictions, GMC bars, petty offense exception.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section" id="sec-7">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-num">7</div>
+          <div class="icon">💼</div>
+          <h2>Employment</h2>
+        </div>
+        <div class="section-body">
+          <div style="padding: 20px; text-align:center; color:#718096; font-style:italic;">
+            Section 7 — Employment — coming in next iteration.<br><br>
+            Will cover: employer sponsors, prior I-140s, § 204(j) portability, occupation classification.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section" id="sec-8">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-num">8</div>
+          <div class="icon">🌍</div>
+          <h2>Fear / Persecution</h2>
+        </div>
+        <div class="section-body">
+          <div style="padding: 20px; text-align:center; color:#718096; font-style:italic;">
+            Section 8 — Fear / Persecution — coming in next iteration.<br><br>
+            Will cover: nature of harm, protected grounds, nexus, one-year bar analysis, country conditions, CAT eligibility.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section" id="sec-9">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-num">9</div>
+          <div class="icon">📊</div>
+          <h2>Analysis &amp; Document Checklist</h2>
+        </div>
+        <div class="section-body">
+          <div style="padding: 20px; text-align:center; color:#718096; font-style:italic;">
+            Section 9 — Full relief analysis and document checklist — coming in next iteration.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAV -->
+    <div id="nav-bar">
+      <button class="nav-btn secondary" id="btn-prev" onclick="prevSection()" disabled>← Previous</button>
+      <span id="section-indicator">Section 1 of 9</span>
+      <button class="nav-btn primary" id="btn-next" onclick="nextSection()">Next →</button>
+    </div>
+
+  </div><!-- /main-panel -->
+
+  <!-- SIDEBAR -->
+  <div id="sidebar">
+
+    <!-- Relief Tracker -->
+    <div class="sidebar-card">
+      <div class="sidebar-card-header">⚖️ RELIEF TRACKER</div>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#27ae60"></div> Appears eligible</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#f39c12"></div> Possible</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#e74c3c"></div> Ineligible</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#cbd5e0"></div> Need more info</div>
+      </div>
+      <div id="relief-list"></div>
+    </div>
+
+    <!-- Attorney Notes -->
+    <div class="sidebar-card">
+      <div class="sidebar-card-header">📝 ATTORNEY NOTES</div>
+      <div style="padding:10px;">
+        <textarea id="notes-area" placeholder="Notes, flags, follow-up questions..."></textarea>
+      </div>
+    </div>
+
+    <!-- Key Flags -->
+    <div class="sidebar-card">
+      <div class="sidebar-card-header">🚩 KEY FLAGS</div>
+      <div id="key-flags-list" style="padding: 10px; font-size:0.82rem; color:#718096; min-height:40px;">
+        Flags will appear here as you complete sections.
+      </div>
+    </div>
+
+  </div><!-- /sidebar -->
+
+</div><!-- /layout -->
+
+<script>
+// ── STATE ─────────────────────────────────────────────────────────────────
+const state = {
+  // Section 1
+  firstName: '', lastName: '', dob: '', countryBirth: '', countryCitizenship: '', aNumber: '',
+  // Section 2
+  firstEntryDate: '', mannerOfEntry: '', visaType: '', multipleEntries: null,
+  lastEntryDate: '', totalYears: '',
+  // Section 3
+  currentStatus: '', lprDate: '', lprBasis: '', hadPriorStatus: null, has245i: null,
+  // Section 4
+  ntaReceived: null, ntaDate: '', ntaHasHearingDate: null,
+  orderType: '', orderDate: '', priorRemoval: null, removalDate: '',
+  reenteredAfterRemoval: null, priorMTR: null, appealLevel: '',
+};
+
+let currentSection = 1;
+const TOTAL = 9;
+
+function update(key, val) {
+  state[key] = val;
+  updateRelief();
+  updateFlags();
+}
+
+// ── NAVIGATION ────────────────────────────────────────────────────────────
+function showSection(n) {
+  document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('sec-' + n).classList.add('active');
+
+  // Dots
+  for (let i = 1; i <= TOTAL; i++) {
+    const dot = document.getElementById('dot-' + i);
+    const conn = document.getElementById('conn-' + i);
+    dot.className = 'step-dot' + (i < n ? ' done' : i === n ? ' active' : '');
+    if (conn) conn.className = 'step-connector' + (i < n ? ' done' : '');
+  }
+
+  document.getElementById('btn-prev').disabled = n === 1;
+  document.getElementById('btn-next').disabled = n === TOTAL;
+  document.getElementById('btn-next').textContent = n === TOTAL - 1 ? 'Finish →' : 'Next →';
+  document.getElementById('section-indicator').textContent = `Section ${n} of ${TOTAL}`;
+  currentSection = n;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function nextSection() { if (currentSection < TOTAL) showSection(currentSection + 1); }
+function prevSection() { if (currentSection > 1) showSection(currentSection - 1); }
+function goTo(n) { showSection(n); }
+
+// ── INFO TOGGLES ──────────────────────────────────────────────────────────
+function toggleInfo(id) {
+  const p = document.getElementById(id);
+  p.classList.toggle('open');
+}
+
+// ── RADIO STYLING ─────────────────────────────────────────────────────────
+function styleRadio(groupId, input) {
+  document.querySelectorAll('#' + groupId + ' .radio-opt').forEach(o => o.classList.remove('selected'));
+  input.closest('.radio-opt').classList.add('selected');
+}
+
+// ── CONDITIONAL FIELDS ────────────────────────────────────────────────────
+function showCond(id) { document.getElementById(id).classList.add('show'); }
+function hideCond(id) { document.getElementById(id).classList.remove('show'); }
+
+function setStatus(val) {
+  update('currentStatus', val);
+  styleRadio('rg-status', document.querySelector(`#rg-status input[value="${val}"]`));
+  if (val === 'lpr') { showCond('cond-lpr'); showCond('cond-lpr-how'); }
+  else { hideCond('cond-lpr'); hideCond('cond-lpr-how'); }
+}
+
+function setOrder(val) {
+  update('orderType', val);
+  styleRadio('rg-order', document.querySelector(`#rg-order input[value="${val}"]`));
+  if (val === 'inAbsentia' || val === 'merits' || val === 'stipulated') showCond('cond-orderdate');
+  else hideCond('cond-orderdate');
+}
+
+// ── VISA TYPE CONDITIONAL ─────────────────────────────────────────────────
+document.querySelectorAll('input[name="manner"]').forEach(r => {
+  r.addEventListener('change', () => {
+    if (r.value === 'visa' || r.value === 'b1b2') showCond('cond-visatype');
+    else hideCond('cond-visatype');
+  });
+});
+
+// ── LIVE FLAGS ────────────────────────────────────────────────────────────
+function setLiveFlags(id, flags) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.innerHTML = flags.map(f => `<span class="live-flag ${f.type}">${f.text}</span>`).join('');
+}
+
+// ── RELIEF OPTIONS ────────────────────────────────────────────────────────
+const reliefOptions = [
+  {
+    id: 'immediateRelative',
+    name: 'Immediate Relative Adjustment',
+    cite: 'INA § 201(b)(2)(A)(i)',
+    eligibility() {
+      if (state.currentStatus === 'lpr') return 'ineligible'; // already LPR
+      if (state.mannerOfEntry === 'ewi' && !state.has245i && state.has245i !== 'unknown') return 'possible';
+      return 'unknown';
+    },
+    statusText() {
+      if (state.currentStatus === 'lpr') return 'Already LPR';
+      if (state.mannerOfEntry === 'ewi') return 'EWI bars § 245(a) — check § 245(i)';
+      return 'Need family info (Sec. 5)';
+    }
+  },
+  {
+    id: 'cancellationNonLPR',
+    name: 'Non-LPR Cancellation',
+    cite: 'INA § 240A(b)(1)',
+    eligibility() {
+      if (state.currentStatus === 'lpr') return 'ineligible';
+      const yrs = parseFloat(state.totalYears);
+      if (state.ntaHasHearingDate === false) return 'possible'; // clock may not have stopped
+      if (yrs >= 10) return 'possible';
+      if (yrs > 0 && yrs < 10) return 'ineligible';
+      return 'unknown';
+    },
+    statusText() {
+      if (state.currentStatus === 'lpr') return 'LPR — use LPR cancellation';
+      if (state.ntaHasHearingDate === false) return 'Pereira issue — clock may not have stopped';
+      const yrs = parseFloat(state.totalYears);
+      if (yrs >= 10) return `${yrs} years present — meets threshold`;
+      if (yrs > 0) return `Only ${yrs} years — need 10`;
+      return 'Need presence info';
+    }
+  },
+  {
+    id: 'cancellationLPR',
+    name: 'LPR Cancellation',
+    cite: 'INA § 240A(a)',
+    eligibility() {
+      if (state.currentStatus !== 'lpr') return 'unknown';
+      return 'possible';
+    },
+    statusText() {
+      if (state.currentStatus === 'lpr') return 'Is LPR — check 7yr residence & 5yr LPR';
+      return 'Only for LPRs';
+    }
+  },
+  {
+    id: 'vawaSelfPetition',
+    name: 'VAWA Self-Petition',
+    cite: 'INA § 204(a)(1)(A)(iii)',
+    eligibility() { return 'unknown'; },
+    statusText() { return 'Need family/abuse info (Sec. 5)'; }
+  },
+  {
+    id: 'vawaCancellation',
+    name: 'VAWA Cancellation',
+    cite: 'INA § 240A(b)(2)',
+    eligibility() {
+      const yrs = parseFloat(state.totalYears);
+      if (yrs >= 3) return 'unknown'; // possible if VAWA relationship exists
+      if (yrs > 0 && yrs < 3) return 'ineligible';
+      return 'unknown';
+    },
+    statusText() {
+      const yrs = parseFloat(state.totalYears);
+      if (yrs >= 3) return `${yrs} yrs present — meets 3yr threshold (need abuse info)`;
+      if (yrs > 0) return `Only ${yrs} years — need 3`;
+      return 'Need presence + family/abuse info';
+    }
+  },
+  {
+    id: 'asylum',
+    name: 'Asylum',
+    cite: 'INA § 208',
+    eligibility() {
+      if (state.priorRemoval && state.reenteredAfterRemoval) return 'ineligible'; // reinstatement bars asylum
+      if (state.orderType === 'merits') return 'ineligible'; // already litigated
+      return 'unknown';
+    },
+    statusText() {
+      if (state.priorRemoval && state.reenteredAfterRemoval) return 'Reinstated order bars asylum';
+      if (state.orderType === 'merits') return 'Already litigated';
+      return 'Need fear/persecution info (Sec. 8)';
+    }
+  },
+  {
+    id: 'withholding',
+    name: 'Withholding of Removal',
+    cite: 'INA § 241(b)(3)',
+    eligibility() { return 'unknown'; },
+    statusText() { return 'Need fear info (Sec. 8)'; }
+  },
+  {
+    id: 'cat',
+    name: 'Convention Against Torture',
+    cite: '8 CFR § 1208.16-18',
+    eligibility() { return 'unknown'; },
+    statusText() { return 'Need fear info (Sec. 8)'; }
+  },
+  {
+    id: 'mtrInAbsentia',
+    name: 'MTR — In Absentia (Notice)',
+    cite: 'INA § 240(b)(5)(C)',
+    eligibility() {
+      if (state.orderType === 'inAbsentia') return 'possible';
+      if (state.orderType === 'merits' || state.orderType === 'stipulated') return 'ineligible';
+      return 'unknown';
+    },
+    statusText() {
+      if (state.orderType === 'inAbsentia') return 'In absentia order — check notice';
+      if (state.orderType === 'merits') return 'Not in absentia';
+      return 'Need order info';
+    }
+  },
+  {
+    id: 'mtrVawa',
+    name: 'MTR — VAWA (No Time Limit)',
+    cite: 'INA § 240(c)(7)(C)(iv)',
+    eligibility() {
+      if (state.orderType && state.orderType !== 'none') return 'unknown'; // possible if VAWA qualifies
+      return 'unknown';
+    },
+    statusText() {
+      if (state.orderType && state.orderType !== 'none') return 'Has order — VAWA MTR possible (need Sec. 5)';
+      return 'Need order + family/abuse info';
+    }
+  },
+  {
+    id: 'mtrPereira',
+    name: 'MTR — NTA Defect (Pereira)',
+    cite: 'Pereira, 585 U.S. 198 (2018)',
+    eligibility() {
+      if (state.ntaHasHearingDate === false) return 'possible';
+      if (state.ntaHasHearingDate === true) return 'ineligible';
+      if (state.ntaReceived) return 'unknown';
+      return 'unknown';
+    },
+    statusText() {
+      if (state.ntaHasHearingDate === false) return '⚡ Defective NTA — clock may not have stopped';
+      if (state.ntaHasHearingDate === true) return 'NTA appears valid';
+      return 'Pull original NTA to verify';
+    }
+  },
+  {
+    id: 'i245',
+    name: '§ 245(i) Grandfathered Adjustment',
+    cite: 'INA § 245(i)',
+    eligibility() {
+      if (state.has245i === true) return 'eligible';
+      if (state.has245i === false) return 'ineligible';
+      if (state.has245i === 'unknown') return 'possible';
+      return 'unknown';
+    },
+    statusText() {
+      if (state.has245i === true) return '✓ Grandfathered — major path available';
+      if (state.has245i === false) return 'No qualifying pre-2001 petition';
+      if (state.has245i === 'unknown') return 'Needs FOIA check — pull A-file';
+      return 'Need to verify';
+    }
+  },
+  {
+    id: 'naturalization',
+    name: 'Naturalization',
+    cite: 'INA § 316 / § 319',
+    eligibility() {
+      if (state.currentStatus !== 'lpr') return 'ineligible';
+      if (state.lprDate) {
+        const yrs = (new Date() - new Date(state.lprDate)) / (1000*60*60*24*365);
+        if (yrs >= 5) return 'possible';
+        return 'ineligible';
+      }
+      return 'unknown';
+    },
+    statusText() {
+      if (state.currentStatus !== 'lpr') return 'Must be LPR first';
+      if (state.lprDate) {
+        const yrs = Math.floor((new Date() - new Date(state.lprDate)) / (1000*60*60*24*365));
+        if (yrs >= 5) return `${yrs} yrs as LPR — meets threshold`;
+        return `${yrs} yrs as LPR — need 5 (or 3 if married to USC)`;
+      }
+      return 'Need LPR date';
+    }
+  },
+  {
+    id: 'autoCitizen',
+    name: 'Automatic Citizenship Claim',
+    cite: 'INA § 320',
+    eligibility() {
+      if (!state.dob) return 'unknown';
+      const age = (new Date() - new Date(state.dob)) / (1000*60*60*24*365);
+      if (age < 50) return 'unknown'; // plausible
+      return 'unknown';
+    },
+    statusText() { return 'Check if parent naturalized while client was under 18'; }
+  },
+  {
+    id: 'uVisa',
+    name: 'U Visa (Crime Victim)',
+    cite: 'INA § 101(a)(15)(U)',
+    eligibility() { return 'unknown'; },
+    statusText() { return 'Need crime victim info (Sec. 8)'; }
+  },
+  {
+    id: 'tVisa',
+    name: 'T Visa (Trafficking Victim)',
+    cite: 'INA § 101(a)(15)(T)',
+    eligibility() { return 'unknown'; },
+    statusText() { return 'Need trafficking info (Sec. 8)'; }
+  },
+  {
+    id: 'tps',
+    name: 'TPS',
+    cite: 'INA § 244',
+    eligibility() {
+      if (state.currentStatus === 'tps') return 'eligible';
+      return 'unknown';
+    },
+    statusText() {
+      if (state.currentStatus === 'tps') return 'Currently has TPS';
+      return 'Depends on country of origin';
+    }
+  },
+  {
+    id: 'daca',
+    name: 'DACA',
+    cite: 'Admin. (86 Fed. Reg. 53,736)',
+    eligibility() {
+      if (state.currentStatus === 'daca') return 'eligible';
+      if (!state.dob || !state.firstEntryDate) return 'unknown';
+      const dob = new Date(state.dob);
+      const entry = new Date(state.firstEntryDate);
+      const ageAtEntry = (entry - dob) / (1000*60*60*24*365);
+      // Must have entered before 16th birthday and before June 15, 2007
+      if (ageAtEntry < 16 && entry < new Date('2007-06-15')) return 'possible';
+      return 'ineligible';
+    },
+    statusText() {
+      if (state.currentStatus === 'daca') return 'Currently has DACA';
+      if (state.firstEntryDate && state.dob) {
+        const entry = new Date(state.firstEntryDate);
+        const dob = new Date(state.dob);
+        const ageAtEntry = (entry - dob) / (1000*60*60*24*365);
+        if (ageAtEntry < 16 && entry < new Date('2007-06-15')) return 'Entered before 16 & before Jun 2007 ✓';
+        return 'Does not meet entry criteria';
+      }
+      return 'Need DOB + entry date';
+    }
+  },
+  {
+    id: 'sec212c',
+    name: '§ 212(c) Relief (Pre-AEDPA)',
+    cite: 'INS v. St. Cyr, 533 U.S. 289 (2001)',
+    eligibility() {
+      if (state.currentStatus !== 'lpr' && state.lprDate === '') return 'unknown';
+      return 'unknown'; // need criminal history from Sec. 6
+    },
+    statusText() { return 'Need criminal history (Sec. 6) — pre-1996 plea?'; }
+  },
+];
+
+// ── UPDATE RELIEF SIDEBAR ────────────────────────────────────────────────
+function updateRelief() {
+  const list = document.getElementById('relief-list');
+  list.innerHTML = reliefOptions.map(r => {
+    const e = r.eligibility();
+    return `
+      <div class="relief-item">
+        <div class="relief-dot ${e}"></div>
+        <div class="relief-info">
+          <div class="relief-name">${r.name}</div>
+          <div class="relief-status ${e}">${r.statusText()}</div>
+          <div class="relief-cite">${r.cite}</div>
+        </div>
+      </div>`;
+  }).join('');
+
+  // Live flags per field
+  updateFieldFlags();
+}
+
+function updateFieldFlags() {
+  // DOB flags
+  const dobFlags = [];
+  if (state.dob) {
+    const age = (new Date() - new Date(state.dob)) / (1000*60*60*24*365);
+    if (age < 21) dobFlags.push({ type: 'good', text: 'CSPA may apply' });
+    if (state.firstEntryDate) {
+      const entryAge = (new Date(state.firstEntryDate) - new Date(state.dob)) / (1000*60*60*24*365);
+      if (entryAge < 18) dobFlags.push({ type: 'good', text: 'Entered as minor — asylum 1yr bar tolled' });
+    }
+  }
+  setLiveFlags('flags-dob', dobFlags);
+
+  // Manner of entry flags
+  const mannerFlags = [];
+  if (state.mannerOfEntry === 'ewi') {
+    mannerFlags.push({ type: 'bad', text: '§ 245(a) adjustment barred' });
+    mannerFlags.push({ type: 'warn', text: '3/10yr bars on departure' });
+    mannerFlags.push({ type: 'info', text: 'Check § 245(i) grandfathering' });
+  } else if (state.mannerOfEntry === 'visa' || state.mannerOfEntry === 'parole') {
+    mannerFlags.push({ type: 'good', text: 'Inspected & admitted — § 245(a) available' });
+  }
+  setLiveFlags('flags-manner', mannerFlags);
+
+  // Total time flags
+  const timeFlags = [];
+  const yrs = parseFloat(state.totalYears);
+  if (yrs >= 10) timeFlags.push({ type: 'good', text: '10+ years — cancellation threshold met' });
+  else if (yrs >= 3) timeFlags.push({ type: 'warn', text: 'VAWA cancellation possible (3yr met)' });
+  setLiveFlags('flags-time', timeFlags);
+
+  // § 245(i) flags
+  const i245Flags = [];
+  if (state.has245i === true) i245Flags.push({ type: 'good', text: '§ 245(i) grandfathered — major benefit' });
+  if (state.has245i === 'unknown') i245Flags.push({ type: 'warn', text: 'Pull FOIA A-file to check' });
+  setLiveFlags('flags-245i', i245Flags);
+
+  // NTA date flags
+  const ntaFlags = [];
+  if (state.ntaHasHearingDate === false) ntaFlags.push({ type: 'good', text: '⚡ Pereira issue — clock may not have stopped' });
+  if (state.ntaHasHearingDate === true) ntaFlags.push({ type: 'warn', text: 'Valid NTA — stop-time rule triggered' });
+  setLiveFlags('flags-ntadate', ntaFlags);
+
+  // Order flags
+  const orderFlags = [];
+  if (state.orderType === 'inAbsentia') {
+    orderFlags.push({ type: 'good', text: 'In absentia — rescindable for lack of notice' });
+    orderFlags.push({ type: 'good', text: 'No time limit on notice-based MTR' });
+  }
+  if (state.orderType === 'stipulated') orderFlags.push({ type: 'bad', text: 'Stipulated — very hard to reopen' });
+  setLiveFlags('flags-order', orderFlags);
+
+  // Prior removal flags
+  const removedFlags = [];
+  if (state.priorRemoval) {
+    removedFlags.push({ type: 'bad', text: '§ 212(a)(9)(A) bar — I-212 required' });
+    if (state.reenteredAfterRemoval) removedFlags.push({ type: 'bad', text: 'Reinstatement risk — § 241(a)(5)' });
+  }
+  setLiveFlags('flags-removed', removedFlags);
+
+  // Reentry flags
+  const reentryFlags = [];
+  if (state.reenteredAfterRemoval) {
+    reentryFlags.push({ type: 'bad', text: 'Reinstatement — no IJ hearing' });
+    reentryFlags.push({ type: 'bad', text: 'Potential 8 USC § 1326 criminal exposure' });
+  }
+  setLiveFlags('flags-reentry', reentryFlags);
+
+  // MTR flags
+  const mtrFlags = [];
+  if (state.priorMTR && state.orderType) {
+    mtrFlags.push({ type: 'warn', text: 'Prior MTR — VAWA exception may allow refiling' });
+  }
+  setLiveFlags('flags-mtr', mtrFlags);
+
+  // Entry time flags
+  if (state.firstEntryDate) {
+    const yrsPresent = (new Date() - new Date(state.firstEntryDate)) / (1000*60*60*24*365);
+    const entryFlags = [];
+    if (yrsPresent >= 10) entryFlags.push({ type: 'good', text: `${Math.floor(yrsPresent)} yrs presence — cancellation threshold` });
+    setLiveFlags('flags-entry', entryFlags);
+  }
+}
+
+// ── KEY FLAGS PANEL ───────────────────────────────────────────────────────
+function updateFlags() {
+  const flags = [];
+
+  if (state.mannerOfEntry === 'ewi') flags.push('⚠️ EWI — § 245(a) barred; check § 245(i) & VAWA exception');
+  if (state.has245i === true) flags.push('✅ § 245(i) GRANDFATHERED — game changer');
+  if (state.has245i === 'unknown') flags.push('🔍 Pull A-file FOIA — check for pre-2001 petition');
+  if (state.ntaHasHearingDate === false) flags.push('⚡ PEREIRA ISSUE — defective NTA, clock may not have stopped');
+  if (state.orderType === 'inAbsentia') flags.push('📋 In absentia order — check notice, no time limit MTR');
+  if (state.priorRemoval && state.reenteredAfterRemoval) flags.push('🚨 Reinstatement risk — § 241(a)(5), no IJ hearing');
+  if (state.priorRemoval) flags.push('⛔ Prior removal — § 212(a)(9)(A) bar; I-212 required');
+  if (state.currentStatus === 'lpr' && state.lprDate) {
+    const yrs = Math.floor((new Date() - new Date(state.lprDate)) / (1000*60*60*24*365));
+    if (yrs >= 5) flags.push(`✅ LPR for ${yrs} years — naturalization eligible`);
+  }
+  if (state.mannerOfEntry === 'ewi' && state.priorRemoval && state.reenteredAfterRemoval) {
+    flags.push('🚨 CRITICAL: EWI + prior removal + reentry = § 1326 exposure');
+  }
+
+  const el = document.getElementById('key-flags-list');
+  if (flags.length === 0) {
+    el.innerHTML = '<span style="color:#a0aec0">Flags will appear as you enter data.</span>';
+  } else {
+    el.innerHTML = flags.map(f => `<div style="margin-bottom:6px; line-height:1.4">${f}</div>`).join('');
+  }
+
+  updateRelief();
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+updateRelief();
+</script>
+</body>
+</html>

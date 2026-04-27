@@ -1,0 +1,1391 @@
+I-751 — 353 fields
+======================================================================
+
+[001] form1[0]
+       Type: ?  |  Default: ''
+
+[002] form1[0].#pageSet[0]
+       Type: ?  |  Default: ''
+
+[003] form1[0].#pageSet[0].Page1[0]
+       Type: ?  |  Default: ''
+
+[004] form1[0].#pageSet[0].Page1[0].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-751|04/01/24|1'
+
+[005] form1[0].#pageSet[0].Page1[1]
+       Type: ?  |  Default: ''
+
+[006] form1[0].#pageSet[0].Page1[1].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-751|04/01/24|2'
+
+[007] form1[0].#pageSet[0].Page1[2]
+       Type: ?  |  Default: ''
+
+[008] form1[0].#pageSet[0].Page1[2].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-751|04/01/24|3'
+
+[009] form1[0].#pageSet[0].Page1[3]
+       Type: ?  |  Default: ''
+
+[010] form1[0].#pageSet[0].Page1[3].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-751|04/01/24|4'
+
+[011] form1[0].#pageSet[0].Page1[4]
+       Type: ?  |  Default: ''
+
+[012] form1[0].#pageSet[0].Page1[4].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-751|04/01/24|5'
+
+[013] form1[0].#pageSet[0].Page1[5]
+       Type: ?  |  Default: ''
+
+[014] form1[0].#pageSet[0].Page1[5].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-751|04/01/24|6'
+
+[015] form1[0].#pageSet[0].Page1[6]
+       Type: ?  |  Default: ''
+
+[016] form1[0].#pageSet[0].Page1[6].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-751|04/01/24|7'
+
+[017] form1[0].#pageSet[0].Page1[7]
+       Type: ?  |  Default: ''
+
+[018] form1[0].#pageSet[0].Page1[7].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-751|04/01/24|8'
+
+[019] form1[0].#pageSet[0].Page1[8]
+       Type: ?  |  Default: ''
+
+[020] form1[0].#pageSet[0].Page1[8].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-751|04/01/24|9'
+
+[021] form1[0].#pageSet[0].Page1[9]
+       Type: ?  |  Default: ''
+
+[022] form1[0].#pageSet[0].Page1[9].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-751|04/01/24|10'
+
+[023] form1[0].#pageSet[0].Page1[10]
+       Type: ?  |  Default: ''
+
+[024] form1[0].#pageSet[0].Page1[10].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-751|04/01/24|11'
+
+[025] form1[0].#subform[0]
+       Type: ?  |  Default: ''
+
+[026] form1[0].#subform[0].G28[0]
+       Description: To be completed by an attorney or accredited representative, if any. Select this box if Form G - 28 is attached.
+       Type: /Btn  |  Default: ''
+
+[027] form1[0].#subform[0].AttorneyStateBarNumber[0]
+       Description: To be completed by an attorney or accredited representative, if any. Enter Attorney State Bar Number, if applicable.
+       Type: /Tx  |  Default: ''
+
+[028] form1[0].#subform[0].USCISELISAcctNumber[0]
+       Description: To be completed by an attorney or accredited representative, if any. Enter Attorney or Accredited Representative U S C I S Electronic Immigration System (E L I S) Number, if any.
+       Type: /Tx  |  Default: ''
+
+[029] form1[0].#subform[0].Pt1Line1a_FamilyName[0]
+       Description: Part 1. Information About You, the Conditional Resident. 1. A. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[030] form1[0].#subform[0].Pt1Line1b_GivenName[0]
+       Description: Part 1. Information About You, the Conditional Resident. 1. B. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[031] form1[0].#subform[0].Pt1Line1c_MiddleName[0]
+       Description: Part 1. Information About You, the Conditional Resident. 1. C. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[032] form1[0].#subform[0].P1_Line2a_FamilyName[0]
+       Description: Part 1. Information About You, the Conditional Resident. Other Names Used. List all other names you have ever used, including aliases, maiden name, and nicknames.  If you need extra space to complete this section, use the space provided in Part 11. Additional Information. 2. A. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[033] form1[0].#subform[0].P1_Line2b_GivenName[0]
+       Description: Part 1. Information About You, the Conditional Resident. Other Names Used. 2. B. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[034] form1[0].#subform[0].P1_Line2c_MiddleName[0]
+       Description: Part 1. Information About You, the Conditional Resident. Other Names Used. 2. C. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[035] form1[0].#subform[0].P1_Line3a_FamilyName[0]
+       Description: Part 1. Information About You, the Conditional Resident. Other Names Used. 3. A. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[036] form1[0].#subform[0].P1_Line3b_GivenName[0]
+       Description: Part 1. Information About You, the Conditional Resident. Other Names Used. 3. B. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[037] form1[0].#subform[0].P1_Line3c_MiddleName[0]
+       Description: Part 1. Information About You, the Conditional Resident. Other Names Used. 3. C. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[038] form1[0].#subform[0].P1_Line4_DateOfBirth[0]
+       Description: Part 1. Information About You, the Conditional Resident. Other Information. 4. Enter Date of Birth. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[039] form1[0].#subform[0].P1_Line11_DateOfMarriage[0]
+       Description: Part 1. Information About You, the Conditional Resident. Marital Status. 11. Enter Date of Marriage. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[040] form1[0].#subform[0].P1_Line12_PlaceOfMarriage[0]
+       Description: Part 1. Information About You, the Conditional Resident. Marital Status. 12. Enter Place of Marriage.
+       Type: /Tx  |  Default: ''
+
+[041] form1[0].#subform[0].P1_Line13_DateMarriageEnded[0]
+       Description: Part 1. Information About You, the Conditional Resident. Marital Status. 13. If the marriage through which you gained conditional residence has ended, provide the date it ended (date of divorce or date of death). Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[042] form1[0].#subform[0].P1_Line14_CRExpiresOn[0]
+       Description: Part 1. Information About You, the Conditional Resident. Marital Status. 14. Enter Date Conditional Residence Expires On. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[043] form1[0].#subform[0].P1_Line7_AlienNumber[0]
+       Description: Part 1. Information About You, the Conditional Resident. Other Information. 7. Enter Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+
+[044] form1[0].#subform[0].Part1_Line10_MaritalStatus[0]
+       Description: Part 1. Information About You, the Conditional Resident. Marital Status. 10. Marital Status. Select Married.
+       Type: /Btn  |  Default: ''
+
+[045] form1[0].#subform[0].Part1_Line10_MaritalStatus[1]
+       Description: Part 1. Information About You, the Conditional Resident. Marital Status. 10. Marital Status. Select Widowed.
+       Type: /Btn  |  Default: ''
+
+[046] form1[0].#subform[0].Part1_Line10_MaritalStatus[2]
+       Description: Part 1. Information About You, the Conditional Resident. Marital Status. 10. Marital Status. Select Single.
+       Type: /Btn  |  Default: ''
+
+[047] form1[0].#subform[0].Part1_Line10_MaritalStatus[3]
+       Description: Part 1. Information About You, the Conditional Resident. Marital Status. 10. Marital Status. Select Divorced.
+       Type: /Btn  |  Default: ''
+
+[048] form1[0].#subform[0].P1_Line9_AcctIdentifier[0]
+       Description: Part 1. Information About You, the Conditional Resident. Other Information. 9. Enter U S C I S Electronic Immigration System (E L I S) Account Number, if any.
+       Type: /Tx  |  Default: ''
+
+[049] form1[0].#subform[0].P1_Line6_CountryOfCitizenship[0]
+       Description: Part 1. Information About You, the Conditional Resident. Other Information. 6. Enter Country of Citizenship or Nationality (provide all that apply).
+       Type: /Tx  |  Default: ''
+
+[050] form1[0].#subform[0].P1_Line8_SSN[0]
+       Description: Part 1. Information About You, the Conditional Resident. Other Information. 8. Enter U.S. Social Security Number, if any. 
+       Type: /Tx  |  Default: ''
+
+[051] form1[0].#subform[0].P1_Line5_CountryOfBirth[0]
+       Description: Part 1. Information About You, the Conditional Resident. Other Information. 5. Enter Country of Birth.
+       Type: /Tx  |  Default: ''
+
+[052] form1[0].#subform[1]
+       Type: ?  |  Default: ''
+
+[053] form1[0].#subform[1].Line17a_InCareofName[0]
+       Description: Part 1. Information About You, the Conditional Resident. Mailing Address. 15. A. Enter In Care Of Name.
+       Type: /Tx  |  Default: ''
+
+[054] form1[0].#subform[1].Line17d_City_Town[0]
+       Description: Part 1. Information About You, the Conditional Resident. Mailing Address. 15. D. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[055] form1[0].#subform[1].Line17b_Street_Number_Name[0]
+       Description: Part 1. Information About You, the Conditional Resident. Mailing Address. 15. B. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[056] form1[0].#subform[1].Line17c_Apt_Ste_Flr_Number[0]
+       Description: Part 1. Information About You, the Conditional Resident. Mailing Address. 15. C. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[057] form1[0].#subform[1].Line17c_Unit[0]
+       Description: Part 1. Information About You, the Conditional Resident. Mailing Address. 15. C. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[058] form1[0].#subform[1].Pt1Line15f_ZipCode[0]
+       Description: Part 1. Information About You, the Conditional Resident. Mailing Address. 15. F. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[059] form1[0].#subform[1].Pt1Line15e_State[0]
+       Description: Part 1. Information About You, the Conditional Resident. Mailing Address. 15. E. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[060] form1[0].#subform[1].Line17c_Unit[1]
+       Description: Part 1. Information About You, the Conditional Resident. Mailing Address. 15. C.  Select Suite.
+       Type: /Btn  |  Default: ''
+
+[061] form1[0].#subform[1].Line17c_Unit[2]
+       Description: Part 1. Information About You, the Conditional Resident. Mailing Address. 15. C. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[062] form1[0].#subform[1].Line16_Checkbox[0]
+       Description: Part 1. Information About You, the Conditional Resident. Mailing Address. 16. Is your physical address different than your mailing address? Select No.
+       Type: /Btn  |  Default: ''
+
+[063] form1[0].#subform[1].Line16_Checkbox[1]
+       Description: Part 1. Information About You, the Conditional Resident. Mailing Address. 16. Is your physical address different than your mailing address? Select Yes. If you answered “Yes” to Item Number 16., provide your physical address below.
+       Type: /Btn  |  Default: ''
+
+[064] form1[0].#subform[1].Line17_Checkbox[0]
+       Description: Part 1. Information About You, the Conditional Resident. Additional Information About You. 18. Are you in removal, deportation, or rescission proceedings? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[065] form1[0].#subform[1].Line18_Checkbox[0]
+       Description: Part 1. Information About You, the Conditional Resident. Additional Information About You. 19. Was a fee paid to anyone other than an attorney in connection with this petition? Select No.
+       Type: /Btn  |  Default: ''
+
+[066] form1[0].#subform[1].Line19_Checkbox[0]
+       Description: Part 1. Information About You, the Conditional Resident. Additional Information About You. 20. Have you ever been arrested, detained, charged, indicted, fined, or imprisoned for breaking or violating any law or ordinance (excluding traffic regulations), or committed any crime which you were not arrested in the United States or abroad? Select Yes. If you answered "Yes" to Item Number  20., provide a detailed explanation in Part 11. Additional Information or on a separate sheet of paper, and refer to the What Initial Evidence Is Required section of the Form I - 7 51 instructions to determine what criminal history document to include with your petition.
+       Type: /Btn  |  Default: ''
+
+[067] form1[0].#subform[1].Line19_Checkbox[1]
+       Description: Part 1. Information About You, the Conditional Resident. Additional Information About You. 20. Have you ever been arrested, detained, charged, indicted, fined, or imprisoned for breaking or violating any law or ordinance (excluding traffic regulations), or committed any crime which you were not arrested in the United States or abroad? Select No.
+       Type: /Btn  |  Default: ''
+
+[068] form1[0].#subform[1].Line18_Checkbox[1]
+       Description: Part 1. Information About You, the Conditional Resident. Additional Information About You. 19. Was a fee paid to anyone other than an attorney in connection with this petition? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[069] form1[0].#subform[1].Line17_Checkbox[1]
+       Description: Part 1. Information About You, the Conditional Resident. Additional Information About You. 18. Are you in removal, deportation, or rescission proceedings? Select No.
+       Type: /Btn  |  Default: ''
+
+[070] form1[0].#subform[1].Pt1Line17_InCareofName[0]
+       Description: Part 1. Information About You, the Conditional Resident. Physical Address. 17. A. Enter In Care Of Name.
+       Type: /Tx  |  Default: ''
+
+[071] form1[0].#subform[1].Pt1Line17_CityOrTown[0]
+       Description: Part 1. Information About You, the Conditional Resident. Physical Address. 17. D. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[072] form1[0].#subform[1].Pt1Line17_StreetNumberName[0]
+       Description: Part 1. Information About You, the Conditional Resident. Physical Address. 17. B. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[073] form1[0].#subform[1].Pt1Line17_AptSteFlrNumber[0]
+       Description: Part 1. Information About You, the Conditional Resident. Physical Address. 17. C. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[074] form1[0].#subform[1].Pt1Line17_ZipCode[0]
+       Description: Part 1. Information About You, the Conditional Resident. Physical Address. 17. F. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[075] form1[0].#subform[1].Pt1Line17_State[0]
+       Description: Part 1. Information About You, the Conditional Resident. Physical Address. 17. E. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[076] form1[0].#subform[1].Pt1Line17_Unit[0]
+       Description: Part 1. Information About You, the Conditional Resident. Physical Address. 17. C. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[077] form1[0].#subform[1].Pt1Line17_Unit[1]
+       Description: Part 1. Information About You, the Conditional Resident. Physical Address. 17. C. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[078] form1[0].#subform[1].Pt1Line17_Unit[2]
+       Description: Part 1. Information About You, the Conditional Resident. Physical Address. 17. C. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[079] form1[0].#subform[1].Line20_Checkbox[0]
+       Description: Part 1. Information About You, the Conditional Resident. Additional Information About You. 21. If you are married, is this a different marriage than the one through which you gained conditional resident status? Select No.
+       Type: /Btn  |  Default: ''
+
+[080] form1[0].#subform[1].Line20_Checkbox[1]
+       Description: Part 1. Information About You, the Conditional Resident. Additional Information About You. 21. If you are married, is this a different marriage than the one through which you gained conditional resident status? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[081] form1[0].#subform[1].Line21_Checkbox[0]
+       Description: Part 1. Information About You, the Conditional Resident. Additional Information About You. 22. Have you resided at any other address since you became a permanent resident? Select No.
+       Type: /Btn  |  Default: ''
+
+[082] form1[0].#subform[1].Line21_Checkbox[1]
+       Description: Part 1. Information About You, the Conditional Resident. Additional Information About You. 22. Have you resided at any other address since you became a permanent resident? Select Yes. If you answered “Yes” to Item Number 22., provide a list of all addresses where you have resided since becoming a permanent resident and the dates you resided at those locations in the space provided in Part 11. Additional Information.
+       Type: /Btn  |  Default: ''
+
+[083] form1[0].#subform[1].Line22_Checkbox[0]
+       Description: Part 1. Information About You, the Conditional Resident. Additional Information About You. 23. Is your spouse or parent's spouse currently serving with or employed by the U.S. Government and serving outside the United States? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[084] form1[0].#subform[1].Line22_Checkbox[1]
+       Description: Part 1. Information About You, the Conditional Resident. Additional Information About You. 23. Is your spouse or parent's spouse currently serving with or employed by the U.S. Government and serving outside the United States? Select No.
+       Type: /Btn  |  Default: ''
+
+[085] form1[0].#subform[1].P3_Line8_HeightFeet[0]
+       Description: Part 2. Biographic Information. 3. Height. Feet. Select Number of Feet from list.
+       Type: /Ch  |  Default: ''
+
+[086] form1[0].#subform[1].P3_Line8_HeightInches[0]
+       Description: Part 2. Biographic Information. 3. Height. Inches. Select Number of Inches from list.
+       Type: /Ch  |  Default: ''
+
+[087] form1[0].#subform[1].P3_Line9_HeightInches1[0]
+       Description: Part 2. Biographic Information. 4. Weight. Pounds. Enter first digit of Weight in Pounds.
+       Type: /Tx  |  Default: ''
+
+[088] form1[0].#subform[1].P3_Line9_HeightInches2[0]
+       Description: Part 2. Biographic Information. 4. Weight. Pounds. Enter second digit of Weight in Pounds.
+       Type: /Tx  |  Default: ''
+
+[089] form1[0].#subform[1].P3_Line9_HeightInches3[0]
+       Description: Part 2. Biographic Information. 4. Weight. Pounds. Enter third digit of Weight in Pounds.
+       Type: /Tx  |  Default: ''
+
+[090] form1[0].#subform[1].P3_checkbox6[0]
+       Description: Part 2. Biographic Information. 1. Ethnicity (Select only one box). Select Not Hispanic or Latino.
+       Type: /Btn  |  Default: ''
+
+[091] form1[0].#subform[1].P3_checkbox6[1]
+       Description: Part 2. Biographic Information. 1. Ethnicity (Select only one box). Select Hispanic or Latino.
+       Type: /Btn  |  Default: ''
+
+[092] form1[0].#subform[1].P3_checkbox7_Hawaiian[0]
+       Description: Part 2. Biographic Information. 2. Race (Select all applicable boxes). Select Native Hawaiian or Other Pacific Islander.
+       Type: /Btn  |  Default: ''
+
+[093] form1[0].#subform[1].P3_checkbox7_Indian[0]
+       Description: Part 2. Biographic Information. 2. Race (Select all applicable boxes). Select American Indian or Alaska Native.
+       Type: /Btn  |  Default: ''
+
+[094] form1[0].#subform[1].P3_checkbox7_White[0]
+       Description: Part 2. Biographic Information. 2. Race (Select all applicable boxes). Select White.
+       Type: /Btn  |  Default: ''
+
+[095] form1[0].#subform[1].P3_checkbox7_Asian[0]
+       Description: Part 2. Biographic Information. 2. Race (Select all applicable boxes). Select Asian.
+       Type: /Btn  |  Default: ''
+
+[096] form1[0].#subform[1].P3_checkbox7_Black[0]
+       Description: Part 2. Biographic Information. 2. Race (Select all applicable boxes). Select Black or African American.
+       Type: /Btn  |  Default: ''
+
+[097] form1[0].#subform[1].P3_checkbox10[0]
+       Description: Part 2. Biographic Information. 5. Eye Color (Select only one box). Select Blue.
+       Type: /Btn  |  Default: ''
+
+[098] form1[0].#subform[1].P3_checkbox10[1]
+       Description: Part 2. Biographic Information. 5. Eye Color (Select only one box). Select Green.
+       Type: /Btn  |  Default: ''
+
+[099] form1[0].#subform[1].P3_checkbox10[2]
+       Description: Part 2. Biographic Information. 5. Eye Color (Select only one box). Select Hazel.
+       Type: /Btn  |  Default: ''
+
+[100] form1[0].#subform[1].P3_checkbox10[3]
+       Description: Part 2. Biographic Information. 5. Eye Color (Select only one box). Select Pink.
+       Type: /Btn  |  Default: ''
+
+[101] form1[0].#subform[1].P3_checkbox10[4]
+       Description: Part 2. Biographic Information. 5. Eye Color (Select only one box). Select Maroon.
+       Type: /Btn  |  Default: ''
+
+[102] form1[0].#subform[1].P3_checkbox10[5]
+       Description: Part 2. Biographic Information. 5. Eye Color (Select only one box). Select Brown.
+       Type: /Btn  |  Default: ''
+
+[103] form1[0].#subform[1].P3_checkbox10[6]
+       Description: Part 2. Biographic Information. 5. Eye Color (Select only one box). Select Black.
+       Type: /Btn  |  Default: ''
+
+[104] form1[0].#subform[1].P3_checkbox10[7]
+       Description: Part 2. Biographic Information. 5. Eye Color (Select only one box). Select Unknown / Other.
+       Type: /Btn  |  Default: ''
+
+[105] form1[0].#subform[1].P3_checkbox10[8]
+       Description: Part 2. Biographic Information. 5. Eye Color (Select only one box). Select Gray.
+       Type: /Btn  |  Default: ''
+
+[106] form1[0].#subform[1].P3_checkbox11[0]
+       Description: Part 2. Biographic Information. 6. Hair Color(Select only one box). Select Bald (No hair).
+       Type: /Btn  |  Default: ''
+
+[107] form1[0].#subform[1].P3_checkbox11[1]
+       Description: Part 2. Biographic Information. 6. Hair Color (Select only one box). Select Blond.
+       Type: /Btn  |  Default: ''
+
+[108] form1[0].#subform[1].P3_checkbox11[2]
+       Description: Part 2. Biographic Information. 6. Hair Color (Select only one box). Select Gray.
+       Type: /Btn  |  Default: ''
+
+[109] form1[0].#subform[1].P3_checkbox11[3]
+       Description: Part 2. Biographic Information. 6. Hair Color (Select only one box). Select Sandy.
+       Type: /Btn  |  Default: ''
+
+[110] form1[0].#subform[1].P3_checkbox11[4]
+       Description: Part 2. Biographic Information. 6. Hair Color (Select only one box). Select Unknown / Other.
+       Type: /Btn  |  Default: ''
+
+[111] form1[0].#subform[1].P3_checkbox11[5]
+       Description: Part 2. Biographic Information. 6. Hair Color (Select only one box). Select White.
+       Type: /Btn  |  Default: ''
+
+[112] form1[0].#subform[1].P3_checkbox11[6]
+       Description: Part 2. Biographic Information. 6. Hair Color (Select only one box). Select Red.
+       Type: /Btn  |  Default: ''
+
+[113] form1[0].#subform[1].P3_checkbox11[7]
+       Description: Part 2. Biographic Information. 6. Hair Color (Select only one box). Select Brown.
+       Type: /Btn  |  Default: ''
+
+[114] form1[0].#subform[1].P3_checkbox11[8]
+       Description: Part 2. Biographic Information. 6. Hair Color (Select only one box). Select Black.
+       Type: /Btn  |  Default: ''
+
+[115] form1[0].#subform[2]
+       Type: ?  |  Default: ''
+
+[116] form1[0].#subform[2].Pt3Line1[0]
+       Description: Part 3. Basis for Petition. Joint Filing. My conditional residence is based on my marriage or my parent's marriage to a U.S. citizen or lawful permanent resident, and I am filing this joint petition together with (Select only one box). Select 1. A. My spouse.
+       Type: /Btn  |  Default: ''
+
+[117] form1[0].#subform[2].Pt3Line1[1]
+       Description: Part 3. Basis for Petition. Joint Filing. My conditional residence is based on my marriage or my parent's marriage to a U.S. citizen or lawful permanent resident, and I am filing this joint petition together with (Select only one box). Select 1. B. My parent's spouse because I am unable to be included in a joint petition filed by my parent and my parent's spouse. OR (Select all applicable boxes in the next section.)
+       Type: /Btn  |  Default: ''
+
+[118] form1[0].#subform[2].Pt3Line1c[0]
+       Description: Part 3. Basis for Petition. Waiver or Individual Filing Request. My conditional residence is based on my marriage or my parent's marriage to a U.S. citizen or lawful permanent resident, I am unable to file a joint petition with my spouse or my parent's spouse, because. Select 1. C. My spouse is deceased.
+       Type: /Btn  |  Default: ''
+
+[119] form1[0].#subform[2].Pt3Line1d[0]
+       Description: Part 3. Basis for Petition. Waiver or Individual Filing Request. My conditional residence is based on my marriage or my parent's marriage to a U.S. citizen or lawful permanent resident, I am unable to file a joint petition with my spouse or my parent's spouse, because. Select 1. D. My marriage was entered in good faith, but the marriage was terminated through divorce or annulment.
+       Type: /Btn  |  Default: ''
+
+[120] form1[0].#subform[2].Pt3Line1e[0]
+       Description: Part 3. Basis for Petition. Waiver or Individual Filing Request. My conditional residence is based on my marriage or my parent's marriage to a U.S. citizen or lawful permanent resident, I am unable to file a joint petition with my spouse or my parent's spouse, because. Select 1. E. I entered the marriage in good faith, and, during the marriage, I was battered, or was the subject of extreme cruelty, by my U.S. citizen or lawful permanent resident spouse.
+       Type: /Btn  |  Default: ''
+
+[121] form1[0].#subform[2].Pt3Line1f[0]
+       Description: Part 3. Basis for Petition. Waiver or Individual Filing Request. My conditional residence is based on my marriage or my parent's marriage to a U.S. citizen or lawful permanent resident, I am unable to file a joint petition with my spouse or my parent's spouse, because. Select 1. F. My parent entered the marriage in good faith, and, during the marriage, I was battered, or was subjected to extreme cruelty, by my parent's U.S. citizen or lawful permanent resident spouse or by my conditional resident parent.
+       Type: /Btn  |  Default: ''
+
+[122] form1[0].#subform[2].Pt3Line1g[0]
+       Description: Part 3. Basis for Petition. Waiver or Individual Filing Request. My conditional residence is based on my marriage or my parent's marriage to a U.S. citizen or lawful permanent resident, I am unable to file a joint petition with my spouse or my parent's spouse, because. Select 1. G. The termination of my status and removal from the United States would result in an extreme hardship.
+       Type: /Btn  |  Default: ''
+
+[123] form1[0].#subform[2].Part4_Relationship[0]
+       Description: Part 4. Information About the U.S. Citizen or Lawful Permanent Resident Spouse.  If Filing as a Child Separately, Information About the U.S. Citizen or Lawful Permanent Resident Stepparent Through Whom You Gained Your Conditional Residence. Relationship. Select 1. B. Parent's Spouse or Former Spouse.
+       Type: /Btn  |  Default: ''
+
+[124] form1[0].#subform[2].Part4_Relationship[1]
+       Description: Part 4. Information About the U.S. Citizen or Lawful Permanent Resident Spouse.  If Filing as a Child Separately, Information About the U.S. Citizen or Lawful Permanent Resident Stepparent Through Whom You Gained Your Conditional Residence. Relationship. Select 1. A. Spouse or Former Spouse.
+       Type: /Btn  |  Default: ''
+
+[125] form1[0].#subform[2].Pt4Line2b_GivenName2[0]
+       Description: Part 4. Information About the U.S. Citizen or Lawful Permanent Resident Spouse.  If Filing as a Child Separately, Information About the U.S. Citizen or Lawful Permanent Resident Stepparent Through Whom You Gained Your Conditional Residence. Other Information. 2. B. Enter Given Name (Family Name).
+       Type: /Tx  |  Default: ''
+
+[126] form1[0].#subform[2].Pt4Line2a_FamilyName2[0]
+       Description: Part 4. Information About the U.S. Citizen or Lawful Permanent Resident Spouse.  If Filing as a Child Separately, Information About the U.S. Citizen or Lawful Permanent Resident Stepparent Through Whom You Gained Your Conditional Residence. Other Information. 2. A. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[127] form1[0].#subform[2].Pt4Line2c_MiddleName2[0]
+       Description: Part 4. Information About the U.S. Citizen or  Lawful Permanent Resident Spouse.  If Filing as a Child Separately, Information About the U.S. Citizen or Lawful Permanent Resident Stepparent Through Whom You Gained Your Conditional Residence. Other Information. 2. C. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[128] form1[0].#subform[2].Line3_DateOfBirth[0]
+       Description: Part 4. Information About the U.S. Citizen or Lawful Permanent Resident Spouse.  If Filing as a Child Separately, Information About the U.S. Citizen or Lawful Permanent Resident Stepparent Through Whom You Gained Your Conditional Residence. Other Information. 3. Enter Date of Birth. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[129] form1[0].#subform[2].Line4_SSN[0]
+       Description: Part 4. Information About the U.S. Citizen or Lawful Permanent Resident Spouse.  If Filing as a Child Separately, Information About the U.S. Citizen or Lawful Permanent Resident Stepparent Through Whom You Gained Your Conditional Residence. Other Information. 4. Enter U.S. Social Security Number, if any.
+       Type: /Tx  |  Default: ''
+
+[130] form1[0].#subform[2].Line5_AlienNumber[0]
+       Description: Part 4. Information About the U.S. Citizen or Lawful Permanent Resident Spouse.  If Filing as a Child Separately, Information About the U.S. Citizen or Lawful Permanent Resident Stepparent Through Whom You Gained Your Conditional Residence. Other Information. 5. Enter Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+
+[131] form1[0].#subform[2].Pt4Line6_CityOrTown[0]
+       Description: Part 4. Information About the U.S. Citizen or  Lawful Permanent Resident Spouse.  If Filing as a Child Separately, Information About the U.S. Citizen or Lawful Permanent Resident Stepparent Through Whom You Gained Your Conditional Residence. Physical Address. 6. C. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[132] form1[0].#subform[2].Pt4Line6_StreetNumberName[0]
+       Description: Part 4. Information About the U.S. Citizen or Lawful Permanent Resident Spouse.  If Filing as a Child Separately, Information About the U.S. Citizen or Lawful Permanent Resident Stepparent Through Whom You Gained Your Conditional Residence. Physical Address. 6. A. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[133] form1[0].#subform[2].Pt4Line6_AptSteFlrNumber[0]
+       Description: Part 4. Information About the U.S. Citizen or Lawful Permanent Resident Spouse.  If Filing as a Child Separately, Information About the U.S. Citizen or Lawful Permanent Resident Stepparent Through Whom You Gained Your Conditional Residence. Physical Address. 6. B. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[134] form1[0].#subform[2].Pt4Line6_ZipCode[0]
+       Description: Part 4. Information About the U.S. Citizen or Lawful Permanent Resident Spouse.  If Filing as a Child Separately, Information About the U.S. Citizen or Lawful Permanent Resident Stepparent Through Whom You Gained Your Conditional Residence. Physical Address. 6. E. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[135] form1[0].#subform[2].Pt4Line6_State[0]
+       Description: Part 4. Information About the U.S. Citizen or Lawful Permanent Resident Spouse.  If Filing as a Child Separately, Information About the U.S. Citizen or Lawful Permanent Resident Stepparent Through Whom You Gained Your Conditional Residence. Physical Address. 6. D. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[136] form1[0].#subform[2].Pt4Line6_PostalCode[0]
+       Description: Part 4. Information About the U.S. Citizen or Lawful Permanent Resident Spouse.  If Filing as a Child Separately, Information About the U.S. Citizen or Lawful Permanent Resident Stepparent Through Whom You Gained Your Conditional Residence. Physical Address. 6. G. Enter Postal Code.
+       Type: /Tx  |  Default: ''
+
+[137] form1[0].#subform[2].Pt4Line6_Country[0]
+       Description: Part 4. Information About the U.S. Citizen or Lawful Permanent Resident Spouse.  If Filing as a Child Separately, Information About the U.S. Citizen or Lawful Permanent Resident Stepparent Through Whom You Gained Your Conditional Residence. Physical Address. 6. H. Enter Country.
+       Type: /Tx  |  Default: ''
+
+[138] form1[0].#subform[2].Pt4Line6_Unit[0]
+       Description: Part 4. Information About the U.S. Citizen or Lawful Permanent Resident Spouse.  If Filing as a Child Separately, Information About the U.S. Citizen or Lawful Permanent Resident Stepparent Through Whom You Gained Your Conditional Residence. Physical Address. 6. B. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[139] form1[0].#subform[2].Pt4Line6_Unit[1]
+       Description: Part 4. Information About the U.S. Citizen or Lawful Permanent Resident Spouse.  If Filing as a Child Separately, Information About the U.S. Citizen or Lawful Permanent Resident Stepparent Through Whom You Gained Your Conditional Residence. Physical Address. 6. B. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[140] form1[0].#subform[2].Pt4Line6_Unit[2]
+       Description: Part 4. Information About the U.S. Citizen or Lawful Permanent Resident Spouse.  If Filing as a Child Separately, Information About the U.S. Citizen or Lawful Permanent Resident Stepparent Through Whom You Gained Your Conditional Residence. Physical Address. 6. B. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[141] form1[0].#subform[2].Pt4Line6_Province[0]
+       Description: Part 4. Information About the U.S. Citizen or Lawful Permanent Resident Spouse.  If Filing as a Child Separately, Information About the U.S. Citizen or Lawful Permanent Resident Stepparent Through Whom You Gained Your Conditional Residence. Physical Address. 6. F. Enter Province.
+       Type: /Tx  |  Default: ''
+
+[142] form1[0].#subform[2].Line1b_GivenName3[0]
+       Description: Part 5. Information About Your Children. Child 1. 1. B. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[143] form1[0].#subform[2].Line1a_FamilyName3[0]
+       Description: Part 5. Information About Your Children. Provide information on all of your children.  If you need extra space to complete this section, use the space provided in Part 11. Additional Information. Child 1. 1. A. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[144] form1[0].#subform[2].Line1c_MiddleName3[0]
+       Description: Part 5. Information About Your Children. Child 1. 1. C. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[145] form1[0].#subform[2].Line2_DateOfBirth2[0]
+       Description: Part 5. Information About Your Children. Child 1. 2. Date of Birth. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[146] form1[0].#subform[2].Line3_AlienNumber[0]
+       Description: Part 5. Information About Your Children. Child 1. 3. Enter Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+
+[147] form1[0].#subform[2].Part5Line5[0]
+       Description: Part 5. Information About Your Children. Child 1. 4. Is this child living with you? Select No.
+       Type: /Btn  |  Default: ''
+
+[148] form1[0].#subform[2].Part5Line6[0]
+       Description: Part 5. Information About Your Children. Child 1. 5. Is this child applying with you? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[149] form1[0].#subform[2].Part5Line6[1]
+       Description: Part 5. Information About Your Children. Child 1. 5. Is this child applying with you? Select No.
+       Type: /Btn  |  Default: ''
+
+[150] form1[0].#subform[2].Part5Line5[1]
+       Description: Part 5. Information About Your Children. Child 1. 4. Is this child living with you? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[151] form1[0].#subform[3]
+       Type: ?  |  Default: ''
+
+[152] form1[0].#subform[3].Pt5Line6_StreetNumberName[0]
+       Description: Part 5. Information About Your Children. Child 1. Physical Address. 6. A. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[153] form1[0].#subform[3].Pt5Line6_AptSteFlrNumber[0]
+       Description: Part 5. Information About Your Children. Child 1. Physical Address. 6. B. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[154] form1[0].#subform[3].Pt5Line6_CityOrTown[0]
+       Description: Part 5. Information About Your Children. Child 1. Physical Address. 6. C. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[155] form1[0].#subform[3].Pt5Line6_Unit[0]
+       Description: Part 5. Information About Your Children. Child 1. Physical Address. 6. B. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[156] form1[0].#subform[3].Pt5Line6_Unit[1]
+       Description: Part 5. Information About Your Children. Child 1. Physical Address. 6. B. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[157] form1[0].#subform[3].Pt5Line6_Unit[2]
+       Description: Part 5. Information About Your Children. Child 1. Physical Address. 6. B. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[158] form1[0].#subform[3].Pt5Line6_ZipCode[0]
+       Description: Part 5. Information About Your Children. Child 1. Physical Address. 6. E. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[159] form1[0].#subform[3].Pt5Line6_State[0]
+       Description: Part 5. Information About Your Children. Child 1. Physical Address. 6. D. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[160] form1[0].#subform[3].Pt5Line6_PostalCode[0]
+       Description: Part 5. Information About Your Children. Child 1. Physical Address. 6. G. Enter Postal Code.
+       Type: /Tx  |  Default: ''
+
+[161] form1[0].#subform[3].Pt5Line6_Country[0]
+       Description: Part 5. Information About Your Children. Child 1. Physical Address. 6. H. Enter Country.
+       Type: /Tx  |  Default: ''
+
+[162] form1[0].#subform[3].Pt5Line6_Province[0]
+       Description: Part 5. Information About Your Children. Child 1. Physical Address. 6. F. Enter Province.
+       Type: /Tx  |  Default: ''
+
+[163] form1[0].#subform[3].Line13b_GivenName[0]
+       Description: Part 5. Information About Your Children. Child 2. 7. B. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[164] form1[0].#subform[3].Line13a_FamilyName[0]
+       Description: Part 5. Information About Your Children. Child 2. 7. A. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[165] form1[0].#subform[3].Line13c_MiddleName[0]
+       Description: Part 5. Information About Your Children. Child 2. 7. C. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[166] form1[0].#subform[3].Line14_DateOfBirth[0]
+       Description: Part 5. Information About Your Children. Child 2. 8. Enter Date of Birth. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[167] form1[0].#subform[3].Line15_AlienNumber[0]
+       Description: Part 5. Information About Your Children. Child 2. 9. Enter Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+
+[168] form1[0].#subform[3].Part5Line11[0]
+       Description: Part 5. Information About Your Children. Child 2. 10. Is this child living with you? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[169] form1[0].#subform[3].Part5Line12[0]
+       Description: Part 5. Information About Your Children. Child 2. 11. Is this child applying with you? Select No.
+       Type: /Btn  |  Default: ''
+
+[170] form1[0].#subform[3].Part5Line12[1]
+       Description: Part 5. Information About Your Children. Child 2. 11. Is this child applying with you? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[171] form1[0].#subform[3].Part5Line11[1]
+       Description: Part 5. Information About Your Children. Child 2. 10. Is this child living with you? Select No.
+       Type: /Btn  |  Default: ''
+
+[172] form1[0].#subform[3].Pt5Line12_StreetNumberName[0]
+       Description: Part 5. Information About Your Children. Child 2. Physical Address. 12. A. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[173] form1[0].#subform[3].Pt5Line12_AptSteFlrNumber[0]
+       Description: Part 5. Information About Your Children. Child 2. Physical Address. 12. B. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[174] form1[0].#subform[3].Pt5Line12_CityOrTown[0]
+       Description: Part 5. Information About Your Children. Child 2. Physical Address. 12. C. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[175] form1[0].#subform[3].Pt5Line12_Unit[0]
+       Description: Part 5. Information About Your Children. Child 2. Physical Address. 12. B. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[176] form1[0].#subform[3].Pt5Line12_Unit[1]
+       Description: Part 5. Information About Your Children. Child 2. Physical Address. 12. B. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[177] form1[0].#subform[3].Pt5Line12_Unit[2]
+       Description: Part 5. Information About Your Children. Child 2. Physical Address. 12. B. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[178] form1[0].#subform[3].Pt5Line12_ZipCode[0]
+       Description: Part 5. Information About Your Children. Child 2. Physical Address. 12. E. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[179] form1[0].#subform[3].Pt5Line12_State[0]
+       Description: Part 5. Information About Your Children. Child 2. Physical Address. 12. D. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[180] form1[0].#subform[3].Pt5Line12_PostalCode[0]
+       Description: Part 5. Information About Your Children. Child 2. Physical Address. 12. G. Enter Postal Code.
+       Type: /Tx  |  Default: ''
+
+[181] form1[0].#subform[3].Pt5Line12_Country[0]
+       Description: Part 5. Information About Your Children. Child 2. Physical Address. 12. H. Enter Country.
+       Type: /Tx  |  Default: ''
+
+[182] form1[0].#subform[3].Pt5Line12_Province[0]
+       Description: Part 5. Information About Your Children. Child 2. Physical Address. 12. F. Enter Province.
+       Type: /Tx  |  Default: ''
+
+[183] form1[0].#subform[3].Line13b_GivenName[1]
+       Description: Part 5. Information About Your Children. Child 3. 13. B. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[184] form1[0].#subform[3].Line13a_FamilyName[1]
+       Description: Part 5. Information About Your Children. Child 3. 13. A. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[185] form1[0].#subform[3].Line13c_MiddleName[1]
+       Description: Part 5. Information About Your Children. Child 3. 13. C. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[186] form1[0].#subform[3].Line14_DateOfBirth[1]
+       Description: Part 5. Information About Your Children. Child 3. 14. Enter Date of Birth. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[187] form1[0].#subform[3].Line15_AlienNumber[1]
+       Description: Part 5. Information About Your Children. Child 3. 15. Enter Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+
+[188] form1[0].#subform[3].Part5Line17[0]
+       Description: Part 5. Information About Your Children. Child 3. 16. Is this child living with you? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[189] form1[0].#subform[3].Part5Line18[0]
+       Description: Part 5. Information About Your Children. Child 3. 17. Is this child applying with you? Select No.
+       Type: /Btn  |  Default: ''
+
+[190] form1[0].#subform[3].Part5Line18[1]
+       Description: Part 5. Information About Your Children. Child 3. 17. Is this child applying with you? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[191] form1[0].#subform[3].Part5Line17[1]
+       Description: Part 5. Information About Your Children. Child 3. 16. Is this child living with you? Select No.
+       Type: /Btn  |  Default: ''
+
+[192] form1[0].#subform[3].Pt5Line18_StreetNumberName[0]
+       Description: Part 5. Information About Your Children. Child 3. Physical Address. 18. A. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[193] form1[0].#subform[3].Pt5Line18_AptSteFlrNumber[0]
+       Description: Part 5. Information About Your Children. Child 3. Physical Address. 18. B. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[194] form1[0].#subform[3].Pt5Line18_CityOrTown[0]
+       Description: Part 5. Information About Your Children. Child 3. Physical Address. 18. C. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[195] form1[0].#subform[3].Pt5Line18_Unit[0]
+       Description: Part 5. Information About Your Children. Child 3. Physical Address. 18. B. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[196] form1[0].#subform[3].Pt5Line18_Unit[1]
+       Description: Part 5. Information About Your Children. Child 3. Physical Address. 18. B. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[197] form1[0].#subform[3].Pt5Line18_Unit[2]
+       Description: Part 5. Information About Your Children. Child 3. Physical Address. 18. B. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[198] form1[0].#subform[3].Pt5Line18_ZipCode[0]
+       Description: Part 5. Information About Your Children. Child 3. Physical Address. 18. E. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[199] form1[0].#subform[3].Pt5Line18_State[0]
+       Description: Part 5. Information About Your Children. Child 3. Physical Address. 18. D. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[200] form1[0].#subform[3].Pt5Line18_PostalCode[0]
+       Description: Part 5. Information About Your Children. Child 3. Physical Address. 18. G. Enter Postal Code.
+       Type: /Tx  |  Default: ''
+
+[201] form1[0].#subform[3].Pt5Line18_Country[0]
+       Description: Part 5. Information About Your Children. Child 3. Physical Address. 18. H. Enter Country.
+       Type: /Tx  |  Default: ''
+
+[202] form1[0].#subform[3].Pt5Line18_Province[0]
+       Description: Part 5. Information About Your Children. Child 3. Physical Address. 18. F. Enter Province.
+       Type: /Tx  |  Default: ''
+
+[203] form1[0].#subform[3].Line13b_GivenName[2]
+       Description: Part 5. Information About Your Children. Child 4. 19. B. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[204] form1[0].#subform[3].Line13a_FamilyName[2]
+       Description: Part 5. Information About Your Children. Child 4. 19. A. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[205] form1[0].#subform[3].Line13c_MiddleName[2]
+       Description: Part 5. Information About Your Children. Child 4. 19. C. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[206] form1[0].#subform[3].Line14_DateOfBirth[2]
+       Description: Part 5. Information About Your Children. Child 4. 20. Enter Date of Birth. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[207] form1[0].#subform[3].Line15_AlienNumber[2]
+       Description: Part 5. Information About Your Children. Child 4. 21. Enter Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+
+[208] form1[0].#subform[3].Part5Line23[0]
+       Description: Part 5. Information About Your Children. Child 4. 22. Is this child living with you? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[209] form1[0].#subform[3].Part5Line24[0]
+       Description: Part 5. Information About Your Children. Child 4. 23. Is this child applying with you? Select No.
+       Type: /Btn  |  Default: ''
+
+[210] form1[0].#subform[3].Part5Line24[1]
+       Description: Part 5. Information About Your Children. Child 4. 23. Is this child applying with you? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[211] form1[0].#subform[3].Part5Line23[1]
+       Description: Part 5. Information About Your Children. Child 4. 22. Is this child living with you? Select No.
+       Type: /Btn  |  Default: ''
+
+[212] form1[0].#subform[4]
+       Type: ?  |  Default: ''
+
+[213] form1[0].#subform[4].Pt5Line24_StreetNumberName[0]
+       Description: Part 5. Information About Your Children. Child 4. Physical Address. 24. A. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[214] form1[0].#subform[4].Pt5Line24_AptSteFlrNumber[0]
+       Description: Part 5. Information About Your Children. Child 4. Physical Address. 24. B. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[215] form1[0].#subform[4].Pt5Line24_CityOrTown[0]
+       Description: Part 5. Information About Your Children. Child 4. Physical Address. 24. C. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[216] form1[0].#subform[4].Pt5Line24_Unit[0]
+       Description: Part 5. Information About Your Children. Child 4. Physical Address. 24. B. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[217] form1[0].#subform[4].Pt5Line24_Unit[1]
+       Description: Part 5. Information About Your Children. Child 4. Physical Address. 24. B. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[218] form1[0].#subform[4].Pt5Line24_Unit[2]
+       Description: Part 5. Information About Your Children. Child 4. Physical Address. 24. B. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[219] form1[0].#subform[4].Pt5Line24_ZipCode[0]
+       Description: Part 5. Information About Your Children. Child 4. Physical Address. 24. E. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[220] form1[0].#subform[4].Pt5Line24_State[0]
+       Description: Part 5. Information About Your Children. Child 4. Physical Address. 24. D. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[221] form1[0].#subform[4].Pt5Line24_PostalCode[0]
+       Description: Part 5. Information About Your Children. Child 4. Physical Address. 24. G. Enter Postal Code.
+       Type: /Tx  |  Default: ''
+
+[222] form1[0].#subform[4].Pt5Line24_Country[0]
+       Description: Part 5. Information About Your Children. Child 4. Physical Address. 24. H. Enter Country.
+       Type: /Tx  |  Default: ''
+
+[223] form1[0].#subform[4].Pt5Line24_Province[0]
+       Description: Part 5. Information About Your Children. Child 4. Physical Address. 24. F. Enter Province.
+       Type: /Tx  |  Default: ''
+
+[224] form1[0].#subform[4].Line13b_GivenName[3]
+       Description: Part 5. Information About Your Children. Child 5. 25. B. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[225] form1[0].#subform[4].Line13a_FamilyName[3]
+       Description: Part 5. Information About Your Children. Child 5. 25. A. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[226] form1[0].#subform[4].Line13c_MiddleName[3]
+       Description: Part 5. Information About Your Children. Child 5. 25. C. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[227] form1[0].#subform[4].Line14_DateOfBirth[3]
+       Description: Part 5. Information About Your Children. Child 5. 26. Enter Date of Birth. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[228] form1[0].#subform[4].Line15_AlienNumber[3]
+       Description: Part 5. Information About Your Children. Child 5. 27. Enter Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+
+[229] form1[0].#subform[4].Part5Line29[0]
+       Description: Part 5. Information About Your Children. Child 5. 28. Is this child living with you? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[230] form1[0].#subform[4].Part5Line30[0]
+       Description: Part 5. Information About Your Children. Child 5. 29. Is this child applying with you? Select No.
+       Type: /Btn  |  Default: ''
+
+[231] form1[0].#subform[4].Part5Line30[1]
+       Description: Part 5. Information About Your Children. Child 5. 29. Is this child applying with you? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[232] form1[0].#subform[4].Part5Line29[1]
+       Description: Part 5. Information About Your Children. Child 5. 28. Is this child living with you? Select No.
+       Type: /Btn  |  Default: ''
+
+[233] form1[0].#subform[4].Pt5Line30_StreetNumberName[0]
+       Description: Part 5. Information About Your Children. Child 5. Physical Address. 30. A. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[234] form1[0].#subform[4].Pt5Line30_AptSteFlrNumber[0]
+       Description: Part 5. Information About Your Children. Child 5. Physical Address. 30. B. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[235] form1[0].#subform[4].Pt5Line30_CityOrTown[0]
+       Description: Part 5. Information About Your Children. Child 5. Physical Address. 30. C. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[236] form1[0].#subform[4].Pt5Line30_Unit[0]
+       Description: Part 5. Information About Your Children. Child 5. Physical Address. 30. B. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[237] form1[0].#subform[4].Pt5Line30_Unit[1]
+       Description: Part 5. Information About Your Children. Child 5. Physical Address. 30. B. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[238] form1[0].#subform[4].Pt5Line30_Unit[2]
+       Description: Part 5. Information About Your Children. Child 5. Physical Address. 30. B. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[239] form1[0].#subform[4].Pt5Line30_ZipCode[0]
+       Description: Part 5. Information About Your Children. Child 5. Physical Address. 30. E. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[240] form1[0].#subform[4].Pt5Line30_State[0]
+       Description: Part 5. Information About Your Children. Child 5. Physical Address. 30. D. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[241] form1[0].#subform[4].Pt5Line30_PostalCode[0]
+       Description: Part 5. Information About Your Children. Child 5. Physical Address. 30. G. Enter Postal Code.
+       Type: /Tx  |  Default: ''
+
+[242] form1[0].#subform[4].Pt5Line30_Country[0]
+       Description: Part 5. Information About Your Children. Child 5. Physical Address. 30. H. Enter Country.
+       Type: /Tx  |  Default: ''
+
+[243] form1[0].#subform[4].Pt5Line30_Province[0]
+       Description: Part 5. Information About Your Children. Child 5. Physical Address. 30. F. Enter Province.
+       Type: /Tx  |  Default: ''
+
+[244] form1[0].#subform[4].Part6Line1[0]
+       Description: Part 6. Accommodations for Individuals With Disabilities and / or Impairments. 1. Are you requesting an accommodation because of your disabilities and / or impairments? Select No.
+       Type: /Btn  |  Default: ''
+
+[245] form1[0].#subform[4].Part6Line2[0]
+       Description: Part 6. Accommodations for Individuals With Disabilities and / or Impairments. 2. Are you requesting an accommodation because of your spouse's disabilities and / or impairments? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[246] form1[0].#subform[4].Part6Line3[0]
+       Description: Part 6. Accommodations for Individuals With Disabilities and / or Impairments. 3. Are you requesting an accommodation because of your included children's disabilities and / or impairments? Select No.
+       Type: /Btn  |  Default: ''
+
+[247] form1[0].#subform[4].Part6Line3[1]
+       Description: Part 6. Accommodations for Individuals With Disabilities and / or Impairments. 3. Are you requesting an accommodation because of your included children's disabilities and / or impairments? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[248] form1[0].#subform[4].Part6Line2[1]
+       Description: Part 6. Accommodations for Individuals With Disabilities and / or Impairments. 2. Are you requesting an accommodation because of your spouse's disabilities and / or impairments? Select No.
+       Type: /Btn  |  Default: ''
+
+[249] form1[0].#subform[4].Part6Line1[1]
+       Description: Part 6. Accommodations for Individuals With Disabilities and / or Impairments. NOTE: Read the information in the Form I - 7 51 Instructions before completing this part. 1. Are you requesting an accommodation because of your disabilities and / or impairments? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[250] form1[0].#subform[4].Pt6Line4_DeafOrHardOfHearing[0]
+       Description: Part 6. Accommodations for Individuals With Disabilities and / or Impairments. 4. A. I am deaf or hard of hearing and request the following accommodation. If you are requesting a sign-language interpreter, indicate for which language (for example, American Sign Language). Enter Accommodation and Language, if applicable.
+       Type: /Tx  |  Default: ''
+
+[251] form1[0].#subform[4].Pt6Line4a_chbx[0]
+       Description: Part 6. Accommodations for Individuals With Disabilities and / or Impairments. If you answered "Yes" to Item Numbers 1. through 3., select any applicable box for Item Numbers 4. A. through 4. C. Provide information on the disabilities and / or impairments for each person. Select 4. A. I am deaf or hard of hearing and request the following accommodation.  
+       Type: /Btn  |  Default: ''
+
+[252] form1[0].#subform[4].Pt6Line4b_chbx[0]
+       Description: Part 6. Accommodations for Individuals With Disabilities and / or Impairments. If you answered "Yes" to Item Numbers 1. through 3., select any applicable box for Item Numbers 4. A. through 4. C. Provide information on the disabilities and / or impairments for each person. Select 4. B. I am blind or have low vision and request the following accommodation.
+       Type: /Btn  |  Default: ''
+
+[253] form1[0].#subform[4].Pt6Line4_BlindOrSightImpaired[0]
+       Description: Part 6. Accommodations for Individuals With Disabilities and / or Impairments. 4. B. I am blind or have low vision and request the following accommodation. Enter Accommodation.
+       Type: /Tx  |  Default: ''
+
+[254] form1[0].#subform[4].Pt6Line4_AccomodationRequested[0]
+       Description: Part 6. Accommodations for Individuals With Disabilities and / or Impairments. 4. C. Describe the nature of your disability and / or impairment and the accommodation you are requesting.
+       Type: /Tx  |  Default: ''
+
+[255] form1[0].#subform[4].Pt6Line4c_chbx[0]
+       Description: Part 6. Accommodations for Individuals With Disabilities and / or Impairments. If you answered "Yes" to Item Numbers 1. through 3., select any applicable box for Item Numbers 4. A. through 4. C. Provide information on the disabilities and / or impairments for each person. Select 4. C. I have another type of disability and / or impairment. 
+       Type: /Btn  |  Default: ''
+
+[256] form1[0].#subform[5]
+       Type: ?  |  Default: ''
+
+[257] form1[0].#subform[5].P5_Checkbox1[0]
+       Description: Part 7. Petitioner's Statement, Contact Information, Acknowledgement of Appointment at U S C I S Application Support Center, Certification, and Signature. NOTE: Read the information on penalties in the Penalties section of the Form I - 7 51 Instructions before completing this part. NOTE:  If you selected Box 1. A. in Part 3., your spouse must also read and sign the petition in Part 8.  Signature of a conditional resident child under 14 years of age is not required; a parent may sign for a child. Petitioner's Statement. NOTE:  Select the box for either Item Number 1. A. or 1. B.  If applicable, select the box for Item Number 2. Select 1. A. I can read and understand English, and have read and understand every question and instruction on this petition, as well as my answer to every question.  I have read and understand the Acknowledgement of Appointment at U S C I S Application Support Center.
+       Type: /Btn  |  Default: ''
+
+[258] form1[0].#subform[5].P5_Checkbox1[1]
+       Description: Part 7. Petitioner's Statement, Contact Information, Acknowledgement of Appointment at U S C I S Application Support Center, Certification, and Signature. Petitioner's Statement. Select 1. B. The interpreter named in Part 9. has also read to me every question and instruction on this petition, as well as my answer to every question, in a language in which I am fluent.  I understand every question and instruction on this petition as translated to me by my interpreter, and have provided complete, true, and correct responses in the language indicated above.  The interpreter named in Part 9. has also read the Acknowledgement of Appointment at U S C I S Application Support Center to me, in the language in which I am fluent, and I understand this Application Support Center (A. S C) Acknowledgement as read to me by my interpreter.
+       Type: /Btn  |  Default: ''
+
+[259] form1[0].#subform[5].Pt5Line1b_Language[0]
+       Description: Part 7. Petitioner's Statement, Contact Information, Acknowledgement of Appointment at U S C I S Application Support Center, Certification, and Signature. Petitioner's Statement. If 1. B. is Selected, Enter Language Used.
+       Type: /Tx  |  Default: ''
+
+[260] form1[0].#subform[5].P5_Checkbox2[0]
+       Description: Part 7. Petitioner's Statement, Contact Information, Acknowledgement of Appointment at U S C I S Application Support Center, Certification, and Signature. Petitioner's Statement. Select 2. I have requested the services of and consented to (name of preparer), who is / is not an attorney or accredited representative, preparing this petition for me.  This person who assisted me in preparing my petition has reviewed the Acknowledgement of Appointment at U S C I S Application Support Center with me, and I understand the A. S C Acknowledgement.
+       Type: /Btn  |  Default: ''
+
+[261] form1[0].#subform[5].P5_Line2_NameofRepresentative[0]
+       Description: Part 7. Petitioner's Statement, Contact Information, Acknowledgement of Appointment at U S C I S Application Support Center, Certification, and Signature. Petitioner's Statement. If 2. is Selected, Enter Name of Preparer.
+       Type: /Tx  |  Default: ''
+
+[262] form1[0].#subform[5].P5_Checkbox2_Who[0]
+       Description: Part 7. Petitioner's Statement, Contact Information, Acknowledgement of Appointment at U S C I S Application Support Center, Certification, and Signature. Petitioner's Statement. Select 2. I have requested the services of and consented to (name of preparer), who is an attorney or accredited representative, preparing this petition for me.  
+       Type: /Btn  |  Default: ''
+
+[263] form1[0].#subform[5].P5_Checkbox2_Who[1]
+       Description: Part 7. Petitioner's Statement, Contact Information, Acknowledgement of Appointment at U S C I S Application Support Center, Certification, and Signature. Petitioner's Statement. Select 2. I have requested the services of and consented to (name of preparer), who is not an attorney or accredited representative, preparing this petition for me.  
+       Type: /Btn  |  Default: ''
+
+[264] form1[0].#subform[5].P5_Line5_EmailAddress[0]
+       Description: Part 7. Petitioner's Statement, Contact Information, Acknowledgement of Appointment at U S C I S Application Support Center, Certification, and Signature. Petitioner's Contact Information. 5. Enter Petitioner's Email Address, if any.
+       Type: /Tx  |  Default: ''
+
+[265] form1[0].#subform[5].P5_Line3_DaytimePhoneNumber[0]
+       Description: Part 7. Petitioner's Statement, Contact Information, Acknowledgement of Appointment at U S C I S Application Support Center, Certification, and Signature. Petitioner's Contact Information. 3. Enter Petitioner's Daytime Telephone Number.
+       Type: /Tx  |  Default: ''
+
+[266] form1[0].#subform[5].P5_Line4_MobilePhoneNumber[0]
+       Description: Part 7. Petitioner's Statement, Contact Information, Acknowledgement of Appointment at U S C I S Application Support Center, Certification, and Signature. Petitioner's Contact Information. 4. Enter Petitioner's Mobile Telephone Number, if any.
+       Type: /Tx  |  Default: ''
+
+[267] form1[0].#subform[5].P7_Name[0]
+       Description: Part 7. Petitioner's Statement, Contact Information, Acknowledgement of Appointment at U S C I S Application Support Center, Certification, and Signature. Acknowledgement of Appointment at U S C I S Application Support Center. I, (Enter Name), understand that the purpose of a U S C I S A. S C appointment is for me to provide fingerprints, photograph, and / or signature and to re-affirm that all of the information in my petition is complete, true, and correct and was provided by me.  I understand that I will sign my name to the following declaration which U S C I S will display to me at the time I provide my fingerprints, photograph, and / or signature during my A. S C appointment. Enter Name.
+       Type: /Tx  |  Default: ''
+
+[268] form1[0].#subform[6]
+       Type: ?  |  Default: ''
+
+[269] form1[0].#subform[6].P5_Line6b_DateofSignature[0]
+       Description: Part 7. Petitioner's Statement, Contact Information, Acknowledgement of Appointment at U S C I S Application Support Center, Certification, and Signature. Petitioner's Signature. 6. B. Enter Date of Signature. Enter as 2 digit Month, 2 digit Day, and 4 digit Year. 
+       Type: /Tx  |  Default: ''
+
+[270] form1[0].#subform[6].P5_Line6a_SignatureofPetitioner[0]
+       Description: Part 7. Petitioner's Statement, Contact Information, Acknowledgement of Appointment at U S C I S Application Support Center, Certification, and Signature. Petitioner's Signature. 6. A. Petitioner's Signature. No Entry. Print and Sign completed form.
+       Type: /Tx  |  Default: ''
+
+[271] form1[0].#subform[6].P8_Checkbox1[0]
+       Description: Part 8. Spouse's or Individual Listed in Part 4.'s Statement, Contact Information, Acknowledgement of Appointment U S C I S Application Support Center, Certification, and Signature (if applicable). Provide the following information about the spouse or individual listed in Part 4. NOTE: Read the information on penalties in the Penalties section of the Form I - 7 51 Instructions before completing this part. Spouse's or Individual's Statement. NOTE:  Select the box for either Item Number 1. A. or 1. B.  If applicable, select the box for Item Number 2. Select 1. A. I can read and understand English, and have read and understand every question and instruction on this petition, as well as the petitioner's answer to every question.  I have read and understand the Acknowledgement of Appointment at U S C I S Application Support Center. 
+       Type: /Btn  |  Default: ''
+
+[272] form1[0].#subform[6].P8_Checkbox1[1]
+       Description: Part 8. Spouse's or Individual Listed in Part 4.'s Statement, Contact Information, Acknowledgement of Appointment U S C I S Application Support Center, Certification, and Signature (if applicable). Spouse's or Individual's Statement. Select 1. B. The interpreter named in Part 9. has also read to me every question and instruction on this petition, as well as the petitioner's answer to every question, in a language in which I am fluent.  I understand every question and instruction on this petition as translated to me by my interpreter, and have provided complete, true, and correct responses in the language indicated above.  The interpreter named in Part 9. has also read the Acknowledgement of Appointment at U S C I S Application Support Center to me, in the language in which I am fluent, and I understand this Application Support Center (A. S C) Acknowledgement as read to me by my interpreter.
+       Type: /Btn  |  Default: ''
+
+[273] form1[0].#subform[6].Pt7Line1b_Language[0]
+       Description: Part 8. Spouse's or Individual Listed in Part 4.'s Statement, Contact Information, Acknowledgement of Appointment U S C I S Application Support Center, Certification, and Signature (if applicable). Spouse's or Individual's Statement. If 1. B. is Selected, Enter Language Used.
+       Type: /Tx  |  Default: ''
+
+[274] form1[0].#subform[6].P5_Checkbox2[1]
+       Description: Part 8. Spouse's or Individual Listed in Part 4.'s Statement, Contact Information, Acknowledgement of Appointment U S C I S Application Support Center, Certification, and Signature (if applicable). Spouse's or Individual's Statement. Select 2. I have requested the services of and consented to (name of preparer) who is / is not an attorney or accredited representative, preparing this petition for me.  This person who assisted me in preparing my petition has reviewed the Acknowledgement of Appointment at U S C I S Application Support Center with me, and I understand the A. S C Acknowledgement.
+       Type: /Btn  |  Default: ''
+
+[275] form1[0].#subform[6].P7Line2_NameofRepresentative[0]
+       Description: Part 8. Spouse's or Individual Listed in Part 4.'s Statement, Contact Information, Acknowledgement of Appointment U S C I S Application Support Center, Certification, and Signature (if applicable). Spouse's or Individual's Statement. If 2. is Selected, Enter Name of Preparer.
+       Type: /Tx  |  Default: ''
+
+[276] form1[0].#subform[6].P7_Checkbox2_Who[0]
+       Description: Part 8. Spouse's or Individual Listed in Part 4.'s Statement, Contact Information, Acknowledgement of Appointment U S C I S Application Support Center, Certification, and Signature (if applicable). Spouse's or Individual's Statement. Select 2. I have requested the services of and consented to (name of preparer) who is an attorney or accredited representative, preparing this petition for me.  
+       Type: /Btn  |  Default: ''
+
+[277] form1[0].#subform[6].P7_Checkbox2_Who[1]
+       Description: Part 8. Spouse's or Individual Listed in Part 4.'s Statement, Contact Information, Acknowledgement of Appointment U S C I S Application Support Center, Certification, and Signature (if applicable). Spouse's or Individual's Statement. Select 2. I have requested the services of and consented to (name of preparer) who is not an attorney or accredited representative, preparing this petition for me.  
+       Type: /Btn  |  Default: ''
+
+[278] form1[0].#subform[6].P5_Line5_EmailAddress[1]
+       Description: Part 8. Spouse's or Individual Listed in Part 4.'s Statement, Contact Information, Acknowledgement of Appointment U S C I S Application Support Center, Certification, and Signature (if applicable). Spouse's or Individual's Contact Information. 5. Enter Spouse's or Individual's Email Address, if any.
+       Type: /Tx  |  Default: ''
+
+[279] form1[0].#subform[6].P5_Line4_MobilePhoneNumber[1]
+       Description: Part 8. Spouse's or Individual Listed in Part 4.'s Statement, Contact Information, Acknowledgement of Appointment U S C I S Application Support Center, Certification, and Signature (if applicable). Spouse's or Individual's Contact Information. 4. Enter Spouse's or Individual's Mobile Telephone Number, if any.
+       Type: /Tx  |  Default: ''
+
+[280] form1[0].#subform[6].P5_Line3_DaytimePhoneNumber[1]
+       Description: Part 8. Spouse's or Individual Listed in Part 4.'s Statement, Contact Information, Acknowledgement of Appointment U S C I S Application Support Center, Certification, and Signature (if applicable). Spouse's or Individual's Contact Information. 3. Enter Spouse's or Individual's Daytime Telephone Number.
+       Type: /Tx  |  Default: ''
+
+[281] form1[0].#subform[7]
+       Type: ?  |  Default: ''
+
+[282] form1[0].#subform[7].Pt8_Name[0]
+       Description: Part 8. Spouse's or Individual Listed in Part 4.'s Statement, Contact Information, Acknowledgement of Appointment U S C I S Application Support Center, Certification, and Signature (if applicable). Acknowledgement of Appointment at U S C I S Application Support Center. I, (Enter Name), understand that the purpose of a U S C I S A. S C appointment is for me to provide my fingerprints, photograph, and / or signature and to re-affirm that all of the information in my petition is complete, true, and correct and was provided by me.  I understand that I will sign my name to the following declaration which U S C I S will display to me at the time I provide my fingerprints, photograph, and / or signature during my A. S C appointment. Enter Name.
+       Type: /Tx  |  Default: ''
+
+[283] form1[0].#subform[7].P6_Line1b_InterpretersGivenName[0]
+       Description: Part 9. Interpreter's Contact Information, Certification, and Signature. Interpreter's Full Name. 1. B. Enter Interpreter's Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[284] form1[0].#subform[7].P6_Line1a_InterpretersFamilyName[0]
+       Description: Part 9. Interpreter's Contact Information, Certification, and Signature. Provide the following information about the interpreter. Interpreter's Full Name. 1. A. Enter Interpreter's Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[285] form1[0].#subform[7].P6_Line2_NameofBusinessor[0]
+       Description: Part 9. Interpreter's Contact Information, Certification, and Signature. 2. Enter Interpreter's Business or Organization Name, if any.
+       Type: /Tx  |  Default: ''
+
+[286] form1[0].#subform[7].Pt9Line3_CityOrTown[0]
+       Description: Part 9. Interpreter's Contact Information, Certification, and Signature. 3. C. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[287] form1[0].#subform[7].P6_Line3a_StreetNumberName[0]
+       Description: Part 9. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. A. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[288] form1[0].#subform[7].Pt9Line3_AptSteFlrNumber[0]
+       Description: Part 9. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. B. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[289] form1[0].#subform[7].Pt9Line3_Province[0]
+       Description: Part 9. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. F. Enter Province.
+       Type: /Tx  |  Default: ''
+
+[290] form1[0].#subform[7].Pt9Line3_ZipCode[0]
+       Description: Part 9. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. E. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[291] form1[0].#subform[7].Pt9Line3_State[0]
+       Description: Part 9. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. D. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[292] form1[0].#subform[7].Pt9Line3_Country[0]
+       Description: Part 9. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. H. Enter Country.
+       Type: /Tx  |  Default: ''
+
+[293] form1[0].#subform[7].Pt9Line3_PostalCode[0]
+       Description: Part 9. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. G. Enter Postal Code.
+       Type: /Tx  |  Default: ''
+
+[294] form1[0].#subform[7].Pt9Line3_Unit[0]
+       Description: Part 9. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. B. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[295] form1[0].#subform[7].Pt9Line3_Unit[1]
+       Description: Part 9. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. B. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[296] form1[0].#subform[7].Pt9Line3_Unit[2]
+       Description: Part 9. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. B. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[297] form1[0].#subform[7].P5_Line6b_DateofSignature[1]
+       Description: Part 8. Spouse's or Individual Listed in Part 4.'s Statement, Contact Information, Acknowledgement of Appointment U S C I S Application Support Center, Certification, and Signature (if applicable). Spouse's or Individual's Signature. 6. B. Enter Date of Signature. Enter as 2 digit Month, 2 digit Day, and 4 digit Year. 
+       Type: /Tx  |  Default: ''
+
+[298] form1[0].#subform[7].P5_Line6a_SignatureofSpouse[0]
+       Description: Part 8. Spouse's or Individual Listed in Part 4.'s Statement, Contact Information, Acknowledgement of Appointment U S C I S Application Support Center, Certification, and Signature (if applicable). Spouse's or Individual's Signature. 6. A. Spouse's or Individual's Signature. No Entry. Print and Sign completed form.
+       Type: /Tx  |  Default: ''
+
+[299] form1[0].#subform[7].P6_Line5_InterpretersEmailAddress[0]
+       Description: Part 9. Interpreter's Contact Information, Certification, and Signature. Interpreter's Contact Information. 5. Enter Interpreter's Email Address, if any.
+       Type: /Tx  |  Default: ''
+
+[300] form1[0].#subform[7].P6_Line4_InterpretersDaytimePhoneNumber[0]
+       Description: Part 9. Interpreter's Contact Information, Certification, and Signature. Interpreter's Contact Information. 4. Enter Interpreter's Daytime Telephone Number.
+       Type: /Tx  |  Default: ''
+
+[301] form1[0].#subform[8]
+       Type: ?  |  Default: ''
+
+[302] form1[0].#subform[8].P6_Line6b_DateofSignature[0]
+       Description: Part 9. Interpreter's Contact Information, Certification, and Signature. Interpreter's Signature. 6. B. Enter Date of Signature. Enter as 2 digit Month, 2 digit Day, and 4 digit Year. 
+       Type: /Tx  |  Default: ''
+
+[303] form1[0].#subform[8].P6_Line6a_Signature[0]
+       Description: Part 9. Interpreter's Contact Information, Certification, and Signature. Interpreter's Signature. 6. A. Interpreter's Signature. No Entry. Print and Sign completed form.
+       Type: /Tx  |  Default: ''
+
+[304] form1[0].#subform[8].P6_Language[0]
+       Description: Part 9. Interpreter's Contact Information, Certification, and Signature. Interpreter's Certification. I certify that: I am fluent in English and (enter language), which is the same language provided in Part 7., Item Number 1. B. Enter Language in which you are fluent.
+       Type: /Tx  |  Default: ''
+
+[305] form1[0].#subform[8].P7_Line1a_FamilyName[0]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Provide the following information about the preparer. Preparer's Full Name. 1. A. Enter Preparer's Family Name (Last Name). 
+       Type: /Tx  |  Default: ''
+
+[306] form1[0].#subform[8].P7_Line1b_PreparersGivenName[0]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Full Name. 1. B. Enter Preparer's Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[307] form1[0].#subform[8].P7_Line2_NameofBusinessor[0]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. 2. Enter Preparer's Business or Organization Name, if any.
+       Type: /Tx  |  Default: ''
+
+[308] form1[0].#subform[8].P7_Line6_PreparersEmailAddress[0]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Contact Information. 6. Enter Preparer's Email Address, if any.
+       Type: /Tx  |  Default: ''
+
+[309] form1[0].#subform[8].P7_Line4_PreparersDaytimePhoneNumber[0]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Contact Information. 4. Enter Preparer's Daytime Telephone Number.
+       Type: /Tx  |  Default: ''
+
+[310] form1[0].#subform[8].P7_Line5_PreparersFaxNumber[0]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Contact Information. 5. Enter Preparer's Fax Number.
+       Type: /Tx  |  Default: ''
+
+[311] form1[0].#subform[8].P7_Line3c_CityTown[0]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Mailing Address. 3. C. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[312] form1[0].#subform[8].Pt9Line3_StreetNumberName[0]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Mailing Address. 3. A. Enter Street Number and Name. 
+       Type: /Tx  |  Default: ''
+
+[313] form1[0].#subform[8].Pt10Line3_AptSteFlrNumber[0]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Mailing Address. 3. B. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[314] form1[0].#subform[8].P7_Line3f_Province[0]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Mailing Address. 3. F. Enter Province.
+       Type: /Tx  |  Default: ''
+
+[315] form1[0].#subform[8].P7_Line3e_ZipCode[0]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Mailing Address. 3. E. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[316] form1[0].#subform[8].P7_Line3d_State[0]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Mailing Address. 3. D. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[317] form1[0].#subform[8].P7_Line3h_Country[0]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Mailing Address. 3. H. Enter Country.
+       Type: /Tx  |  Default: ''
+
+[318] form1[0].#subform[8].P7_Line3g_PostalCode[0]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Mailing Address. 3. G. Enter Postal Code.
+       Type: /Tx  |  Default: ''
+
+[319] form1[0].#subform[8].Pt10Line3_Unit[0]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Mailing Address. 3. B. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[320] form1[0].#subform[8].Pt10Line3_Unit[1]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Mailing Address. 3. B. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[321] form1[0].#subform[8].Pt10Line3_Unit[2]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Mailing Address. 3. B. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[322] form1[0].#subform[8].P7_checkbox7[0]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Statement. Select 7. A. I am not an attorney or accredited representative but have prepared this petition on behalf of the petitioner and with the petitioner's consent. 
+       Type: /Btn  |  Default: ''
+
+[323] form1[0].#subform[8].P7_checkbox7[1]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Statement. Select 7. B. I am an attorney or accredited representative and my representation of the petitioner in this case extends / does not extend beyond the preparation of this petition.
+       Type: /Btn  |  Default: ''
+
+[324] form1[0].#subform[8].Pt10Item7b_Extends[0]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Statement. Select 7. B. I am an attorney or accredited representative and my representation of the petitioner in this case extends beyond the preparation of this petition. NOTE:  If you are an attorney or accredited representative whose representation extends beyond preparation of this petition, you must submit a completed Form G - 28, Notice of Entry of Appearance as Attorney or Accredited Representative, with this petition.
+       Type: /Btn  |  Default: ''
+
+[325] form1[0].#subform[8].Pt10Item7b_NotExtend[0]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Statement. Select 7. B. I am an attorney or accredited representative and my representation of the petitioner in this case does not extend beyond the preparation of this petition.
+       Type: /Btn  |  Default: ''
+
+[326] form1[0].#subform[9]
+       Type: ?  |  Default: ''
+
+[327] form1[0].#subform[9].P7_Line8a_SignatureofPreparer[0]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Signature. 8. A. Preparer's Signature. No Entry. Print and Sign completed form.
+       Type: /Tx  |  Default: ''
+
+[328] form1[0].#subform[9].P7_Line8b_DateofSignature[0]
+       Description: Part 10. Contact Information, Statement, Certification, and Signature of the Person Preparing this Petition, If Other Than the Petitioner. Preparer's Signature. 8. B. Enter Date of Signature. Enter as 2 digit Month, 2 digit Day, and 4 digit Year. 
+       Type: /Tx  |  Default: ''
+
+[329] form1[0].#subform[10]
+       Type: ?  |  Default: ''
+
+[330] form1[0].#subform[10].P8_Line3d_AdditionalInfo[0]
+       Description: Part 11. Additional Information. 3. D. Enter Additional Information.
+       Type: /Tx  |  Default: ''
+
+[331] form1[0].#subform[10].P8_Line3a_PageNumber[0]
+       Description: Part 11. Additional Information. 3. A. Enter Page Number.
+       Type: /Tx  |  Default: ''
+
+[332] form1[0].#subform[10].P8_Line3b_PartNumber[0]
+       Description: Part 11. Additional Information. 3. B. Enter Part Number.
+       Type: /Tx  |  Default: ''
+
+[333] form1[0].#subform[10].P8_Line3c_ItemNumber[0]
+       Description: Part 11. Additional Information. 3. C. Enter Item Number.
+       Type: /Tx  |  Default: ''
+
+[334] form1[0].#subform[10].Pt1Line1a_FamilyName[1]
+       Description: Part 11. Additional Information. If you need extra space to provide any additional information within this petition, use the space below.  If you need more space than what is provided, you may make copies of this page to complete and file with this petition or attach a separate sheet of paper.  Type or print your name and A. Number (if any) at the top of each sheet; indicate the Page Number, Part Number, and Item Number to which your answer refers; and sign and date each sheet. Your Full Name. 1. A. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[335] form1[0].#subform[10].Pt1Line1b_GivenName[1]
+       Description: Part 11. Additional Information. Your Full Name. 1. B. Enter Given Name (First Name). 
+       Type: /Tx  |  Default: ''
+
+[336] form1[0].#subform[10].Pt1Line1c_MiddleName[1]
+       Description: Part 11. Additional Information. Your Full Name. 1. C. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[337] form1[0].#subform[10].P8_Line4d_AdditionalInfo[0]
+       Description: Part 11. Additional Information. 4. D. Enter Additional Information.
+       Type: /Tx  |  Default: ''
+
+[338] form1[0].#subform[10].P8_Line4a_PageNumber[0]
+       Description: Part 11. Additional Information. 4. A. Enter Page Number.
+       Type: /Tx  |  Default: ''
+
+[339] form1[0].#subform[10].P8_Line4b_PartNumber[0]
+       Description: Part 11. Additional Information. 4. B. Enter Part Number.
+       Type: /Tx  |  Default: ''
+
+[340] form1[0].#subform[10].P8_Line4c_ItemNumber[0]
+       Description: Part 11. Additional Information. 4. C. Enter Item Number.
+       Type: /Tx  |  Default: ''
+
+[341] form1[0].#subform[10].P8_Line7a_PageNumber[0]
+       Description: Part 11. Additional Information. 7. A. Enter Page Number.
+       Type: /Tx  |  Default: ''
+
+[342] form1[0].#subform[10].P8_Line7b_PartNumber[0]
+       Description: Part 11. Additional Information. 7. B. Enter Part Number.
+       Type: /Tx  |  Default: ''
+
+[343] form1[0].#subform[10].P8_Line7c_ItemNumber[0]
+       Description: Part 11. Additional Information. 7. C. Enter Item Number.
+       Type: /Tx  |  Default: ''
+
+[344] form1[0].#subform[10].P8_Line5a_PageNumber[0]
+       Description: Part 11. Additional Information. 5. A. Enter Page Number.
+       Type: /Tx  |  Default: ''
+
+[345] form1[0].#subform[10].P8_Line5b_PartNumber[0]
+       Description: Part 11. Additional Information. 5. B. Enter Part Number.
+       Type: /Tx  |  Default: ''
+
+[346] form1[0].#subform[10].P8_Line5c_ItemNumber[0]
+       Description: Part 11. Additional Information. 5. C. Enter Item Number.
+       Type: /Tx  |  Default: ''
+
+[347] form1[0].#subform[10].P8_Line7d_AdditionalInfo[0]
+       Description: Part 11. Additional Information. 7. D. Enter Additional Information.
+       Type: /Tx  |  Default: ''
+
+[348] form1[0].#subform[10].P8_Line5d_AdditionalInfo[0]
+       Description: Part 11. Additional Information. 5. D. Enter Additional Information.
+       Type: /Tx  |  Default: ''
+
+[349] form1[0].#subform[10].P8_Line6a_PageNumber[0]
+       Description: Part 11. Additional Information. 6. A. Enter Page Number.
+       Type: /Tx  |  Default: ''
+
+[350] form1[0].#subform[10].P8_Line6b_PartNumber[0]
+       Description: Part 11. Additional Information. 6. B. Enter Part Number.
+       Type: /Tx  |  Default: ''
+
+[351] form1[0].#subform[10].P8_Line6c_ItemNumber[0]
+       Description: Part 11. Additional Information. 6. C. Enter Item Number.
+       Type: /Tx  |  Default: ''
+
+[352] form1[0].#subform[10].P8_Line6d_AdditionalInfo[0]
+       Description: Part 11. Additional Information. 6. D. Enter Additional Information.
+       Type: /Tx  |  Default: ''
+
+[353] form1[0].#subform[10].P1_Line7_AlienNumber[1]
+       Description: Part 11. Additional Information. 2. Enter Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+

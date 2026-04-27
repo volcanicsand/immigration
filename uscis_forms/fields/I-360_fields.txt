@@ -1,0 +1,2220 @@
+I-360 — 569 fields
+======================================================================
+
+[001] form1[0]
+       Type: ?  |  Default: ''
+
+[002] form1[0].#pageSet[0]
+       Type: ?  |  Default: ''
+
+[003] form1[0].#pageSet[0].Page1[0]
+       Type: ?  |  Default: ''
+
+[004] form1[0].#pageSet[0].Page1[0].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-360|01/20/25|1'
+
+[005] form1[0].#pageSet[0].Page1[1]
+       Type: ?  |  Default: ''
+
+[006] form1[0].#pageSet[0].Page1[1].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-360|01/20/25|2'
+
+[007] form1[0].#pageSet[0].Page1[2]
+       Type: ?  |  Default: ''
+
+[008] form1[0].#pageSet[0].Page1[2].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-360|01/20/25|3'
+
+[009] form1[0].#pageSet[0].Page1[3]
+       Type: ?  |  Default: ''
+
+[010] form1[0].#pageSet[0].Page1[3].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-360|01/20/25|4'
+
+[011] form1[0].#pageSet[0].Page1[4]
+       Type: ?  |  Default: ''
+
+[012] form1[0].#pageSet[0].Page1[4].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-360|01/20/25|5'
+
+[013] form1[0].#pageSet[0].Page1[5]
+       Type: ?  |  Default: ''
+
+[014] form1[0].#pageSet[0].Page1[5].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-360|01/20/25|6'
+
+[015] form1[0].#pageSet[0].Page1[6]
+       Type: ?  |  Default: ''
+
+[016] form1[0].#pageSet[0].Page1[6].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-360|01/20/25|7'
+
+[017] form1[0].#pageSet[0].Page1[7]
+       Type: ?  |  Default: ''
+
+[018] form1[0].#pageSet[0].Page1[7].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-360|01/20/25|8'
+
+[019] form1[0].#pageSet[0].Page1[8]
+       Type: ?  |  Default: ''
+
+[020] form1[0].#pageSet[0].Page1[8].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-360|01/20/25|9'
+
+[021] form1[0].#pageSet[0].Page1[9]
+       Type: ?  |  Default: ''
+
+[022] form1[0].#pageSet[0].Page1[9].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-360|01/20/25|10'
+
+[023] form1[0].#pageSet[0].Page1[10]
+       Type: ?  |  Default: ''
+
+[024] form1[0].#pageSet[0].Page1[10].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-360|01/20/25|11'
+
+[025] form1[0].#pageSet[0].Page1[12]
+       Type: ?  |  Default: ''
+
+[026] form1[0].#pageSet[0].Page1[12].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-360|01/20/25|12'
+
+[027] form1[0].#pageSet[0].Page1[13]
+       Type: ?  |  Default: ''
+
+[028] form1[0].#pageSet[0].Page1[13].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-360|01/20/25|13'
+
+[029] form1[0].#pageSet[0].Page1[14]
+       Type: ?  |  Default: ''
+
+[030] form1[0].#pageSet[0].Page1[14].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-360|01/20/25|14'
+
+[031] form1[0].#pageSet[0].Page1[15]
+       Type: ?  |  Default: ''
+
+[032] form1[0].#pageSet[0].Page1[15].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-360|01/20/25|15'
+
+[033] form1[0].#pageSet[0].Page1[16]
+       Type: ?  |  Default: ''
+
+[034] form1[0].#pageSet[0].Page1[16].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-360|01/20/25|16'
+
+[035] form1[0].#pageSet[0].Page1[18]
+       Type: ?  |  Default: ''
+
+[036] form1[0].#pageSet[0].Page1[18].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-360|01/20/25|17'
+
+[037] form1[0].#pageSet[0].Page1[19]
+       Type: ?  |  Default: ''
+
+[038] form1[0].#pageSet[0].Page1[19].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-360|01/20/25|18'
+
+[039] form1[0].#pageSet[0].Page1[20]
+       Type: ?  |  Default: ''
+
+[040] form1[0].#pageSet[0].Page1[20].PDF417BarCode1[0]
+       Description: PDF417BarCode1
+       Type: /Tx  |  Default: 'I-360|01/20/25|19'
+
+[041] form1[0].#subform[0]
+       Type: ?  |  Default: ''
+
+[042] form1[0].#subform[0].Pt1Line2_OnlineAcctNumber[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 2. Enter U S C I S Online Account Number, if any. 
+       Type: /Tx  |  Default: ''
+
+[043] form1[0].#subform[0].Pt1Line1_MiddleName[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 1. Your Full Name. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[044] form1[0].#subform[0].Pt1Line1_GivenName[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 1. Your Full Name. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[045] form1[0].#subform[0].Pt1Line1_FamilyName[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. NOTE: You must complete Part 1. as the petitioner if you are filing this petition on behalf of another person. If you are a Violence Against Women Act (V. A. W. A.) self-petitioner or special immigrant juvenile, skip to Part 1., Item Number 7. 1. Your Full Name. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[046] form1[0].#subform[0].Pt1Line6_StreetNumberName[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 6. Mailing Address. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[047] form1[0].#subform[0].Pt1Line6_Unit[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 6. Mailing Address. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[048] form1[0].#subform[0].Pt1Line6_Unit[1]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 6. Mailing Address. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[049] form1[0].#subform[0].Pt1Line6_Unit[2]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 6. Mailing Address. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[050] form1[0].#subform[0].Pt1Line6_AptSteFlrNumber[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 6. Mailing Address. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[051] form1[0].#subform[0].Pt1Line6_CityOrTown[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 6. Mailing Address. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[052] form1[0].#subform[0].Pt1Line6_State[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 6. Mailing Address. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[053] form1[0].#subform[0].Pt1Line6_ZipCode[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 6. Mailing Address. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[054] form1[0].#subform[0].Pt1Line6_PostalCode[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 6. Mailing Address. Enter Postal Code.
+       Type: /Tx  |  Default: ''
+
+[055] form1[0].#subform[0].Pt1Line6_Province[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 6. Mailing Address. Enter Province.
+       Type: /Tx  |  Default: ''
+
+[056] form1[0].#subform[0].Pt1Line6_Country[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 6. Mailing Address. Enter Country.
+       Type: /Tx  |  Default: ''
+
+[057] form1[0].#subform[0].Pt1Line6_InCareofName[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 6. Mailing Address. Enter In Care Of Name, if any.
+       Type: /Tx  |  Default: ''
+
+[058] form1[0].#subform[0].Pt1Line6_OrganizationName[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 6. Mailing Address. Enter Organization Name, if applicable.
+       Type: /Tx  |  Default: ''
+
+[059] form1[0].#subform[0].#area[1]
+       Type: ?  |  Default: ''
+
+[060] form1[0].#subform[0].#area[1].Pt1Line3_SSN[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 3. Enter U.S. Social Security Number, if any.
+       Type: /Tx  |  Default: ''
+
+[061] form1[0].#subform[0].#area[2]
+       Type: ?  |  Default: ''
+
+[062] form1[0].#subform[0].#area[2].Pt1Line4_AlienNumber[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 4. Enter Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+
+[063] form1[0].#subform[0].CheckBox1[0]
+       Description: To be completed by an Attorney or Accredited Representative (if any). Select this box if Form G-28 or G-28 I is attached.
+       Type: /Btn  |  Default: ''
+
+[064] form1[0].#subform[0].AttorneyStateBarNumber[0]
+       Description: To be completed by an attorney or accredited representative (if any). Enter Attorney State Bar Number (if applicable).
+       Type: /Tx  |  Default: ''
+
+[065] form1[0].#subform[0].Pt1Line5_IRSTaxNumber[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 5. Enter Individual Internal Revenue Service (I R S) Tax Number, if any.
+       Type: /Tx  |  Default: ''
+
+[066] form1[0].#subform[0].USCISOnlineAcctNumber[0]
+       Description: To be completed by an attorney or accredited representative (if any). Enter Attorney or Accredited Representative U S C I S Online Account Number (if any).
+       Type: /Tx  |  Default: ''
+
+[067] form1[0].#subform[1]
+       Type: ?  |  Default: ''
+
+[068] form1[0].#subform[1].Pt1Line7_InCareofName[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 7.  Alternate and / or Safe Mailing Address. If you are a V. A. W. A. self-petitioning spouse, child, parent, or a special immigrant juvenile and do not want U.S. Citizenship and Immigration Services (U S C I S) to send notices about this petition to your home, you may provide an alternate and / or safe mailing address. Enter In Care Of Name (if any). 
+       Type: /Tx  |  Default: ''
+
+[069] form1[0].#subform[1].Pt1Line7_StreetNumberName[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 7.  Alternate and / or Safe Mailing Address. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[070] form1[0].#subform[1].Pt1Line7_Unit[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 7.  Alternate and / or Safe Mailing Address. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[071] form1[0].#subform[1].Pt1Line7_Unit[1]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 7.  Alternate and / or Safe Mailing Address. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[072] form1[0].#subform[1].Pt1Line7_Unit[2]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 7.  Alternate and / or Safe Mailing Address. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[073] form1[0].#subform[1].Pt1Line7_AptSteFlrNumber[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 7.  Alternate and / or Safe Mailing Address. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[074] form1[0].#subform[1].Pt1Line7_CityOrTown[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 7.  Alternate and / or Safe Mailing Address. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[075] form1[0].#subform[1].Pt1Line7_State[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 7.  Alternate and / or Safe Mailing Address. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[076] form1[0].#subform[1].Pt1Line7_ZipCode[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 7.  Alternate and / or Safe Mailing Address. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[077] form1[0].#subform[1].Pt1Line7_PostalCode[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 7.  Alternate and / or Safe Mailing Address. Enter Postal Code.
+       Type: /Tx  |  Default: ''
+
+[078] form1[0].#subform[1].Pt1Line7_Province[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 7.  Alternate and / or Safe Mailing Address. Enter Province.
+       Type: /Tx  |  Default: ''
+
+[079] form1[0].#subform[1].Pt1Line7_Country[0]
+       Description: Part 1. Information About Person or Organization Filing This Petition. 7.  Alternate and / or Safe Mailing Address. Enter Country.
+       Type: /Tx  |  Default: ''
+
+[080] form1[0].#subform[1].Pt2Line1[0]
+       Description: Part 2. Classification Requested. Select only one box. 1. A. Select Amerasian.
+       Type: /Btn  |  Default: ''
+
+[081] form1[0].#subform[1].Pt2Line1[1]
+       Description: Part 2. Classification Requested. Select only one box. 1. B. Select Widow(er) of a U.S. citizen. 
+       Type: /Btn  |  Default: ''
+
+[082] form1[0].#subform[1].Pt2Line1[2]
+       Description: Part 2. Classification Requested. Select only one box. 1. C. Select Special Immigrant Juvenile.
+       Type: /Btn  |  Default: ''
+
+[083] form1[0].#subform[1].Pt2Line1[3]
+       Description: Part 2. Classification Requested. Select only one box. 1. D. Select Special Immigrant Religious Worker. 
+       Type: /Btn  |  Default: ''
+
+[084] form1[0].#subform[1].Pt2Line1[4]
+       Description: Part 2. Classification Requested. Select only one box. 1. E. Select Special Immigrant based on employment with the Panama Canal Company, Canal Zone Government, or U.S. Government in the Canal Zone.
+       Type: /Btn  |  Default: ''
+
+[085] form1[0].#subform[1].Pt2Line1[5]
+       Description: Part 2. Classification Requested. Select only one box. 1. H. Select Special Immigrant Armed Forces Member.
+       Type: /Btn  |  Default: ''
+
+[086] form1[0].#subform[1].Pt2Line1[6]
+       Description: Part 2. Classification Requested. Select only one box. 1. F. Select Special Immigrant Physician.
+       Type: /Btn  |  Default: ''
+
+[087] form1[0].#subform[1].Pt2Line1[7]
+       Description: Part 2. Classification Requested. Select only one box. 1. I. Select Self-Petitioning Spouse of Abusive U.S. citizen or Lawful Permanent Resident.
+       Type: /Btn  |  Default: ''
+
+[088] form1[0].#subform[1].Pt2Line1[8]
+       Description: Part 2. Classification Requested. Select only one box. 1. G. Select Special Immigrant G-4 International Organization Employee or Family Member or NATO-6 Employee or Family Member.
+       Type: /Btn  |  Default: ''
+
+[089] form1[0].#subform[1].Pt2Line1[9]
+       Description: Part 2. Classification Requested. Select only one box. 1. L. Select Special Immigrant Afghanistan or Iraq National who worked with the U.S. Armed Forces as a translator.
+       Type: /Btn  |  Default: ''
+
+[090] form1[0].#subform[1].Pt2Line1[10]
+       Description: Part 2. Classification Requested. Select only one box. 1. K. Select V. A. W. A. Self-Petitioning Parent of a U.S. citizen son or daughter.
+       Type: /Btn  |  Default: ''
+
+[091] form1[0].#subform[1].Pt2Line1[11]
+       Description: Part 2. Classification Requested. Select only one box. 1. J. Select Self-Petitioning Child of Abusive U.S. citizen or Lawful Permanent Resident.
+       Type: /Btn  |  Default: ''
+
+[092] form1[0].#subform[1].Pt2Line1[12]
+       Description: Part 2. Classification Requested. Select only one box. 1. P. Select Other.
+       Type: /Btn  |  Default: ''
+
+[093] form1[0].#subform[1].Pt2Line1[13]
+       Description: Part 2. Classification Requested. Select only one box. 1. M. Select Special Immigrant Iraq National who was employed by or on behalf of the U.S. Government. 
+       Type: /Btn  |  Default: ''
+
+[094] form1[0].#subform[1].Pt2Line1[14]
+       Description: Part 2. Classification Requested. Select only one box. 1. N. Select Special Immigrant Afghanistan National who was employed by or on behalf of the U.S. Government or the International Security Assistance Force (I S. A. F) in Afghanistan.
+       Type: /Btn  |  Default: ''
+
+[095] form1[0].#subform[1].Pt2Line1[15]
+       Description: Part 2. Classification Requested. Select only one box. 1. O. Select Broadcasters.
+       Type: /Btn  |  Default: ''
+
+[096] form1[0].#subform[1].Pt2Line1d1_yes[0]
+       Description: Part 2. Classification Requested. Select only one box. If you selected 1. D. Special Immigrant Religious Worker, answer the following question. 1. Will the beneficiary be working as a minister? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[097] form1[0].#subform[1].Pt2Line1d1_no[0]
+       Description: Part 2. Classification Requested. Select only one box. If you selected 1. D. Special Immigrant Religious Worker, answer the following question. 1. Will the beneficiary be working as a minister? Select No.
+       Type: /Btn  |  Default: ''
+
+[098] form1[0].#subform[1].Pt2Line1p_Describe[0]
+       Description: Part 2. Classification Requested. Select only one box. 1. P. Other.  If selected, provide the name of the classification.
+       Type: /Tx  |  Default: ''
+
+[099] form1[0].#subform[2]
+       Type: ?  |  Default: ''
+
+[100] form1[0].#subform[2].Pt3Line1_MiddleName[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. 1. Your Full Name. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[101] form1[0].#subform[2].Pt3Line1_GivenName[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. 1. Your Full Name. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[102] form1[0].#subform[2].Pt3Line1_FamilyName[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. NOTE:  On this petition, the "beneficiary" or "self-petitioner" means the person for whom this petition is being filed.  If you provided an alternate and/or safe mailing address above, you must also complete Part 3. 1. Your Full Name. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[103] form1[0].#subform[2].Pt3Line3_DateOfBirth[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. Other Information. 3. Enter Date of Birth. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[104] form1[0].#subform[2].#area[3]
+       Type: ?  |  Default: ''
+
+[105] form1[0].#subform[2].#area[3].Pt3Line5_SSN[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. Other Information. 5. Enter U.S. Social Security Number, if any.
+       Type: /Tx  |  Default: ''
+
+[106] form1[0].#subform[2].Pt3Line4_CountryOfBirth[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. Other Information. 4. Enter Country of Birth.
+       Type: /Tx  |  Default: ''
+
+[107] form1[0].#subform[2].Line3_ANumber[0]
+       Type: ?  |  Default: ''
+
+[108] form1[0].#subform[2].Line3_ANumber[0].Pt3Line6_AlienNumber[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. Other Information. 6. Enter Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+
+[109] form1[0].#subform[2].Pt3Line7_MaritalStatus[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. Other Information. 7. Marital Status. Select Single.
+       Type: /Btn  |  Default: ''
+
+[110] form1[0].#subform[2].Pt3Line7_MaritalStatus[1]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. Other Information. 7. Marital Status. Select Married.
+       Type: /Btn  |  Default: ''
+
+[111] form1[0].#subform[2].Pt3Line7_MaritalStatus[2]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. Other Information. 7. Marital Status. Select Divorced.
+       Type: /Btn  |  Default: ''
+
+[112] form1[0].#subform[2].Pt3Line7_MaritalStatus[3]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. Other Information. 7. Marital Status. Select Widowed.
+       Type: /Btn  |  Default: ''
+
+[113] form1[0].#subform[2].Pt3Line8_DateOfLastArrival[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. Other Information. Complete Item Numbers 8. through 15. if this person is in the United States.  If an item number is not applicable or the answer is "none," leave the space blank.  Provide information below for the passport or other document used at the time of last arrival to the United States. 8. Enter Date of Last Arrival. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[114] form1[0].#subform[2].#area[5]
+       Type: ?  |  Default: ''
+
+[115] form1[0].#subform[2].#area[5].Pt3Line9_I94[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. Other Information. 9. Enter Form I - 94 Number or I - 95 Crewman's Landing Permit.
+       Type: /Tx  |  Default: ''
+
+[116] form1[0].#subform[2].Pt3Line10_Passport[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. Other Information. 10. Enter Passport Number.
+       Type: /Tx  |  Default: ''
+
+[117] form1[0].#subform[2].Pt3Line11_TravelDoc[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. Other Information. 11. Enter Travel Document Number.
+       Type: /Tx  |  Default: ''
+
+[118] form1[0].#subform[2].Pt3Line15_DateOfExpired[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. Other Information. 15. Enter Date current status expired, or will expire, as shown on Form I - 94 or I - 95. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[119] form1[0].#subform[2].Pt3Line13_ExpDate[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. Other Information. 13. Enter Expiration Date for Passport or Travel Document. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[120] form1[0].#subform[2].Pt3Line12_CountryOfIssuanceDocument[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. Other Information. 12. Enter Country of Issuance for Passport or Travel Document.
+       Type: /Tx  |  Default: ''
+
+[121] form1[0].#subform[2].Pt3Line14_CurrentUSCISStatus[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. Other Information. 14.  Enter Current Nonimmigration Status.
+       Type: /Tx  |  Default: ''
+
+[122] form1[0].#subform[2].Part4Line1b_Country[0]
+       Description: Part 4. Processing Information. 1. If the person listed in Part 3. is outside the U.S., is ineligible to adjust status in the U.S., or does not wish to adjust status in the U.S., provide the following information about the U.S. Consulate at which the person prefers to apply for an immigrant visa. U.S. Consulate. B. Enter Country.
+       Type: /Tx  |  Default: ''
+
+[123] form1[0].#subform[2].Pt4Line1a_CityOrTown[0]
+       Description: Part 4. Processing Information. 1. If the person listed in Part 3. is outside the U.S., is ineligible to adjust status in the U.S., or does not wish to adjust status in the U.S., provide the following information about the U.S. Consulate at which the person prefers to apply for an immigrant visa. U.S. Consulate. A. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[124] form1[0].#subform[2].Pt3Line2_InCareofName[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. 2. Mailing Address. Enter In Care Of Name (if any).
+       Type: /Tx  |  Default: ''
+
+[125] form1[0].#subform[2].Pt3Line2_StreetNumberName[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. 2. Mailing Address. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[126] form1[0].#subform[2].Pt3Line2_Unit[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. 2. Mailing Address. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[127] form1[0].#subform[2].Pt3Line2_Unit[1]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. 2. Mailing Address. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[128] form1[0].#subform[2].Pt3Line2_Unit[2]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. 2. Mailing Address. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[129] form1[0].#subform[2].Pt3Line2_AptSteFlrNumber[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. 2. Mailing Address. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[130] form1[0].#subform[2].Pt3Line2_CityOrTown[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. 2. Mailing Address. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[131] form1[0].#subform[2].Pt3Line2_State[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. 2. Mailing Address. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[132] form1[0].#subform[2].Pt3Line2_ZipCode[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. 2. Mailing Address. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[133] form1[0].#subform[2].Pt3Line2_PostalCode[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. 2. Mailing Address. Enter Postal Code.
+       Type: /Tx  |  Default: ''
+
+[134] form1[0].#subform[2].Pt3Line2_Province[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. 2. Mailing Address. Enter Province.
+       Type: /Tx  |  Default: ''
+
+[135] form1[0].#subform[2].Pt3Line2_Country[0]
+       Description: Part 3. Information About the Person for Whom This Petition Is Being Filed. 2. Mailing Address. Enter Country.
+       Type: /Tx  |  Default: ''
+
+[136] form1[0].#subform[3]
+       Type: ?  |  Default: ''
+
+[137] form1[0].#subform[3].Pt4Line2b_StreetNumberName[0]
+       Description: Part 4. Processing Information. 2. 2. If a U.S. address was provided in Part 3., type or print the person's foreign address below.  If he or she does not maintain a foreign address, list the city or town and country of last foreign residence.  If his or her native alphabet does not use Roman letters, type or print his or her name and foreign address in the native alphabet. B. Mailing Address. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[138] form1[0].#subform[3].Pt4Line2b_Unit[0]
+       Description: Part 4. Processing Information. 2. B. Mailing Address. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[139] form1[0].#subform[3].Pt4Line2b_Unit[1]
+       Description: Part 4. Processing Information. 2. B. Mailing Address. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[140] form1[0].#subform[3].Pt4Line2b_Unit[2]
+       Description: Part 4. Processing Information. 2. B. Mailing Address. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[141] form1[0].#subform[3].Pt4Line2b_AptSteFlrNumber[0]
+       Description: Part 4. Processing Information. 2. B. Mailing Address. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[142] form1[0].#subform[3].Pt4Line2b_PostalCode[0]
+       Description: Part 4. Processing Information. 2. B. Mailing Address. Enter Postal Code.
+       Type: /Tx  |  Default: ''
+
+[143] form1[0].#subform[3].Pt4Line2b_CityOrTown[0]
+       Description: Part 4. Processing Information. 2. B. Mailing Address. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[144] form1[0].#subform[3].Pt4Line2b_Country[0]
+       Description: Part 4. Processing Information. 2. B. Mailing Address. Enter Country.
+       Type: /Tx  |  Default: ''
+
+[145] form1[0].#subform[3].Pt4Line4b_HowMany[0]
+       Description: Part 4. Processing Information. 4. B. If you answered "Yes" to Item A. in Item Number 4., how many?
+       Type: /Tx  |  Default: ''
+
+[146] form1[0].#subform[3].Pt4Line4a[0]
+       Description: Part 4. Processing Information. 4. A. Are you filing any other petitions or applications with this one? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[147] form1[0].#subform[3].Pt4Line5[0]
+       Description: Part 4. Processing Information. If you answer "Yes" to Item Numbers 5. through 6., provide an explanation in the space provided in Part 15. Additional Information. 5. Is the beneficiary in removal proceedings? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[148] form1[0].#subform[3].Pt4Line4a[1]
+       Description: Part 4. Processing Information. 4. A. Are you filing any other petitions or applications with this one? Select No.
+       Type: /Btn  |  Default: ''
+
+[149] form1[0].#subform[3].Pt4Line3_Sex[0]
+       Description: Part 4. Processing Information. 3. Sex of the beneficiary. Select Male.
+       Type: /Btn  |  Default: ''
+
+[150] form1[0].#subform[3].Pt4Line3_Sex[1]
+       Description: Part 4. Processing Information. 3. Sex of the beneficiary. Select Female.
+       Type: /Btn  |  Default: ''
+
+[151] form1[0].#subform[3].Pt4Line6[0]
+       Description: Part 4. Processing Information. 6. Has the beneficiary ever worked in the U.S. without permission?  (If you are applying for a special immigrant juvenile status, you are not required to answer this item number.) Select Yes.
+       Type: /Btn  |  Default: ''
+
+[152] form1[0].#subform[3].Pt4Line7[0]
+       Description: Part 4. Processing Information. 7. Is an application for adjustment of status attached to this petition? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[153] form1[0].#subform[3].Pt4Line5[1]
+       Description: Part 4. Processing Information. 5. Is the beneficiary in removal proceedings? Select No.
+       Type: /Btn  |  Default: ''
+
+[154] form1[0].#subform[3].Pt4Line6[1]
+       Description: Part 4. Processing Information. 6. Has the beneficiary ever worked in the U.S. without permission?  (If you are applying for a special immigrant juvenile status, you are not required to answer this item number.) Select No.
+       Type: /Btn  |  Default: ''
+
+[155] form1[0].#subform[3].Pt4Line7[1]
+       Description: Part 4. Processing Information. 7. Is an application for adjustment of status attached to this petition? Select No.
+       Type: /Btn  |  Default: ''
+
+[156] form1[0].#subform[3].Pt4Line2a_MiddleName[0]
+       Description: Part 4. Processing Information. 2. A. Your Full Name.  Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[157] form1[0].#subform[3].Pt4Line2a_GivenName[0]
+       Description: Part 4. Processing Information. 2. A. Your Full Name. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[158] form1[0].#subform[3].Pt4Line2a_FamilyName[0]
+       Description: Part 4. Processing Information. 2. If a U.S. address was provided in Part 3., type or print the person's foreign address below.  If he or she does not maintain a foreign address, list the city or town and country of last foreign residence.  If his or her native alphabet does not use Roman letters, type or print his or her name and foreign address in the native alphabet. A. Your Full Name. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[159] form1[0].#subform[3].Line3_ANumber[1]
+       Type: ?  |  Default: ''
+
+[160] form1[0].#subform[3].Line3_ANumber[1].Pt5Line2_AlienNumber[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 2. Person One. Enter Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+
+[161] form1[0].#subform[3].Pt5Line2_CountryOfBirth[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 2. Person One. Enter Country of Birth.
+       Type: /Tx  |  Default: ''
+
+[162] form1[0].#subform[3].Pt5Line2_DateOfBirth[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 2. Person One. Enter Date of Birth. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[163] form1[0].#subform[3].Pt5Line2_FamilyName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 2. Person One. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[164] form1[0].#subform[3].Pt5Line2_GivenName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 2. Person One. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[165] form1[0].#subform[3].Pt5Line2_MiddleName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 2. Person One. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[166] form1[0].#subform[3].Pt5Line2_Relationship[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 2. Person One. Relationship. Select Spouse.
+       Type: /Btn  |  Default: ''
+
+[167] form1[0].#subform[3].Pt5Line2_Relationship[1]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 2. Person One. Relationship. Select Child.
+       Type: /Btn  |  Default: ''
+
+[168] form1[0].#subform[3].Pt5Line1_Checkbox[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. NOTE:  Depending on the classification you seek, you can either file this petition for another person or for yourself.  On this petition, the "beneficiary" or "self-petitioner" means the person for whom this petition is being filed, whether that person is yourself or another person. 1. If you are filing as a self-petitioning spouse, have any of your children filed separate self-petitions? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[169] form1[0].#subform[3].Pt5Line1_Checkbox[1]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 1. If you are filing as a self-petitioning spouse, have any of your children filed separate self-petitions? Select No.
+       Type: /Btn  |  Default: ''
+
+[170] form1[0].#subform[3].Pt4Line2b_Province[0]
+       Description: Part 4. Processing Information. 2. B. Mailing Address. Enter Province.
+       Type: /Tx  |  Default: ''
+
+[171] form1[0].#subform[4]
+       Type: ?  |  Default: ''
+
+[172] form1[0].#subform[4].Line3_ANumber[2]
+       Type: ?  |  Default: ''
+
+[173] form1[0].#subform[4].Line3_ANumber[2].Pt5Line3_AlienNumber[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 3. Person Two. Enter Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+
+[174] form1[0].#subform[4].Pt5Line3_Relationship[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 3. Person Two. Relationship. Select Child.
+       Type: /Btn  |  Default: ''
+
+[175] form1[0].#subform[4].Pt5Line3_CountryOfBirth[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 3. Person Two. Enter Country of Birth.
+       Type: /Tx  |  Default: ''
+
+[176] form1[0].#subform[4].Pt5Line3_DateOfBirth[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 3. Person Two. Enter Date of Birth. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[177] form1[0].#subform[4].Pt5Line3_FamilyName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 3. Person Two. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[178] form1[0].#subform[4].Pt5Line3_GivenName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 3. Person Two. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[179] form1[0].#subform[4].Pt5Line3_MiddleName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 3. Person Two. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[180] form1[0].#subform[4].Line3_ANumber[3]
+       Type: ?  |  Default: ''
+
+[181] form1[0].#subform[4].Line3_ANumber[3].Pt5Line4_AlienNumber[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 4. Person Three. Enter Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+
+[182] form1[0].#subform[4].Pt5Line4_Relationship[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 4. Person Three. Relationship. Select Child.
+       Type: /Btn  |  Default: ''
+
+[183] form1[0].#subform[4].Pt5Line4_CountryOfBirth[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 4. Person Three. Enter Country of Birth.
+       Type: /Tx  |  Default: ''
+
+[184] form1[0].#subform[4].Pt5Line4_DateOfBirth[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 4. Person Three. Enter Date of Birth. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[185] form1[0].#subform[4].Pt5Line4_FamilyName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 4. Person Three. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[186] form1[0].#subform[4].Pt5Line4_GivenName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 4. Person Three. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[187] form1[0].#subform[4].Pt5Line4_MiddleName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 4. Person Three. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[188] form1[0].#subform[4].Line3_ANumber[4]
+       Type: ?  |  Default: ''
+
+[189] form1[0].#subform[4].Line3_ANumber[4].Pt5Line5_AlienNumber[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 5. Person Four. Enter Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+
+[190] form1[0].#subform[4].Pt5Line5_Relationship[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 5. Person Four. Relationship. Select Child.
+       Type: /Btn  |  Default: ''
+
+[191] form1[0].#subform[4].Pt5Line5_CountryOfBirth[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 5. Person Four. Enter Country of Birth.
+       Type: /Tx  |  Default: ''
+
+[192] form1[0].#subform[4].Pt5Line5_DateOfBirth[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 5. Person Four. Enter Date of Birth. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[193] form1[0].#subform[4].Pt5Line5_FamilyName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 5. Person Four. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[194] form1[0].#subform[4].Pt5Line5_GivenName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 5. Person Four. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[195] form1[0].#subform[4].Pt5Line5_MiddleName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 5. Person Four. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[196] form1[0].#subform[4].Line3_ANumber[5]
+       Type: ?  |  Default: ''
+
+[197] form1[0].#subform[4].Line3_ANumber[5].Pt5Line6_AlienNumber[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 6. Person Five. Enter Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+
+[198] form1[0].#subform[4].Pt5Line6_Relationship[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 6. Person Five. Relationship. Select Child.
+       Type: /Btn  |  Default: ''
+
+[199] form1[0].#subform[4].Pt5Line6_CountryOfBirth[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 6. Person Five. Enter Country of Birth.
+       Type: /Tx  |  Default: ''
+
+[200] form1[0].#subform[4].Pt5Line6_DateOfBirth[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 6. Person Five. Enter Date of Birth. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[201] form1[0].#subform[4].Pt5Line6_FamilyName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 6. Person Five. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[202] form1[0].#subform[4].Pt5Line6_GivenName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 6. Person Five. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[203] form1[0].#subform[4].Pt5Line6_MiddleName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 6. Person Five. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[204] form1[0].#subform[4].Line3_ANumber[6]
+       Type: ?  |  Default: ''
+
+[205] form1[0].#subform[4].Line3_ANumber[6].Pt5Line7_AlienNumber[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 7. Person Six. Enter Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+
+[206] form1[0].#subform[4].Pt5Line7_Relationship[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 7. Person Six. Relationship. Select Child.
+       Type: /Btn  |  Default: ''
+
+[207] form1[0].#subform[4].Pt5Line7_CountryOfBirth[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 7. Person Six. Enter Country of Birth.
+       Type: /Tx  |  Default: ''
+
+[208] form1[0].#subform[4].Pt5Line7_DateOfBirth[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 7. Person Six. Enter Date of Birth. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[209] form1[0].#subform[4].Pt5Line7_FamilyName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 7. Person Six. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[210] form1[0].#subform[4].Pt5Line7_GivenName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 7. Person Six. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[211] form1[0].#subform[4].Pt5Line7_MiddleName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 7. Person Six. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[212] form1[0].#subform[5]
+       Type: ?  |  Default: ''
+
+[213] form1[0].#subform[5].Pt6Line1_MiddleName[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Mother of the Amerasian. 1. Mother's Full Name. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[214] form1[0].#subform[5].Pt6Line1_GivenName[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Mother of the Amerasian. 1. Mother's Full Name. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[215] form1[0].#subform[5].Pt6Line1_FamilyName[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Mother of the Amerasian. 1. Mother's Full Name. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[216] form1[0].#subform[5].Pt6Line2a[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Mother of the Amerasian. 2. A. Is the mother still alive?  Select Unknown.
+       Type: /Btn  |  Default: ''
+
+[217] form1[0].#subform[5].Pt6Line2b_InCareofName[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Mother of the Amerasian. 2. B. If you answered "Yes" to Item A. in Item Number 2., provide her address below. Enter In Care Of Name (if any).
+       Type: /Tx  |  Default: ''
+
+[218] form1[0].#subform[5].Pt6Line2b_StreetNumberName[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Mother of the Amerasian. 2. B. If you answered "Yes" to Item A. in Item Number 2., provide her address below. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[219] form1[0].#subform[5].Pt6Line2b_Unit[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Mother of the Amerasian. 2. B. If you answered "Yes" to Item A. in Item Number 2., provide her address below. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[220] form1[0].#subform[5].Pt6Line2b_Unit[1]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Mother of the Amerasian. 2. B. If you answered "Yes" to Item A. in Item Number 2., provide her address below. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[221] form1[0].#subform[5].Pt6Line2b_Unit[2]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Mother of the Amerasian. 2. B. If you answered "Yes" to Item A. in Item Number 2., provide her address below. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[222] form1[0].#subform[5].Pt6Line2b_AptSteFlrNumber[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Mother of the Amerasian. 2. B. If you answered "Yes" to Item A. in Item Number 2., provide her address below. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[223] form1[0].#subform[5].Pt6Line2b_CityOrTown[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Mother of the Amerasian. 2. B. If you answered "Yes" to Item A. in Item Number 2., provide her address below. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[224] form1[0].#subform[5].Pt6Line2b_State[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Mother of the Amerasian. 2. B. If you answered "Yes" to Item A. in Item Number 2., provide her address below. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[225] form1[0].#subform[5].Pt6Line2b_ZipCode[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Mother of the Amerasian. 2. B. If you answered "Yes" to Item A. in Item Number 2., provide her address below. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[226] form1[0].#subform[5].Pt6Line2b_PostalCode[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Mother of the Amerasian. 2. B. If you answered "Yes" to Item A. in Item Number 2., provide her address below. Enter Postal Code.
+       Type: /Tx  |  Default: ''
+
+[227] form1[0].#subform[5].Pt6Line2b_Province[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Mother of the Amerasian. 2. B. If you answered "Yes" to Item A. in Item Number 2., provide her address below. Enter Province.
+       Type: /Tx  |  Default: ''
+
+[228] form1[0].#subform[5].Pt6Line2b_Country[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Mother of the Amerasian. 2. B. If you answered "Yes" to Item A. in Item Number 2., provide her address below. Enter Country.
+       Type: /Tx  |  Default: ''
+
+[229] form1[0].#subform[5].Line3_ANumber[7]
+       Type: ?  |  Default: ''
+
+[230] form1[0].#subform[5].Line3_ANumber[7].Pt5Line8_AlienNumber[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 8. Person Seven. Enter Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+
+[231] form1[0].#subform[5].Pt5Line8_Relationship[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 8. Person Seven. Relationship. Select Child.
+       Type: /Btn  |  Default: ''
+
+[232] form1[0].#subform[5].Pt5Line8_CountryOfBirth[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 8. Person Seven. Enter Country of Birth.
+       Type: /Tx  |  Default: ''
+
+[233] form1[0].#subform[5].Pt5Line8_DateOfBirth[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 8. Person Seven. Enter Date of Birth. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[234] form1[0].#subform[5].Pt5Line8_FamilyName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 8. Person Seven. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[235] form1[0].#subform[5].Pt5Line8_GivenName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 8. Person Seven. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[236] form1[0].#subform[5].Pt5Line8_MiddleName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 8. Person Seven. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[237] form1[0].#subform[5].Pt5Line9_Relationship[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 9. Person Eight. Relationship. Select Child.
+       Type: /Btn  |  Default: ''
+
+[238] form1[0].#subform[5].Pt5Line9_CountryOfBirth[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 9. Person Eight. Enter Country of Birth.
+       Type: /Tx  |  Default: ''
+
+[239] form1[0].#subform[5].Pt5Line9_DateOfBirth[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 9. Person Eight. Enter Date of Birth. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[240] form1[0].#subform[5].Pt5Line9_FamilyName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 9. Person Eight. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[241] form1[0].#subform[5].Pt5Line9_GivenName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 9. Person Eight. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[242] form1[0].#subform[5].Pt5Line9_MiddleName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 9. Person Eight. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[243] form1[0].#subform[5].Line3_ANumber[8]
+       Type: ?  |  Default: ''
+
+[244] form1[0].#subform[5].Line3_ANumber[8].Pt5Line10_AlienNumber[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 10. Person Nine. Enter Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+
+[245] form1[0].#subform[5].Pt5Line10_Relationship[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 10. Person Nine. Relationship. Select Child.
+       Type: /Btn  |  Default: ''
+
+[246] form1[0].#subform[5].Pt5Line10_CountryOfBirth[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 10. Person Nine. Enter Country of Birth.
+       Type: /Tx  |  Default: ''
+
+[247] form1[0].#subform[5].Pt5Line10_DateOfBirth[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 10. Person Nine. Enter Date of Birth. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[248] form1[0].#subform[5].Pt5Line10_FamilyName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 10. Person Nine. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[249] form1[0].#subform[5].Pt5Line10_GivenName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 10. Person Nine. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[250] form1[0].#subform[5].Pt5Line10_MiddleName[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 10. Person Nine. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[251] form1[0].#subform[5].Pt5Line9_AlienNumber[0]
+       Description: Part 5. Information About the Spouse and Children of the Person for Whom This Petition Is Being Filed. 9. Person Eight. Enter Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+
+[252] form1[0].#subform[5].Pt6Line2a[1]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Mother of the Amerasian. 2. A. Is the mother still alive?  Select Yes.
+       Type: /Btn  |  Default: ''
+
+[253] form1[0].#subform[5].Pt6Line2a[2]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Mother of the Amerasian. 2. A. Is the mother still alive?  Select No.
+       Type: /Btn  |  Default: ''
+
+[254] form1[0].#subform[6]
+       Type: ?  |  Default: ''
+
+[255] form1[0].#subform[6].Pt6Line4_DateOfBirth[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 4. Enter Date of Birth. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[256] form1[0].#subform[6].Pt6Line5_CountryOfBirth[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 5. Enter Country of Birth.
+       Type: /Tx  |  Default: ''
+
+[257] form1[0].#subform[6].Pt6Line3_MiddleName[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 3. Father's Full Name. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[258] form1[0].#subform[6].Pt6Line3_GivenName[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 3. Father's Full Name. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[259] form1[0].#subform[6].Pt6Line3_FamilyName[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian.  If possible, attach a notarized statement from the father regarding parentage.  If there is a question you cannot fully answer in the space provided on this petition, use the space provided in Part 15. Additional Information. 3. Father's Full Name. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[260] form1[0].#subform[6].Pt6Line6a[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 6. A. Is the father still alive? Select Unknown.
+       Type: /Btn  |  Default: ''
+
+[261] form1[0].#subform[6].Pt6Line6c_DateofDeath[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 6. C. If you answered "No" to Item A. in Item Number 4., provide his date of death. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[262] form1[0].#subform[6].Pt6Line6e_WorkTelephoneNumber[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 6. E. Enter Work Telephone Number, if any.
+       Type: /Tx  |  Default: ''
+
+[263] form1[0].#subform[6].Pt4Line6d_DaytimeTelephoneNumber[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 6. D. Enter Daytime Telephone Number, if any.
+       Type: /Tx  |  Default: ''
+
+[264] form1[0].#subform[6].Pt6Line7b_BranchServiceNumber[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. At the time the Amerasian was conceived. 7. B. Provide the father's service number.
+       Type: /Tx  |  Default: ''
+
+[265] form1[0].#subform[6].Pt6Line7a[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. At the time the Amerasian was conceived. 7. A. The father was in the military (indicate branch of service). Select Army.
+       Type: /Btn  |  Default: ''
+
+[266] form1[0].#subform[6].Pt6Line7a[1]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. At the time the Amerasian was conceived. 7. A. The father was in the military (indicate branch of service). Select Air Force.
+       Type: /Btn  |  Default: ''
+
+[267] form1[0].#subform[6].Pt6Line7a[2]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. At the time the Amerasian was conceived. 7. A. The father was in the military (indicate branch of service). Select Navy.
+       Type: /Btn  |  Default: ''
+
+[268] form1[0].#subform[6].Pt6Line7a[3]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. At the time the Amerasian was conceived. 7. A. The father was in the military (indicate branch of service). Select Marine Corps.
+       Type: /Btn  |  Default: ''
+
+[269] form1[0].#subform[6].Pt6Line7a[4]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. At the time the Amerasian was conceived. 7. A. The father was in the military (indicate branch of service). Select Coast Guard.
+       Type: /Btn  |  Default: ''
+
+[270] form1[0].#subform[6].Pt6Line7a[5]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. At the time the Amerasian was conceived. 7. C. Select The father was not in the military and was not a civilian employed abroad. Attach a full explanation of the circumstances.
+       Type: /Btn  |  Default: ''
+
+[271] form1[0].#subform[6].Pt7Line1_MiddleName[0]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 1. Full Name of U.S. Citizen Spouse Who Died. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[272] form1[0].#subform[6].Pt7Line1_GivenName[0]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 1. Full Name of U.S. Citizen Spouse Who Died. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[273] form1[0].#subform[6].Pt7Line1_FamilyName[0]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 1. Full Name of U.S. Citizen Spouse Who Died. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[274] form1[0].#subform[6].Pt7Line4_DateOfDeath[0]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 4. Enter Date of Death. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[275] form1[0].#subform[6].Pt7Line2_DateOfBirth[0]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 2. Enter Date of Birth. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[276] form1[0].#subform[6].Pt7Line3_CountryOfBirth[0]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 3. Enter Country of Birth.
+       Type: /Tx  |  Default: ''
+
+[277] form1[0].#subform[6].Pt6Line2c_DateofDeath[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Mother of the Amerasian. 2. C. If you answered "No" to Item A. in Item Number 2., provide her date of death. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[278] form1[0].#subform[6].Pt6Line6b_InCareofName[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 6. B. If you answered "Yes" to Item A. in Item Number 4., provide his address below. Enter In Care Of Name (If any).
+       Type: /Tx  |  Default: ''
+
+[279] form1[0].#subform[6].Pt6Line6b_StreetNumberName[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 6. B. If you answered "Yes" to Item A. in Item Number 4., provide his address below. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[280] form1[0].#subform[6].Pt6Line6b_Unit[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 6. B. If you answered "Yes" to Item A. in Item Number 4., provide his address below. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[281] form1[0].#subform[6].Pt6Line6b_Unit[1]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 6. B. If you answered "Yes" to Item A. in Item Number 4., provide his address below. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[282] form1[0].#subform[6].Pt6Line6b_AptSteFlrNumber[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 6. B. If you answered "Yes" to Item A. in Item Number 4., provide his address below. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[283] form1[0].#subform[6].Pt6Line6b_CityOrTown[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 6. B. If you answered "Yes" to Item A. in Item Number 4., provide his address below. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[284] form1[0].#subform[6].Pt6Line6b_State[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 6. B. If you answered "Yes" to Item A. in Item Number 4., provide his address below. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[285] form1[0].#subform[6].Pt6Line6b_ZipCode[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 6. B. If you answered "Yes" to Item A. in Item Number 4., provide his address below. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[286] form1[0].#subform[6].Pt6Line6b_PostalCode[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 6. B. If you answered "Yes" to Item A. in Item Number 4., provide his address below. Enter Postal Code.
+       Type: /Tx  |  Default: ''
+
+[287] form1[0].#subform[6].Pt6Line6b_Province[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 6. B. If you answered "Yes" to Item A. in Item Number 4., provide his address below. Enter Province.
+       Type: /Tx  |  Default: ''
+
+[288] form1[0].#subform[6].Pt6Line6b_Country[0]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 6. B. If you answered "Yes" to Item A. in Item Number 4., provide his address below. Enter Country.
+       Type: /Tx  |  Default: ''
+
+[289] form1[0].#subform[6].Pt6Line6a[1]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 6. A. Is the father still alive? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[290] form1[0].#subform[6].Pt6Line6a[2]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 6. A. Is the father still alive? Select No.
+       Type: /Btn  |  Default: ''
+
+[291] form1[0].#subform[6].Pt6Line6b_Unit[2]
+       Description: Part 6. Complete Only If Filing for an Amerasian. Information About the Father of the Amerasian. 6. B. If you answered "Yes" to Item A. in Item Number 4., provide his address below. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[292] form1[0].#subform[7]
+       Type: ?  |  Default: ''
+
+[293] form1[0].#subform[7].Pt7Line5a_USCitizen[0]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 5. At time of death, your spouse was a (Select only one). A. Select U.S. citizen born in the United States.
+       Type: /Btn  |  Default: ''
+
+[294] form1[0].#subform[7].Pt7Line5b_citizenabroad[0]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 5. At time of death, your spouse was a (Select only one). B. Select U.S. citizen born abroad to U.S. citizen parents.
+       Type: /Btn  |  Default: ''
+
+[295] form1[0].#subform[7].Pt7Line5d_Other[0]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 5. At time of death, your spouse was a (Select only one). D. Select Other (Explain).
+       Type: /Btn  |  Default: ''
+
+[296] form1[0].#subform[7].Pt7Line5d_Explain[0]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 5. At time of death, your spouse was a (Select only one). D. Other. Enter Explanation.
+       Type: /Tx  |  Default: ''
+
+[297] form1[0].#subform[7].Pt7Line5c_USNaturalized[0]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 5. At time of death, your spouse was a (Select only one). C. Select U.S. citizen through naturalization.  
+       Type: /Btn  |  Default: ''
+
+[298] form1[0].#subform[7].Line3_ANumber[9]
+       Type: ?  |  Default: ''
+
+[299] form1[0].#subform[7].Line3_ANumber[9].Pt7Line5c1_AlienNumber[0]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 5. At time of death, your spouse was a (Select only one). C. U.S. citizen through naturalization. 1. If you select this box, Provide Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+
+[300] form1[0].#subform[7].Pt7Line8b_PlaceOfMarriage[0]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 8. B. Where did you and your spouse get married? 
+       Type: /Tx  |  Default: ''
+
+[301] form1[0].#subform[7].Pt7Line9b_DateofReMarriage[0]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 9. B. If you answered "Yes" to Item A. in Item Number 9., provide the date that you remarried. Enter Date Remarried. Enter as 2-digit Month, 2-digit Day, and 4-digit Year.
+       Type: /Tx  |  Default: ''
+
+[302] form1[0].#subform[7].Pt7Line8a_DateofMarriage[0]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 8. A. When did you and your spouse get married? Enter Date of Marriage. Enter as 2-digit Month, 2-digit Day, and 4-digit Year.
+       Type: /Tx  |  Default: ''
+
+[303] form1[0].#subform[7].Pt7Line9a_no[0]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 9. A. Did you remarry after the death of your spouse? Select No.
+       Type: /Btn  |  Default: ''
+
+[304] form1[0].#subform[7].Pt7Line10[0]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 10. If you are filing as a widow(er), were you legally separated at the time of the U.S. citizen's death? Select Yes. NOTE:  If you answered "Yes" to Item Number 10., provide an explanation in the space provided in Part 15. Additional Information.
+       Type: /Btn  |  Default: ''
+
+[305] form1[0].#subform[7].Pt7Line10[1]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 10. If you are filing as a widow(er), were you legally separated at the time of the U.S. citizen's death? Select No.
+       Type: /Btn  |  Default: ''
+
+[306] form1[0].#subform[7].Pt7Line9a_yes[0]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 9. A. Did you remarry after the death of your spouse? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[307] form1[0].#subform[7].Pt7Line7_NumberofSpouseMarriages[0]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 7. How many times was your spouse married? Enter the number here.
+       Type: /Tx  |  Default: ''
+
+[308] form1[0].#subform[7].Pt7Line6_NumberofMarriages[0]
+       Description: Part 7. Complete Only If Filing as a Widow / Widower. 6. How many times have you been married? Enter the number here.
+       Type: /Tx  |  Default: ''
+
+[309] form1[0].#subform[7].Pt8Line1b_MiddleName[0]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information about the Juvenile. 1. List any other names used. B. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[310] form1[0].#subform[7].Pt8Line1b_GivenName[0]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information about the Juvenile. 1. List any other names used. B. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[311] form1[0].#subform[7].Pt8Line1b_FamilyName[0]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 1. List any other names used. B. Enter Family Name (Last Name). 
+       Type: /Tx  |  Default: ''
+
+[312] form1[0].#subform[7].Pt8Line1a_MiddleName[0]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information about the Juvenile. 1. List any other names used. A. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[313] form1[0].#subform[7].Pt8Line1a_GivenName[0]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information about the Juvenile. 1. List any other names used. A. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[314] form1[0].#subform[7].Pt8Line1a_FamilyName[0]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 1. List any other names used. A. Enter Family Name (Last Name). 
+       Type: /Tx  |  Default: ''
+
+[315] form1[0].#subform[7].Pt8Line2a[0]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. Answer the following questions regarding the person for whom the petition is being filed.  If you answer "No" to Item. A. in Item Number 2., provide an explanation in the space provided in Part 15. Additional Information. 2. A. Have you been declared dependent on a juvenile court in the United States OR has a juvenile court legally committed you to, or placed you under the custody of, an agency, department of a state, or an individual or entity? Select No.
+       Type: /Btn  |  Default: ''
+
+[316] form1[0].#subform[7].Pt8Line2a[1]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. Answer the following questions regarding the person for whom the petition is being filed.  If you answer "No" to Item. A. in Item Number 2., provide an explanation in the space provided in Part 15. Additional Information. 2. A. Have you been declared dependent on a juvenile court in the United States OR has a juvenile court legally committed you to, or placed you under the custody of, an agency, department of a state, or an individual or entity? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[317] form1[0].#subform[7].Pt8Line2b_Name[0]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. Provide the name of the state agency, department, or court-appointed organization or individual with which you are placed below.
+       Type: /Tx  |  Default: ''
+
+[318] form1[0].#subform[7].Pt8Line2c[0]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 2. C. Are you currently under the jurisdiction of the juvenile court that made your placement or custody determination identified in Item B. in Item Number 2. above? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[319] form1[0].#subform[7].Pt8Line2c[1]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 2. C. Are you currently under the jurisdiction of the juvenile court that made your placement or custody determination identified in Item B. in Item Number 2. above? Select No.
+       Type: /Btn  |  Default: ''
+
+[320] form1[0].#subform[8]
+       Type: ?  |  Default: ''
+
+[321] form1[0].#subform[8].Pt8Line6a[0]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 6. A. Are you currently or were you previously in the custody of the U.S. Department of Health and Human Services (H H S)? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[322] form1[0].#subform[8].Pt8Line6b[0]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 6. B. If you answered "Yes" to Item A. in Item Number 6., and you are in H H S custody, did the juvenile court order determine or alter your custody status or placement? Select No.
+       Type: /Btn  |  Default: ''
+
+[323] form1[0].#subform[8].Pt8Line6b[1]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 6. B. If you answered "Yes" to Item A. in Item Number 6., and you are in H H S custody, did the juvenile court order determine or alter your custody status or placement? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[324] form1[0].#subform[8].Pt8Line6a[1]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 6. A. Are you currently or were you previously in the custody of the U.S. Department of Health and Human Services (H H S)? Select No.
+       Type: /Btn  |  Default: ''
+
+[325] form1[0].#subform[8].Pt8Line3a[0]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 4. A. A juvenile court has determined that reunification is not viable due to: abuse, neglect, abandonment or similar basis under state law. Select one of my parents.
+       Type: /Btn  |  Default: ''
+
+[326] form1[0].#subform[8].Pt8Line3a[1]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 4. A. A juvenile court has determined that reunification is not viable due to: abuse, neglect, abandonment or similar basis under state law. Select both of my parents.
+       Type: /Btn  |  Default: ''
+
+[327] form1[0].#subform[8].Pt8Line3a_Specify[0]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 4. A. A juvenile court has determined that reunification with one or both of my parents is not viable due to. Similar basis under state law (specify). Enter Specification.
+       Type: /Tx  |  Default: ''
+
+[328] form1[0].#subform[8].Pt8Line5[0]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 5. Has it been determined in judicial or administrative proceedings that it would not be in your best interest to be returned to your or your parent's country of citizenship or nationality or last habitual residence? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[329] form1[0].#subform[8].Pt8Line4a[0]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 3. A. If you answered "Yes" to Item C. in Item Number 2. above, are you currently residing in your court-ordered placement? Select No.
+       Type: /Btn  |  Default: ''
+
+[330] form1[0].#subform[8].Pt8Line4a[1]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 3. A. If you answered "Yes" to Item C. in Item Number 2. above, are you currently residing in your court-ordered placement? Select Yes.
+       Type: /Btn  |  Default: ''
+
+[331] form1[0].#subform[8].Pt8Line5[1]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 5. Has it been determined in judicial or administrative proceedings that it would not be in your best interest to be returned to your or your parent's country of citizenship or nationality or last habitual residence? Select No.
+       Type: /Btn  |  Default: ''
+
+[332] form1[0].#subform[8].Pt8Line3b_Checkbox[0]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 3. B. If you answered "No" to Item C. in Item Number 2. above, select your reason below. Select You were adopted or placed in a permanent guardianship or another permanent living arrangement (other than reunification with the abusive parents).
+       Type: /Btn  |  Default: ''
+
+[333] form1[0].#subform[8].Pt8Line3A_Checkbox[0]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 4. A. A juvenile court has determined that reunification with one or both of my parents is not viable due to. Select Abuse.
+       Type: /Btn  |  Default: ''
+
+[334] form1[0].#subform[8].Pt8Line3A_Checkbox[1]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 4. A. A juvenile court has determined that reunification with one or both of my parents is not viable due to. Select Similar basis under state law (specify).
+       Type: /Btn  |  Default: ''
+
+[335] form1[0].#subform[8].Pt8Line3A_Checkbox[2]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 4. A. A juvenile court has determined that reunification with one or both of my parents is not viable due to. Select Neglect.
+       Type: /Btn  |  Default: ''
+
+[336] form1[0].#subform[8].Pt8Line3A_Checkbox[3]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 4. A. A juvenile court has determined that reunification with one or both of my parents is not viable due to. Select Abandonment.
+       Type: /Btn  |  Default: ''
+
+[337] form1[0].#subform[8].Pt8Line4b_NameOfParent[0]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 4. B. If you selected "one" in Item A. in Item Number 4., provide the name of that parent.
+       Type: /Tx  |  Default: ''
+
+[338] form1[0].#subform[8].Pt9Line1a_NumberofMembers[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Prospective Employer Attestation. 1. Provide the following information about the prospective employer. A. Enter Number of members of the prospective employer's organization.
+       Type: /Tx  |  Default: ''
+
+[339] form1[0].#subform[8].Pt9Line1b_NumberofEmployees[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Prospective Employer Attestation. 1. Provide the following information about the prospective employer. B. Enter Number of employees working at the same location where the beneficiary will be employed.
+       Type: /Tx  |  Default: ''
+
+[340] form1[0].#subform[8].Pt9Line1c_NumberofBeneficiaries[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Prospective Employer Attestation. 1. Provide the following information about the prospective employer. C. Enter Number of aliens holding special immigrant or nonimmigrant religious worker status who are currently employed or were employed within the past five years.
+       Type: /Tx  |  Default: ''
+
+[341] form1[0].#subform[8].Pt9Line1d_NumberofSIRWandNIRW[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Prospective Employer Attestation. 1. Provide the following information about the prospective employer. D. Enter Number of Special Immigrant Religious Worker (Form I-3 60) and Nonimmigrant Religious Worker (Form I-1 29) petitions submitted by the prospective employer within the past five years.
+       Type: /Tx  |  Default: ''
+
+[342] form1[0].#subform[8].Pt9Line1e_NumberofSIRWPetitions[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition.  Prospective Employer Attestation. 1. Provide the following information about the prospective employer:  E. Enter Number of Special Immigrant Religious Worker (Form I-3 60) petitions submitted by the beneficiary during the last five years.
+       Type: /Tx  |  Default: ''
+
+[343] form1[0].#subform[8].Pt9Line2[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition.  Prospective Employer Attestation. 2. Has the beneficiary or have any of the beneficiary's dependent family members previously been admitted to the United States for a period of stay in the Religious Worker (R) classification during the last five years? Select No.
+       Type: /Btn  |  Default: ''
+
+[344] form1[0].#subform[8].Pt9Line2[1]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition.  Prospective Employer Attestation. 2. Has the beneficiary or have any of the beneficiary's dependent family members previously been admitted to the United States for a period of stay in the Religious Worker (R) classification during the last five years? Select Yes. If you answered "Yes" to Item Number 2., provide the beneficiary's and any dependent family member's prior periods of stay in the R classification in the United States during the last five years.  Be sure to provide only those periods when the beneficiary and/or family members were actually in the United States in the R classification.  Provide the beneficiary's information in Item Number 3. below.  For dependent family members, use the space provided in Part 15. Additional Information.
+       Type: /Btn  |  Default: ''
+
+[345] form1[0].#subform[8].Pt8Line3b_Checkbox[1]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 3. B. If you answered "No" to Item C. in Item Number 2. above, select your reason below. Select You aged-out of the juvenile court's jurisdiction and the order was terminated based on age.  
+       Type: /Btn  |  Default: ''
+
+[346] form1[0].#subform[8].Pt8Line3b_Checkbox[2]
+       Description: Part 8. Complete Only If Filing for a Special Immigrant Juvenile. Information About the Juvenile. 3. B. If you answered "No" to Item C. in Item Number 2. above, select your reason below. Select Other. (If you selected "Other," provide an explanation in the space provided in Part 15. Additional Information.)
+       Type: /Btn  |  Default: ''
+
+[347] form1[0].#subform[9]
+       Type: ?  |  Default: ''
+
+[348] form1[0].#subform[9].Pt9Line4_Position[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 4. Provide a summary of the type of responsibilities of those employees, other than the beneficiary, who work at the same location where the beneficiary will be employed.  If you need extra space to complete this section use the space provided in Part 15. Additional Information. Enter Position.
+       Type: /Tx  |  Default: ''
+
+[349] form1[0].#subform[9].Pt9Line4_Summary[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 4. Provide a summary of the type of responsibilities of those employees, other than the beneficiary, who work at the same location where the beneficiary will be employed.  If you need extra space to complete this section use the space provided in Part 15. Additional Information. Enter Summary of the Type of Responsibilities for That Position.
+       Type: /Tx  |  Default: ''
+
+[350] form1[0].#subform[9].Pt9Line5_DescribeRelationship[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 5. Describe the relationship, if any, between the religious organization in the United States and the organization abroad of which the beneficiary is a member.
+       Type: /Tx  |  Default: ''
+
+[351] form1[0].#subform[9].Pt9Line6a_Title[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 6. Provide the following information about the prospective employment.  If you need extra space to complete this section, use the space provided in Part 15. Additional Information. A. Enter Title of position offered.
+       Type: /Tx  |  Default: ''
+
+[352] form1[0].#subform[9].Pt9Line6b_DetailedDescription[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 6. C. Enter a detailed description of the beneficiary's proposed daily duties.
+       Type: /Tx  |  Default: ''
+
+[353] form1[0].#subform[9].Pt9Line6c_Description[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 6. D. Enter the description of the beneficiary's qualifications for the position offered.
+       Type: /Tx  |  Default: ''
+
+[354] form1[0].#subform[9].Pt9Line6d_Description[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 6. E. Enter the description of the proposed salaried and/or non-salaried compensation.
+       Type: /Tx  |  Default: ''
+
+[355] form1[0].#subform[9].Pt9Line6f_CompanyName[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 6. F. Provide the specific addresses or locations where the beneficiary will be working. Enter Company Name.
+       Type: /Tx  |  Default: ''
+
+[356] form1[0].#subform[9].Pt9Line6f_StreetNumberName[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 6. F. Provide the specific addresses or locations where the beneficiary will be working. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[357] form1[0].#subform[9].Pt9Line6f_Unit[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 6. F. Provide the specific addresses or locations where the beneficiary will be working. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[358] form1[0].#subform[9].Pt9Line6f_Unit[1]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 6. F. Provide the specific addresses or locations where the beneficiary will be working. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[359] form1[0].#subform[9].Pt9Line6f_Unit[2]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 6. F. Provide the specific addresses or locations where the beneficiary will be working. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[360] form1[0].#subform[9].Pt9Line6f_AptSteFlrNumber[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 6. F. Provide the specific addresses or locations where the beneficiary will be working. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[361] form1[0].#subform[9].Pt9Line6f_CityOrTown[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 6. F. Provide the specific addresses or locations where the beneficiary will be working. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[362] form1[0].#subform[9].Pt9Line6f_State[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 6. F. Provide the specific addresses or locations where the beneficiary will be working. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[363] form1[0].#subform[9].Pt9Line6f_ZipCode[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 6. F. Provide the specific addresses or locations where the beneficiary will be working. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[364] form1[0].#subform[9].Pt9Line6f_PostalCode[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 6. F. Provide the specific addresses or locations where the beneficiary will be working. Enter Postal Code.
+       Type: /Tx  |  Default: ''
+
+[365] form1[0].#subform[9].Pt9Line6f_Province[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 6. F. Provide the specific addresses or locations where the beneficiary will be working. Enter Province.
+       Type: /Tx  |  Default: ''
+
+[366] form1[0].#subform[9].Pt9Line6f_Country[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 6. F. Provide the specific addresses or locations where the beneficiary will be working. Enter Country.
+       Type: /Tx  |  Default: ''
+
+[367] form1[0].#subform[9].Pt9Line6b[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 6. B. The beneficiary will be working (select one of the following). Select As a minister.
+       Type: /Btn  |  Default: ''
+
+[368] form1[0].#subform[9].Pt9Line6b[1]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 6. B. The beneficiary will be working (select one of the following). Select In a religious vocation.
+       Type: /Btn  |  Default: ''
+
+[369] form1[0].#subform[9].Pt9Line6b[2]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 6. B. The beneficiary will be working (select one of the following). Select In a religious occupation.
+       Type: /Btn  |  Default: ''
+
+[370] form1[0].#subform[9].Pt9Line3_DateFrom[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 3. Beneficiary. Period of Stay. Enter From Date. Enter as 2-digit Month, 2-digit Day, and 4-digit Year.
+       Type: /Tx  |  Default: ''
+
+[371] form1[0].#subform[9].Pt9Line3_DateTo[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 3. Beneficiary. Period of Stay. Enter To Date. Enter as 2-digit Month, 2-digit Day, and 4-digit Year.
+       Type: /Tx  |  Default: ''
+
+[372] form1[0].#subform[9].Pt9Line3_MiddleName[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 3. Beneficiary. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[373] form1[0].#subform[9].Pt9Line3_GivenName[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 3. Beneficiary. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[374] form1[0].#subform[9].Pt9Line3_FamilyName[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 3. Beneficiary. Enter Family Name (Last Name). 
+       Type: /Tx  |  Default: ''
+
+[375] form1[0].#subform[10]
+       Type: ?  |  Default: ''
+
+[376] form1[0].#subform[10].Pt9Line7[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Answer Item Numbers 7. through 13. about the prospective employer.  If you answer "No" for Item Numbers 7. through 13., provide an explanation in the space provided in Part 15. Additional Information. 7. The prospective employer is a bona fide non-profit religious organization or a bona fide organization that is affiliated with the religious denomination and is tax exempt as described in section 501(c)(3) of the Internal Revenue Code of 1986, subsequent amendment, or equivalent sections of prior enactments of the Internal Revenue Code.  If the prospective employer is affiliated with the religious denomination, complete the Religious Denomination Certification included in this petition. Select No.
+       Type: /Btn  |  Default: ''
+
+[377] form1[0].#subform[10].Pt9Line7[1]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Answer Item Numbers 7. through 13. about the prospective employer.  If you answer "No" for Item Numbers 7. through 13., provide an explanation in the space provided in Part 15. Additional Information. 7. The prospective employer is a bona fide non-profit religious organization or a bona fide organization that is affiliated with the religious denomination and is tax exempt as described in section 501(c)(3) of the Internal Revenue Code of 1986, subsequent amendment, or equivalent sections of prior enactments of the Internal Revenue Code.  If the prospective employer is affiliated with the religious denomination, complete the Religious Denomination Certification included in this petition. Select Yes.
+       Type: /Btn  |  Default: ''
+
+[378] form1[0].#subform[10].Pt9Line7_Checkbox[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 7. If you answered "Yes," select the applicable box and attach the appropriate documentation to the petition. A. Select A currently valid determination letter from the Internal Revenue Service (I R S) establishing that the organization is a tax-exempt organization.
+       Type: /Btn  |  Default: ''
+
+[379] form1[0].#subform[10].Pt9Line7_Checkbox[1]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 7. If you answered "Yes," select the applicable box and attach the appropriate documentation to the petition. B. Select A currently valid determination letter from the I R S establishing that the organization is recognized as tax-exempt under a group tax exemption.
+       Type: /Btn  |  Default: ''
+
+[380] form1[0].#subform[10].Pt9Line7_Checkbox[2]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 7. If you answered "Yes," select the applicable box and attach the appropriate documentation to the petition. C. Select If you are claiming that the prospective employer is a bona fide organization that is affiliated with the religious denomination, provide the following.
+       Type: /Btn  |  Default: ''
+
+[381] form1[0].#subform[10].Pt9Line7_CheckboxC1[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 7. If you answered "Yes," select the applicable box and attach the appropriate documentation to the petition. C. If you are claiming that the prospective employer is a bona fide organization that is affiliated with the religious denomination, provide the following. 1. Select A currently valid determination letter from the I R S establishing that the organization is a tax-exempt organization.
+       Type: /Btn  |  Default: ''
+
+[382] form1[0].#subform[10].Pt9Line7_CheckboxC2[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 7. If you answered "Yes," select the applicable box and attach the appropriate documentation to the petition. C. If you are claiming that the prospective employer is a bona fide organization that is affiliated with the religious denomination, provide the following. 2. Select Documentation that establishes the religious nature and purpose of the organization, such as a copy of the organizing instrument of the organization that specifies the purposes of the organization.
+       Type: /Btn  |  Default: ''
+
+[383] form1[0].#subform[10].Pt9Line7_CheckboxC3[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 7. If you answered "Yes," select the applicable box and attach the appropriate documentation to the petition. C. If you are claiming that the prospective employer is a bona fide organization that is affiliated with the religious denomination, provide the following. 3. Select Organizational literature, such as books, articles, brochures, calendars, flyers, and other literature describing the religious purpose and nature of the activities of the organization.
+       Type: /Btn  |  Default: ''
+
+[384] form1[0].#subform[10].Pt9Line7_CheckboxC4[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 7. If you answered "Yes," select the applicable box and attach the appropriate documentation to the petition. C. If you are claiming that the prospective employer is a bona fide organization that is affiliated with the religious denomination, provide the following. 4. Select A completed religious denomination certification, signed and dated, certifying that the petitioning organization is affiliated with the religious denomination.
+       Type: /Btn  |  Default: ''
+
+[385] form1[0].#subform[10].Pt9Line8[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 8. The prospective employer is willing and able to provide salaried and/or non-salaried compensation at a level that the beneficiary and any dependents will not become a public charge. Select Yes.
+       Type: /Btn  |  Default: ''
+
+[386] form1[0].#subform[10].Pt9Line8[1]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 8. The prospective employer is willing and able to provide salaried and/or non-salaried compensation at a level that the beneficiary and any dependents will not become a public charge. Select No.
+       Type: /Btn  |  Default: ''
+
+[387] form1[0].#subform[10].Pt9Line9[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 9. The funds to pay the beneficiary's compensation do not include any monies obtained from the beneficiary, excluding reasonable donations or tithing to the religious organization. Select No.
+       Type: /Btn  |  Default: ''
+
+[388] form1[0].#subform[10].Pt9Line9[1]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 9. The funds to pay the beneficiary's compensation do not include any monies obtained from the beneficiary, excluding reasonable donations or tithing to the religious organization. Select Yes.
+       Type: /Btn  |  Default: ''
+
+[389] form1[0].#subform[10].Pt9Line10[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 10. The beneficiary will not engage in secular employment, and the prospective employer will provide salaried and/or non-salaried compensation. Select Yes.
+       Type: /Btn  |  Default: ''
+
+[390] form1[0].#subform[10].Pt9Line12[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 12. The beneficiary has been a religious worker for at least two years immediately before Form I-3 60 was filed and is otherwise qualified for the position offered. Select Yes.
+       Type: /Btn  |  Default: ''
+
+[391] form1[0].#subform[10].Pt9Line13[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 13. The beneficiary has been a member of the prospective employer's denomination for at least two years immediately before Form I-3 60 was filed. Select No.
+       Type: /Btn  |  Default: ''
+
+[392] form1[0].#subform[10].Pt9Line13[1]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 13. The beneficiary has been a member of the prospective employer's denomination for at least two years immediately before Form I-3 60 was filed. Select Yes.
+       Type: /Btn  |  Default: ''
+
+[393] form1[0].#subform[10].Pt9Line12[1]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 12. The beneficiary has been a religious worker for at least two years immediately before Form I-3 60 was filed and is otherwise qualified for the position offered. Select No.
+       Type: /Btn  |  Default: ''
+
+[394] form1[0].#subform[10].Pt9Line11[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 11. The offered position is full time, requiring at least an average of 35 hours of work per week. Select No.
+       Type: /Btn  |  Default: ''
+
+[395] form1[0].#subform[10].Pt9Line11[1]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 11. The offered position is full time, requiring at least an average of 35 hours of work per week. Select Yes.
+       Type: /Btn  |  Default: ''
+
+[396] form1[0].#subform[10].Pt9Line10[1]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. 10. The beneficiary will not engage in secular employment, and the prospective employer will provide salaried and/or non-salaried compensation. Select No.
+       Type: /Btn  |  Default: ''
+
+[397] form1[0].#subform[10].Pt9_DateofSignature[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Prospective Employer Attestation (must be completed by the prospective employer even if the beneficiary is filing on his or her own behalf). 14. Enter Date of Signature. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[398] form1[0].#subform[10].Pt9_Signature[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Prospective Employer Attestation (must be completed by the prospective employer even if the beneficiary is filing on his or her own behalf). I certify or attest under penalty of perjury under the laws of the United States of America that the contents of this attestation, and the evidence submitted, are true and correct. 14. Signature of an Authorized Official of the Prospective Employer. This form can not be signed electronically. The name of the official can not be typewritten into this space. This is a protected field. Print and sign in ink.
+       Type: /Tx  |  Default: ''
+
+[399] form1[0].#subform[11]
+       Type: ?  |  Default: ''
+
+[400] form1[0].#subform[11].#subform[12]
+       Type: ?  |  Default: ''
+
+[401] form1[0].#subform[11].#subform[12].Pt9Line16_TitleofSignatory[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Printed Name and Title of Signatory for Prospective Employer. 16. Enter Title of the Signatory.
+       Type: /Tx  |  Default: ''
+
+[402] form1[0].#subform[11].#subform[12].Pt9Line15_EmployerOrOrgName[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Mailing Address. 17. Enter Employer / Organization Name.
+       Type: /Tx  |  Default: ''
+
+[403] form1[0].#subform[11].#subform[12].Pt9_StreetNumberName[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Mailing Address. 17. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[404] form1[0].#subform[11].#subform[12].Pt9Line17_Unit[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Mailing Address. 17. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[405] form1[0].#subform[11].#subform[12].Pt9Line17_Unit[1]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Mailing Address. 17. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[406] form1[0].#subform[11].#subform[12].Pt9Line17_Unit[2]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Mailing Address. 17. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[407] form1[0].#subform[11].#subform[12].Pt9Line17_AptSteFlrNumber[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Mailing Address. 17. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[408] form1[0].#subform[11].#subform[12].Pt9Line17_CityOrTown[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Mailing Address. 17. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[409] form1[0].#subform[11].#subform[12].Pt9Line17_State[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Mailing Address. 17. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[410] form1[0].#subform[11].#subform[12].Pt9Line17_ZipCode[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Mailing Address. 17. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[411] form1[0].#subform[11].#subform[12].Pt9_PreparerFaxNumber[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Contact Information. 19. Enter Fax Number, if any.
+       Type: /Tx  |  Default: ''
+
+[412] form1[0].#subform[11].#subform[12].Pt9_DaytimePhoneNumber1[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Contact Information. 18. Enter Daytime Telephone Number.
+       Type: /Tx  |  Default: ''
+
+[413] form1[0].#subform[11].#subform[12].Pt9_Email[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Contact Information. 20. Enter Email Address, if any.
+       Type: /Tx  |  Default: ''
+
+[414] form1[0].#subform[11].#subform[12].Pt9_ReligiousDenominationName[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Religious Denomination Certification (to be completed only if the prospective employer is affiliated with a religious denomination). I certify under penalty of perjury, that the prospective employer is affiliated with this Religious Denomination, and that the attesting religious organization within the religious denomination is tax-exempt as described in section 501(c)(3) of the Internal Revenue Code of 1986, or equivalent sections of prior enactments of the Internal Revenue Code.  The contents of this certification are true and correct to the best of my knowledge. Enter Name of Religious Denomination.
+       Type: /Tx  |  Default: ''
+
+[415] form1[0].#subform[11].#subform[12].Pt9_DateofSignatureofARRD[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Religious Denomination Certification (to be completed only if the prospective employer is affiliated with a religious denomination). 21. Enter Date of Signature. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[416] form1[0].#subform[11].#subform[12].Pt9_ARRDSignature[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Religious Denomination Certification (to be completed only if the prospective employer is affiliated with a religious denomination). 21. Signature of the Authorized Representative of the Religious Denomination. This form can not be signed electronically. The name of the representative can not be typewritten into this space. This is a protected field. Print and sign in ink.
+       Type: /Tx  |  Default: ''
+
+[417] form1[0].#subform[11].#subform[12].Pt9_RDTitle[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Printed Name and Title of the Signatory of the Religious Denomination. 23. Enter Title of the Signatory.
+       Type: /Tx  |  Default: ''
+
+[418] form1[0].#subform[11].#subform[12].Pt9_RDMiddleName[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Printed Name and Title of the Signatory of the Religious Denomination. 22. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[419] form1[0].#subform[11].#subform[12].Pt9_RDGivenName[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Printed Name and Title of the Signatory of the Religious Denomination. 22. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[420] form1[0].#subform[11].#subform[12].Pt9_RDFamilyName[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Printed Name and Title of the Signatory of the Religious Denomination. 22. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[421] form1[0].#subform[11].#subform[12].Pt9Line15_MiddleName[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Printed Name and Title of Signatory for Prospective Employer. 15. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[422] form1[0].#subform[11].#subform[12].Pt9Line15_GivenName[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Printed Name and Title of Signatory for Prospective Employer. 15. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[423] form1[0].#subform[11].#subform[12].Pt9Line15_FamilyName[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Printed Name and Title of Signatory for Prospective Employer. 15. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[424] form1[0].#subform[11].#subform[12].Pt9_PetitioningOrgName[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Religious Denomination Certification (to be completed only if the prospective employer is affiliated with a religious denomination). I certify under penalty of perjury, that the prospective employer. Enter Name of Prospective Employer.
+       Type: /Tx  |  Default: ''
+
+[425] form1[0].#subform[13]
+       Type: ?  |  Default: ''
+
+[426] form1[0].#subform[13].Pt9Line24_NameofAROWRD[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Information About the Attesting Religious Organization Within the Religious Denomination. 24. Enter Name of Attesting Religious Organization Within the Religious Denomination.
+       Type: /Tx  |  Default: ''
+
+[427] form1[0].#subform[13].Pt9Line25_AROWRDStreetNumberName[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Information About the Attesting Religious Organization Within the Religious Denomination. 25. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[428] form1[0].#subform[13].Pt9Lne25_Unit[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Information About the Attesting Religious Organization Within the Religious Denomination. 25. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[429] form1[0].#subform[13].Pt9Lne25_Unit[1]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Information About the Attesting Religious Organization Within the Religious Denomination. 25. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[430] form1[0].#subform[13].Pt9Lne25_Unit[2]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Information About the Attesting Religious Organization Within the Religious Denomination. 25. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[431] form1[0].#subform[13].Pt9Line25_AptSteFlrNumber[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Information About the Attesting Religious Organization Within the Religious Denomination. 25. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[432] form1[0].#subform[13].Pt9Line25_AROWRDCityTown[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Information About the Attesting Religious Organization Within the Religious Denomination. 25. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[433] form1[0].#subform[13].Pt9Line25_AROWRDState[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Information About the Attesting Religious Organization Within the Religious Denomination. 25. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[434] form1[0].#subform[13].Pt9Line25_AROWRDZipCode[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Information About the Attesting Religious Organization Within the Religious Denomination. 25. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[435] form1[0].#subform[13].Pt9Line27_AROWRDPreparerFaxNumber[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Information About the Attesting Religious Organization Within the Religious Denomination. 27. Enter Fax Number, if any.
+       Type: /Tx  |  Default: ''
+
+[436] form1[0].#subform[13].Pt9Line26_AROWRDDaytimePhoneNumber1[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Information About the Attesting Religious Organization Within the Religious Denomination. 26. Enter Daytime Telephone Number.
+       Type: /Tx  |  Default: ''
+
+[437] form1[0].#subform[13].Pt9Line28_AROWRDEmail[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Information About the Attesting Religious Organization Within the Religious Denomination. 28. Enter Email Address, if any.
+       Type: /Tx  |  Default: ''
+
+[438] form1[0].#subform[13].Pt9Line29_AROWRDIRSTaxNumber[0]
+       Description: Part 9. Complete Only If Filing a Special Immigrant Religious Worker Petition. Information About the Attesting Religious Organization Within the Religious Denomination. 29. Enter I R S Tax Number of the Attesting Religious Organization.
+       Type: /Tx  |  Default: ''
+
+[439] form1[0].#subform[13].Pt10Line4_DateOfDeath[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 4. Enter Date of Death. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[440] form1[0].#subform[13].Pt10Line2_DateOfBirth[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 2. Enter Date of Birth. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[441] form1[0].#subform[13].Pt10Line3_CountryOfBirth[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 3. Enter Country of Birth.
+       Type: /Tx  |  Default: ''
+
+[442] form1[0].#subform[13].Pt10Line1_MiddleName[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 1. Full Name of U.S. citizen or Lawful Permanent Resident Abuser. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
+[443] form1[0].#subform[13].Pt10Line1_GivenName[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 1. Full Name of U.S. citizen or Lawful Permanent Resident Abuser. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[444] form1[0].#subform[13].Pt10Line1_FamilyName[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. NOTE: For the safety and protection of all V. A. W. A. self-petitioners, information regarding a filing will only be provided to the self-petitioner or his or her designated attorney or representative with a valid Form G-28, Notice of Entry of Appearance as Attorney or Accredited Representative. 1. Full Name of U.S. citizen or Lawful Permanent Resident Abuser. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[445] form1[0].#subform[13].Line3_ANumber[10]
+       Type: ?  |  Default: ''
+
+[446] form1[0].#subform[13].Line3_ANumber[10].Pt10Line5d1_AlienNumber[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 5. Your abuser is now, or was, a (Select one). D. U.S. Lawful Permanent Resident. 1. Provide. A. Number (if any).
+       Type: /Tx  |  Default: ''
+
+[447] form1[0].#subform[13].Pt10Line5e_Explain[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 5. Your abuser is now, or was, a (Select one). E. Other (Explain). Enter Explanation.
+       Type: /Tx  |  Default: ''
+
+[448] form1[0].#subform[13].Pt10Line5_Checkbox[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 5. Your abuser is now, or was, a (Select one). A. Select U.S. citizen born in the United States.
+       Type: /Btn  |  Default: ''
+
+[449] form1[0].#subform[13].Pt10Line5_Checkbox[1]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 5. Your abuser is now, or was, a (Select one). B. Select U.S. citizen born abroad to U.S. citizen parents.
+       Type: /Btn  |  Default: ''
+
+[450] form1[0].#subform[13].Pt10Line5_Checkbox[2]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 5. Your abuser is now, or was, a (Select one). C. Select U.S. citizen through naturalization.
+       Type: /Btn  |  Default: ''
+
+[451] form1[0].#subform[13].Pt10Line5_Checkbox[3]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 5. Your abuser is now, or was, a (Select one). D. Select U.S. Lawful Permanent Resident.
+       Type: /Btn  |  Default: ''
+
+[452] form1[0].#subform[13].Pt10Line5_Checkbox[4]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 5. Your abuser is now, or was, a (Select one). E. Select Other (Explain).
+       Type: /Btn  |  Default: ''
+
+[453] form1[0].#subform[13].Pt10Line6_NumberofMarriages[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 6. How many times have you been married? Enter the number here.
+       Type: /Tx  |  Default: ''
+
+[454] form1[0].#subform[13].Pt10Line7_NumberofAbuseMarriages[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 7. How many times was your abuser married (if known)? Enter the number here.
+       Type: /Tx  |  Default: ''
+
+[455] form1[0].#subform[13].Line3_ANumber[11]
+       Type: ?  |  Default: ''
+
+[456] form1[0].#subform[13].Line3_ANumber[11].Pt10Line5c1_AlienNumber[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 5. Your abuser is now, or was, a (Select one). C. U.S. citizen through naturalization. 1. Provide. A. Number (if known).
+       Type: /Tx  |  Default: ''
+
+[457] form1[0].#subform[14]
+       Type: ?  |  Default: ''
+
+[458] form1[0].#subform[14].Pt10Line9_DateFrom[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 9. When did you live with your abuser? Enter From Date. Enter as 2-digit Month, 2-digit Day, and 4-digit Year.
+       Type: /Tx  |  Default: ''
+
+[459] form1[0].#subform[14].Pt10Line9_DateTo[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 9. When did you live with your abuser? Enter To Date. Enter as 2-digit Month, 2-digit Day, and 4-digit Year. Include any other dates you have lived off/on with your abuser in the space provided in Part 15. Additional Information.
+       Type: /Tx  |  Default: ''
+
+[460] form1[0].#subform[14].Pt10Line10_StreetNumberName[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 10. Provide the last address at which you lived together with your abuser. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[461] form1[0].#subform[14].Pt10Line10_Unit[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 10. Provide the last address at which you lived together with your abuser. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[462] form1[0].#subform[14].Pt10Line10_Unit[1]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 10. Provide the last address at which you lived together with your abuser. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[463] form1[0].#subform[14].Pt10Line10_Unit[2]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 10. Provide the last address at which you lived together with your abuser. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[464] form1[0].#subform[14].Pt10Line10_AptSteFlrNumber[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 10. Provide the last address at which you lived together with your abuser. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[465] form1[0].#subform[14].Pt10Line10_CityOrTown[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 10. Provide the last address at which you lived together with your abuser. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[466] form1[0].#subform[14].Pt10Line10_State[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 10. Provide the last address at which you lived together with your abuser. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[467] form1[0].#subform[14].Pt10Line10_ZipCode[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 10. Provide the last address at which you lived together with your abuser. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[468] form1[0].#subform[14].Pt10Line10_PostalCode[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 10. Provide the last address at which you lived together with your abuser. Enter Postal Code.
+       Type: /Tx  |  Default: ''
+
+[469] form1[0].#subform[14].Pt10Line10_Province[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 10. Provide the last address at which you lived together with your abuser. Enter Province.
+       Type: /Tx  |  Default: ''
+
+[470] form1[0].#subform[14].Pt10Line10_Country[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 10. Provide the last address at which you lived together with your abuser. Enter Country.
+       Type: /Tx  |  Default: ''
+
+[471] form1[0].#subform[14].Pt10Line11_DateTo[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 11. Provide the last date that you lived together with your abuser at this address. Enter To Date. Enter as 2-digit Month, 2-digit Day, and 4-digit Year.
+       Type: /Tx  |  Default: ''
+
+[472] form1[0].#subform[14].Pt10Line11_DateFrom[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 11. Provide the last date that you lived together with your abuser at this address. Enter From Date. Enter as 2-digit Month, 2-digit Day, and 4-digit Year.
+       Type: /Tx  |  Default: ''
+
+[473] form1[0].#subform[14].Pt10Line12[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 12. I am currently residing in the United States and I request an Employment Authorization Document. Select Yes.
+       Type: /Btn  |  Default: ''
+
+[474] form1[0].#subform[14].Pt10Line12[1]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 12. I am currently residing in the United States and I request an Employment Authorization Document. Select No.
+       Type: /Btn  |  Default: ''
+
+[475] form1[0].#subform[14].Pt11Line1_Checkbox[0]
+       Description: Part 11. Petitioner's Statement, Contact Information, Declaration, and Signature (Individual). IMPORTANT: Complete this section ONLY if you are an individual filing this petition for yourself.  If you are filing Form I-3 60 to petition for another person or as an authorized signatory of an organization, complete Part 12. Statement, Contact Information, Declaration, and Signature of the Petitioner or Authorized Signatory. NOTE: Read the Penalties section of the Form I-3 60 Instructions before completing this part. Petitioner's Statement.  NOTE: Select the box for either Item A. or B. in Item Number 1.  If applicable, select the box for Item Number 2. 1. Petitioner's Statement Regarding the Interpreter. A. Select I can read and understand English, and I have read and understand every question and instruction on this petition and my answer to every question.
+       Type: /Btn  |  Default: ''
+
+[476] form1[0].#subform[14].Pt11Line1_Checkbox[1]
+       Description: Part 11. Petitioner's Statement, Contact Information, Declaration, and Signature (Individual). Petitioner's Statement. NOTE:  Select the box for either Item A. or B. in Item Number 1.  If applicable, select the box for Item Number 2.  1. Petitioner's Statement Regarding the Interpreter. B. Select The interpreter named in Part 13. read to me every question and instruction on this petition, as well as my answer to every question in a language in which I am fluent.  I understand all of this information as interpreted.
+       Type: /Btn  |  Default: ''
+
+[477] form1[0].#subform[14].Pt11Line1b_Language[0]
+       Description: Part 11. Petitioner's Statement, Contact Information, Declaration, and Signature (Individual). Petitioner's Statement. 1. Petitioner's Statement Regarding the Interpreter. B. Enter Language.
+       Type: /Tx  |  Default: ''
+
+[478] form1[0].#subform[14].Pt11Line2_Checkbox[0]
+       Description: Part 11. Petitioner's Statement, Contact Information, Declaration, and Signature (Individual). Petitioner's Statement. NOTE:  Select the box for either Item A. or B. in Item Number 1.  If applicable, select the box for Item Number 2. 2. Petitioner's Statement Regarding the Preparer. Select At my request, the preparer named in Part 14 prepared this petition for me based only upon information I provided or authorized.
+       Type: /Btn  |  Default: ''
+
+[479] form1[0].#subform[14].Pt11Line2_RepresentativeName[0]
+       Description: Part 11. Petitioner's Statement, Contact Information, Declaration, and Signature (Individual). Petitioner's Statement. NOTE:  Select the box for either Item. A or B. in Item Number 1.  If applicable, select the box for Item Number 2. 2. Petitioner's Statement Regarding the Preparer. Enter Preparer Name.
+       Type: /Tx  |  Default: ''
+
+[480] form1[0].#subform[14].Pt9Line8a_DateOfMarriage[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 8. A. When did you and your abuser get married? (If you are a self-petitioning child or self-petitioning parent, type or print "N/A."). Enter as 2-digit Month, 2-digit Day, and 4-digit Year.
+       Type: /Tx  |  Default: ''
+
+[481] form1[0].#subform[14].Pt9Line8b_PlaceOfMarriage[0]
+       Description: Part 10. Complete Only If Filing as a V. A. W. A. Self-Petitioning Spouse or Child of a U.S. Citizen or Lawful Permanent Resident or a V. A. W. A. Self-Petitioning Parent of a U.S. Citizen Son or Daughter. 8. B. Where did you and your abuser get married? (If you are a self-petitioning child or self-petitioning parent, type or print "N/A.").
+       Type: /Tx  |  Default: ''
+
+[482] form1[0].#subform[15]
+       Type: ?  |  Default: ''
+
+[483] form1[0].#subform[15].Pt11Line6_DateofSignature[0]
+       Description: Part 11. Petitioner's Statement, Contact Information, Declaration, and Signature (Individual). Petitioner's Signature. 6. Enter Date of Signature. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[484] form1[0].#subform[15].Pt11Line6_Signature[0]
+       Description: Part 11. Petitioner's Statement, Contact Information, Declaration, and Signature (Individual). Petitioner's Signature. 6.  Petitioner's Signature. This form can not be signed electronically. The name of the petitioner can not be typewritten into this space. This is a protected field. Print and sign in ink.
+       Type: /Tx  |  Default: ''
+
+[485] form1[0].#subform[15].Pt11Line4_MobileNumber1[0]
+       Description: Part 11. Petitioner's Statement, Contact Information, Declaration, and Signature (Individual). Petitioner's Contact Information. 4. Enter Petitioner's Mobile Telephone Number, if any.
+       Type: /Tx  |  Default: ''
+
+[486] form1[0].#subform[15].Pt11Line5_Email[0]
+       Description: Part 11. Petitioner's Statement, Contact Information, Declaration, and Signature (Individual). Petitioner's Contact Information. 5. Enter Petitioner's Email Address, if any.
+       Type: /Tx  |  Default: ''
+
+[487] form1[0].#subform[15].Pt11Line3_DaytimePhoneNumber1[0]
+       Description: Part 11. Petitioner's Statement, Contact Information, Declaration, and Signature (Individual). Petitioner's Contact Information. 3. Enter Petitioner's Daytime Telephone Number.  
+       Type: /Tx  |  Default: ''
+
+[488] form1[0].#subform[15].Pt12Line1_Checkbox[0]
+       Description: Part 12. Statement, Contact Information, Declaration, and Signature of the Petitioner or Authorized Signatory. IMPORTANT:  Complete this section ONLY if you are filing Form I-3 60 to petition for another person or as an authorized signatory of an organization.  If you are an individual filing this petition for yourself, complete Part 11. Petitioner's Statement, Contact Information, Declaration, and Signature (Individual).  NOTE: Read the Penalties section of the Form I-3 60 Instructions before completing this part. Petitioner's or Authorized Signatory's Statement. NOTE: Select the box for either Item A. or B. in Item Number 1.  If applicable, select the box for Item Number 2.  1. Petitioner's Statement Regarding the Interpreter. A. Select I can read and understand English, and I have read and understand every question and instruction on this petition and my answer to every question.
+       Type: /Btn  |  Default: ''
+
+[489] form1[0].#subform[15].Pt12Line1b_Language[0]
+       Description: Part 12. Statement, Contact Information, Declaration, and Signature of the Petitioner or Authorized Signatory. Petitioner's or Authorized Signatory's Statement. 1. Petitioner's Statement Regarding the Interpreter. B. Enter Language.
+       Type: /Tx  |  Default: ''
+
+[490] form1[0].#subform[15].Pt12Line1_Checkbox[1]
+       Description: Part 12. Statement, Contact Information, Declaration, and Signature of the Petitioner or Authorized Signatory. Petitioner's or Authorized Signatory's Statement.  NOTE:  Select the box for either Item A. or B. in Item Number 1.  If applicable, select the box for Item Number 2. 1. Petitioner's Statement Regarding the Interpreter. B. Select The interpreter named in Part 13. read to me every question and instruction on this petition and my answer to every question in the language which I am fluent. I understand all of this information as interpreted.
+       Type: /Btn  |  Default: ''
+
+[491] form1[0].#subform[16]
+       Type: ?  |  Default: ''
+
+[492] form1[0].#subform[16].Pt12Line8_DateofSignature[0]
+       Description: Part 12. Statement, Contact Information, Declaration, and Signature of the Petitioner or Authorized Signatory. Petitioner's or Authorized Signatory's Signature. 8. Enter Date of Signature. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[493] form1[0].#subform[16].Pt12Line8_Signature[0]
+       Description: Part 12. Statement, Contact Information, Declaration, and Signature of the Petitioner or Authorized Signatory. Petitioner's or Authorized Signatory's Signature. 8. Petitioner's or Authorized Signatory's Signature. This form can not be signed electronically. The name of the petitioner or authorized signatory can not be typewritten into this space. This is a protected field. Print and sign in ink.
+       Type: /Tx  |  Default: ''
+
+[494] form1[0].#subform[16].Pt12Line6_MobileNumber1[0]
+       Description: Part 12. Statement, Contact Information, Declaration, and Signature of the Petitioner or Authorized Signatory. Authorized Signatory's Contact Information. 6. Enter Authorized Signatory's Mobile Telephone Number, if any.
+       Type: /Tx  |  Default: ''
+
+[495] form1[0].#subform[16].Pt12Line7_Email[0]
+       Description: Part 12. Statement, Contact Information, Declaration, and Signature of the Petitioner or Authorized Signatory. Authorized Signatory's Contact Information. 7. Enter Authorized Signatory's Email Address, if any.
+       Type: /Tx  |  Default: ''
+
+[496] form1[0].#subform[16].Pt12Line5_DaytimePhoneNumber[0]
+       Description: Part 12. Statement, Contact Information, Declaration, and Signature of the Petitioner or Authorized Signatory. Authorized Signatory's Contact Information. 5. Enter Authorized Signatory's Daytime Telephone Number.
+       Type: /Tx  |  Default: ''
+
+[497] form1[0].#subform[16].Pt12Line2_Checkbox[0]
+       Description: Part 12. Statement, Contact Information, Declaration, and Signature of the Petitioner or Authorized Signatory. Petitioner's or Authorized Signatory's Statement.  NOTE:  Select the box for either Item A. or B. in Item Number 1.  If applicable, select the box for Item Number 2. 2. Petitioner's Statement Regarding the Preparer. Select At my request, the preparer named in Part 14., prepared this petition for me based only upon information I provided or authorized.
+       Type: /Btn  |  Default: ''
+
+[498] form1[0].#subform[16].Pt12Line2_RepresentativeName[0]
+       Description: Part 12. Statement, Contact Information, Declaration, and Signature of the Petitioner or Authorized Signatory. Petitioner's or Authorized Signatory's Statement.  NOTE:  Select the box for either Item A. or B. in Item Number 1.  If applicable, select the box for Item Number 2. 2. Petitioner's Statement Regarding the Preparer. Enter Name of Preparer.
+       Type: /Tx  |  Default: ''
+
+[499] form1[0].#subform[16].Pt12Line3_AuthorizedSignatoryFamilyName[0]
+       Description: Part 12. Statement, Contact Information, Declaration, and Signature of the Petitioner or Authorized Signatory. Authorized Signatory's Contact Information. 3. Enter Authorized Signatory's Family Name (Last Name). 
+       Type: /Tx  |  Default: ''
+
+[500] form1[0].#subform[16].Pt12Line3_AuthorizedSignatoryGivenName[0]
+       Description: Part 12. Statement, Contact Information, Declaration, and Signature of the Petitioner or Authorized Signatory. Authorized Signatory's Contact Information. 3. Enter Authorized Signatory's Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[501] form1[0].#subform[16].Pt12Line4_AuthorizedSignatoryTitle[0]
+       Description: Part 12. Statement, Contact Information, Declaration, and Signature of the Petitioner or Authorized Signatory. Authorized Signatory's Contact Information. 4. Enter Authorized Signatory's Title.
+       Type: /Tx  |  Default: ''
+
+[502] form1[0].#subform[17]
+       Type: ?  |  Default: ''
+
+[503] form1[0].#subform[17].#subform[18]
+       Type: ?  |  Default: ''
+
+[504] form1[0].#subform[17].#subform[18].Pt12Line5_InterpreterMobileTelephone[0]
+       Description: Part 13. Interpreter's Contact Information, Certification, and Signature. Interpreter's Contact Information. 5. Enter Interpreter's Mobile Telephone Number, if any.
+       Type: /Tx  |  Default: ''
+
+[505] form1[0].#subform[17].#subform[18].Pt12Line4_InterpreterDaytimeTelephone[0]
+       Description: Part 13. Interpreter's Contact Information, Certification, and Signature. Interpreter's Contact Information. 4. Enter Interpreter's Daytime Telephone Number.
+       Type: /Tx  |  Default: ''
+
+[506] form1[0].#subform[17].#subform[18].Pt12_NameofLanguage[0]
+       Description: Part 13. Interpreter's Contact Information, Certification, and Signature. Interpreter's Certification. I certify, under penalty of perjury, that I am fluent in English and (Enter Language), which is the same language specified in Part 11., Item B. in Item Number 1., or in Part 12., Item B. in Item Number 1., and I have read to this petitioner or the authorized signatory in the identified language every question and instruction on this petition and his or her answer to every question.  The petitioner or authorized signatory informed me that he or she understands every instruction, question, and answer on the petition, including the Petitioner's Declaration and Certification, or Petitioner's or Authorized Signatory's Declaration and Certification, and has verified the accuracy of every answer.
+       Type: /Tx  |  Default: ''
+
+[507] form1[0].#subform[17].#subform[18].Pt12Line6_DateofSignature[0]
+       Description: Part 13. Interpreter's Contact Information, Certification, and Signature. Interpreter's Signature. 7. Enter Date of Signature. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[508] form1[0].#subform[17].#subform[18].Pt12Line6_Signature[0]
+       Description: Part 13. Interpreter's Contact Information, Certification, and Signature. Interpreter's Signature. 7. Interpreter's Signature. This form can not be signed electronically. The name of the interpreter can not be typewritten into this space. This is a protected field. Print and sign in ink.
+       Type: /Tx  |  Default: ''
+
+[509] form1[0].#subform[17].#subform[18].Pt13Line3_StreetNumberName[0]
+       Description: Part 13. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[510] form1[0].#subform[17].#subform[18].Pt13Line3_Unit[0]
+       Description: Part 13. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[511] form1[0].#subform[17].#subform[18].Pt13Line3_Unit[1]
+       Description: Part 13. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[512] form1[0].#subform[17].#subform[18].Pt13Line3_Unit[2]
+       Description: Part 13. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[513] form1[0].#subform[17].#subform[18].Pt13Line3_AptSteFlrNumber[0]
+       Description: Part 13. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[514] form1[0].#subform[17].#subform[18].Pt13Line3_CityOrTown[0]
+       Description: Part 13. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[515] form1[0].#subform[17].#subform[18].Pt13Line3_State[0]
+       Description: Part 13. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[516] form1[0].#subform[17].#subform[18].Pt13Line3_ZipCode[0]
+       Description: Part 13. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[517] form1[0].#subform[17].#subform[18].Pt13Line3_PostalCode[0]
+       Description: Part 13. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. Enter Postal Code.
+       Type: /Tx  |  Default: ''
+
+[518] form1[0].#subform[17].#subform[18].Pt13Line3_Province[0]
+       Description: Part 13. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. Enter Province.
+       Type: /Tx  |  Default: ''
+
+[519] form1[0].#subform[17].#subform[18].Pt13Line3_Country[0]
+       Description: Part 13. Interpreter's Contact Information, Certification, and Signature. Interpreter's Mailing Address. 3. Enter Country.
+       Type: /Tx  |  Default: ''
+
+[520] form1[0].#subform[17].#subform[18].Pt12Line5_Email[0]
+       Description: Part 13. Interpreter's Contact Information, Certification, and Signature. Interpreter's Contact Information. 6. Enter Interpreter's Email Address, if any.
+       Type: /Tx  |  Default: ''
+
+[521] form1[0].#subform[17].#subform[18].Pt13Line1_InterpreterFamilyName[0]
+       Description: Part 13. Interpreter's Contact Information, Certification, and Signature. Provide the following information about the interpreter.  Interpreter's Full Name. 1. Enter Interpreter's Family Name (Last Name). 
+       Type: /Tx  |  Default: ''
+
+[522] form1[0].#subform[17].#subform[18].Pt13Line1_InterpreterGivenName[0]
+       Description: Part 13. Interpreter's Contact Information, Certification, and Signature. Interpreter's Full Name. 1. Enter Interpreter's Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[523] form1[0].#subform[17].#subform[18].Pt13Line2_InterpreterBusinessorOrg[0]
+       Description: Part 13. Interpreter's Contact Information, Certification, and Signature. 2. Enter Interpreter's Business or Organization Name, if any.
+       Type: /Tx  |  Default: ''
+
+[524] form1[0].#subform[19]
+       Type: ?  |  Default: ''
+
+[525] form1[0].#subform[19].Pt13ine5_PreparerFaxNumber[0]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Contact Information. 5. Enter Preparer's Mobile Number.
+       Type: /Tx  |  Default: ''
+
+[526] form1[0].#subform[19].Pt13Line4_DaytimePhoneNumber1[0]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Contact Information. 4. Enter Preparer's Daytime Telephone Number.
+       Type: /Tx  |  Default: ''
+
+[527] form1[0].#subform[19].Pt13Line6_Email[0]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Contact Information. 6. Enter Preparer's Email Address, if any.
+       Type: /Tx  |  Default: ''
+
+[528] form1[0].#subform[19].Pt14Line3_StreetNumberName[0]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Mailing Address. 3. Enter Street Number and Name.
+       Type: /Tx  |  Default: ''
+
+[529] form1[0].#subform[19].Pt14Line3_Unit[0]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Mailing Address. 3. Select Suite.
+       Type: /Btn  |  Default: ''
+
+[530] form1[0].#subform[19].Pt14Line3_Unit[1]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Mailing Address. 3. Select Apartment.
+       Type: /Btn  |  Default: ''
+
+[531] form1[0].#subform[19].Pt14Line3_Unit[2]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Mailing Address. 3. Select Floor.
+       Type: /Btn  |  Default: ''
+
+[532] form1[0].#subform[19].Pt14Line3_AptSteFlrNumber[0]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Mailing Address. 3. Enter Apartment, Suite or Floor Number.
+       Type: /Tx  |  Default: ''
+
+[533] form1[0].#subform[19].Pt14Line3_CityOrTown[0]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Mailing Address. 3. Enter City or Town.
+       Type: /Tx  |  Default: ''
+
+[534] form1[0].#subform[19].Pt14Line3_State[0]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Mailing Address. 3. Select State from List of States.
+       Type: /Ch  |  Default: ''
+
+[535] form1[0].#subform[19].Pt14Line3_ZipCode[0]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Mailing Address. 3. Enter Zip Code.
+       Type: /Tx  |  Default: ''
+
+[536] form1[0].#subform[19].Pt14Line3_PostalCode[0]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Mailing Address. 3. Enter Postal Code.
+       Type: /Tx  |  Default: ''
+
+[537] form1[0].#subform[19].Pt14Line3_Province[0]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Mailing Address. 3. Enter Province.
+       Type: /Tx  |  Default: ''
+
+[538] form1[0].#subform[19].Pt14Line3_Country[0]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Mailing Address. 3. Enter Country.
+       Type: /Tx  |  Default: ''
+
+[539] form1[0].#subform[19].Pt13Line7_Checkbox[0]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Statement. 7. A. Select I am not an attorney or accredited representative but have prepared this petition on behalf of the petitioner and with the petitioner's consent.
+       Type: /Btn  |  Default: ''
+
+[540] form1[0].#subform[19].Pt13Line7_Checkbox[1]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Statement. 7. B. Select I am an attorney or accredited representative.
+       Type: /Btn  |  Default: ''
+
+[541] form1[0].#subform[19].Pt13Line7b_extends[0]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Statement. 7. B. Select I am an attorney or accredited representative and my representation of the petitioner in this case does not extend beyond the preparation of this petition.
+       Type: /Btn  |  Default: ''
+
+[542] form1[0].#subform[19].Pt13Line7b_extends[1]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Statement. 7. B. Select I am an attorney or accredited representative and my representation of the petitioner in this case extends beyond the preparation of this petition. NOTE:  If you are an attorney or accredited representative whose representation extends beyond preparation of this petition, you may be obliged to submit a completed Form G-28, Notice of Entry of Appearance as Attorney or Accredited Representative, or G-28 I, Notice of Entry of Appearance as Attorney In Matters Outside the Geographical Confines of the United States, with this petition.
+       Type: /Btn  |  Default: ''
+
+[543] form1[0].#subform[19].Pt13Line8_DateofSignature[0]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Signature. 8. Enter Date of Signature. Enter as 2 digit month, 2 digit day and 4 digit year.
+       Type: /Tx  |  Default: ''
+
+[544] form1[0].#subform[19].Pt13Line1_PreparerGivenName[0]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Full Name. 1. Enter Preparer's Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[545] form1[0].#subform[19].Pt13Line2_BusinessName[0]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. 2. Enter Preparer's Business or Organization Name, if any.
+       Type: /Tx  |  Default: ''
+
+[546] form1[0].#subform[19].Pt13Line1_PreparerFamilyName[0]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner.  Provide the following information about the preparer. Preparer's Full Name. 1. Enter Preparer's Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[547] form1[0].#subform[19].Pt12Line8_Signature[1]
+       Description: Part 14. Contact Information, Declaration, and Signature of the Person Preparing this Petition, if Other Than the Petitioner. Preparer's Signature. 8. Preparer's Signature. This form can not be signed electronically.  The name of the preparer can not be typewritten into this space. This is a protected field. Print and sign in ink.
+       Type: /Tx  |  Default: ''
+
+[548] form1[0].#subform[20]
+       Type: ?  |  Default: ''
+
+[549] form1[0].#subform[20].Pt14Line5d_AdditionalInfo[0]
+       Description: Part 15. Additional Information. 5. D. Enter Additional Information.
+       Type: /Tx  |  Default: ''
+
+[550] form1[0].#subform[20].Global_ANumber[0]
+       Type: ?  |  Default: ''
+
+[551] form1[0].#subform[20].Global_ANumber[0].Pt1Line4_AlienNumber[1]
+       Description: Part 15. Additional Information. 2. Enter Alien Registration Number (A. Number), if any.
+       Type: /Tx  |  Default: ''
+
+[552] form1[0].#subform[20].Pt14Line3a_PageNumber[0]
+       Description: Part 15. Additional Information. 3. A. Enter Page Number.
+       Type: /Tx  |  Default: ''
+
+[553] form1[0].#subform[20].Pt14Line3b_PartNumber[0]
+       Description: Part 15. Additional Information. 3. B. Enter Part Number.
+       Type: /Tx  |  Default: ''
+
+[554] form1[0].#subform[20].Pt14Line3c_ItemNumber[0]
+       Description: Part 15. Additional Information. 3. C. Enter Item Number.
+       Type: /Tx  |  Default: ''
+
+[555] form1[0].#subform[20].Pt14Line3d_AdditionalInfo[0]
+       Description: Part 15. Additional Information. 3. D. Enter Additional Information.
+       Type: /Tx  |  Default: ''
+
+[556] form1[0].#subform[20].Pt14Line6a_PageNumber[0]
+       Description: Part 15. Additional Information. 6. A. Enter Page Number.
+       Type: /Tx  |  Default: ''
+
+[557] form1[0].#subform[20].Pt14Line6b_PartNumber[0]
+       Description: Part 15. Additional Information. 6. B. Enter Part Number.
+       Type: /Tx  |  Default: ''
+
+[558] form1[0].#subform[20].Pt14Line6c_ItemNumber[0]
+       Description: Part 15. Additional Information. 6. C. Enter Item Number.
+       Type: /Tx  |  Default: ''
+
+[559] form1[0].#subform[20].Pt14Line6d_AdditionalInfo[0]
+       Description: Part 15. Additional Information. 6. D. Enter Additional Information.
+       Type: /Tx  |  Default: ''
+
+[560] form1[0].#subform[20].Pt14Line5c_ItemNumber[0]
+       Description: Part 15. Additional Information. 5. C. Enter Item Number.
+       Type: /Tx  |  Default: ''
+
+[561] form1[0].#subform[20].Pt14Line5b_PartNumber[0]
+       Description: Part 15. Additional Information. 5. B. Enter Part Number.
+       Type: /Tx  |  Default: ''
+
+[562] form1[0].#subform[20].Pt14Line5a_PageNumber[0]
+       Description: Part 15. Additional Information. 5. A. Enter Page Number.
+       Type: /Tx  |  Default: ''
+
+[563] form1[0].#subform[20].Pt14Line4a_PageNumber[0]
+       Description: Part 15. Additional Information. 4. A. Enter Page Number.
+       Type: /Tx  |  Default: ''
+
+[564] form1[0].#subform[20].Pt14Line4b_PartNumber[0]
+       Description: Part 15. Additional Information. 4. B. Enter Part Number.
+       Type: /Tx  |  Default: ''
+
+[565] form1[0].#subform[20].Pt14Line4c_ItemNumber[0]
+       Description: Part 15. Additional Information. 4. C. Enter Item Number.
+       Type: /Tx  |  Default: ''
+
+[566] form1[0].#subform[20].Pt14Line4d_AdditionalInfo[0]
+       Description: Part 15. Additional Information. 4. D. Enter Additional Information.
+       Type: /Tx  |  Default: ''
+
+[567] form1[0].#subform[20].Pt1Line1_FamilyName[1]
+       Description: Part 15. Additional Information. If you need extra space to provide any additional information within this petition, use the space below.  If you need more space than what is provided, you may make copies of this page to complete and file with this petition or attach a separate sheet of paper.  Type or print your name and A. Number (if any) at the top of each sheet; indicate the Page Number, Part Number, and Item Number to which your answer refers; and sign and date each sheet. 1. Enter Family Name (Last Name).
+       Type: /Tx  |  Default: ''
+
+[568] form1[0].#subform[20].Pt1Line1_GivenName[1]
+       Description: Part 15. Additional Information. 1. Enter Given Name (First Name).
+       Type: /Tx  |  Default: ''
+
+[569] form1[0].#subform[20].Pt1Line1_MiddleName[1]
+       Description: Part 15. Additional Information. 1. Enter Middle Name.
+       Type: /Tx  |  Default: ''
+
