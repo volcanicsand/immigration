@@ -828,18 +828,1213 @@
     </div>
   </div>
 </div>
-<!-- s4 placeholder -->
-<div class="section" id="s4"></div>
-<!-- s5 placeholder -->
-<div class="section" id="s5"></div>
-<!-- s6 placeholder -->
-<div class="section" id="s6"></div>
-<!-- s7 placeholder -->
-<div class="section" id="s7"></div>
-<!-- s8 placeholder -->
-<div class="section" id="s8"></div>
-<!-- s9 placeholder -->
-<div class="section" id="s9"></div>
+<!-- ================================================
+     SECTION 4: Parts 6-10 -- Category-Specific Details
+================================================ -->
+<div class="section" id="s4">
+
+  <!-- Part 6: Amerasian -->
+  <div class="card">
+    <div class="card-header">Part 6 -- Complete Only If Filing for an Amerasian</div>
+    <div class="card-body">
+      <div class="slabel">Mother of the Amerasian</div>
+      <div class="row c3">
+        <div class="field"><label>1. Family Name (Last)</label>
+          <input type="text" oninput="set('Pt6Line1_FamilyName[0]',this.value)"></div>
+        <div class="field"><label>Given Name (First)</label>
+          <input type="text" oninput="set('Pt6Line1_GivenName[0]',this.value)"></div>
+        <div class="field"><label>Middle Name</label>
+          <input type="text" oninput="set('Pt6Line1_MiddleName[0]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>2.A. Is the mother still living?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q6_2a" onchange="chkExcl('Pt6Line2a[0]',['Pt6Line2a[1]','Pt6Line2a[2]'])"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q6_2a" onchange="chkExcl('Pt6Line2a[1]',['Pt6Line2a[0]','Pt6Line2a[2]'])"> <label>No</label></label>
+            <label class="ri"><input type="radio" name="q6_2a" onchange="chkExcl('Pt6Line2a[2]',['Pt6Line2a[0]','Pt6Line2a[1]'])"> <label>Unknown</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>2.C. Date of Death (if deceased) <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt6Line2c_DateofDeath[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+
+      <div class="slabel">2.B. Mother's Address (if living)</div>
+      <div class="row c1">
+        <div class="field"><label>In Care Of Name</label>
+          <input type="text" oninput="set('Pt6Line2b_InCareofName[0]',this.value)"></div>
+      </div>
+      <div class="row c31">
+        <div class="field"><label>Street Number and Name</label>
+          <input type="text" oninput="set('Pt6Line2b_StreetNumberName[0]',this.value)"></div>
+        <div class="field"><label>Apt/Ste/Flr #</label>
+          <input type="text" oninput="set('Pt6Line2b_AptSteFlrNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1" style="margin-bottom:4px">
+        <div class="field"><label>Unit Type</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="p6m_unit" onchange="chkExcl('Pt6Line2b_Unit[0]',['Pt6Line2b_Unit[1]','Pt6Line2b_Unit[2]'])"> <label>Ste</label></label>
+            <label class="ri"><input type="radio" name="p6m_unit" onchange="chkExcl('Pt6Line2b_Unit[1]',['Pt6Line2b_Unit[0]','Pt6Line2b_Unit[2]'])"> <label>Apt</label></label>
+            <label class="ri"><input type="radio" name="p6m_unit" onchange="chkExcl('Pt6Line2b_Unit[2]',['Pt6Line2b_Unit[0]','Pt6Line2b_Unit[1]'])"> <label>Flr</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>City or Town</label>
+          <input type="text" oninput="set('Pt6Line2b_CityOrTown[0]',this.value)"></div>
+        <div class="field"><label>State</label>
+          <select onchange="set('Pt6Line2b_State[0]',this.value)"><option value="">-- Select --</option><option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>DC</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option></select></div>
+        <div class="field"><label>Zip Code</label>
+          <input type="text" maxlength="10" oninput="set('Pt6Line2b_ZipCode[0]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Province</label>
+          <input type="text" oninput="set('Pt6Line2b_Province[0]',this.value)"></div>
+        <div class="field"><label>Postal Code</label>
+          <input type="text" oninput="set('Pt6Line2b_PostalCode[0]',this.value)"></div>
+        <div class="field"><label>Country</label>
+          <input type="text" oninput="set('Pt6Line2b_Country[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Father of the Amerasian</div>
+      <div class="row c3">
+        <div class="field"><label>3. Family Name (Last)</label>
+          <input type="text" oninput="set('Pt6Line3_FamilyName[0]',this.value)"></div>
+        <div class="field"><label>Given Name (First)</label>
+          <input type="text" oninput="set('Pt6Line3_GivenName[0]',this.value)"></div>
+        <div class="field"><label>Middle Name</label>
+          <input type="text" oninput="set('Pt6Line3_MiddleName[0]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>4. Date of Birth <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt6Line4_DateOfBirth[0]',this.value)"></div>
+        <div class="field"><label>5. Country of Birth</label>
+          <input type="text" oninput="set('Pt6Line5_CountryOfBirth[0]',this.value)"></div>
+      </div>
+
+      <div class="row c1">
+        <div class="field"><label>6.A. Is the father still living?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q6_6a" onchange="chkExcl('Pt6Line6a[0]',['Pt6Line6a[1]','Pt6Line6a[2]'])"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q6_6a" onchange="chkExcl('Pt6Line6a[1]',['Pt6Line6a[0]','Pt6Line6a[2]'])"> <label>No</label></label>
+            <label class="ri"><input type="radio" name="q6_6a" onchange="chkExcl('Pt6Line6a[2]',['Pt6Line6a[0]','Pt6Line6a[1]'])"> <label>Unknown</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>6.C. Date of Death (if deceased) <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt6Line6c_DateofDeath[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+
+      <div class="slabel">6.B. Father's Address (if living)</div>
+      <div class="row c1">
+        <div class="field"><label>In Care Of Name</label>
+          <input type="text" oninput="set('Pt6Line6b_InCareofName[0]',this.value)"></div>
+      </div>
+      <div class="row c31">
+        <div class="field"><label>Street Number and Name</label>
+          <input type="text" oninput="set('Pt6Line6b_StreetNumberName[0]',this.value)"></div>
+        <div class="field"><label>Apt/Ste/Flr #</label>
+          <input type="text" oninput="set('Pt6Line6b_AptSteFlrNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1" style="margin-bottom:4px">
+        <div class="field"><label>Unit Type</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="p6f_unit" onchange="chkExcl('Pt6Line6b_Unit[0]',['Pt6Line6b_Unit[1]','Pt6Line6b_Unit[2]'])"> <label>Ste</label></label>
+            <label class="ri"><input type="radio" name="p6f_unit" onchange="chkExcl('Pt6Line6b_Unit[1]',['Pt6Line6b_Unit[0]','Pt6Line6b_Unit[2]'])"> <label>Apt</label></label>
+            <label class="ri"><input type="radio" name="p6f_unit" onchange="chkExcl('Pt6Line6b_Unit[2]',['Pt6Line6b_Unit[0]','Pt6Line6b_Unit[1]'])"> <label>Flr</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>City or Town</label>
+          <input type="text" oninput="set('Pt6Line6b_CityOrTown[0]',this.value)"></div>
+        <div class="field"><label>State</label>
+          <select onchange="set('Pt6Line6b_State[0]',this.value)"><option value="">-- Select --</option><option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>DC</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option></select></div>
+        <div class="field"><label>Zip Code</label>
+          <input type="text" maxlength="10" oninput="set('Pt6Line6b_ZipCode[0]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Province</label>
+          <input type="text" oninput="set('Pt6Line6b_Province[0]',this.value)"></div>
+        <div class="field"><label>Postal Code</label>
+          <input type="text" oninput="set('Pt6Line6b_PostalCode[0]',this.value)"></div>
+        <div class="field"><label>Country</label>
+          <input type="text" oninput="set('Pt6Line6b_Country[0]',this.value)"></div>
+      </div>
+
+      <div class="row c2">
+        <div class="field"><label>6.D. Daytime Telephone Number</label>
+          <input type="text" oninput="set('Pt4Line6d_DaytimeTelephoneNumber[0]',this.value)"></div>
+        <div class="field"><label>6.E. Work Telephone Number</label>
+          <input type="text" oninput="set('Pt6Line6e_WorkTelephoneNumber[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">7. Father's Military Service</div>
+      <div class="row c1">
+        <div class="field"><label>7.A. Branch of Service</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="p6_7a" onchange="setNof('Pt6Line7a',0,5)"> <label>Army</label></label>
+            <label class="ri"><input type="radio" name="p6_7a" onchange="setNof('Pt6Line7a',1,5)"> <label>Air Force</label></label>
+            <label class="ri"><input type="radio" name="p6_7a" onchange="setNof('Pt6Line7a',2,5)"> <label>Navy</label></label>
+            <label class="ri"><input type="radio" name="p6_7a" onchange="setNof('Pt6Line7a',3,5)"> <label>Marine Corps</label></label>
+            <label class="ri"><input type="radio" name="p6_7a" onchange="setNof('Pt6Line7a',4,5)"> <label>Coast Guard</label></label>
+            <label class="ri"><input type="radio" name="p6_7a" onchange="setNof('Pt6Line7a',5,5)"> <label>Civilian Employee</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>7.B. Service Number</label>
+          <input type="text" oninput="set('Pt6Line7b_BranchServiceNumber[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Part 7: Widow(er) -->
+  <div class="card">
+    <div class="card-header">Part 7 -- Complete Only If Filing as a Widow/Widower</div>
+    <div class="card-body">
+      <div class="slabel">1. Full Name of U.S. Citizen Spouse Who Died</div>
+      <div class="row c3">
+        <div class="field"><label>Family Name (Last)</label>
+          <input type="text" oninput="set('Pt7Line1_FamilyName[0]',this.value)"></div>
+        <div class="field"><label>Given Name (First)</label>
+          <input type="text" oninput="set('Pt7Line1_GivenName[0]',this.value)"></div>
+        <div class="field"><label>Middle Name</label>
+          <input type="text" oninput="set('Pt7Line1_MiddleName[0]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>2. Date of Birth <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt7Line2_DateOfBirth[0]',this.value)"></div>
+        <div class="field"><label>3. Country of Birth</label>
+          <input type="text" oninput="set('Pt7Line3_CountryOfBirth[0]',this.value)"></div>
+        <div class="field"><label>4. Date of Death <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt7Line4_DateOfDeath[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">5. At time of death, your spouse was a:</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="p7_5" onchange="chk('Pt7Line5a_USCitizen[0]',true)"> <label>A. U.S. citizen by birth</label></label>
+            <label class="ri"><input type="radio" name="p7_5" onchange="chk('Pt7Line5b_citizenabroad[0]',true)"> <label>B. U.S. citizen born abroad</label></label>
+            <label class="ri"><input type="radio" name="p7_5" onchange="chk('Pt7Line5c_USNaturalized[0]',true)"> <label>C. Naturalized U.S. citizen</label></label>
+            <label class="ri"><input type="radio" name="p7_5" onchange="chk('Pt7Line5d_Other[0]',true)"> <label>D. Other</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>5.C.1. A-Number (if naturalized)</label>
+          <input type="text" oninput="set('Pt7Line5c1_AlienNumber[0]',this.value)"></div>
+        <div class="field"><label>5.D. Explain (if Other)</label>
+          <input type="text" oninput="set('Pt7Line5d_Explain[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="row c2">
+        <div class="field"><label>6. How many times have you been married?</label>
+          <input type="text" oninput="set('Pt7Line6_NumberofMarriages[0]',this.value)"></div>
+        <div class="field"><label>7. How many times was your spouse married?</label>
+          <input type="text" oninput="set('Pt7Line7_NumberofSpouseMarriages[0]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>8.A. Date of Marriage <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt7Line8a_DateofMarriage[0]',this.value)"></div>
+        <div class="field"><label>8.B. Place of Marriage</label>
+          <input type="text" oninput="set('Pt7Line8b_PlaceOfMarriage[0]',this.value)"></div>
+      </div>
+
+      <div class="row c1">
+        <div class="field"><label>9.A. Did you remarry after the death of your spouse?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q9a" onchange="chkOne('Pt7Line9a_yes[0]','Pt7Line9a_no[0]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q9a" onchange="chkOne('Pt7Line9a_no[0]','Pt7Line9a_yes[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>9.B. Date of Remarriage <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt7Line9b_DateofReMarriage[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+
+      <div class="row c1">
+        <div class="field"><label>10. Were you legally separated at time of death?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q10" onchange="chkOne('Pt7Line10[0]','Pt7Line10[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q10" onchange="chkOne('Pt7Line10[1]','Pt7Line10[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Part 8: Special Immigrant Juvenile -->
+  <div class="card">
+    <div class="card-header">Part 8 -- Complete Only If Filing for a Special Immigrant Juvenile</div>
+    <div class="card-body">
+      <div class="slabel">1. Other Names Used</div>
+      <div class="row c3">
+        <div class="field"><label>Name 1 - Family Name</label>
+          <input type="text" oninput="set('Pt8Line1a_FamilyName[0]',this.value)"></div>
+        <div class="field"><label>Given Name</label>
+          <input type="text" oninput="set('Pt8Line1a_GivenName[0]',this.value)"></div>
+        <div class="field"><label>Middle Name</label>
+          <input type="text" oninput="set('Pt8Line1a_MiddleName[0]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Name 2 - Family Name</label>
+          <input type="text" oninput="set('Pt8Line1b_FamilyName[0]',this.value)"></div>
+        <div class="field"><label>Given Name</label>
+          <input type="text" oninput="set('Pt8Line1b_GivenName[0]',this.value)"></div>
+        <div class="field"><label>Middle Name</label>
+          <input type="text" oninput="set('Pt8Line1b_MiddleName[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="row c1">
+        <div class="field"><label>2.A. Are you currently under the jurisdiction of a juvenile court?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q8_2a" onchange="chkOne('Pt8Line2a[0]','Pt8Line2a[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q8_2a" onchange="chkOne('Pt8Line2a[1]','Pt8Line2a[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>2.B. Name of Juvenile Court</label>
+          <input type="text" oninput="set('Pt8Line2b_Name[0]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>2.C. Are you currently in foster care?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q8_2c" onchange="chkOne('Pt8Line2c[0]','Pt8Line2c[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q8_2c" onchange="chkOne('Pt8Line2c[1]','Pt8Line2c[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <div class="row c1">
+        <div class="field"><label>3.A. Court declared you dependent on the court?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q8_4a" onchange="chkOne('Pt8Line4a[0]','Pt8Line4a[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q8_4a" onchange="chkOne('Pt8Line4a[1]','Pt8Line4a[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>3.B. Legally committed to or placed under custody of:</label>
+          <div class="radio-group">
+            <label class="ri"><input type="checkbox" onchange="chk('Pt8Line3b_Checkbox[0]',this.checked)"> <label>State agency</label></label>
+            <label class="ri"><input type="checkbox" onchange="chk('Pt8Line3b_Checkbox[1]',this.checked)"> <label>Department</label></label>
+            <label class="ri"><input type="checkbox" onchange="chk('Pt8Line3b_Checkbox[2]',this.checked)"> <label>Individual/entity appointed by court</label></label>
+          </div>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">4.A. Juvenile court determined reunification with parent(s) not viable due to:</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="checkbox" onchange="chk('Pt8Line3a[0]',this.checked)"> <label>Abuse</label></label>
+            <label class="ri"><input type="checkbox" onchange="chk('Pt8Line3a[1]',this.checked)"> <label>Neglect</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>4.A. Court determined it is not in your best interest to be returned to:</label>
+          <div class="radio-group">
+            <label class="ri"><input type="checkbox" onchange="chk('Pt8Line3A_Checkbox[0]',this.checked)"> <label>Home country</label></label>
+            <label class="ri"><input type="checkbox" onchange="chk('Pt8Line3A_Checkbox[1]',this.checked)"> <label>Country of last habitual residence</label></label>
+            <label class="ri"><input type="checkbox" onchange="chk('Pt8Line3A_Checkbox[2]',this.checked)"> <label>Father</label></label>
+            <label class="ri"><input type="checkbox" onchange="chk('Pt8Line3A_Checkbox[3]',this.checked)"> <label>Mother</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Specify (if applicable)</label>
+          <input type="text" oninput="set('Pt8Line3a_Specify[0]',this.value)"></div>
+        <div class="field"><label>4.B. Name of Parent (if selected)</label>
+          <input type="text" oninput="set('Pt8Line4b_NameOfParent[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="row c1">
+        <div class="field"><label>5. Has it been determined that it is not in your best interest to be returned?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q8_5" onchange="chkOne('Pt8Line5[0]','Pt8Line5[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q8_5" onchange="chkOne('Pt8Line5[1]','Pt8Line5[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row c1">
+        <div class="field"><label>6.A. Are you currently in removal proceedings?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q8_6a" onchange="chkOne('Pt8Line6a[0]','Pt8Line6a[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q8_6a" onchange="chkOne('Pt8Line6a[1]','Pt8Line6a[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>6.B. If Yes, do you have a final order of removal?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q8_6b" onchange="chkOne('Pt8Line6b[0]','Pt8Line6b[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q8_6b" onchange="chkOne('Pt8Line6b[1]','Pt8Line6b[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Part 9: Religious Worker -->
+  <div class="card">
+    <div class="card-header">Part 9 -- Complete Only If Filing for a Special Immigrant Religious Worker</div>
+    <div class="card-body">
+      <div class="slabel">Prospective Employer Attestation</div>
+      <div class="row c2">
+        <div class="field"><label>1.A. Number of Members</label>
+          <input type="text" oninput="set('Pt9Line1a_NumberofMembers[0]',this.value)"></div>
+        <div class="field"><label>1.B. Number of Employees</label>
+          <input type="text" oninput="set('Pt9Line1b_NumberofEmployees[0]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>1.C. Number of Aliens Holding SI/NIR Worker Status</label>
+          <input type="text" oninput="set('Pt9Line1c_NumberofBeneficiaries[0]',this.value)"></div>
+        <div class="field"><label>1.D. Number of SIRW and NIRW</label>
+          <input type="text" oninput="set('Pt9Line1d_NumberofSIRWandNIRW[0]',this.value)"></div>
+        <div class="field"><label>1.E. Number of SIRW Petitions</label>
+          <input type="text" oninput="set('Pt9Line1e_NumberofSIRWPetitions[0]',this.value)"></div>
+      </div>
+
+      <div class="row c1">
+        <div class="field"><label>2. Has the organization been found to have provided false attestation?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q9_2" onchange="chkOne('Pt9Line2[0]','Pt9Line2[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q9_2" onchange="chkOne('Pt9Line2[1]','Pt9Line2[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">3. Beneficiary Information</div>
+      <div class="row c3">
+        <div class="field"><label>Family Name</label>
+          <input type="text" oninput="set('Pt9Line3_FamilyName[0]',this.value)"></div>
+        <div class="field"><label>Given Name</label>
+          <input type="text" oninput="set('Pt9Line3_GivenName[0]',this.value)"></div>
+        <div class="field"><label>Middle Name</label>
+          <input type="text" oninput="set('Pt9Line3_MiddleName[0]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Period of Stay - From <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt9Line3_DateFrom[0]',this.value)"></div>
+        <div class="field"><label>Period of Stay - To <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt9Line3_DateTo[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="row c1">
+        <div class="field"><label>4. Position/Title</label>
+          <input type="text" oninput="set('Pt9Line4_Position[0]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>4. Summary of Responsibilities</label>
+          <textarea rows="3" oninput="set('Pt9Line4_Summary[0]',this.value)"></textarea></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>5. Relationship Between Organization and Religious Denomination</label>
+          <textarea rows="2" oninput="set('Pt9Line5_DescribeRelationship[0]',this.value)"></textarea></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">6. Employment Details</div>
+      <div class="row c1">
+        <div class="field"><label>6.A. Title</label>
+          <input type="text" oninput="set('Pt9Line6a_Title[0]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>6.B. Beneficiary will be working:</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q9_6b" onchange="chkExcl('Pt9Line6b[0]',['Pt9Line6b[1]','Pt9Line6b[2]'])"> <label>Full time</label></label>
+            <label class="ri"><input type="radio" name="q9_6b" onchange="chkExcl('Pt9Line6b[1]',['Pt9Line6b[0]','Pt9Line6b[2]'])"> <label>Part time</label></label>
+            <label class="ri"><input type="radio" name="q9_6b" onchange="chkExcl('Pt9Line6b[2]',['Pt9Line6b[0]','Pt9Line6b[1]'])"> <label>Volunteer</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>6.C. Detailed Description of Duties</label>
+          <textarea rows="3" oninput="set('Pt9Line6b_DetailedDescription[0]',this.value)"></textarea></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>6.D. Description of Beneficiary's Qualifications</label>
+          <textarea rows="2" oninput="set('Pt9Line6c_Description[0]',this.value)"></textarea></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>6.E. Description of Proposed Arrangement for Compensation</label>
+          <textarea rows="2" oninput="set('Pt9Line6d_Description[0]',this.value)"></textarea></div>
+      </div>
+
+      <div class="slabel">6.F. Specific Work Address</div>
+      <div class="row c1">
+        <div class="field"><label>Company/Organization Name</label>
+          <input type="text" oninput="set('Pt9Line6f_CompanyName[0]',this.value)"></div>
+      </div>
+      <div class="row c31">
+        <div class="field"><label>Street Number and Name</label>
+          <input type="text" oninput="set('Pt9Line6f_StreetNumberName[0]',this.value)"></div>
+        <div class="field"><label>Apt/Ste/Flr #</label>
+          <input type="text" oninput="set('Pt9Line6f_AptSteFlrNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1" style="margin-bottom:4px">
+        <div class="field"><label>Unit Type</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="p9_6f_unit" onchange="chkExcl('Pt9Line6f_Unit[0]',['Pt9Line6f_Unit[1]','Pt9Line6f_Unit[2]'])"> <label>Ste</label></label>
+            <label class="ri"><input type="radio" name="p9_6f_unit" onchange="chkExcl('Pt9Line6f_Unit[1]',['Pt9Line6f_Unit[0]','Pt9Line6f_Unit[2]'])"> <label>Apt</label></label>
+            <label class="ri"><input type="radio" name="p9_6f_unit" onchange="chkExcl('Pt9Line6f_Unit[2]',['Pt9Line6f_Unit[0]','Pt9Line6f_Unit[1]'])"> <label>Flr</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>City or Town</label>
+          <input type="text" oninput="set('Pt9Line6f_CityOrTown[0]',this.value)"></div>
+        <div class="field"><label>State</label>
+          <select onchange="set('Pt9Line6f_State[0]',this.value)"><option value="">-- Select --</option><option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>DC</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option></select></div>
+        <div class="field"><label>Zip Code</label>
+          <input type="text" maxlength="10" oninput="set('Pt9Line6f_ZipCode[0]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Province</label>
+          <input type="text" oninput="set('Pt9Line6f_Province[0]',this.value)"></div>
+        <div class="field"><label>Postal Code</label>
+          <input type="text" oninput="set('Pt9Line6f_PostalCode[0]',this.value)"></div>
+        <div class="field"><label>Country</label>
+          <input type="text" oninput="set('Pt9Line6f_Country[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Items 7-13: Employer Attestation Questions</div>
+      <div class="row c1">
+        <div class="field"><label>7. Was the beneficiary previously a religious worker in the U.S.?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q9_7" onchange="chkOne('Pt9Line7[0]','Pt9Line7[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q9_7" onchange="chkOne('Pt9Line7[1]','Pt9Line7[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>If Yes, select applicable type:</label>
+          <div class="radio-group">
+            <label class="ri"><input type="checkbox" onchange="chk('Pt9Line7_Checkbox[0]',this.checked)"> <label>R-1</label></label>
+            <label class="ri"><input type="checkbox" onchange="chk('Pt9Line7_Checkbox[1]',this.checked)"> <label>J-1</label></label>
+            <label class="ri"><input type="checkbox" onchange="chk('Pt9Line7_Checkbox[2]',this.checked)"> <label>Other</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>If Other, select subcategory:</label>
+          <div class="radio-group">
+            <label class="ri"><input type="checkbox" onchange="chk('Pt9Line7_CheckboxC1[0]',this.checked)"> <label>C1</label></label>
+            <label class="ri"><input type="checkbox" onchange="chk('Pt9Line7_CheckboxC2[0]',this.checked)"> <label>C2</label></label>
+            <label class="ri"><input type="checkbox" onchange="chk('Pt9Line7_CheckboxC3[0]',this.checked)"> <label>C3</label></label>
+            <label class="ri"><input type="checkbox" onchange="chk('Pt9Line7_CheckboxC4[0]',this.checked)"> <label>C4</label></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row c1">
+        <div class="field"><label>8. Employer willing and able to compensate beneficiary at least minimum wage?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q9_8" onchange="chkOne('Pt9Line8[0]','Pt9Line8[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q9_8" onchange="chkOne('Pt9Line8[1]','Pt9Line8[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>9. Funds to pay beneficiary's compensation come from the organization?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q9_9" onchange="chkOne('Pt9Line9[0]','Pt9Line9[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q9_9" onchange="chkOne('Pt9Line9[1]','Pt9Line9[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>10. Beneficiary will not engage in secular employment?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q9_10" onchange="chkOne('Pt9Line10[0]','Pt9Line10[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q9_10" onchange="chkOne('Pt9Line10[1]','Pt9Line10[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>11. Position is full time, requiring 35+ hours/week?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q9_11" onchange="chkOne('Pt9Line11[0]','Pt9Line11[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q9_11" onchange="chkOne('Pt9Line11[1]','Pt9Line11[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>12. Beneficiary has been a religious worker for at least 2 years?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q9_12" onchange="chkOne('Pt9Line12[0]','Pt9Line12[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q9_12" onchange="chkOne('Pt9Line12[1]','Pt9Line12[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>13. Beneficiary has been a member of the denomination for at least 2 years?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q9_13" onchange="chkOne('Pt9Line13[0]','Pt9Line13[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q9_13" onchange="chkOne('Pt9Line13[1]','Pt9Line13[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Prospective Employer Signature</div>
+      <div class="row c2">
+        <div class="field"><label>Signature (type name)</label>
+          <input type="text" oninput="set('Pt9_Signature[0]',this.value)"></div>
+        <div class="field"><label>Date of Signature <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt9_DateofSignature[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Printed Name and Title of Signatory</div>
+      <div class="row c3">
+        <div class="field"><label>Family Name</label>
+          <input type="text" oninput="set('Pt9Line15_FamilyName[0]',this.value)"></div>
+        <div class="field"><label>Given Name</label>
+          <input type="text" oninput="set('Pt9Line15_GivenName[0]',this.value)"></div>
+        <div class="field"><label>Middle Name</label>
+          <input type="text" oninput="set('Pt9Line15_MiddleName[0]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Title of Signatory</label>
+          <input type="text" oninput="set('Pt9Line16_TitleofSignatory[0]',this.value)"></div>
+        <div class="field"><label>Employer/Organization Name</label>
+          <input type="text" oninput="set('Pt9Line15_EmployerOrOrgName[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">17. Employer Mailing Address</div>
+      <div class="row c31">
+        <div class="field"><label>Street Number and Name</label>
+          <input type="text" oninput="set('Pt9_StreetNumberName[0]',this.value)"></div>
+        <div class="field"><label>Apt/Ste/Flr #</label>
+          <input type="text" oninput="set('Pt9Line17_AptSteFlrNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1" style="margin-bottom:4px">
+        <div class="field"><label>Unit Type</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="p9_17_unit" onchange="chkExcl('Pt9Line17_Unit[0]',['Pt9Line17_Unit[1]','Pt9Line17_Unit[2]'])"> <label>Ste</label></label>
+            <label class="ri"><input type="radio" name="p9_17_unit" onchange="chkExcl('Pt9Line17_Unit[1]',['Pt9Line17_Unit[0]','Pt9Line17_Unit[2]'])"> <label>Apt</label></label>
+            <label class="ri"><input type="radio" name="p9_17_unit" onchange="chkExcl('Pt9Line17_Unit[2]',['Pt9Line17_Unit[0]','Pt9Line17_Unit[1]'])"> <label>Flr</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>City or Town</label>
+          <input type="text" oninput="set('Pt9Line17_CityOrTown[0]',this.value)"></div>
+        <div class="field"><label>State</label>
+          <select onchange="set('Pt9Line17_State[0]',this.value)"><option value="">-- Select --</option><option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>DC</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option></select></div>
+        <div class="field"><label>Zip Code</label>
+          <input type="text" maxlength="10" oninput="set('Pt9Line17_ZipCode[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">Contact Information</div>
+      <div class="row c3">
+        <div class="field"><label>18. Daytime Telephone</label>
+          <input type="text" oninput="set('Pt9_DaytimePhoneNumber1[0]',this.value)"></div>
+        <div class="field"><label>19. Fax Number</label>
+          <input type="text" oninput="set('Pt9_PreparerFaxNumber[0]',this.value)"></div>
+        <div class="field"><label>20. Email</label>
+          <input type="text" oninput="set('Pt9_Email[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Religious Denomination Certification</div>
+      <div class="row c2">
+        <div class="field"><label>Petitioning Organization Name</label>
+          <input type="text" oninput="set('Pt9_PetitioningOrgName[0]',this.value)"></div>
+        <div class="field"><label>Religious Denomination Name</label>
+          <input type="text" oninput="set('Pt9_ReligiousDenominationName[0]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Signature (type name)</label>
+          <input type="text" oninput="set('Pt9_ARRDSignature[0]',this.value)"></div>
+        <div class="field"><label>Date of Signature <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt9_DateofSignatureofARRD[0]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>RD Signatory Family Name</label>
+          <input type="text" oninput="set('Pt9_RDFamilyName[0]',this.value)"></div>
+        <div class="field"><label>Given Name</label>
+          <input type="text" oninput="set('Pt9_RDGivenName[0]',this.value)"></div>
+        <div class="field"><label>Middle Name</label>
+          <input type="text" oninput="set('Pt9_RDMiddleName[0]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>RD Title</label>
+          <input type="text" oninput="set('Pt9_RDTitle[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Attesting Religious Organization Information</div>
+      <div class="row c1">
+        <div class="field"><label>24. Name of Attesting Religious Organization</label>
+          <input type="text" oninput="set('Pt9Line24_NameofAROWRD[0]',this.value)"></div>
+      </div>
+      <div class="row c31">
+        <div class="field"><label>25. Street Number and Name</label>
+          <input type="text" oninput="set('Pt9Line25_AROWRDStreetNumberName[0]',this.value)"></div>
+        <div class="field"><label>Apt/Ste/Flr #</label>
+          <input type="text" oninput="set('Pt9Line25_AptSteFlrNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1" style="margin-bottom:4px">
+        <div class="field"><label>Unit Type</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="p9_25_unit" onchange="chkExcl('Pt9Lne25_Unit[0]',['Pt9Lne25_Unit[1]','Pt9Lne25_Unit[2]'])"> <label>Ste</label></label>
+            <label class="ri"><input type="radio" name="p9_25_unit" onchange="chkExcl('Pt9Lne25_Unit[1]',['Pt9Lne25_Unit[0]','Pt9Lne25_Unit[2]'])"> <label>Apt</label></label>
+            <label class="ri"><input type="radio" name="p9_25_unit" onchange="chkExcl('Pt9Lne25_Unit[2]',['Pt9Lne25_Unit[0]','Pt9Lne25_Unit[1]'])"> <label>Flr</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>City or Town</label>
+          <input type="text" oninput="set('Pt9Line25_AROWRDCityTown[0]',this.value)"></div>
+        <div class="field"><label>State</label>
+          <select onchange="set('Pt9Line25_AROWRDState[0]',this.value)"><option value="">-- Select --</option><option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>DC</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option></select></div>
+        <div class="field"><label>Zip Code</label>
+          <input type="text" maxlength="10" oninput="set('Pt9Line25_AROWRDZipCode[0]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>26. Daytime Telephone</label>
+          <input type="text" oninput="set('Pt9Line26_AROWRDDaytimePhoneNumber1[0]',this.value)"></div>
+        <div class="field"><label>27. Fax Number</label>
+          <input type="text" oninput="set('Pt9Line27_AROWRDPreparerFaxNumber[0]',this.value)"></div>
+        <div class="field"><label>28. Email</label>
+          <input type="text" oninput="set('Pt9Line28_AROWRDEmail[0]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>29. IRS Tax Number</label>
+          <input type="text" oninput="set('Pt9Line29_AROWRDIRSTaxNumber[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Part 10: VAWA -->
+  <div class="card">
+    <div class="card-header">Part 10 -- Complete Only If Filing as a VAWA Self-Petitioner</div>
+    <div class="card-body">
+      <div class="slabel">Information About the Abusive U.S. Citizen or LPR</div>
+      <div class="row c3">
+        <div class="field"><label>1. Family Name (Last)</label>
+          <input type="text" oninput="set('Pt10Line1_FamilyName[0]',this.value)"></div>
+        <div class="field"><label>Given Name (First)</label>
+          <input type="text" oninput="set('Pt10Line1_GivenName[0]',this.value)"></div>
+        <div class="field"><label>Middle Name</label>
+          <input type="text" oninput="set('Pt10Line1_MiddleName[0]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>2. Date of Birth <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt10Line2_DateOfBirth[0]',this.value)"></div>
+        <div class="field"><label>3. Country of Birth</label>
+          <input type="text" oninput="set('Pt10Line3_CountryOfBirth[0]',this.value)"></div>
+        <div class="field"><label>4. Date of Death <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt10Line4_DateOfDeath[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">5. Immigration Status of Abuser</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q10_5" onchange="setNof('Pt10Line5_Checkbox',0,4)"> <label>A. U.S. citizen</label></label>
+            <label class="ri"><input type="radio" name="q10_5" onchange="setNof('Pt10Line5_Checkbox',1,4)"> <label>B. LPR</label></label>
+            <label class="ri"><input type="radio" name="q10_5" onchange="setNof('Pt10Line5_Checkbox',2,4)"> <label>C. Naturalized citizen</label></label>
+            <label class="ri"><input type="radio" name="q10_5" onchange="setNof('Pt10Line5_Checkbox',3,4)"> <label>D. Former LPR</label></label>
+            <label class="ri"><input type="radio" name="q10_5" onchange="setNof('Pt10Line5_Checkbox',4,4)"> <label>E. Other</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>5.C.1. A-Number (if naturalized)</label>
+          <input type="text" oninput="set('Pt10Line5c1_AlienNumber[0]',this.value)"></div>
+        <div class="field"><label>5.D.1. A-Number (if former LPR)</label>
+          <input type="text" oninput="set('Pt10Line5d1_AlienNumber[0]',this.value)"></div>
+        <div class="field"><label>5.E. Explain (if Other)</label>
+          <input type="text" oninput="set('Pt10Line5e_Explain[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="row c2">
+        <div class="field"><label>6. Number of times you have been married</label>
+          <input type="text" oninput="set('Pt10Line6_NumberofMarriages[0]',this.value)"></div>
+        <div class="field"><label>7. Number of times married to the abuser</label>
+          <input type="text" oninput="set('Pt10Line7_NumberofAbuseMarriages[0]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>8.A. Date of Marriage <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt9Line8a_DateOfMarriage[0]',this.value)"></div>
+        <div class="field"><label>8.B. Place of Marriage</label>
+          <input type="text" oninput="set('Pt9Line8b_PlaceOfMarriage[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">9. Date Lived with Abuser</div>
+      <div class="row c2">
+        <div class="field"><label>From <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt10Line9_DateFrom[0]',this.value)"></div>
+        <div class="field"><label>To <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt10Line9_DateTo[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">10. Last Address Shared with Abuser</div>
+      <div class="row c31">
+        <div class="field"><label>Street Number and Name</label>
+          <input type="text" oninput="set('Pt10Line10_StreetNumberName[0]',this.value)"></div>
+        <div class="field"><label>Apt/Ste/Flr #</label>
+          <input type="text" oninput="set('Pt10Line10_AptSteFlrNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1" style="margin-bottom:4px">
+        <div class="field"><label>Unit Type</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="p10_unit" onchange="chkExcl('Pt10Line10_Unit[0]',['Pt10Line10_Unit[1]','Pt10Line10_Unit[2]'])"> <label>Ste</label></label>
+            <label class="ri"><input type="radio" name="p10_unit" onchange="chkExcl('Pt10Line10_Unit[1]',['Pt10Line10_Unit[0]','Pt10Line10_Unit[2]'])"> <label>Apt</label></label>
+            <label class="ri"><input type="radio" name="p10_unit" onchange="chkExcl('Pt10Line10_Unit[2]',['Pt10Line10_Unit[0]','Pt10Line10_Unit[1]'])"> <label>Flr</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>City or Town</label>
+          <input type="text" oninput="set('Pt10Line10_CityOrTown[0]',this.value)"></div>
+        <div class="field"><label>State</label>
+          <select onchange="set('Pt10Line10_State[0]',this.value)"><option value="">-- Select --</option><option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>DC</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option></select></div>
+        <div class="field"><label>Zip Code</label>
+          <input type="text" maxlength="10" oninput="set('Pt10Line10_ZipCode[0]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Province</label>
+          <input type="text" oninput="set('Pt10Line10_Province[0]',this.value)"></div>
+        <div class="field"><label>Postal Code</label>
+          <input type="text" oninput="set('Pt10Line10_PostalCode[0]',this.value)"></div>
+        <div class="field"><label>Country</label>
+          <input type="text" oninput="set('Pt10Line10_Country[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">11. Period You Lived at This Address</div>
+      <div class="row c2">
+        <div class="field"><label>From <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt10Line11_DateFrom[0]',this.value)"></div>
+        <div class="field"><label>To <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt10Line11_DateTo[0]',this.value)"></div>
+      </div>
+
+      <div class="row c1">
+        <div class="field"><label>12. Has the abuser ever been arrested or convicted for abuse?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q10_12" onchange="chkOne('Pt10Line12[0]','Pt10Line12[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q10_12" onchange="chkOne('Pt10Line12[1]','Pt10Line12[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ================================================
+     SECTION 5: Parts 11 & 12 -- Petitioner Statement & Signature
+================================================ -->
+<div class="section" id="s5">
+  <div class="card">
+    <div class="card-header">Part 11 -- Petitioner's Statement (Individual)</div>
+    <div class="card-body">
+      <div class="row c1">
+        <div class="field"><label>Petitioner's Statement</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="p11_1" onchange="chkOne('Pt11Line1_Checkbox[0]','Pt11Line1_Checkbox[1]')"> <label>I can read and understand English</label></label>
+            <label class="ri"><input type="radio" name="p11_1" onchange="chkOne('Pt11Line1_Checkbox[1]','Pt11Line1_Checkbox[0]')"> <label>Interpreted in a language I understand</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>1.B. Language</label>
+          <input type="text" oninput="set('Pt11Line1b_Language[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+      <div class="row c1">
+        <div class="field">
+          <label class="ci"><input type="checkbox" onchange="chk('Pt11Line2_Checkbox[0]',this.checked)">
+          &nbsp;Preparer prepared this petition on my behalf at my request</label>
+        </div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Preparer's Name</label>
+          <input type="text" oninput="set('Pt11Line2_RepresentativeName[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Contact Information</div>
+      <div class="row c3">
+        <div class="field"><label>3. Daytime Telephone</label>
+          <input type="text" oninput="set('Pt11Line3_DaytimePhoneNumber1[0]',this.value)"></div>
+        <div class="field"><label>4. Mobile Telephone</label>
+          <input type="text" oninput="set('Pt11Line4_MobileNumber1[0]',this.value)"></div>
+        <div class="field"><label>5. Email Address</label>
+          <input type="text" oninput="set('Pt11Line5_Email[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">Signature</div>
+      <div class="row c2">
+        <div class="field"><label>6. Signature (type name)</label>
+          <input type="text" oninput="set('Pt11Line6_Signature[0]',this.value)"></div>
+        <div class="field"><label>6. Date of Signature <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt11Line6_DateofSignature[0]',this.value)"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">Part 12 -- Statement of Petitioner or Authorized Signatory (Organization)</div>
+    <div class="card-body">
+      <div class="row c1">
+        <div class="field"><label>Statement</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="p12_1" onchange="chkOne('Pt12Line1_Checkbox[0]','Pt12Line1_Checkbox[1]')"> <label>I can read and understand English</label></label>
+            <label class="ri"><input type="radio" name="p12_1" onchange="chkOne('Pt12Line1_Checkbox[1]','Pt12Line1_Checkbox[0]')"> <label>Interpreted in a language I understand</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>1.B. Language</label>
+          <input type="text" oninput="set('Pt12Line1b_Language[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+      <div class="row c1">
+        <div class="field">
+          <label class="ci"><input type="checkbox" onchange="chk('Pt12Line2_Checkbox[0]',this.checked)">
+          &nbsp;Preparer prepared this petition on my behalf at my request</label>
+        </div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Preparer's Name</label>
+          <input type="text" oninput="set('Pt12Line2_RepresentativeName[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Authorized Signatory</div>
+      <div class="row c3">
+        <div class="field"><label>Family Name</label>
+          <input type="text" oninput="set('Pt12Line3_AuthorizedSignatoryFamilyName[0]',this.value)"></div>
+        <div class="field"><label>Given Name</label>
+          <input type="text" oninput="set('Pt12Line3_AuthorizedSignatoryGivenName[0]',this.value)"></div>
+        <div class="field"><label>Title</label>
+          <input type="text" oninput="set('Pt12Line4_AuthorizedSignatoryTitle[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">Contact Information</div>
+      <div class="row c3">
+        <div class="field"><label>5. Daytime Telephone</label>
+          <input type="text" oninput="set('Pt12Line5_DaytimePhoneNumber[0]',this.value)"></div>
+        <div class="field"><label>6. Mobile Telephone</label>
+          <input type="text" oninput="set('Pt12Line6_MobileNumber1[0]',this.value)"></div>
+        <div class="field"><label>7. Email</label>
+          <input type="text" oninput="set('Pt12Line7_Email[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">Signature</div>
+      <div class="row c2">
+        <div class="field"><label>8. Signature (type name)</label>
+          <input type="text" oninput="set('Pt12Line8_Signature[0]',this.value)"></div>
+        <div class="field"><label>8. Date of Signature <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt12Line8_DateofSignature[0]',this.value)"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ================================================
+     SECTION 6: Part 13 -- Interpreter
+================================================ -->
+<div class="section" id="s6">
+  <div class="card">
+    <div class="card-header">Part 13 -- Interpreter's Contact Information, Certification, and Signature</div>
+    <div class="card-body">
+      <div class="slabel">Interpreter's Full Name</div>
+      <div class="row c2">
+        <div class="field"><label>1. Family Name (Last)</label>
+          <input type="text" oninput="set('Pt13Line1_InterpreterFamilyName[0]',this.value)"></div>
+        <div class="field"><label>1. Given Name (First)</label>
+          <input type="text" oninput="set('Pt13Line1_InterpreterGivenName[0]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>2. Business or Organization Name</label>
+          <input type="text" oninput="set('Pt13Line2_InterpreterBusinessorOrg[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">3. Interpreter's Mailing Address</div>
+      <div class="row c31">
+        <div class="field"><label>Street Number and Name</label>
+          <input type="text" oninput="set('Pt13Line3_StreetNumberName[0]',this.value)"></div>
+        <div class="field"><label>Apt/Ste/Flr #</label>
+          <input type="text" oninput="set('Pt13Line3_AptSteFlrNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1" style="margin-bottom:4px">
+        <div class="field"><label>Unit Type</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="interp_unit" onchange="chkExcl('Pt13Line3_Unit[0]',['Pt13Line3_Unit[1]','Pt13Line3_Unit[2]'])"> <label>Ste</label></label>
+            <label class="ri"><input type="radio" name="interp_unit" onchange="chkExcl('Pt13Line3_Unit[1]',['Pt13Line3_Unit[0]','Pt13Line3_Unit[2]'])"> <label>Apt</label></label>
+            <label class="ri"><input type="radio" name="interp_unit" onchange="chkExcl('Pt13Line3_Unit[2]',['Pt13Line3_Unit[0]','Pt13Line3_Unit[1]'])"> <label>Flr</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>City or Town</label>
+          <input type="text" oninput="set('Pt13Line3_CityOrTown[0]',this.value)"></div>
+        <div class="field"><label>State</label>
+          <select onchange="set('Pt13Line3_State[0]',this.value)"><option value="">-- Select --</option><option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>DC</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option></select></div>
+        <div class="field"><label>Zip Code</label>
+          <input type="text" maxlength="10" oninput="set('Pt13Line3_ZipCode[0]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Province</label>
+          <input type="text" oninput="set('Pt13Line3_Province[0]',this.value)"></div>
+        <div class="field"><label>Postal Code</label>
+          <input type="text" oninput="set('Pt13Line3_PostalCode[0]',this.value)"></div>
+        <div class="field"><label>Country</label>
+          <input type="text" oninput="set('Pt13Line3_Country[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Contact Information</div>
+      <div class="row c3">
+        <div class="field"><label>4. Daytime Telephone</label>
+          <input type="text" oninput="set('Pt12Line4_InterpreterDaytimeTelephone[0]',this.value)"></div>
+        <div class="field"><label>5. Mobile Telephone</label>
+          <input type="text" oninput="set('Pt12Line5_InterpreterMobileTelephone[0]',this.value)"></div>
+        <div class="field"><label>6. Email</label>
+          <input type="text" oninput="set('Pt12Line5_Email[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">Interpreter's Certification</div>
+      <div class="row c1">
+        <div class="field"><label>Language Interpreted</label>
+          <input type="text" oninput="set('Pt12_NameofLanguage[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">Signature</div>
+      <div class="row c2">
+        <div class="field"><label>7. Signature (type name)</label>
+          <input type="text" oninput="set('Pt12Line6_Signature[0]',this.value)"></div>
+        <div class="field"><label>7. Date of Signature <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt12Line6_DateofSignature[0]',this.value)"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ================================================
+     SECTION 7: Part 14 -- Preparer
+================================================ -->
+<div class="section" id="s7">
+  <div class="card">
+    <div class="card-header">Part 14 -- Preparer's Contact Information, Declaration, and Signature</div>
+    <div class="card-body">
+      <div class="slabel">Preparer's Full Name</div>
+      <div class="row c2">
+        <div class="field"><label>Family Name (Last)</label>
+          <input type="text" oninput="set('Pt13Line1_PreparerFamilyName[0]',this.value)"></div>
+        <div class="field"><label>Given Name (First)</label>
+          <input type="text" oninput="set('Pt13Line1_PreparerGivenName[0]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>2. Business or Organization Name</label>
+          <input type="text" oninput="set('Pt13Line2_BusinessName[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">3. Preparer's Mailing Address</div>
+      <div class="row c31">
+        <div class="field"><label>Street Number and Name</label>
+          <input type="text" oninput="set('Pt14Line3_StreetNumberName[0]',this.value)"></div>
+        <div class="field"><label>Apt/Ste/Flr #</label>
+          <input type="text" oninput="set('Pt14Line3_AptSteFlrNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1" style="margin-bottom:4px">
+        <div class="field"><label>Unit Type</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="prep_unit" onchange="chkExcl('Pt14Line3_Unit[0]',['Pt14Line3_Unit[1]','Pt14Line3_Unit[2]'])"> <label>Ste</label></label>
+            <label class="ri"><input type="radio" name="prep_unit" onchange="chkExcl('Pt14Line3_Unit[1]',['Pt14Line3_Unit[0]','Pt14Line3_Unit[2]'])"> <label>Apt</label></label>
+            <label class="ri"><input type="radio" name="prep_unit" onchange="chkExcl('Pt14Line3_Unit[2]',['Pt14Line3_Unit[0]','Pt14Line3_Unit[1]'])"> <label>Flr</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>City or Town</label>
+          <input type="text" oninput="set('Pt14Line3_CityOrTown[0]',this.value)"></div>
+        <div class="field"><label>State</label>
+          <select onchange="set('Pt14Line3_State[0]',this.value)"><option value="">-- Select --</option><option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>DC</option><option>FL</option><option>GA</option><option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option></select></div>
+        <div class="field"><label>Zip Code</label>
+          <input type="text" maxlength="10" oninput="set('Pt14Line3_ZipCode[0]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Province</label>
+          <input type="text" oninput="set('Pt14Line3_Province[0]',this.value)"></div>
+        <div class="field"><label>Postal Code</label>
+          <input type="text" oninput="set('Pt14Line3_PostalCode[0]',this.value)"></div>
+        <div class="field"><label>Country</label>
+          <input type="text" oninput="set('Pt14Line3_Country[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Contact Information</div>
+      <div class="row c3">
+        <div class="field"><label>4. Daytime Telephone</label>
+          <input type="text" oninput="set('Pt13Line4_DaytimePhoneNumber1[0]',this.value)"></div>
+        <div class="field"><label>5. Fax Number</label>
+          <input type="text" oninput="set('Pt13ine5_PreparerFaxNumber[0]',this.value)"></div>
+        <div class="field"><label>6. Email</label>
+          <input type="text" oninput="set('Pt13Line6_Email[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Preparer's Statement</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="p14_7" onchange="chkOne('Pt13Line7_Checkbox[0]','Pt13Line7_Checkbox[1]')"> <label>I am not an attorney or accredited representative</label></label>
+            <label class="ri"><input type="radio" name="p14_7" onchange="chkOne('Pt13Line7_Checkbox[1]','Pt13Line7_Checkbox[0]')"> <label>I am an attorney or accredited representative</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>Representation extends beyond preparation?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="p14_7b" onchange="chkOne('Pt13Line7b_extends[0]','Pt13Line7b_extends[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="p14_7b" onchange="chkOne('Pt13Line7b_extends[1]','Pt13Line7b_extends[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="slabel">Signature</div>
+      <div class="row c2">
+        <div class="field"><label>8. Signature (type name)</label>
+          <input type="text" oninput="set('Pt12Line8_Signature[1]',this.value)"></div>
+        <div class="field"><label>8. Date of Signature <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('Pt13Line8_DateofSignature[0]',this.value)"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ================================================
+     SECTION 8: Part 15 -- Additional Information
+================================================ -->
+<div class="section" id="s8">
+  <div class="card">
+    <div class="card-header">Part 15 -- Additional Information</div>
+    <div class="card-body">
+      <div class="info">Use this section if you need extra space to provide additional information for any item in this petition.</div>
+
+      <div class="slabel">Your Name (for identification)</div>
+      <div class="row c3">
+        <div class="field"><label>Family Name (Last)</label>
+          <input type="text" oninput="set('Pt1Line1_FamilyName[1]',this.value)"></div>
+        <div class="field"><label>Given Name (First)</label>
+          <input type="text" oninput="set('Pt1Line1_GivenName[1]',this.value)"></div>
+        <div class="field"><label>Middle Name</label>
+          <input type="text" oninput="set('Pt1Line1_MiddleName[1]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>A-Number</label>
+          <input type="text" oninput="set('Pt1Line4_AlienNumber[1]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Additional Item 1</div>
+      <div class="row c3">
+        <div class="field"><label>3.A. Page Number</label>
+          <input type="text" oninput="set('Pt14Line3a_PageNumber[0]',this.value)"></div>
+        <div class="field"><label>3.B. Part Number</label>
+          <input type="text" oninput="set('Pt14Line3b_PartNumber[0]',this.value)"></div>
+        <div class="field"><label>3.C. Item Number</label>
+          <input type="text" oninput="set('Pt14Line3c_ItemNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>3.D. Additional Information</label>
+          <textarea rows="3" oninput="set('Pt14Line3d_AdditionalInfo[0]',this.value)"></textarea></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Additional Item 2</div>
+      <div class="row c3">
+        <div class="field"><label>4.A. Page Number</label>
+          <input type="text" oninput="set('Pt14Line4a_PageNumber[0]',this.value)"></div>
+        <div class="field"><label>4.B. Part Number</label>
+          <input type="text" oninput="set('Pt14Line4b_PartNumber[0]',this.value)"></div>
+        <div class="field"><label>4.C. Item Number</label>
+          <input type="text" oninput="set('Pt14Line4c_ItemNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>4.D. Additional Information</label>
+          <textarea rows="3" oninput="set('Pt14Line4d_AdditionalInfo[0]',this.value)"></textarea></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Additional Item 3</div>
+      <div class="row c3">
+        <div class="field"><label>5.A. Page Number</label>
+          <input type="text" oninput="set('Pt14Line5a_PageNumber[0]',this.value)"></div>
+        <div class="field"><label>5.B. Part Number</label>
+          <input type="text" oninput="set('Pt14Line5b_PartNumber[0]',this.value)"></div>
+        <div class="field"><label>5.C. Item Number</label>
+          <input type="text" oninput="set('Pt14Line5c_ItemNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>5.D. Additional Information</label>
+          <textarea rows="3" oninput="set('Pt14Line5d_AdditionalInfo[0]',this.value)"></textarea></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Additional Item 4</div>
+      <div class="row c3">
+        <div class="field"><label>6.A. Page Number</label>
+          <input type="text" oninput="set('Pt14Line6a_PageNumber[0]',this.value)"></div>
+        <div class="field"><label>6.B. Part Number</label>
+          <input type="text" oninput="set('Pt14Line6b_PartNumber[0]',this.value)"></div>
+        <div class="field"><label>6.C. Item Number</label>
+          <input type="text" oninput="set('Pt14Line6c_ItemNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>6.D. Additional Information</label>
+          <textarea rows="3" oninput="set('Pt14Line6d_AdditionalInfo[0]',this.value)"></textarea></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ================================================
+     SECTION 9: Generate PDF
+================================================ -->
+<div class="section" id="s9">
+  <div class="card">
+    <div class="card-header">Generate Filled PDF</div>
+    <div class="card-body" style="text-align:center; padding: 32px;">
+      <div class="info">Review all sections before generating. Click the button below to download a filled I-360 PDF.</div>
+      <button class="btn btn-gen" id="genBtn" onclick="generatePDF()">Download Filled I-360 PDF</button>
+      <div id="status"></div>
+    </div>
+  </div>
+</div>
 
 <div class="nav">
   <button class="btn btn-prev" id="btnPrev" style="display:none" onclick="nav(-1)">&larr; Back</button>
