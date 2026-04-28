@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I-589 Asylum Wizard</title>
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<style>
+  :root {
+    --blue: #003366; --gold: #c8a72b; --green: #2e7d32; --red: #c62828;
+    --light: #f5f7fa; --border: #cdd4de;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--light); color: #222; font-size: 14px; }
+  header { background: var(--blue); color: white; padding: 14px 24px; }
+  header h1 { font-size: 20px; font-weight: 700; }
+  header p { font-size: 13px; opacity: 0.8; margin-top: 3px; }
+  .container { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
+
+  .progress-bar { display: flex; margin-bottom: 24px; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); background: white; }
+  .step { flex: 1; padding: 8px 4px; text-align: center; font-size: 11px; font-weight: 600; color: #666; cursor: pointer; border-right: 1px solid var(--border); transition: all 0.2s; }
+  .step:last-child { border-right: none; }
+  .step.active { background: var(--blue); color: white; }
+  .step.done { background: var(--green); color: white; }
+
+  .section { display: none; }
+  .section.active { display: block; }
+  .card { background: white; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 20px; overflow: hidden; }
+  .card-header { background: var(--blue); color: white; padding: 10px 16px; font-size: 14px; font-weight: 700; }
+  .card-header .badge { background: var(--gold); color: var(--blue); border-radius: 4px; padding: 2px 8px; font-size: 12px; margin-right: 8px; }
+  .card-body { padding: 16px; }
+
+  .info { background: #e8f0fe; border-left: 4px solid var(--blue); padding: 10px 14px; border-radius: 0 4px 4px 0; margin-bottom: 16px; font-size: 13px; color: #1a237e; line-height: 1.5; }
+  .warn { background: #fff8e1; border-left: 4px solid var(--gold); padding: 10px 14px; border-radius: 0 4px 4px 0; margin-bottom: 16px; font-size: 13px; color: #4a3800; line-height: 1.5; }
+
+  .row { display: grid; gap: 12px; margin-bottom: 12px; }
+  .c1 { grid-template-columns: 1fr; }
+  .c2 { grid-template-columns: 1fr 1fr; }
+  .c3 { grid-template-columns: 1fr 1fr 1fr; }
+  .c31 { grid-template-columns: 3fr 1fr; }
+  .c21 { grid-template-columns: 2fr 1fr; }
+
+  .field { display: flex; flex-direction: column; gap: 4px; }
+  .field label { font-size: 12px; font-weight: 600; color: #444; }
+  .field .note { font-weight: normal; color: #777; font-size: 11px; }
+  .field input, .field select, .field textarea {
+    border: 1px solid var(--border); border-radius: 4px; padding: 7px 10px; font-size: 13px; width: 100%;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--blue); }
+
+  .radio-group { display: flex; flex-wrap: wrap; gap: 10px; }
+  .ri { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+  .ri input { width: 16px; height: 16px; cursor: pointer; }
+  .ri label { font-size: 13px; cursor: pointer; font-weight: normal; }
+
+  .ci { display: flex; align-items: center; gap: 6px; cursor: pointer; margin-bottom: 8px; }
+  .ci input { width: 16px; height: 16px; cursor: pointer; }
+  .ci label { font-size: 13px; cursor: pointer; font-weight: normal; }
+
+  .sep { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+  .slabel { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #888; letter-spacing: 0.05em; margin: 16px 0 8px; }
+
+  .nav { display: flex; justify-content: space-between; margin-top: 24px; }
+  .btn { padding: 10px 24px; border-radius: 5px; border: none; cursor: pointer; font-size: 14px; font-weight: 600; transition: all 0.2s; }
+  .btn-prev { background: #e0e0e0; color: #333; }
+  .btn-next { background: var(--blue); color: white; }
+  .btn-next:hover { background: #004080; }
+  .btn-gen { background: var(--green); color: white; font-size: 15px; padding: 12px 32px; }
+  .btn-gen:hover { background: #1b5e20; }
+  .btn-gen:disabled { background: #aaa; cursor: not-allowed; }
+
+  #status { margin-top: 12px; font-size: 13px; color: var(--green); font-weight: 600; min-height: 20px; }
+  #status.err { color: var(--red); }
+
+  @media (max-width: 600px) {
+    .c2, .c3, .c31, .c21 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Form I-589 -- Application for Asylum and Withholding of Removal</h1>
+  <p>Fill and download the official USCIS PDF &bull; No server required</p>
+</header>
+
+<div class="container">
+
+<div class="progress-bar">
+  <div class="step active" onclick="goTo(0)">1. About You</div>
+  <div class="step" onclick="goTo(1)">2. Spouse/Children</div>
+  <div class="step" onclick="goTo(2)">3. Background</div>
+  <div class="step" onclick="goTo(3)">4. Application 1</div>
+  <div class="step" onclick="goTo(4)">5. Application 2</div>
+  <div class="step" onclick="goTo(5)">6. Signature</div>
+  <div class="step" onclick="goTo(6)">7. Preparer</div>
+  <div class="step" onclick="goTo(7)">8. Generate</div>
+</div>
+
+<!-- ================================================
+     SECTION 0: Part A.I -- About You
+================================================ -->
+<div class="section active" id="s0">
+  <div class="card">
+    <div class="card-header">Part A.I -- Information About You</div>
+    <div class="card-body">
+
+      <div class="slabel">Identification</div>
+      <div class="row c3">
+        <div class="field"><label>1. Alien Registration Number (A-Number)</label>
+          <input type="text" oninput="set('PtAILine1_ANumber[0]',this.value)"></div>
+        <div class="field"><label>2. U.S. Social Security Number</label>
+          <input type="text" oninput="set('TextField1[0]',this.value)"></div>
+        <div class="field"><label>3. USCIS Online Account Number</label>
+          <input type="text" oninput="set('TextField1[8]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Full Name</div>
+      <div class="row c3">
+        <div class="field"><label>4. Complete Last Name</label>
+          <input type="text" oninput="set('PtAILine4_LastName[0]',this.value)"></div>
+        <div class="field"><label>5. First Name</label>
+          <input type="text" oninput="set('PtAILine5_FirstName[0]',this.value)"></div>
+        <div class="field"><label>6. Middle Name</label>
+          <input type="text" oninput="set('PtAILine6_MiddleName[0]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>7. Other Names Used (include maiden name and aliases)</label>
+          <input type="text" oninput="set('TextField1[1]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">8. Residence in the U.S.</div>
+      <div class="row c31">
+        <div class="field"><label>Street Number and Name</label>
+          <input type="text" oninput="set('PtAILine8_StreetNumandName[0]',this.value)"></div>
+        <div class="field"><label>Apartment Number</label>
+          <input type="text" oninput="set('PtAILine8_AptNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>City</label>
+          <input type="text" oninput="set('TextField1[2]',this.value)"></div>
+        <div class="field"><label>State</label>
+          <select onchange="set('PtAILine8_State[0]',this.value)"><?= STATE_OPTIONS ?></select></div>
+        <div class="field"><label>Zip Code</label>
+          <input type="text" maxlength="10" oninput="set('PtAILine8_Zipcode[0]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Telephone Area Code</label>
+          <input type="text" maxlength="3" oninput="set('PtAILine8_AreaCode[0]',this.value)"></div>
+        <div class="field"><label>Telephone Number (7-digit)</label>
+          <input type="text" maxlength="8" oninput="set('PtAILine8_TelephoneNumber[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">9. Mailing Address (if different)</div>
+      <div class="row c1">
+        <div class="field"><label>In Care Of</label>
+          <input type="text" oninput="set('PtAILine9_InCareOf[0]',this.value)"></div>
+      </div>
+      <div class="row c31">
+        <div class="field"><label>Street Number and Name</label>
+          <input type="text" oninput="set('PtAILine9_StreetNumandName[0]',this.value)"></div>
+        <div class="field"><label>Apartment Number</label>
+          <input type="text" oninput="set('PtAILine9_AptNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>City</label>
+          <input type="text" oninput="set('PtAILine9_City[0]',this.value)"></div>
+        <div class="field"><label>State</label>
+          <select onchange="set('PtAILine9_State[0]',this.value)"><?= STATE_OPTIONS ?></select></div>
+        <div class="field"><label>Zip Code</label>
+          <input type="text" maxlength="10" oninput="set('PtAILine9_ZipCode[0]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Telephone Area Code</label>
+          <input type="text" maxlength="3" oninput="set('PtAILine9_AreaCode[0]',this.value)"></div>
+        <div class="field"><label>Telephone Number (7-digit)</label>
+          <input type="text" maxlength="8" oninput="set('PtAILine9_TelephoneNumbe[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Personal Details</div>
+      <div class="row c2">
+        <div class="field"><label>10. Sex</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="sex" onchange="chkOne('PartALine9Sex[0]','PartALine9Sex[1]')"> <label>Male</label></label>
+            <label class="ri"><input type="radio" name="sex" onchange="chkOne('PartALine9Sex[1]','PartALine9Sex[0]')"> <label>Female</label></label>
+          </div>
+        </div>
+        <div class="field"><label>11. Marital Status</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="marital" onchange="chkExcl('Marital[0]',['Marital[1]','Marital[2]','Marital[3]'])"> <label>Single</label></label>
+            <label class="ri"><input type="radio" name="marital" onchange="chkExcl('Marital[1]',['Marital[0]','Marital[2]','Marital[3]'])"> <label>Married</label></label>
+            <label class="ri"><input type="radio" name="marital" onchange="chkExcl('Marital[2]',['Marital[0]','Marital[1]','Marital[3]'])"> <label>Divorced</label></label>
+            <label class="ri"><input type="radio" name="marital" onchange="chkExcl('Marital[3]',['Marital[0]','Marital[1]','Marital[2]'])"> <label>Widowed</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>12. Date of Birth <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField1[0]',this.value)"></div>
+        <div class="field"><label>13. City and Country of Birth</label>
+          <input type="text" oninput="set('TextField1[4]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>14. Present Nationality (Citizenship)</label>
+          <input type="text" oninput="set('TextField1[3]',this.value)"></div>
+        <div class="field"><label>15. Nationality at Birth</label>
+          <input type="text" oninput="set('TextField1[5]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>16. Race, Ethnic or Tribal Group</label>
+          <input type="text" oninput="set('TextField1[6]',this.value)"></div>
+        <div class="field"><label>17. Religion</label>
+          <input type="text" oninput="set('TextField1[7]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">18. Immigration Court Status</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="immcourt" onchange="chkExcl('CheckBox3[0]',['CheckBox3[1]','CheckBox3[2]'])"> <label>A. Never been in Immigration Court proceedings</label></label>
+            <label class="ri"><input type="radio" name="immcourt" onchange="chkExcl('CheckBox3[2]',['CheckBox3[0]','CheckBox3[1]'])"> <label>B. I am now in Immigration Court proceedings</label></label>
+            <label class="ri"><input type="radio" name="immcourt" onchange="chkExcl('CheckBox3[1]',['CheckBox3[0]','CheckBox3[2]'])"> <label>C. I am not now in Immigration Court proceedings, but I was previously</label></label>
+          </div>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">19. Entry Information</div>
+      <div class="row c2">
+        <div class="field"><label>A. When did you last leave your country? <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField6[0]',this.value)"></div>
+        <div class="field"><label>B. Current I-94 Number</label>
+          <input type="text" oninput="set('TextField3[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">C. U.S. Entries -- Entry 1 (Most Recent)</div>
+      <div class="row c3">
+        <div class="field"><label>Date <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField2[0]',this.value)"></div>
+        <div class="field"><label>Place</label>
+          <input type="text" oninput="set('TextField4[0]',this.value)"></div>
+        <div class="field"><label>Status (visa type)</label>
+          <input type="text" oninput="set('TextField4[1]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>Date Status Expires <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField2[1]',this.value)"></div>
+      </div>
+
+      <div class="slabel">Entry 2</div>
+      <div class="row c3">
+        <div class="field"><label>Date <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField3[0]',this.value)"></div>
+        <div class="field"><label>Place</label>
+          <input type="text" oninput="set('TextField4[2]',this.value)"></div>
+        <div class="field"><label>Status</label>
+          <input type="text" oninput="set('TextField4[3]',this.value)"></div>
+      </div>
+
+      <div class="slabel">Entry 3</div>
+      <div class="row c3">
+        <div class="field"><label>Date <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField4[0]',this.value)"></div>
+        <div class="field"><label>Place</label>
+          <input type="text" oninput="set('TextField4[4]',this.value)"></div>
+        <div class="field"><label>Status</label>
+          <input type="text" oninput="set('TextField4[5]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Passport / Travel Document</div>
+      <div class="row c3">
+        <div class="field"><label>20. Country that Issued Passport</label>
+          <input type="text" oninput="set('TextField5[0]',this.value)"></div>
+        <div class="field"><label>21. Passport Number</label>
+          <input type="text" oninput="set('TextField5[1]',this.value)"></div>
+        <div class="field"><label>Travel Document Number</label>
+          <input type="text" oninput="set('TextField5[2]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>22. Expiration Date <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField2[2]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Language</div>
+      <div class="row c2">
+        <div class="field"><label>23. Native Language (include dialect)</label>
+          <input type="text" oninput="set('TextField7[0]',this.value)"></div>
+        <div class="field"><label>24. Are you fluent in English?</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="fluent_eng" onchange="chkOne('CheckBox4[0]','CheckBox4[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="fluent_eng" onchange="chkOne('CheckBox4[1]','CheckBox4[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>25. Other Languages You Speak Fluently</label>
+          <input type="text" oninput="set('TextField7[1]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="row c1">
+        <div class="field">
+          <label><input type="checkbox" onchange="chk('CheckBox31[0]',this.checked)">
+          &nbsp;Also apply for withholding of removal under the Convention Against Torture (CAT)</label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 1: Part A.II -- Spouse & Children
+================================================ -->
+<div class="section" id="s1">
+  <div class="card">
+    <div class="card-header">Part A.II -- Your Spouse</div>
+    <div class="card-body">
+
+      <div class="row c1">
+        <div class="field">
+          <label><input type="checkbox" onchange="chk('CheckBox5[0]',this.checked);tog('spouse_fields',!this.checked)">
+          &nbsp;I am not married (skip to Children)</label>
+        </div>
+      </div>
+
+      <div id="spouse_fields">
+        <div class="row c3">
+          <div class="field"><label>1. A-Number</label>
+            <input type="text" oninput="set('PtAIILine1_ANumber[0]',this.value)"></div>
+          <div class="field"><label>2. Passport/ID Number</label>
+            <input type="text" oninput="set('TextField10[1]',this.value)"></div>
+          <div class="field"><label>3. Date of Birth <span class="note">MM/DD/YYYY</span></label>
+            <input type="text" maxlength="10" oninput="set('DateTimeField7[0]',this.value)"></div>
+        </div>
+        <div class="row c2">
+          <div class="field"><label>4. U.S. Social Security Number</label>
+            <input type="text" oninput="set('TextField10[2]',this.value)"></div>
+          <div class="field"></div>
+        </div>
+
+        <div class="row c3">
+          <div class="field"><label>5. Complete Last Name</label>
+            <input type="text" oninput="set('PtAIILine5_LastName[0]',this.value)"></div>
+          <div class="field"><label>6. First Name</label>
+            <input type="text" oninput="set('PtAIILine6_FirstName[0]',this.value)"></div>
+          <div class="field"><label>7. Middle Name</label>
+            <input type="text" oninput="set('PtAIILine7_MiddleName[0]',this.value)"></div>
+        </div>
+        <div class="row c2">
+          <div class="field"><label>8. Maiden Name</label>
+            <input type="text" oninput="set('TextField10[3]',this.value)"></div>
+          <div class="field"><label>9. Date of Marriage <span class="note">MM/DD/YYYY</span></label>
+            <input type="text" maxlength="10" oninput="set('DateTimeField8[0]',this.value)"></div>
+        </div>
+        <div class="row c2">
+          <div class="field"><label>10. Place of Marriage</label>
+            <input type="text" oninput="set('TextField10[4]',this.value)"></div>
+          <div class="field"><label>11. City and Country of Birth</label>
+            <input type="text" oninput="set('TextField10[5]',this.value)"></div>
+        </div>
+        <div class="row c3">
+          <div class="field"><label>12. Nationality (Citizenship)</label>
+            <input type="text" oninput="set('TextField10[0]',this.value)"></div>
+          <div class="field"><label>13. Race, Ethnic or Tribal Group</label>
+            <input type="text" oninput="set('TextField10[6]',this.value)"></div>
+          <div class="field"><label>14. Sex</label>
+            <div class="radio-group">
+              <label class="ri"><input type="radio" name="sp_sex" onchange="chkOne('CheckBox14_Sex[0]','CheckBox14_Sex[1]')"> <label>Male</label></label>
+              <label class="ri"><input type="radio" name="sp_sex" onchange="chkOne('CheckBox14_Sex[1]','CheckBox14_Sex[0]')"> <label>Female</label></label>
+            </div>
+          </div>
+        </div>
+
+        <hr class="sep">
+        <div class="slabel">Spouse's Location & Immigration Status</div>
+        <div class="row c1">
+          <div class="field"><label>15. Is this person in the U.S.?</label>
+            <div class="radio-group">
+              <label class="ri"><input type="radio" name="sp_in_us" onchange="chkOne('PtAIILine15_CheckBox15[1]','PtAIILine15_CheckBox15[0]');tog('sp_us_details',true);tog('sp_not_us',false)"> <label>Yes</label></label>
+              <label class="ri"><input type="radio" name="sp_in_us" onchange="chkOne('PtAIILine15_CheckBox15[0]','PtAIILine15_CheckBox15[1]');tog('sp_us_details',false);tog('sp_not_us',true)"> <label>No</label></label>
+            </div>
+          </div>
+        </div>
+        <div id="sp_not_us" style="display:none">
+          <div class="row c1">
+            <div class="field"><label>If No, Specify Location</label>
+              <input type="text" oninput="set('PtAIILine15_Specify[0]',this.value)"></div>
+          </div>
+        </div>
+        <div id="sp_us_details" style="display:none">
+          <div class="row c3">
+            <div class="field"><label>16. Place of Last Entry</label>
+              <input type="text" oninput="set('PtAIILine16_PlaceofLastEntry[0]',this.value)"></div>
+            <div class="field"><label>17. Date of Last Entry <span class="note">MM/DD/YYYY</span></label>
+              <input type="text" maxlength="10" oninput="set('PtAIILine17_DateofLastEntry[0]',this.value)"></div>
+            <div class="field"><label>18. I-94 Number</label>
+              <input type="text" oninput="set('PtAIILine18_I94Number[0]',this.value)"></div>
+          </div>
+          <div class="row c3">
+            <div class="field"><label>19. Status When Last Admitted</label>
+              <input type="text" oninput="set('PtAIILine19_StatusofLastAdmission[0]',this.value)"></div>
+            <div class="field"><label>20. Current Immigration Status</label>
+              <input type="text" oninput="set('PtAIILine20_SpouseCurrentStatus[0]',this.value)"></div>
+            <div class="field"><label>21. Expiration of Authorized Stay <span class="note">MM/DD/YYYY</span></label>
+              <input type="text" maxlength="10" oninput="set('PtAIILine21_ExpDateofAuthorizedStay[0]',this.value)"></div>
+          </div>
+          <div class="row c2">
+            <div class="field"><label>22. Is your spouse in Immigration Court Proceedings?</label>
+              <div class="radio-group">
+                <label class="ri"><input type="radio" name="sp_imm_ct" onchange="chkOne('PtAIILine22_Yes[0]','PtAIILine22_No[0]')"> <label>Yes</label></label>
+                <label class="ri"><input type="radio" name="sp_imm_ct" onchange="chkOne('PtAIILine22_No[0]','PtAIILine22_Yes[0]')"> <label>No</label></label>
+              </div>
+            </div>
+            <div class="field"><label>23. Date of Previous Arrival <span class="note">MM/DD/YYYY</span></label>
+              <input type="text" maxlength="10" oninput="set('PtAIILine23_PreviousArrivalDate[0]',this.value)"></div>
+          </div>
+          <div class="row c1">
+            <div class="field"><label>24. Include spouse in application?</label>
+              <div class="radio-group">
+                <label class="ri"><input type="radio" name="sp_include" onchange="chkOne('PtAIILine24_Yes[0]','PtAIILine24_No[0]')"> <label>Yes</label></label>
+                <label class="ri"><input type="radio" name="sp_include" onchange="chkOne('PtAIILine24_No[0]','PtAIILine24_Yes[0]')"> <label>No</label></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">Part A.II -- Your Children</div>
+    <div class="card-body">
+
+      <div class="row c1">
+        <div class="field">
+          <label><input type="checkbox" onchange="chk('ChildrenCheckbox[0]',this.checked);tog('children_fields',this.checked)">
+          &nbsp;I have children</label>
+        </div>
+      </div>
+      <div class="row c1">
+        <div class="field">
+          <label><input type="checkbox" onchange="chk('ChildrenCheckbox[1]',this.checked)">
+          &nbsp;I do not have any children</label>
+        </div>
+      </div>
+
+      <div id="children_fields" style="display:none">
+        <div class="row c1">
+          <div class="field"><label>Total Number of Children</label>
+            <input type="text" maxlength="3" oninput="set('TotalChild[0]',this.value)" style="width:80px"></div>
+        </div>
+
+        <!-- CHILD 1 -->
+        <hr class="sep">
+        <div class="slabel">Child 1</div>
+        <div class="row c3">
+          <div class="field"><label>1. A-Number</label>
+            <input type="text" oninput="set('ChildAlien1[0]',this.value)"></div>
+          <div class="field"><label>2. Passport/ID Number</label>
+            <input type="text" oninput="set('ChildPassport1[0]',this.value)"></div>
+          <div class="field"><label>3. Marital Status</label>
+            <input type="text" oninput="set('ChildMarital1[0]',this.value)"></div>
+        </div>
+        <div class="row c2">
+          <div class="field"><label>4. U.S. Social Security Number</label>
+            <input type="text" oninput="set('ChildSSN1[0]',this.value)"></div>
+          <div class="field"></div>
+        </div>
+        <div class="row c3">
+          <div class="field"><label>5. Last Name</label>
+            <input type="text" oninput="set('ChildLast1[0]',this.value)"></div>
+          <div class="field"><label>6. First Name</label>
+            <input type="text" oninput="set('ChildFirst1[0]',this.value)"></div>
+          <div class="field"><label>7. Middle Name</label>
+            <input type="text" oninput="set('ChildMiddle1[0]',this.value)"></div>
+        </div>
+        <div class="row c3">
+          <div class="field"><label>8. Date of Birth <span class="note">MM/DD/YYYY</span></label>
+            <input type="text" maxlength="10" oninput="set('ChildDOB1[0]',this.value)"></div>
+          <div class="field"><label>9. City and Country of Birth</label>
+            <input type="text" oninput="set('ChildCity1[0]',this.value)"></div>
+          <div class="field"><label>10. Nationality</label>
+            <input type="text" oninput="set('ChildNat1[0]',this.value)"></div>
+        </div>
+        <div class="row c2">
+          <div class="field"><label>11. Race, Ethnic or Tribal Group</label>
+            <input type="text" oninput="set('ChildRace1[0]',this.value)"></div>
+          <div class="field"><label>12. Sex</label>
+            <div class="radio-group">
+              <label class="ri"><input type="radio" name="c1_sex" onchange="chkOne('CheckBox12_Sex[0]','CheckBox12_Sex[1]')"> <label>Male</label></label>
+              <label class="ri"><input type="radio" name="c1_sex" onchange="chkOne('CheckBox12_Sex[1]','CheckBox12_Sex[0]')"> <label>Female</label></label>
+            </div>
+          </div>
+        </div>
+        <div class="row c1">
+          <div class="field"><label>13. Is this child in the U.S.?</label>
+            <div class="radio-group">
+              <label class="ri"><input type="radio" name="c1_us" onchange="chkOne('CheckBox17[1]','CheckBox17[0]');tog('c1_us_det',true);tog('c1_not_us',false)"> <label>Yes</label></label>
+              <label class="ri"><input type="radio" name="c1_us" onchange="chkOne('CheckBox17[0]','CheckBox17[1]');tog('c1_us_det',false);tog('c1_not_us',true)"> <label>No</label></label>
+            </div>
+          </div>
+        </div>
+        <div id="c1_not_us" style="display:none">
+          <div class="row c1">
+            <div class="field"><label>If No, Specify Location</label>
+              <input type="text" oninput="set('PtAIILine13_Specify[0]',this.value)"></div>
+          </div>
+        </div>
+        <div id="c1_us_det" style="display:none">
+          <div class="row c3">
+            <div class="field"><label>14. Place of Last Entry</label>
+              <input type="text" oninput="set('PtAIILine14_PlaceofLastEntry[0]',this.value)"></div>
+            <div class="field"><label>15. Date of Last Entry <span class="note">MM/DD/YYYY</span></label>
+              <input type="text" maxlength="10" oninput="set('PtAIILine15_ExpirationDate[0]',this.value)"></div>
+            <div class="field"><label>16. I-94 Number</label>
+              <input type="text" oninput="set('PtAIILine16_I94Number[0]',this.value)"></div>
+          </div>
+          <div class="row c3">
+            <div class="field"><label>17. Status When Last Admitted</label>
+              <input type="text" oninput="set('PtAIILine17_StatusofLastAdmission[0]',this.value)"></div>
+            <div class="field"><label>18. Current Status</label>
+              <input type="text" oninput="set('PtAIILine18_CurrentStatusofChild[0]',this.value)"></div>
+            <div class="field"><label>19. Expiration of Authorized Stay <span class="note">MM/DD/YYYY</span></label>
+              <input type="text" maxlength="10" oninput="set('PtAIILine19_ExpDateofAuthorizedStay[0]',this.value)"></div>
+          </div>
+          <div class="row c2">
+            <div class="field"><label>20. In Immigration Court Proceedings?</label>
+              <div class="radio-group">
+                <label class="ri"><input type="radio" name="c1_imm" onchange="chkOne('PtAIILine20_Yes[0]','PtAIILine20_No[0]')"> <label>Yes</label></label>
+                <label class="ri"><input type="radio" name="c1_imm" onchange="chkOne('PtAIILine20_No[0]','PtAIILine20_Yes[0]')"> <label>No</label></label>
+              </div>
+            </div>
+            <div class="field"><label>21. Include in application?</label>
+              <div class="radio-group">
+                <label class="ri"><input type="radio" name="c1_inc" onchange="chkOne('PtAIILine21_Yes[0]','PtAIILine21_No[0]')"> <label>Yes</label></label>
+                <label class="ri"><input type="radio" name="c1_inc" onchange="chkOne('PtAIILine21_No[0]','PtAIILine21_Yes[0]')"> <label>No</label></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHILD 2 -->
+        <hr class="sep">
+        <div class="slabel">Child 2</div>
+        <div class="row c3">
+          <div class="field"><label>1. A-Number</label>
+            <input type="text" oninput="set('ChildAlien2[0]',this.value)"></div>
+          <div class="field"><label>2. Passport/ID Number</label>
+            <input type="text" oninput="set('ChildPassport2[0]',this.value)"></div>
+          <div class="field"><label>3. Marital Status</label>
+            <input type="text" oninput="set('ChildMarital2[0]',this.value)"></div>
+        </div>
+        <div class="row c2">
+          <div class="field"><label>4. U.S. Social Security Number</label>
+            <input type="text" oninput="set('ChildSSN2[0]',this.value)"></div>
+          <div class="field"></div>
+        </div>
+        <div class="row c3">
+          <div class="field"><label>5. Last Name</label>
+            <input type="text" oninput="set('ChildLast2[0]',this.value)"></div>
+          <div class="field"><label>6. First Name</label>
+            <input type="text" oninput="set('ChildFirst2[0]',this.value)"></div>
+          <div class="field"><label>7. Middle Name</label>
+            <input type="text" oninput="set('ChildMiddle2[0]',this.value)"></div>
+        </div>
+        <div class="row c3">
+          <div class="field"><label>8. Date of Birth <span class="note">MM/DD/YYYY</span></label>
+            <input type="text" maxlength="10" oninput="set('ChildDOB2[0]',this.value)"></div>
+          <div class="field"><label>9. City and Country of Birth</label>
+            <input type="text" oninput="set('ChildCity2[0]',this.value)"></div>
+          <div class="field"><label>10. Nationality</label>
+            <input type="text" oninput="set('ChildNat2[0]',this.value)"></div>
+        </div>
+        <div class="row c2">
+          <div class="field"><label>11. Race, Ethnic or Tribal Group</label>
+            <input type="text" oninput="set('ChildRace2[0]',this.value)"></div>
+          <div class="field"><label>12. Sex</label>
+            <div class="radio-group">
+              <label class="ri"><input type="radio" name="c2_sex" onchange="chkOne('CheckBox26_Sex[0]','CheckBox26_Sex[1]')"> <label>Male</label></label>
+              <label class="ri"><input type="radio" name="c2_sex" onchange="chkOne('CheckBox26_Sex[1]','CheckBox26_Sex[0]')"> <label>Female</label></label>
+            </div>
+          </div>
+        </div>
+        <div class="row c1">
+          <div class="field"><label>13. Is this child in the U.S.?</label>
+            <div class="radio-group">
+              <label class="ri"><input type="radio" name="c2_us" onchange="chkOne('CheckBox37[1]','CheckBox37[0]');tog('c2_us_det',true);tog('c2_not_us',false)"> <label>Yes</label></label>
+              <label class="ri"><input type="radio" name="c2_us" onchange="chkOne('CheckBox37[0]','CheckBox37[1]');tog('c2_us_det',false);tog('c2_not_us',true)"> <label>No</label></label>
+            </div>
+          </div>
+        </div>
+        <div id="c2_not_us" style="display:none">
+          <div class="row c1">
+            <div class="field"><label>If No, Specify Location</label>
+              <input type="text" oninput="set('PtAIILine13_Specify2[0]',this.value)"></div>
+          </div>
+        </div>
+        <div id="c2_us_det" style="display:none">
+          <div class="row c3">
+            <div class="field"><label>14. Place of Last Entry</label>
+              <input type="text" oninput="set('PtAIILine14_PlaceofLastEntry2[0]',this.value)"></div>
+            <div class="field"><label>15. Date of Last Entry <span class="note">MM/DD/YYYY</span></label>
+              <input type="text" maxlength="10" oninput="set('PtAIILine15_DateofLastEntry2[0]',this.value)"></div>
+            <div class="field"><label>16. I-94 Number</label>
+              <input type="text" oninput="set('PtAIILine16_I94Number2[0]',this.value)"></div>
+          </div>
+          <div class="row c3">
+            <div class="field"><label>17. Status When Last Admitted</label>
+              <input type="text" oninput="set('PtAIILine17_StatusofLastAdmission2[0]',this.value)"></div>
+            <div class="field"><label>18. Current Status</label>
+              <input type="text" oninput="set('PtAIILine18_ChildCurrentStatus2[0]',this.value)"></div>
+            <div class="field"><label>19. Expiration of Authorized Stay <span class="note">MM/DD/YYYY</span></label>
+              <input type="text" maxlength="10" oninput="set('PtAIILine19_ExpDateofAuthorizedStay2[0]',this.value)"></div>
+          </div>
+          <div class="row c2">
+            <div class="field"><label>20. In Immigration Court Proceedings?</label>
+              <div class="radio-group">
+                <label class="ri"><input type="radio" name="c2_imm" onchange="chkOne('PtAIILine20_Yes2[0]','PtAIILine20_No2[0]')"> <label>Yes</label></label>
+                <label class="ri"><input type="radio" name="c2_imm" onchange="chkOne('PtAIILine20_No2[0]','PtAIILine20_Yes2[0]')"> <label>No</label></label>
+              </div>
+            </div>
+            <div class="field"><label>21. Include in application?</label>
+              <div class="radio-group">
+                <label class="ri"><input type="radio" name="c2_inc" onchange="chkOne('PtAIILine21_Yes2[0]','PtAIILine21_No2[0]')"> <label>Yes</label></label>
+                <label class="ri"><input type="radio" name="c2_inc" onchange="chkOne('PtAIILine21_No2[0]','PtAIILine21_Yes2[0]')"> <label>No</label></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHILD 3 -->
+        <hr class="sep">
+        <div class="slabel">Child 3</div>
+        <div class="row c3">
+          <div class="field"><label>1. A-Number</label>
+            <input type="text" oninput="set('ChildAlien3[0]',this.value)"></div>
+          <div class="field"><label>2. Passport/ID Number</label>
+            <input type="text" oninput="set('ChildPassport3[0]',this.value)"></div>
+          <div class="field"><label>3. Marital Status</label>
+            <input type="text" oninput="set('ChildMarital3[0]',this.value)"></div>
+        </div>
+        <div class="row c2">
+          <div class="field"><label>4. U.S. Social Security Number</label>
+            <input type="text" oninput="set('ChildSSN3[0]',this.value)"></div>
+          <div class="field"></div>
+        </div>
+        <div class="row c3">
+          <div class="field"><label>5. Last Name</label>
+            <input type="text" oninput="set('ChildLast3[0]',this.value)"></div>
+          <div class="field"><label>6. First Name</label>
+            <input type="text" oninput="set('ChildFirst3[0]',this.value)"></div>
+          <div class="field"><label>7. Middle Name</label>
+            <input type="text" oninput="set('ChildMiddle3[0]',this.value)"></div>
+        </div>
+        <div class="row c3">
+          <div class="field"><label>8. Date of Birth <span class="note">MM/DD/YYYY</span></label>
+            <input type="text" maxlength="10" oninput="set('ChildDOB3[0]',this.value)"></div>
+          <div class="field"><label>9. City and Country of Birth</label>
+            <input type="text" oninput="set('ChildCity3[0]',this.value)"></div>
+          <div class="field"><label>10. Nationality</label>
+            <input type="text" oninput="set('ChildNat3[0]',this.value)"></div>
+        </div>
+        <div class="row c2">
+          <div class="field"><label>11. Race, Ethnic or Tribal Group</label>
+            <input type="text" oninput="set('ChildRace3[0]',this.value)"></div>
+          <div class="field"><label>12. Sex</label>
+            <div class="radio-group">
+              <label class="ri"><input type="radio" name="c3_sex" onchange="chkOne('CheckBox36_Sex[0]','CheckBox36_Sex[1]')"> <label>Male</label></label>
+              <label class="ri"><input type="radio" name="c3_sex" onchange="chkOne('CheckBox36_Sex[1]','CheckBox36_Sex[0]')"> <label>Female</label></label>
+            </div>
+          </div>
+        </div>
+        <div class="row c1">
+          <div class="field"><label>13. Is this child in the U.S.?</label>
+            <div class="radio-group">
+              <label class="ri"><input type="radio" name="c3_us" onchange="chkOne('CheckBox27[1]','CheckBox27[0]');tog('c3_us_det',true);tog('c3_not_us',false)"> <label>Yes</label></label>
+              <label class="ri"><input type="radio" name="c3_us" onchange="chkOne('CheckBox27[0]','CheckBox27[1]');tog('c3_us_det',false);tog('c3_not_us',true)"> <label>No</label></label>
+            </div>
+          </div>
+        </div>
+        <div id="c3_not_us" style="display:none">
+          <div class="row c1">
+            <div class="field"><label>If No, Specify Location</label>
+              <input type="text" oninput="set('PtAIILine13_Specify3[0]',this.value)"></div>
+          </div>
+        </div>
+        <div id="c3_us_det" style="display:none">
+          <div class="row c3">
+            <div class="field"><label>14. Place of Last Entry</label>
+              <input type="text" oninput="set('PtAIILine14_PlaceofLastEntry3[0]',this.value)"></div>
+            <div class="field"><label>15. Date of Last Entry <span class="note">MM/DD/YYYY</span></label>
+              <input type="text" maxlength="10" oninput="set('PtAIILine15_DateofLastEntry3[0]',this.value)"></div>
+            <div class="field"><label>16. I-94 Number</label>
+              <input type="text" oninput="set('PtAIILine16_I94Number3[0]',this.value)"></div>
+          </div>
+          <div class="row c3">
+            <div class="field"><label>17. Status When Last Admitted</label>
+              <input type="text" oninput="set('PtAIILine17_StatusofLastAdmission3[0]',this.value)"></div>
+            <div class="field"><label>18. Current Status</label>
+              <input type="text" oninput="set('PtAIILine18_ChildCurrentStatus3[0]',this.value)"></div>
+            <div class="field"><label>19. Expiration of Authorized Stay <span class="note">MM/DD/YYYY</span></label>
+              <input type="text" maxlength="10" oninput="set('PtAIILine19_ExpDateofAuthorizedStay3[0]',this.value)"></div>
+          </div>
+          <div class="row c2">
+            <div class="field"><label>20. In Immigration Court Proceedings?</label>
+              <div class="radio-group">
+                <label class="ri"><input type="radio" name="c3_imm" onchange="chkOne('PtAIILine20_Yes3[0]','PtAIILine20_No3[0]')"> <label>Yes</label></label>
+                <label class="ri"><input type="radio" name="c3_imm" onchange="chkOne('PtAIILine20_No3[0]','PtAIILine20_Yes3[0]')"> <label>No</label></label>
+              </div>
+            </div>
+            <div class="field"><label>21. Include in application?</label>
+              <div class="radio-group">
+                <label class="ri"><input type="radio" name="c3_inc" onchange="chkOne('PtAIILine21_Yes3[0]','PtAIILine21_No3[0]')"> <label>Yes</label></label>
+                <label class="ri"><input type="radio" name="c3_inc" onchange="chkOne('PtAIILine21_No3[0]','PtAIILine21_Yes3[0]')"> <label>No</label></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHILD 4 -->
+        <hr class="sep">
+        <div class="slabel">Child 4</div>
+        <div class="row c3">
+          <div class="field"><label>1. A-Number</label>
+            <input type="text" oninput="set('ChildAlien4[0]',this.value)"></div>
+          <div class="field"><label>2. Passport/ID Number</label>
+            <input type="text" oninput="set('ChildPassport4[0]',this.value)"></div>
+          <div class="field"><label>3. Marital Status</label>
+            <input type="text" oninput="set('ChildMarital4[0]',this.value)"></div>
+        </div>
+        <div class="row c2">
+          <div class="field"><label>4. U.S. Social Security Number</label>
+            <input type="text" oninput="set('ChildSSN4[0]',this.value)"></div>
+          <div class="field"></div>
+        </div>
+        <div class="row c3">
+          <div class="field"><label>5. Last Name</label>
+            <input type="text" oninput="set('ChildLast4[0]',this.value)"></div>
+          <div class="field"><label>6. First Name</label>
+            <input type="text" oninput="set('ChildFirst4[0]',this.value)"></div>
+          <div class="field"><label>7. Middle Name</label>
+            <input type="text" oninput="set('ChildMiddle4[0]',this.value)"></div>
+        </div>
+        <div class="row c3">
+          <div class="field"><label>8. Date of Birth <span class="note">MM/DD/YYYY</span></label>
+            <input type="text" maxlength="10" oninput="set('ChildDOB4[0]',this.value)"></div>
+          <div class="field"><label>9. City and Country of Birth</label>
+            <input type="text" oninput="set('ChildCity4[0]',this.value)"></div>
+          <div class="field"><label>10. Nationality</label>
+            <input type="text" oninput="set('ChildNat4[0]',this.value)"></div>
+        </div>
+        <div class="row c2">
+          <div class="field"><label>11. Race, Ethnic or Tribal Group</label>
+            <input type="text" oninput="set('ChildRace4[0]',this.value)"></div>
+          <div class="field"><label>12. Sex</label>
+            <div class="radio-group">
+              <label class="ri"><input type="radio" name="c4_sex" onchange="chkOne('CheckBox46_Sex[0]','CheckBox46_Sex[1]')"> <label>Male</label></label>
+              <label class="ri"><input type="radio" name="c4_sex" onchange="chkOne('CheckBox46_Sex[1]','CheckBox46_Sex[0]')"> <label>Female</label></label>
+            </div>
+          </div>
+        </div>
+        <div class="row c1">
+          <div class="field"><label>13. Is this child in the U.S.?</label>
+            <div class="radio-group">
+              <label class="ri"><input type="radio" name="c4_us" onchange="chkOne('CheckBox47[1]','CheckBox47[0]');tog('c4_us_det',true);tog('c4_not_us',false)"> <label>Yes</label></label>
+              <label class="ri"><input type="radio" name="c4_us" onchange="chkOne('CheckBox47[0]','CheckBox47[1]');tog('c4_us_det',false);tog('c4_not_us',true)"> <label>No</label></label>
+            </div>
+          </div>
+        </div>
+        <div id="c4_not_us" style="display:none">
+          <div class="row c1">
+            <div class="field"><label>If No, Specify Location</label>
+              <input type="text" oninput="set('PtAIILine13_Specify4[0]',this.value)"></div>
+          </div>
+        </div>
+        <div id="c4_us_det" style="display:none">
+          <div class="row c3">
+            <div class="field"><label>14. Place of Last Entry</label>
+              <input type="text" oninput="set('PtAIILine14_PlaceofLastEntry4[0]',this.value)"></div>
+            <div class="field"><label>15. Date of Last Entry <span class="note">MM/DD/YYYY</span></label>
+              <input type="text" maxlength="10" oninput="set('PtAIILine15_DateofLastEntry4[0]',this.value)"></div>
+            <div class="field"><label>16. I-94 Number</label>
+              <input type="text" oninput="set('PtAIILine16_I94Number4[0]',this.value)"></div>
+          </div>
+          <div class="row c3">
+            <div class="field"><label>17. Status When Last Admitted</label>
+              <input type="text" oninput="set('PtAIILine17_StatusofLastAdmission4[0]',this.value)"></div>
+            <div class="field"><label>18. Current Status</label>
+              <input type="text" oninput="set('PtAIILine18_ChildCurrentStatus4[0]',this.value)"></div>
+            <div class="field"><label>19. Expiration of Authorized Stay <span class="note">MM/DD/YYYY</span></label>
+              <input type="text" maxlength="10" oninput="set('PtAIILine19_ExpDateofAuthorizedStay4[0]',this.value)"></div>
+          </div>
+          <div class="row c2">
+            <div class="field"><label>20. In Immigration Court Proceedings?</label>
+              <div class="radio-group">
+                <label class="ri"><input type="radio" name="c4_imm" onchange="chkOne('PtAIILine20_Yes4[0]','PtAIILine20_No4[0]')"> <label>Yes</label></label>
+                <label class="ri"><input type="radio" name="c4_imm" onchange="chkOne('PtAIILine20_No4[0]','PtAIILine20_Yes4[0]')"> <label>No</label></label>
+              </div>
+            </div>
+            <div class="field"><label>21. Include in application?</label>
+              <div class="radio-group">
+                <label class="ri"><input type="radio" name="c4_inc" onchange="chkOne('PtAIILine21_Yes4[0]','PtAIILine21_No4[0]')"> <label>Yes</label></label>
+                <label class="ri"><input type="radio" name="c4_inc" onchange="chkOne('PtAIILine21_No4[0]','PtAIILine21_Yes4[0]')"> <label>No</label></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 2: Part A.III -- Background
+================================================ -->
+<div class="section" id="s2">
+  <div class="card">
+    <div class="card-header">Part A.III -- Information About Your Background</div>
+    <div class="card-body">
+
+      <div class="slabel">1. Last Address Before Coming to the U.S.</div>
+      <div class="row c2">
+        <div class="field"><label>Number and Street</label>
+          <input type="text" oninput="set('TextField13[0]',this.value)"></div>
+        <div class="field"><label>City/Town</label>
+          <input type="text" oninput="set('TextField13[1]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Department/Province/State</label>
+          <input type="text" oninput="set('TextField13[2]',this.value)"></div>
+        <div class="field"><label>Country</label>
+          <input type="text" oninput="set('TextField13[3]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+      <div class="slabel">Last Address in Country of Nationality</div>
+      <div class="row c2">
+        <div class="field"><label>Number and Street</label>
+          <input type="text" oninput="set('TextField13[4]',this.value)"></div>
+        <div class="field"><label>City/Town</label>
+          <input type="text" oninput="set('TextField13[5]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Department/Province/State</label>
+          <input type="text" oninput="set('TextField13[6]',this.value)"></div>
+        <div class="field"><label>Country</label>
+          <input type="text" oninput="set('TextField13[7]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>From <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField20[0]',this.value)"></div>
+        <div class="field"><label>To <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField21[0]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Last Address From <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField22[0]',this.value)"></div>
+        <div class="field"><label>Last Address To <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField23[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">2. Residences During the Past 5 Years -- Residence 1</div>
+      <div class="row c2">
+        <div class="field"><label>Number and Street</label>
+          <input type="text" oninput="set('TextField13[8]',this.value)"></div>
+        <div class="field"><label>City/Town</label>
+          <input type="text" oninput="set('TextField13[9]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Department/Province/State</label>
+          <input type="text" oninput="set('TextField13[10]',this.value)"></div>
+        <div class="field"><label>Country</label>
+          <input type="text" oninput="set('TextField13[11]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>From <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField24[0]',this.value)"></div>
+        <div class="field"><label>To <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField25[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">Residence 2</div>
+      <div class="row c2">
+        <div class="field"><label>Number and Street</label>
+          <input type="text" oninput="set('TextField13[12]',this.value)"></div>
+        <div class="field"><label>City/Town</label>
+          <input type="text" oninput="set('TextField13[13]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Department/Province/State</label>
+          <input type="text" oninput="set('TextField13[14]',this.value)"></div>
+        <div class="field"><label>Country</label>
+          <input type="text" oninput="set('TextField13[15]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>From <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField26[0]',this.value)"></div>
+        <div class="field"><label>To <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField27[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">Residence 3</div>
+      <div class="row c2">
+        <div class="field"><label>Number and Street</label>
+          <input type="text" oninput="set('TextField13[16]',this.value)"></div>
+        <div class="field"><label>City/Town</label>
+          <input type="text" oninput="set('TextField13[17]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Department/Province/State</label>
+          <input type="text" oninput="set('TextField13[18]',this.value)"></div>
+        <div class="field"><label>Country</label>
+          <input type="text" oninput="set('TextField13[19]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>From <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField28[0]',this.value)"></div>
+        <div class="field"><label>To <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField29[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">Residence 4</div>
+      <div class="row c2">
+        <div class="field"><label>Number and Street</label>
+          <input type="text" oninput="set('TextField13[20]',this.value)"></div>
+        <div class="field"><label>City/Town</label>
+          <input type="text" oninput="set('TextField13[21]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Department/Province/State</label>
+          <input type="text" oninput="set('TextField13[22]',this.value)"></div>
+        <div class="field"><label>Country</label>
+          <input type="text" oninput="set('TextField13[23]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>From <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField30[0]',this.value)"></div>
+        <div class="field"><label>To <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField31[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">Residence 5</div>
+      <div class="row c2">
+        <div class="field"><label>Number and Street</label>
+          <input type="text" oninput="set('TextField13[24]',this.value)"></div>
+        <div class="field"><label>City/Town</label>
+          <input type="text" oninput="set('TextField13[25]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Department/Province/State</label>
+          <input type="text" oninput="set('TextField13[26]',this.value)"></div>
+        <div class="field"><label>Country</label>
+          <input type="text" oninput="set('TextField13[27]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>From <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField32[0]',this.value)"></div>
+        <div class="field"><label>To <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField33[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">3. Education -- School 1 (most recent)</div>
+      <div class="row c2">
+        <div class="field"><label>Name of School</label>
+          <input type="text" oninput="set('TextField13[28]',this.value)"></div>
+        <div class="field"><label>Type of School</label>
+          <input type="text" oninput="set('TextField13[29]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Location (City, Country)</label>
+          <input type="text" oninput="set('TextField13[30]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>From <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField34[0]',this.value)"></div>
+        <div class="field"><label>To <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField35[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">School 2</div>
+      <div class="row c2">
+        <div class="field"><label>Name of School</label>
+          <input type="text" oninput="set('TextField13[31]',this.value)"></div>
+        <div class="field"><label>Type of School</label>
+          <input type="text" oninput="set('TextField13[32]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Location (City, Country)</label>
+          <input type="text" oninput="set('TextField13[33]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>From <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField36[0]',this.value)"></div>
+        <div class="field"><label>To <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField37[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">School 3</div>
+      <div class="row c2">
+        <div class="field"><label>Name of School</label>
+          <input type="text" oninput="set('TextField13[34]',this.value)"></div>
+        <div class="field"><label>Type of School</label>
+          <input type="text" oninput="set('TextField13[35]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Location (City, Country)</label>
+          <input type="text" oninput="set('TextField13[36]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>From <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField38[0]',this.value)"></div>
+        <div class="field"><label>To <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField39[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">School 4</div>
+      <div class="row c2">
+        <div class="field"><label>Name of School</label>
+          <input type="text" oninput="set('TextField13[37]',this.value)"></div>
+        <div class="field"><label>Type of School</label>
+          <input type="text" oninput="set('TextField13[38]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Location (City, Country)</label>
+          <input type="text" oninput="set('TextField13[39]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>From <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField40[0]',this.value)"></div>
+        <div class="field"><label>To <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField41[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">4. Employment During the Past 5 Years -- Employer 1</div>
+      <div class="row c2">
+        <div class="field"><label>Name of Employer</label>
+          <input type="text" oninput="set('TextField13[40]',this.value)"></div>
+        <div class="field"><label>Your Occupation</label>
+          <input type="text" oninput="set('TextField13[41]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Address of Employer</label>
+          <input type="text" oninput="set('TextField13[42]',this.value)"></div>
+        <div class="field"><label>City/Town, Country</label>
+          <input type="text" oninput="set('TextField13[43]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>From <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField42[0]',this.value)"></div>
+        <div class="field"><label>To <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField43[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">Employer 2</div>
+      <div class="row c2">
+        <div class="field"><label>Name of Employer</label>
+          <input type="text" oninput="set('TextField13[44]',this.value)"></div>
+        <div class="field"><label>Your Occupation</label>
+          <input type="text" oninput="set('TextField13[45]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>From <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField44[0]',this.value)"></div>
+        <div class="field"><label>To <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField45[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">Employer 3</div>
+      <div class="row c2">
+        <div class="field"><label>From <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField46[0]',this.value)"></div>
+        <div class="field"><label>To <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField47[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">5. Parents and Siblings</div>
+      <div class="info">Provide the following information about your parents and siblings (brothers and sisters).</div>
+
+      <div class="slabel">Mother</div>
+      <div class="row c3">
+        <div class="field"><label>Name</label>
+          <input type="text" oninput="set('TextField13[46]',this.value)"></div>
+        <div class="field"><label>City/Town and Country of Birth</label>
+          <input type="text" oninput="set('TextField13[47]',this.value)"></div>
+        <div class="field"><label>Current Location</label>
+          <input type="text" oninput="set('TextField13[48]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field">
+          <label><input type="checkbox" onchange="chk('m[0]',this.checked)"> &nbsp;Deceased</label>
+        </div>
+      </div>
+
+      <div class="slabel">Father</div>
+      <div class="row c3">
+        <div class="field"><label>Name</label>
+          <input type="text" oninput="set('TextField13[49]',this.value)"></div>
+        <div class="field"><label>City/Town and Country of Birth</label>
+          <input type="text" oninput="set('TextField13[50]',this.value)"></div>
+        <div class="field"><label>Current Location</label>
+          <input type="text" oninput="set('TextField13[51]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field">
+          <label><input type="checkbox" onchange="chk('f[0]',this.checked)"> &nbsp;Deceased</label>
+        </div>
+      </div>
+
+      <div class="slabel">Sibling 1</div>
+      <div class="row c3">
+        <div class="field"><label>Name</label>
+          <input type="text" oninput="set('TextField13[52]',this.value)"></div>
+        <div class="field"><label>City/Town and Country of Birth</label>
+          <input type="text" oninput="set('TextField13[53]',this.value)"></div>
+        <div class="field"><label>Current Location</label>
+          <input type="text" oninput="set('TextField35[0]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field">
+          <label><input type="checkbox" onchange="chk('s1[0]',this.checked)"> &nbsp;Deceased</label>
+        </div>
+      </div>
+
+      <div class="slabel">Sibling 2</div>
+      <div class="row c3">
+        <div class="field"><label>Name</label>
+          <input type="text" oninput="set('TextField13[54]',this.value)"></div>
+        <div class="field"><label>City/Town and Country of Birth</label>
+          <input type="text" oninput="set('TextField13[55]',this.value)"></div>
+        <div class="field"><label>Current Location</label>
+          <input type="text" oninput="set('TextField35[1]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field">
+          <label><input type="checkbox" onchange="chk('s2[0]',this.checked)"> &nbsp;Deceased</label>
+        </div>
+      </div>
+
+      <div class="slabel">Sibling 3</div>
+      <div class="row c3">
+        <div class="field"><label>Name</label>
+          <input type="text" oninput="set('TextField13[56]',this.value)"></div>
+        <div class="field"><label>City/Town and Country of Birth</label>
+          <input type="text" oninput="set('TextField13[57]',this.value)"></div>
+        <div class="field"><label>Current Location</label>
+          <input type="text" oninput="set('TextField35[2]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field">
+          <label><input type="checkbox" onchange="chk('s3[0]',this.checked)"> &nbsp;Deceased</label>
+        </div>
+      </div>
+
+      <div class="slabel">Sibling 4</div>
+      <div class="row c3">
+        <div class="field"><label>Name</label>
+          <input type="text" oninput="set('TextField35[3]',this.value)"></div>
+        <div class="field"><label>City/Town and Country of Birth</label>
+          <input type="text" oninput="set('TextField35[4]',this.value)"></div>
+        <div class="field"><label>Current Location</label>
+          <input type="text" oninput="set('TextField35[5]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field">
+          <label><input type="checkbox" onchange="chk('s4[0]',this.checked)"> &nbsp;Deceased</label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 3: Part B -- Application (Questions 1-3)
+================================================ -->
+<div class="section" id="s3">
+  <div class="card">
+    <div class="card-header">Part B -- The Basis of Your Claim</div>
+    <div class="card-body">
+
+      <div class="slabel">1. Why are you applying for asylum or withholding of removal?</div>
+      <div class="info">Check one or more of the following grounds:</div>
+      <div class="row c1">
+        <div class="field">
+          <label class="ci"><input type="checkbox" onchange="chk('CheckBoxrace[0]',this.checked)"> &nbsp;Race</label>
+          <label class="ci"><input type="checkbox" onchange="chk('CheckBoxreligion[0]',this.checked)"> &nbsp;Religion</label>
+          <label class="ci"><input type="checkbox" onchange="chk('CheckBoxnationality[0]',this.checked)"> &nbsp;Nationality</label>
+          <label class="ci"><input type="checkbox" onchange="chk('CheckBoxpolitics[0]',this.checked)"> &nbsp;Political opinion</label>
+          <label class="ci"><input type="checkbox" onchange="chk('CheckBoxsocial[0]',this.checked)"> &nbsp;Membership in a particular social group</label>
+          <label class="ci"><input type="checkbox" onchange="chk('CheckBoxtorture[0]',this.checked)"> &nbsp;Torture/CAT Convention</label>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">1.A. Have you, your family, or close friends or colleagues ever experienced harm or mistreatment or threats?</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q1a" onchange="chkOne('ckboxyn1a[0]','ckboxyn1a[1]');tog('q1a_detail',true)"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q1a" onchange="chkOne('ckboxyn1a[1]','ckboxyn1a[0]');tog('q1a_detail',false)"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div id="q1a_detail" style="display:none">
+        <div class="row c1">
+          <div class="field"><label>If Yes, explain in detail</label>
+            <textarea rows="8" oninput="set('TextField14[0]',this.value)" placeholder="Describe in detail what happened, when, where, and by whom..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">1.B. Do you fear harm or mistreatment if you return to your home country?</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q1b" onchange="chkOne('ckboxyn1b[0]','ckboxyn1b[1]');tog('q1b_detail',true)"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q1b" onchange="chkOne('ckboxyn1b[1]','ckboxyn1b[0]');tog('q1b_detail',false)"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div id="q1b_detail" style="display:none">
+        <div class="row c1">
+          <div class="field"><label>If Yes, explain in detail</label>
+            <textarea rows="8" oninput="set('TextField15[0]',this.value)" placeholder="Describe what you fear would happen, by whom, and why..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">2. Have you or your family members ever been accused, charged, arrested, detained, interrogated, convicted and sentenced, or imprisoned?</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q2" onchange="chkOne('ckboxyn2[0]','ckboxyn2[1]');tog('q2_detail',true)"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q2" onchange="chkOne('ckboxyn2[1]','ckboxyn2[0]');tog('q2_detail',false)"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div id="q2_detail" style="display:none">
+        <div class="row c1">
+          <div class="field"><label>If Yes, explain the circumstances and reasons</label>
+            <textarea rows="6" oninput="set('PBL2_TextField[0]',this.value)"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">3.A. Have you or your family members ever belonged to or been associated with any organizations or groups?</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q3a" onchange="chkOne('ckboxyn3a[0]','ckboxyn3a[1]');tog('q3a_detail',true)"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q3a" onchange="chkOne('ckboxyn3a[1]','ckboxyn3a[0]');tog('q3a_detail',false)"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div id="q3a_detail" style="display:none">
+        <div class="row c1">
+          <div class="field"><label>If Yes, describe for each person and organization</label>
+            <textarea rows="6" oninput="set('PBL3A_TextField[0]',this.value)"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">3.B. Do you or your family members continue to participate in any way in these organizations or groups?</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q3b" onchange="chkOne('ckboxyn3b[0]','ckboxyn3b[1]');tog('q3b_detail',true)"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q3b" onchange="chkOne('ckboxyn3b[1]','ckboxyn3b[0]');tog('q3b_detail',false)"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div id="q3b_detail" style="display:none">
+        <div class="row c1">
+          <div class="field"><label>If Yes, describe for each person</label>
+            <textarea rows="6" oninput="set('PBL3B_TextField[0]',this.value)"></textarea>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 4: Part B Q4 + Part C -- Application Part 2
+================================================ -->
+<div class="section" id="s4">
+  <div class="card">
+    <div class="card-header">Part B (continued) &amp; Part C -- Additional Information</div>
+    <div class="card-body">
+
+      <div class="slabel">4. Are you afraid of being subjected to torture in your home country?</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="q4" onchange="chkOne('ckboxyn4[0]','ckboxyn4[1]');tog('q4_detail',true)"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="q4" onchange="chkOne('ckboxyn4[1]','ckboxyn4[0]');tog('q4_detail',false)"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div id="q4_detail" style="display:none">
+        <div class="row c1">
+          <div class="field"><label>If Yes, explain why and describe the nature of the torture you fear, by whom, and why</label>
+            <textarea rows="6" oninput="set('PB4_TextField[0]',this.value)"></textarea>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">Part C -- Additional Information About Your Application</div>
+    <div class="card-body">
+
+      <div class="slabel">1. Have you, your spouse, your children, your parents, or your siblings ever applied for asylum or withholding?</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="c1" onchange="chkOne('ckboxync1[0]','ckboxync1[1]');tog('c1_detail',true)"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="c1" onchange="chkOne('ckboxync1[1]','ckboxync1[0]');tog('c1_detail',false)"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div id="c1_detail" style="display:none">
+        <div class="row c1">
+          <div class="field"><label>If Yes, explain the decision and disposition</label>
+            <textarea rows="4" oninput="set('PCL1_TextField[0]',this.value)"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">2.A. After leaving your country, did you or your spouse or child travel through or reside in any other country before entering the U.S.?</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="c2a" onchange="chkOne('ckboxync2a[0]','ckboxync2a[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="c2a" onchange="chkOne('ckboxync2a[1]','ckboxync2a[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="slabel">2.B. Have you, your spouse, your child, or other family members ever applied for or received any lawful status in any other country?</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="c2b" onchange="chkOne('ckboxync2b[0]','ckboxync2b[1]');tog('c2b_detail',true)"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="c2b" onchange="chkOne('ckboxync2b[1]','ckboxync2b[0]');tog('c2b_detail',false)"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div id="c2b_detail" style="display:none">
+        <div class="row c1">
+          <div class="field"><label>If Yes to either 2.A or 2.B, provide details</label>
+            <textarea rows="4" oninput="set('PCL2B_TextField[0]',this.value)"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">3. Have you, your spouse, or your children ever ordered, incited, assisted, or otherwise participated in causing harm or suffering to any person?</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="c3" onchange="chkOne('ckboxync3[0]','ckboxync3[1]');tog('c3_detail',true)"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="c3" onchange="chkOne('ckboxync3[1]','ckboxync3[0]');tog('c3_detail',false)"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div id="c3_detail" style="display:none">
+        <div class="row c1">
+          <div class="field"><label>If Yes, describe in detail</label>
+            <textarea rows="4" oninput="set('PCL3_TextField[0]',this.value)"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">4. After you left the country where you were harmed or fear harm, did you return to that country?</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="c4" onchange="chkOne('PCckboxyn4[0]','PCckboxyn4[1]');tog('c4_detail',true)"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="c4" onchange="chkOne('PCckboxyn4[1]','PCckboxyn4[0]');tog('c4_detail',false)"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div id="c4_detail" style="display:none">
+        <div class="row c1">
+          <div class="field"><label>If Yes, describe your trip</label>
+            <textarea rows="4" oninput="set('PCL4_TextField[0]',this.value)"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">5. Are you filing this application more than 1 year after your last arrival in the U.S.?</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="c5" onchange="chkOne('ckboxync5[0]','ckboxync5[1]');tog('c5_detail',true)"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="c5" onchange="chkOne('ckboxync5[1]','ckboxync5[0]');tog('c5_detail',false)"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div id="c5_detail" style="display:none">
+        <div class="row c1">
+          <div class="field"><label>If Yes, explain why you did not apply within the first year</label>
+            <textarea rows="4" oninput="set('PCL5_TextField[0]',this.value)"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">6. Have you or any member of your family included in the application ever committed any crime and/or been arrested, charged, convicted, or sentenced for any crime?</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="c6" onchange="chkOne('ckboxync6[0]','ckboxync6[1]');tog('c6_detail',true)"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="c6" onchange="chkOne('ckboxync6[1]','ckboxync6[0]');tog('c6_detail',false)"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div id="c6_detail" style="display:none">
+        <div class="row c1">
+          <div class="field"><label>If Yes, for each instance provide details</label>
+            <textarea rows="4" oninput="set('PCL6_TextField[0]',this.value)"></textarea>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 5: Part D -- Signature
+================================================ -->
+<div class="section" id="s5">
+  <div class="card">
+    <div class="card-header">Part D -- Your Signature</div>
+    <div class="card-body">
+      <div class="info">I certify, under penalty of perjury under the laws of the United States of America, that this application and the evidence submitted with it are all true and correct.</div>
+
+      <div class="row c2">
+        <div class="field"><label>Print Your Complete Name</label>
+          <input type="text" oninput="set('TextField20[0]',this.value)"></div>
+        <div class="field"><label>Write Your Name in Your Native Alphabet</label>
+          <input type="text" oninput="set('TextField20[1]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>Date of Signature <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('DateTimeField48[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Did your spouse, parent, or child/children assist you?</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="d1" onchange="chkOne('PtD_ckboxynd1[0]','PtD_ckboxynd1[1]');tog('d1_detail',true)"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="d1" onchange="chkOne('PtD_ckboxynd1[1]','PtD_ckboxynd1[0]');tog('d1_detail',false)"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+      <div id="d1_detail" style="display:none">
+        <div class="row c2">
+          <div class="field"><label>Name of Person 1</label>
+            <input type="text" oninput="set('PtD_ChildName1[0]',this.value)"></div>
+          <div class="field"><label>Relationship</label>
+            <input type="text" oninput="set('PtD_RelationshipOfChild1[0]',this.value)"></div>
+        </div>
+        <div class="row c2">
+          <div class="field"><label>Name of Person 2</label>
+            <input type="text" oninput="set('PtD_ChildName2[0]',this.value)"></div>
+          <div class="field"><label>Relationship</label>
+            <input type="text" oninput="set('PtD_RelationshipOfChild2[0]',this.value)"></div>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Did someone other than your spouse, parent, or child prepare this application?</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="d2" onchange="chkOne('ckboxynd2[0]','ckboxynd2[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="d2" onchange="chkOne('ckboxynd2[1]','ckboxynd2[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Have you been provided with a list of persons who may be available to assist you free of charge with your asylum claim?</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="d3" onchange="chkOne('ckboxynd3[0]','ckboxynd3[1]')"> <label>Yes</label></label>
+            <label class="ri"><input type="radio" name="d3" onchange="chkOne('ckboxynd3[1]','ckboxynd3[0]')"> <label>No</label></label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 6: Part E -- Preparer & Attorney
+================================================ -->
+<div class="section" id="s6">
+  <div class="card">
+    <div class="card-header"><span class="badge">Optional</span>Part E -- Person Preparing Form (if other than applicant)</div>
+    <div class="card-body">
+
+      <div class="row c2">
+        <div class="field"><label>Print Complete Name of Preparer</label>
+          <input type="text" oninput="set('PtE_PreparerName[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Preparer's Address</div>
+      <div class="row c31">
+        <div class="field"><label>Street Number and Name</label>
+          <input type="text" oninput="set('PtE_StreetNumAndName[0]',this.value)"></div>
+        <div class="field"><label>Apartment Number</label>
+          <input type="text" oninput="set('PtE_AptNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>City</label>
+          <input type="text" oninput="set('PtE_City[0]',this.value)"></div>
+        <div class="field"><label>State</label>
+          <select onchange="set('PtE_State[0]',this.value)"><?= STATE_OPTIONS ?></select></div>
+        <div class="field"><label>Zip Code</label>
+          <input type="text" maxlength="10" oninput="set('PtE_ZipCode[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Preparer's Phone</div>
+      <div class="row c2">
+        <div class="field"><label>Area Code</label>
+          <input type="text" maxlength="3" oninput="set('TextField25[1]',this.value)"></div>
+        <div class="field"><label>Daytime Telephone Number (7-digit)</label>
+          <input type="text" maxlength="8" oninput="set('TextField25[0]',this.value)"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><span class="badge">Optional</span>Attorney or Accredited Representative</div>
+    <div class="card-body">
+      <div class="row c1">
+        <div class="field">
+          <label><input type="checkbox" onchange="chk('CheckBox1[0]',this.checked);tog('atty_fields',this.checked)">
+          &nbsp;Form G-28 is attached</label>
+        </div>
+      </div>
+      <div id="atty_fields" style="display:none">
+        <div class="row c2">
+          <div class="field"><label>Attorney State Bar Number</label>
+            <input type="text" oninput="set('AttorneyStateBarNumber[0]',this.value)"></div>
+          <div class="field"><label>USCIS Online Account Number</label>
+            <input type="text" oninput="set('USCISOnlineAcctNumber[0]',this.value)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 7: Generate PDF
+================================================ -->
+<div class="section" id="s7">
+  <div class="card">
+    <div class="card-header">Generate Filled PDF</div>
+    <div class="card-body">
+      <div class="info">Review all sections before generating. Click the button below to download your filled I-589 PDF.</div>
+
+      <div style="text-align:center">
+        <button type="button" class="btn btn-gen" id="genBtn" onclick="generatePDF()">&#8595; Download Filled I-589 PDF</button>
+        <div id="status"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+  <button type="button" class="btn btn-prev" id="btnPrev" onclick="nav(-1)" style="display:none">&#8592; Previous</button>
+  <div></div>
+  <button type="button" class="btn btn-next" id="btnNext" onclick="nav(1)">Next &#8594;</button>
+</div>
+
+</div><!-- /container -->
+
+<script>
+// ============================================================
+// State
+// ============================================================
+const DATA = {};
+const PDF_B64 = '__PDF_BASE64__';
+
+let cur = 0;
+const TOTAL = 8;
+
+// ============================================================
+// Data setters
+// ============================================================
+function set(field, val) { DATA[field] = val || ''; }
+
+function chk(field, checked) { DATA[field] = checked ? 'Yes' : ''; }
+
+function chkOne(onField, offField) {
+  DATA[onField] = 'Yes';
+  DATA[offField] = '';
+}
+
+function chkExcl(onField, offFields) {
+  DATA[onField] = 'Yes';
+  offFields.forEach(f => DATA[f] = '');
+}
+
+function setNof(base, idx, max) {
+  for (let i = 0; i <= max; i++) DATA[`${base}[${i}]`] = (i === idx) ? 'Yes' : '';
+}
+
+function tog(id, show) { document.getElementById(id).style.display = show ? 'block' : 'none'; }
+
+// ============================================================
+// Navigation
+// ============================================================
+function goTo(n) {
+  if (n < 0 || n >= TOTAL) return;
+  document.getElementById('s' + cur).classList.remove('active');
+  const steps = document.querySelectorAll('.step');
+  steps[cur].classList.remove('active');
+  if (n > cur) steps[cur].classList.add('done');
+  cur = n;
+  document.getElementById('s' + cur).classList.add('active');
+  steps[cur].classList.remove('done');
+  steps[cur].classList.add('active');
+  document.getElementById('btnPrev').style.display = cur === 0 ? 'none' : 'inline-block';
+  document.getElementById('btnNext').style.display = cur === TOTAL - 1 ? 'none' : 'inline-block';
+  window.scrollTo(0, 0);
+}
+function nav(d) { goTo(cur + d); }
+
+// ============================================================
+// PDF Generation (pdf-lib, low-level annotation approach)
+// ============================================================
+async function generatePDF() {
+  const btn = document.getElementById('genBtn');
+  const status = document.getElementById('status');
+  btn.disabled = true;
+  btn.textContent = 'Generating...';
+  status.textContent = '';
+  status.className = '';
+
+  try {
+    const binary = atob(PDF_B64);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+
+    const { PDFDocument, PDFName, PDFString, PDFArray, PDFDict, PDFRef } = PDFLib;
+    const pdfDoc = await PDFDocument.load(bytes, { ignoreEncryption: true });
+    const pages = pdfDoc.getPages();
+
+    let filled = 0;
+
+    for (const page of pages) {
+      const node = page.node;
+      if (!node.has(PDFName.of('Annots'))) continue;
+
+      let annotsVal = node.get(PDFName.of('Annots'));
+      if (annotsVal instanceof PDFRef) {
+        annotsVal = pdfDoc.context.lookup(annotsVal);
+      }
+      if (!(annotsVal instanceof PDFArray)) continue;
+
+      for (let i = 0; i < annotsVal.size(); i++) {
+        let annotVal = annotsVal.get(i);
+        if (annotVal instanceof PDFRef) {
+          annotVal = pdfDoc.context.lookup(annotVal);
+        }
+        if (!(annotVal instanceof PDFDict)) continue;
+
+        const T = annotVal.get(PDFName.of('T'));
+        if (!T) continue;
+
+        let fieldName;
+        try {
+          fieldName = T.decodeText ? T.decodeText() : T.toString().replace(/^\(|\)$/g, '');
+        } catch(e) {
+          fieldName = T.toString().replace(/^\(|\)$/g, '');
+        }
+
+        const val = DATA[fieldName];
+        if (val) {
+          annotVal.set(PDFName.of('V'), PDFString.of(val));
+          filled++;
+        }
+      }
+    }
+
+    const pdfBytes = await pdfDoc.save();
+
+    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'I-589_filled.pdf';
+    a.click();
+    URL.revokeObjectURL(url);
+
+    status.textContent = `Done! ${filled} fields filled. Check your downloads folder.`;
+    btn.textContent = 'Download Filled I-589 PDF';
+    btn.disabled = false;
+
+  } catch (err) {
+    status.textContent = 'Error: ' + err.message;
+    status.className = 'err';
+    btn.textContent = 'Download Filled I-589 PDF';
+    btn.disabled = false;
+    console.error(err);
+  }
+}
+</script>
+
+</body>
+</html>
