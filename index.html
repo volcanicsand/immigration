@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Immigration Form Tools</title>
+<style>
+  :root { --blue: #003366; --gold: #c8a72b; --green: #2e7d32; --light: #f5f7fa; --border: #cdd4de; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--light); color: #222; }
+  header { background: var(--blue); color: white; padding: 24px; text-align: center; }
+  header h1 { font-size: 24px; font-weight: 700; }
+  header p { font-size: 14px; opacity: 0.8; margin-top: 6px; }
+  .container { max-width: 800px; margin: 0 auto; padding: 32px 16px; }
+  .card { background: white; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 16px; overflow: hidden; transition: box-shadow 0.2s; }
+  .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+  .card a { display: block; padding: 20px 24px; text-decoration: none; color: inherit; }
+  .card h2 { font-size: 17px; color: var(--blue); margin-bottom: 4px; }
+  .card p { font-size: 13px; color: #555; }
+  .badge { display: inline-block; background: var(--gold); color: var(--blue); border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 700; margin-right: 8px; vertical-align: middle; }
+  .section-label { font-size: 12px; font-weight: 700; text-transform: uppercase; color: #888; letter-spacing: 0.05em; margin: 24px 0 12px; }
+  footer { text-align: center; padding: 24px; font-size: 12px; color: #888; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Immigration Form Tools</h1>
+  <p>USCIS form filler wizards &bull; Fill and download official PDFs &bull; No server required</p>
+</header>
+
+<div class="container">
+
+  <div class="section-label">Form Filler Wizards</div>
+
+  <div class="card">
+    <a href="I-130_Wizard.html">
+      <h2><span class="badge">I-130</span> Petition for Alien Relative</h2>
+      <p>Family-based immigration petition for U.S. citizens and LPRs sponsoring relatives.</p>
+    </a>
+  </div>
+
+  <div class="card">
+    <a href="I-360_Wizard.html">
+      <h2><span class="badge">I-360</span> Petition for Amerasian, Widow(er), or Special Immigrant</h2>
+      <p>Special immigrant categories including VAWA self-petitioners, religious workers, and SIJ.</p>
+    </a>
+  </div>
+
+  <div class="card">
+    <a href="I-589_Wizard.html">
+      <h2><span class="badge">I-589</span> Application for Asylum and Withholding of Removal</h2>
+      <p>Asylum, withholding of removal, and Convention Against Torture (CAT) protection.</p>
+    </a>
+  </div>
+
+  <div class="card">
+    <a href="I-601A_Wizard.html">
+      <h2><span class="badge">I-601A</span> Provisional Unlawful Presence Waiver</h2>
+      <p>Waiver of the 3- and 10-year unlawful presence bars based on extreme hardship to qualifying relative.</p>
+    </a>
+  </div>
+
+  <div class="card">
+    <a href="I-751_Wizard.html">
+      <h2><span class="badge">I-751</span> Petition to Remove Conditions on Residence</h2>
+      <p>Remove conditions on permanent residence obtained through marriage to a U.S. citizen.</p>
+    </a>
+  </div>
+
+  <div class="card">
+    <a href="N-400_Wizard.html">
+      <h2><span class="badge">N-400</span> Application for Naturalization</h2>
+      <p>Application for U.S. citizenship through naturalization.</p>
+    </a>
+  </div>
+
+  <div class="section-label">Other Tools</div>
+
+  <div class="card">
+    <a href="intake.html">
+      <h2>Attorney Intake Tool</h2>
+      <p>Comprehensive immigration client intake form with eligibility analysis.</p>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  All form filling is done client-side in your browser. No data is sent to any server.
+</footer>
+
+</body>
+</html>
