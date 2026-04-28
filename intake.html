@@ -901,7 +901,9 @@ input:focus, select:focus, textarea:focus {
       </div>
     </div>
 
-    <!-- Coming soon sections placeholder -->
+    <!-- ═════════════════════════════════════════════════════════════════
+         SECTION 5 — Family Connections
+    ═════════════════════════════════════════════════════════════════ -->
     <div class="form-section" id="sec-5">
       <div class="section-card">
         <div class="section-header">
@@ -910,14 +912,123 @@ input:focus, select:focus, textarea:focus {
           <h2>Family Connections</h2>
         </div>
         <div class="section-body">
-          <div style="padding: 20px; text-align:center; color:#718096; font-style:italic;">
-            Section 5 — Family Connections — coming in next iteration.<br><br>
-            Will cover: USC/LPR family members, qualifying relatives for hardship analysis, VAWA relationship, dependent children.
+
+          <div class="question-block">
+            <div class="question-label">
+              Spouse's Immigration Status
+              <button class="info-btn" onclick="toggleInfo('info-spouse-status')">?</button>
+            </div>
+            <div class="radio-group" id="rg-spouse">
+              <label class="radio-opt"><input type="radio" name="spouseStatus" value="usc" onchange="update('hasUSCSpouse',true);update('hasLPRSpouse',false);styleRadio('rg-spouse',this)"> U.S. Citizen</label>
+              <label class="radio-opt"><input type="radio" name="spouseStatus" value="lpr" onchange="update('hasUSCSpouse',false);update('hasLPRSpouse',true);styleRadio('rg-spouse',this)"> LPR</label>
+              <label class="radio-opt"><input type="radio" name="spouseStatus" value="none" onchange="update('hasUSCSpouse',false);update('hasLPRSpouse',false);styleRadio('rg-spouse',this)"> No Spouse / Undocumented</label>
+            </div>
+            <div class="info-panel" id="info-spouse-status">
+              <div class="why-label">Why we ask</div>
+              A USC spouse can file an I-130 for immediate relative status — no visa backlog, and the applicant can adjust under INA § 245(a) if inspected and admitted. An LPR spouse can file an I-130 in the F2A category, but there is often a wait.
+              <span class="cite">INA § 201(b)(2)(A)(i); INA § 203(a)(2)(A)</span>
+              <br><br>
+              A USC or LPR spouse is also a "qualifying relative" for I-601A provisional waivers and I-601 extreme hardship waivers.
+              <span class="cite">INA § 212(a)(9)(B)(v)</span>
+            </div>
+            <div class="live-flags" id="flags-spouse"></div>
           </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Do you have a U.S. citizen parent?
+              <button class="info-btn" onclick="toggleInfo('info-usc-parent')">?</button>
+            </div>
+            <div class="radio-group" id="rg-uscparent">
+              <label class="radio-opt"><input type="radio" name="uscParent" value="yes" onchange="update('hasUSCParent',true);styleRadio('rg-uscparent',this)"> Yes</label>
+              <label class="radio-opt"><input type="radio" name="uscParent" value="no" onchange="update('hasUSCParent',false);styleRadio('rg-uscparent',this)"> No</label>
+            </div>
+            <div class="info-panel" id="info-usc-parent">
+              <div class="why-label">Why we ask</div>
+              A USC parent can file an I-130 for immediate relative status (if child is unmarried and under 21) or F1/F3 preference. Also a qualifying relative for hardship waivers. Check INA § 320 for possible automatic citizenship if parent naturalized while child was under 18 and in LPR status.
+              <span class="cite">INA § 201(b)(2)(A)(i); INA § 320</span>
+            </div>
+            <div class="live-flags" id="flags-uscparent"></div>
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Do you have any U.S. citizen children age 21 or older?
+              <button class="info-btn" onclick="toggleInfo('info-usc-child')">?</button>
+            </div>
+            <div class="radio-group" id="rg-uscchild">
+              <label class="radio-opt"><input type="radio" name="uscChild" value="yes" onchange="update('hasUSCChild21',true);styleRadio('rg-uscchild',this)"> Yes</label>
+              <label class="radio-opt"><input type="radio" name="uscChild" value="no" onchange="update('hasUSCChild21',false);styleRadio('rg-uscchild',this)"> No</label>
+            </div>
+            <div class="info-panel" id="info-usc-child">
+              <div class="why-label">Why we ask</div>
+              A USC child age 21+ can file an I-130 for immediate relative status. Also critical for non-LPR cancellation of removal — must show "exceptional and extremely unusual hardship" to a qualifying relative (USC/LPR spouse, parent, or child).
+              <span class="cite">INA § 240A(b)(1)(D); INA § 201(b)(2)(A)(i)</span>
+            </div>
+            <div class="live-flags" id="flags-uscchild"></div>
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Number of children (total, including non-USC)
+            </div>
+            <input type="number" id="numChildren" min="0" max="20" oninput="update('numChildren', this.value)">
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Are any children U.S. citizens (under 21)?
+              <button class="info-btn" onclick="toggleInfo('info-children-usc')">?</button>
+            </div>
+            <div class="radio-group" id="rg-childrenusc">
+              <label class="radio-opt"><input type="radio" name="childrenUSC" value="yes" onchange="update('childrenUSC',true);styleRadio('rg-childrenusc',this)"> Yes</label>
+              <label class="radio-opt"><input type="radio" name="childrenUSC" value="no" onchange="update('childrenUSC',false);styleRadio('rg-childrenusc',this)"> No</label>
+            </div>
+            <div class="info-panel" id="info-children-usc">
+              <div class="why-label">Why we ask</div>
+              USC children under 21 are qualifying relatives for cancellation of removal hardship analysis. Their best interests, medical needs, educational disruption, and country conditions are key factors.
+              <span class="cite">INA § 240A(b)(1)(D); Matter of Recinas, 23 I&N Dec. 467 (BIA 2002)</span>
+            </div>
+          </div>
+
+          <hr class="section-divider" style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;">
+
+          <div class="question-block">
+            <div class="question-label">
+              VAWA Relationship (if applicable)
+              <button class="info-btn" onclick="toggleInfo('info-vawa-rel')">?</button>
+            </div>
+            <div class="radio-group" id="rg-vawarel">
+              <label class="radio-opt"><input type="radio" name="vawaRel" value="spouse" onchange="update('vawaRelationship','spouse');styleRadio('rg-vawarel',this)"> Abusive USC/LPR Spouse</label>
+              <label class="radio-opt"><input type="radio" name="vawaRel" value="parent" onchange="update('vawaRelationship','parent');styleRadio('rg-vawarel',this)"> Abusive USC/LPR Parent</label>
+              <label class="radio-opt"><input type="radio" name="vawaRel" value="child" onchange="update('vawaRelationship','child');styleRadio('rg-vawarel',this)"> Abused by USC/LPR Adult Child</label>
+              <label class="radio-opt"><input type="radio" name="vawaRel" value="none" onchange="update('vawaRelationship','none');styleRadio('rg-vawarel',this)"> Not Applicable</label>
+            </div>
+            <div class="info-panel" id="info-vawa-rel">
+              <div class="why-label">Why we ask</div>
+              VAWA self-petitioners can file I-360 without abuser's knowledge. Also eligible for VAWA cancellation (3 years presence, not 10), VAWA-based adjustment, and unlimited MTR filings. Battery or extreme cruelty by a USC or LPR spouse, parent, or adult child qualifies.
+              <span class="cite">INA § 204(a)(1)(A)(iii)-(iv); INA § 240A(b)(2)</span>
+            </div>
+            <div class="live-flags" id="flags-vawa"></div>
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Has there been battery or extreme cruelty?
+            </div>
+            <div class="radio-group" id="rg-vawaabuse">
+              <label class="radio-opt"><input type="radio" name="vawaAbuse" value="yes" onchange="update('vawaAbuse',true);styleRadio('rg-vawaabuse',this)"> Yes</label>
+              <label class="radio-opt"><input type="radio" name="vawaAbuse" value="no" onchange="update('vawaAbuse',false);styleRadio('rg-vawaabuse',this)"> No</label>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
 
+    <!-- ═════════════════════════════════════════════════════════════════
+         SECTION 6 — Criminal History
+    ═════════════════════════════════════════════════════════════════ -->
     <div class="form-section" id="sec-6">
       <div class="section-card">
         <div class="section-header">
@@ -926,14 +1037,135 @@ input:focus, select:focus, textarea:focus {
           <h2>Criminal History</h2>
         </div>
         <div class="section-body">
-          <div style="padding: 20px; text-align:center; color:#718096; font-style:italic;">
-            Section 6 — Criminal History — coming in next iteration.<br><br>
-            Will cover: arrests/convictions, CIMT analysis, aggravated felony determination, drug offenses, DV convictions, GMC bars, petty offense exception.
+
+          <div class="question-block">
+            <div class="question-label">
+              Have you ever been arrested, cited, or detained by law enforcement?
+              <button class="info-btn" onclick="toggleInfo('info-arrests')">?</button>
+            </div>
+            <div class="radio-group" id="rg-arrests">
+              <label class="radio-opt"><input type="radio" name="arrests" value="yes" onchange="update('hasArrests',true);showCond('cond-arrestdetails');styleRadio('rg-arrests',this)"> Yes</label>
+              <label class="radio-opt"><input type="radio" name="arrests" value="no" onchange="update('hasArrests',false);hideCond('cond-arrestdetails');styleRadio('rg-arrests',this)"> No</label>
+            </div>
+            <div class="info-panel" id="info-arrests">
+              <div class="why-label">Why we ask</div>
+              Even arrests without conviction matter. USCIS considers arrests as part of the "totality of the circumstances" for good moral character (GMC) determinations. Dismissed cases still appear in FBI records and must be disclosed. Failure to disclose is itself a ground for denial or removal.
+              <span class="cite">INA § 101(f); 8 CFR § 316.10</span>
+            </div>
+            <div class="conditional-field" id="cond-arrestdetails">
+              <textarea style="width:100%;min-height:80px;border:1px solid #cbd5e0;border-radius:6px;padding:8px;font-size:0.85rem;" placeholder="List each arrest: date, charge, jurisdiction, outcome (convicted/dismissed/pending)..." oninput="update('arrestDetails', this.value)"></textarea>
+            </div>
+            <div class="live-flags" id="flags-arrests"></div>
           </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Have you ever been convicted of any crime (including pleas of guilty or nolo contendere)?
+              <button class="info-btn" onclick="toggleInfo('info-convictions')">?</button>
+            </div>
+            <div class="radio-group" id="rg-convictions">
+              <label class="radio-opt"><input type="radio" name="convictions" value="yes" onchange="update('hasConvictions',true);showCond('cond-convdetails');styleRadio('rg-convictions',this)"> Yes</label>
+              <label class="radio-opt"><input type="radio" name="convictions" value="no" onchange="update('hasConvictions',false);hideCond('cond-convdetails');styleRadio('rg-convictions',this)"> No</label>
+            </div>
+            <div class="info-panel" id="info-convictions">
+              <div class="why-label">Why we ask</div>
+              A "conviction" under immigration law includes any plea of guilty/nolo, deferred adjudication with restraint, or judgment. Expungements generally do NOT erase a conviction for immigration purposes. Each conviction must be categorized:
+              <br><br>
+              <span class="flag red">Aggravated felony</span> (INA § 101(a)(43)) — bars asylum, cancellation, voluntary departure; mandatory deportation.
+              <br>
+              <span class="flag yellow">CIMT</span> (Crime Involving Moral Turpitude) — may trigger inadmissibility under § 212(a)(2)(A) or deportability under § 237(a)(2)(A).
+              <br>
+              <span class="flag yellow">Drug offense</span> — any controlled substance offense (except single simple possession of 30g or less marijuana) bars GMC and triggers inadmissibility.
+              <span class="cite">INA § 101(a)(48)(A); INA § 212(a)(2); INA § 237(a)(2)</span>
+            </div>
+            <div class="conditional-field" id="cond-convdetails">
+              <textarea style="width:100%;min-height:80px;border:1px solid #cbd5e0;border-radius:6px;padding:8px;font-size:0.85rem;" placeholder="List each conviction: date, charge, statute, sentence, jurisdiction..." oninput="update('convictionDetails', this.value)"></textarea>
+            </div>
+            <div class="live-flags" id="flags-convictions"></div>
+          </div>
+
+          <hr class="section-divider" style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;">
+
+          <div class="question-block">
+            <div class="question-label">
+              Do any convictions involve a Crime Involving Moral Turpitude (CIMT)?
+              <button class="info-btn" onclick="toggleInfo('info-cimt')">?</button>
+            </div>
+            <div class="radio-group" id="rg-cimt">
+              <label class="radio-opt"><input type="radio" name="cimt" value="yes" onchange="update('hasCIMT',true);styleRadio('rg-cimt',this)"> Yes</label>
+              <label class="radio-opt"><input type="radio" name="cimt" value="no" onchange="update('hasCIMT',false);styleRadio('rg-cimt',this)"> No</label>
+              <label class="radio-opt"><input type="radio" name="cimt" value="unsure" onchange="update('hasCIMT','unsure');styleRadio('rg-cimt',this)"> Unsure</label>
+            </div>
+            <div class="info-panel" id="info-cimt">
+              <div class="why-label">Why we ask</div>
+              CIMTs include fraud, theft, assault with intent to harm, sex offenses, and many others. A single CIMT may be excused under the "petty offense exception" (max sentence &le; 1 year AND actual sentence &le; 6 months). Two or more CIMTs bar admission regardless.
+              <span class="cite">INA § 212(a)(2)(A)(ii)(II); Matter of Silva-Trevino, 26 I&N Dec. 826 (BIA 2016)</span>
+            </div>
+            <div class="live-flags" id="flags-cimt"></div>
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">Any drug offense conviction?</div>
+            <div class="radio-group" id="rg-drug">
+              <label class="radio-opt"><input type="radio" name="drugoff" value="yes" onchange="update('hasDrugOffense',true);styleRadio('rg-drug',this)"> Yes</label>
+              <label class="radio-opt"><input type="radio" name="drugoff" value="no" onchange="update('hasDrugOffense',false);styleRadio('rg-drug',this)"> No</label>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">Any domestic violence conviction?</div>
+            <div class="radio-group" id="rg-dv">
+              <label class="radio-opt"><input type="radio" name="dvoff" value="yes" onchange="update('hasDV',true);styleRadio('rg-dv',this)"> Yes</label>
+              <label class="radio-opt"><input type="radio" name="dvoff" value="no" onchange="update('hasDV',false);styleRadio('rg-dv',this)"> No</label>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Any aggravated felony conviction?
+              <button class="info-btn" onclick="toggleInfo('info-aggfel')">?</button>
+            </div>
+            <div class="radio-group" id="rg-aggfel">
+              <label class="radio-opt"><input type="radio" name="aggfel" value="yes" onchange="update('hasAggFelony',true);styleRadio('rg-aggfel',this)"> Yes</label>
+              <label class="radio-opt"><input type="radio" name="aggfel" value="no" onchange="update('hasAggFelony',false);styleRadio('rg-aggfel',this)"> No</label>
+              <label class="radio-opt"><input type="radio" name="aggfel" value="unsure" onchange="update('hasAggFelony','unsure');styleRadio('rg-aggfel',this)"> Unsure</label>
+            </div>
+            <div class="info-panel" id="info-aggfel">
+              <div class="why-label">Why we ask</div>
+              INA § 101(a)(43) lists 21 categories of aggravated felonies, including: murder, drug trafficking, firearms trafficking, money laundering (&gt;$10k), theft/burglary (1yr+ sentence), fraud (&gt;$10k loss), sexual abuse of a minor, and many others. An aggravated felony bars asylum, cancellation, voluntary departure, and many other forms of relief. It also triggers mandatory detention.
+              <span class="cite">INA § 101(a)(43); INA § 208(b)(2)(B)(i); INA § 240A(a)(3)</span>
+            </div>
+            <div class="live-flags" id="flags-aggfel"></div>
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">Any fraud or misrepresentation to obtain immigration benefit?</div>
+            <div class="radio-group" id="rg-fraud">
+              <label class="radio-opt"><input type="radio" name="fraud" value="yes" onchange="update('hasFraud',true);styleRadio('rg-fraud',this)"> Yes</label>
+              <label class="radio-opt"><input type="radio" name="fraud" value="no" onchange="update('hasFraud',false);styleRadio('rg-fraud',this)"> No</label>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              If pre-IIRIRA plea: date of guilty plea (for § 212(c) analysis)
+              <button class="info-btn" onclick="toggleInfo('info-212c')">?</button>
+            </div>
+            <input type="date" id="prePleaDate" oninput="update('prePleaDate', this.value)">
+            <div class="info-panel" id="info-212c">
+              <div class="why-label">Why we ask</div>
+              For LPRs who pleaded guilty before April 24, 1996 (AEDPA) or April 1, 1997 (IIRIRA), INA § 212(c) relief may still be available under INS v. St. Cyr. This is a discretionary waiver of deportability — even for some aggravated felonies — if the person had 7+ years LPR status and a comparable ground of inadmissibility existed at the time.
+              <span class="cite">INS v. St. Cyr, 533 U.S. 289 (2001); 8 CFR § 1212.3</span>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
 
+    <!-- ═════════════════════════════════════════════════════════════════
+         SECTION 7 — Employment
+    ═════════════════════════════════════════════════════════════════ -->
     <div class="form-section" id="sec-7">
       <div class="section-card">
         <div class="section-header">
@@ -942,14 +1174,65 @@ input:focus, select:focus, textarea:focus {
           <h2>Employment</h2>
         </div>
         <div class="section-body">
-          <div style="padding: 20px; text-align:center; color:#718096; font-style:italic;">
-            Section 7 — Employment — coming in next iteration.<br><br>
-            Will cover: employer sponsors, prior I-140s, § 204(j) portability, occupation classification.
+
+          <div class="question-block">
+            <div class="question-label">Current Employer (if any)</div>
+            <input type="text" id="currentEmployer" placeholder="Employer name" oninput="update('currentEmployer', this.value)">
           </div>
+
+          <div class="question-block">
+            <div class="question-label">Occupation / Job Title</div>
+            <input type="text" id="occupation" placeholder="e.g. Construction worker, housekeeper, software engineer" oninput="update('occupation', this.value)">
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Has any employer ever filed or offered to file an immigration petition (I-140) for you?
+              <button class="info-btn" onclick="toggleInfo('info-employer-sponsor')">?</button>
+            </div>
+            <div class="radio-group" id="rg-empsponsor">
+              <label class="radio-opt"><input type="radio" name="empSponsor" value="yes" onchange="update('hasEmployerSponsor',true);showCond('cond-empsponsor');styleRadio('rg-empsponsor',this)"> Yes</label>
+              <label class="radio-opt"><input type="radio" name="empSponsor" value="no" onchange="update('hasEmployerSponsor',false);hideCond('cond-empsponsor');styleRadio('rg-empsponsor',this)"> No</label>
+            </div>
+            <div class="info-panel" id="info-employer-sponsor">
+              <div class="why-label">Why we ask</div>
+              An approved or pending I-140 opens employment-based adjustment paths. If an I-140 was filed before May 1, 2001, the applicant may be grandfathered under § 245(i) — allowing adjustment even if they entered without inspection. Under § 204(j) portability, an approved I-140 with a pending I-485 for 180+ days allows job change to a "same or similar" occupation.
+              <span class="cite">INA § 245(i); INA § 204(j); AC21 § 106(c)</span>
+            </div>
+            <div class="conditional-field" id="cond-empsponsor">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:8px;">
+                <input type="text" id="employerSponsorName" placeholder="Sponsoring employer name" oninput="update('employerSponsorName', this.value)">
+                <input type="date" id="i140PriorityDate" oninput="update('i140PriorityDate', this.value)" title="I-140 priority date">
+              </div>
+              <div style="font-size:0.8rem;color:#718096;margin-top:4px;">I-140 priority date (if known)</div>
+            </div>
+            <div class="live-flags" id="flags-employer"></div>
+          </div>
+
+          <div class="question-block">
+            <div class="question-label">
+              Is there a prior approved I-140?
+              <button class="info-btn" onclick="toggleInfo('info-prior-i140')">?</button>
+            </div>
+            <div class="radio-group" id="rg-priori140">
+              <label class="radio-opt"><input type="radio" name="priorI140" value="yes" onchange="update('priorI140',true);styleRadio('rg-priori140',this)"> Yes</label>
+              <label class="radio-opt"><input type="radio" name="priorI140" value="no" onchange="update('priorI140',false);styleRadio('rg-priori140',this)"> No</label>
+              <label class="radio-opt"><input type="radio" name="priorI140" value="unknown" onchange="update('priorI140','unknown');styleRadio('rg-priori140',this)"> Unknown</label>
+            </div>
+            <div class="info-panel" id="info-prior-i140">
+              <div class="why-label">Why we ask</div>
+              An approved I-140 that has not been revoked keeps its priority date even if the original employer withdraws. The priority date can be retained and used with a new employer's petition.
+              <span class="cite">8 CFR § 204.5(e); INA § 203(h)(3)</span>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
 
+    <!-- ═════════════════════════════════════════════════════════════════
+         SECTION 8 — Fear / Persecution
+    ═════════════════════════════════════════════════════════════════ -->
     <div class="form-section" id="sec-8">
       <div class="section-card">
         <div class="section-header">
@@ -958,14 +1241,163 @@ input:focus, select:focus, textarea:focus {
           <h2>Fear / Persecution</h2>
         </div>
         <div class="section-body">
-          <div style="padding: 20px; text-align:center; color:#718096; font-style:italic;">
-            Section 8 — Fear / Persecution — coming in next iteration.<br><br>
-            Will cover: nature of harm, protected grounds, nexus, one-year bar analysis, country conditions, CAT eligibility.
+
+          <div class="question-block">
+            <div class="question-label">
+              Do you fear returning to your home country?
+              <button class="info-btn" onclick="toggleInfo('info-fear')">?</button>
+            </div>
+            <div class="radio-group" id="rg-fear">
+              <label class="radio-opt"><input type="radio" name="fearHarm" value="yes" onchange="update('fearHarm',true);showCond('cond-feardetails');styleRadio('rg-fear',this)"> Yes</label>
+              <label class="radio-opt"><input type="radio" name="fearHarm" value="no" onchange="update('fearHarm',false);hideCond('cond-feardetails');styleRadio('rg-fear',this)"> No</label>
+            </div>
+            <div class="info-panel" id="info-fear">
+              <div class="why-label">Why we ask</div>
+              Fear of return is the threshold question for asylum (INA § 208), withholding of removal (INA § 241(b)(3)), and CAT protection (8 CFR § 1208.16). Even if asylum is time-barred or otherwise unavailable, withholding and CAT have no time limit and can be raised in removal proceedings.
+            </div>
           </div>
+
+          <div class="conditional-field" id="cond-feardetails">
+
+            <div class="question-block">
+              <div class="question-label">Country of feared persecution</div>
+              <input type="text" id="fearCountry" placeholder="e.g. Honduras" oninput="update('fearCountry', this.value)">
+            </div>
+
+            <div class="question-block">
+              <div class="question-label">
+                Protected ground(s)
+                <button class="info-btn" onclick="toggleInfo('info-grounds')">?</button>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:6px;">
+                <label style="font-size:0.85rem;cursor:pointer"><input type="checkbox" onchange="toggleGround('race',this.checked)"> Race</label>
+                <label style="font-size:0.85rem;cursor:pointer"><input type="checkbox" onchange="toggleGround('religion',this.checked)"> Religion</label>
+                <label style="font-size:0.85rem;cursor:pointer"><input type="checkbox" onchange="toggleGround('nationality',this.checked)"> Nationality</label>
+                <label style="font-size:0.85rem;cursor:pointer"><input type="checkbox" onchange="toggleGround('political',this.checked)"> Political Opinion</label>
+                <label style="font-size:0.85rem;cursor:pointer"><input type="checkbox" onchange="toggleGround('psg',this.checked)"> Particular Social Group (PSG)</label>
+              </div>
+              <div class="info-panel" id="info-grounds">
+                <div class="why-label">Why we ask</div>
+                Asylum requires persecution "on account of" one of five protected grounds. PSG is the most litigated — must be defined with particularity, social distinction, and immutability. Common PSGs include: family members of targeted individuals, LGBTQ+ identity, former gang resistance, domestic violence victims (where government unable/unwilling to protect).
+                <span class="cite">INA § 101(a)(42); Matter of M-E-V-G-, 26 I&N Dec. 227 (BIA 2014)</span>
+              </div>
+            </div>
+
+            <div class="question-block">
+              <div class="question-label">Nature of harm feared</div>
+              <textarea style="width:100%;min-height:60px;border:1px solid #cbd5e0;border-radius:6px;padding:8px;font-size:0.85rem;" placeholder="Describe the type of harm: death threats, physical violence, kidnapping, extortion..." oninput="update('harmNature', this.value)"></textarea>
+            </div>
+
+            <div class="question-block">
+              <div class="question-label">Have you experienced past harm or persecution?</div>
+              <div class="radio-group" id="rg-pastharm">
+                <label class="radio-opt"><input type="radio" name="pastHarm" value="yes" onchange="update('pastHarm',true);styleRadio('rg-pastharm',this)"> Yes</label>
+                <label class="radio-opt"><input type="radio" name="pastHarm" value="no" onchange="update('pastHarm',false);styleRadio('rg-pastharm',this)"> No</label>
+              </div>
+            </div>
+
+            <div class="question-block">
+              <div class="question-label">
+                Is the persecutor a government actor or someone the government is unable/unwilling to control?
+                <button class="info-btn" onclick="toggleInfo('info-govactor')">?</button>
+              </div>
+              <div class="radio-group" id="rg-govactor">
+                <label class="radio-opt"><input type="radio" name="govActor" value="gov" onchange="update('govActor',true);styleRadio('rg-govactor',this)"> Government</label>
+                <label class="radio-opt"><input type="radio" name="govActor" value="private" onchange="update('govActor',false);styleRadio('rg-govactor',this)"> Private (gov unable/unwilling)</label>
+              </div>
+              <div class="info-panel" id="info-govactor">
+                <div class="why-label">Why we ask</div>
+                Persecution by private actors qualifies only if the government is "unable or unwilling" to control the persecutor. This often arises in gang cases, domestic violence cases, and situations where police corruption or complicity prevents protection.
+                <span class="cite">Matter of A-B-, 27 I&N Dec. 316 (AG 2018) (partially vacated); Matter of A-B- II, 28 I&N Dec. 307 (AG 2021)</span>
+              </div>
+            </div>
+
+            <hr class="section-divider" style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;">
+
+            <div class="question-block">
+              <div class="question-label">
+                One-Year Filing Deadline: Did you file for asylum within one year of your last arrival?
+                <button class="info-btn" onclick="toggleInfo('info-oneyear')">?</button>
+              </div>
+              <div class="radio-group" id="rg-oneyear">
+                <label class="radio-opt"><input type="radio" name="oneYear" value="yes" onchange="update('oneYearFiled',true);styleRadio('rg-oneyear',this)"> Yes</label>
+                <label class="radio-opt"><input type="radio" name="oneYear" value="no" onchange="update('oneYearFiled',false);styleRadio('rg-oneyear',this)"> No / Not Yet Filed</label>
+              </div>
+              <div class="info-panel" id="info-oneyear">
+                <div class="why-label">Why we ask</div>
+                Asylum must be filed within one year of last arrival unless an exception applies: changed circumstances (in country or applicant's life), extraordinary circumstances (serious illness, mental disability, ineffective assistance of counsel), or minor status. Even if asylum is time-barred, withholding of removal and CAT protection remain available — but withholding has a higher standard (clear probability vs. well-founded fear) and does not lead to a green card.
+                <span class="cite">INA § 208(a)(2)(B)-(D); 8 CFR § 1208.4(a)(4)-(5)</span>
+              </div>
+              <div class="live-flags" id="flags-oneyear"></div>
+            </div>
+
+            <hr class="section-divider" style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;">
+
+            <div class="question-block">
+              <div class="question-label">
+                Have you been a victim of a qualifying crime in the U.S.? (U Visa)
+                <button class="info-btn" onclick="toggleInfo('info-uvisa')">?</button>
+              </div>
+              <div class="radio-group" id="rg-crimevictim">
+                <label class="radio-opt"><input type="radio" name="crimeVictim" value="yes" onchange="update('crimeVictim',true);showCond('cond-crimedetails');styleRadio('rg-crimevictim',this)"> Yes</label>
+                <label class="radio-opt"><input type="radio" name="crimeVictim" value="no" onchange="update('crimeVictim',false);hideCond('cond-crimedetails');styleRadio('rg-crimevictim',this)"> No</label>
+              </div>
+              <div class="info-panel" id="info-uvisa">
+                <div class="why-label">Why we ask</div>
+                U visa is for victims of qualifying crimes (domestic violence, sexual assault, trafficking, kidnapping, etc.) who have suffered substantial physical/mental abuse and who cooperate with law enforcement. Requires a law enforcement certification (I-918 Supplement B). U visa leads to work authorization and eventually a green card. 10,000/year cap with long waitlists.
+                <span class="cite">INA § 101(a)(15)(U); 8 CFR § 214.14</span>
+              </div>
+              <div class="conditional-field" id="cond-crimedetails">
+                <input type="text" id="crimeType" placeholder="Type of crime (e.g. domestic violence, sexual assault)" oninput="update('crimeType', this.value)" style="margin-top:8px">
+                <div class="question-block" style="margin-top:10px">
+                  <div class="question-label">Do you have or can you obtain a law enforcement certification?</div>
+                  <div class="radio-group" id="rg-lawcert">
+                    <label class="radio-opt"><input type="radio" name="lawCert" value="yes" onchange="update('lawEnforcementCert',true);styleRadio('rg-lawcert',this)"> Yes / Have It</label>
+                    <label class="radio-opt"><input type="radio" name="lawCert" value="no" onchange="update('lawEnforcementCert',false);styleRadio('rg-lawcert',this)"> No</label>
+                    <label class="radio-opt"><input type="radio" name="lawCert" value="unsure" onchange="update('lawEnforcementCert','unsure');styleRadio('rg-lawcert',this)"> Unsure</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="question-block">
+              <div class="question-label">Have you been a victim of human trafficking? (T Visa)</div>
+              <div class="radio-group" id="rg-trafficking">
+                <label class="radio-opt"><input type="radio" name="trafficking" value="yes" onchange="update('traffickingVictim',true);styleRadio('rg-trafficking',this)"> Yes</label>
+                <label class="radio-opt"><input type="radio" name="trafficking" value="no" onchange="update('traffickingVictim',false);styleRadio('rg-trafficking',this)"> No</label>
+              </div>
+            </div>
+
+            <hr class="section-divider" style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;">
+
+            <div class="question-block">
+              <div class="question-label">
+                Do you fear torture by or with the acquiescence of a government official? (CAT)
+                <button class="info-btn" onclick="toggleInfo('info-cat')">?</button>
+              </div>
+              <div class="radio-group" id="rg-cat">
+                <label class="radio-opt"><input type="radio" name="catFear" value="yes" onchange="update('catFear',true);showCond('cond-catdetails');styleRadio('rg-cat',this)"> Yes</label>
+                <label class="radio-opt"><input type="radio" name="catFear" value="no" onchange="update('catFear',false);hideCond('cond-catdetails');styleRadio('rg-cat',this)"> No</label>
+              </div>
+              <div class="info-panel" id="info-cat">
+                <div class="why-label">Why we ask</div>
+                Convention Against Torture protection is available regardless of criminal history — even aggravated felons can receive CAT protection. No nexus to a protected ground is required. Must show it is "more likely than not" that the applicant would be tortured with government involvement or acquiescence. CAT deferral (as opposed to withholding) can be terminated and does not lead to a green card, but it prevents removal.
+                <span class="cite">8 CFR § 1208.16(c); 8 CFR § 1208.17</span>
+              </div>
+              <div class="conditional-field" id="cond-catdetails">
+                <textarea style="width:100%;min-height:60px;border:1px solid #cbd5e0;border-radius:6px;padding:8px;font-size:0.85rem;margin-top:8px;" placeholder="Describe the feared torture and government involvement..." oninput="update('catDetails', this.value)"></textarea>
+              </div>
+            </div>
+
+          </div><!-- /cond-feardetails -->
+
         </div>
       </div>
     </div>
 
+    <!-- ═════════════════════════════════════════════════════════════════
+         SECTION 9 — Analysis & Document Checklist
+    ═════════════════════════════════════════════════════════════════ -->
     <div class="form-section" id="sec-9">
       <div class="section-card">
         <div class="section-header">
@@ -974,9 +1406,42 @@ input:focus, select:focus, textarea:focus {
           <h2>Analysis &amp; Document Checklist</h2>
         </div>
         <div class="section-body">
-          <div style="padding: 20px; text-align:center; color:#718096; font-style:italic;">
-            Section 9 — Full relief analysis and document checklist — coming in next iteration.
+
+          <div class="question-block">
+            <div class="question-label" style="font-size:1rem;margin-bottom:8px;">Case Summary</div>
+            <div id="case-summary" style="background:#f7fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;font-size:0.85rem;line-height:1.6;color:#4a5568;">
+              Complete the sections above to generate a case summary.
+            </div>
           </div>
+
+          <hr class="section-divider" style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;">
+
+          <div class="question-block">
+            <div class="question-label" style="font-size:1rem;margin-bottom:8px;">Document Checklist</div>
+            <div id="doc-checklist" style="font-size:0.85rem;line-height:1.8;">
+              <div style="margin-bottom:8px;font-weight:600;color:#2d3748;">Universal Documents:</div>
+              <label style="display:block;cursor:pointer"><input type="checkbox"> Valid passport or travel document</label>
+              <label style="display:block;cursor:pointer"><input type="checkbox"> Birth certificate (with certified translation)</label>
+              <label style="display:block;cursor:pointer"><input type="checkbox"> Government-issued photo ID</label>
+              <label style="display:block;cursor:pointer"><input type="checkbox"> 2 passport-style photographs</label>
+              <label style="display:block;cursor:pointer"><input type="checkbox"> Marriage certificate (if applicable, with translation)</label>
+              <label style="display:block;cursor:pointer"><input type="checkbox"> Divorce decree(s) (if applicable)</label>
+              <label style="display:block;cursor:pointer"><input type="checkbox"> I-94 arrival/departure record</label>
+              <label style="display:block;cursor:pointer"><input type="checkbox"> Prior immigration documents (approvals, EADs, receipts)</label>
+
+              <div id="checklist-conditional" style="margin-top:12px;"></div>
+            </div>
+          </div>
+
+          <hr class="section-divider" style="border:none;border-top:1px solid #e2e8f0;margin:16px 0;">
+
+          <div class="question-block">
+            <div class="question-label" style="font-size:1rem;margin-bottom:8px;">Next Steps / Action Items</div>
+            <div id="action-items" style="background:#f7fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;font-size:0.85rem;line-height:1.6;color:#4a5568;">
+              Action items will populate based on case data.
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -1039,6 +1504,24 @@ const state = {
   ntaReceived: null, ntaDate: '', ntaHasHearingDate: null,
   orderType: '', orderDate: '', priorRemoval: null, removalDate: '',
   reenteredAfterRemoval: null, priorMTR: null, appealLevel: '',
+  // Section 5
+  hasUSCSpouse: null, hasLPRSpouse: null, hasUSCParent: null, hasUSCChild21: null,
+  hasLPRParent: null, numChildren: '', childrenUSC: null,
+  vawaRelationship: '', vawaAbuse: null,
+  // Section 6
+  hasArrests: null, arrestDetails: '', hasConvictions: null, convictionDetails: '',
+  hasCIMT: null, hasDrugOffense: null, hasDV: null, hasAggFelony: null,
+  hasFirearm: null, hasFraud: null, prePleaDate: '',
+  // Section 7
+  currentEmployer: '', occupation: '', hasEmployerSponsor: null,
+  employerSponsorName: '', priorI140: null, i140PriorityDate: '',
+  // Section 8
+  fearHarm: null, fearCountry: '', persecutionGrounds: [],
+  harmNature: '', pastHarm: null, govActor: null,
+  oneYearFiled: null, firstEntryOver1Year: null,
+  crimeVictim: null, crimeType: '', lawEnforcementCert: null,
+  traffickingVictim: null,
+  catFear: null, catDetails: '',
 };
 
 let currentSection = 1;
@@ -1098,6 +1581,14 @@ function setStatus(val) {
   else { hideCond('cond-lpr'); hideCond('cond-lpr-how'); }
 }
 
+function toggleGround(ground, checked) {
+  if (!state.persecutionGrounds) state.persecutionGrounds = [];
+  if (checked) { if (!state.persecutionGrounds.includes(ground)) state.persecutionGrounds.push(ground); }
+  else { state.persecutionGrounds = state.persecutionGrounds.filter(g => g !== ground); }
+  updateRelief();
+  updateFlags();
+}
+
 function setOrder(val) {
   update('orderType', val);
   styleRadio('rg-order', document.querySelector(`#rg-order input[value="${val}"]`));
@@ -1127,13 +1618,21 @@ const reliefOptions = [
     name: 'Immediate Relative Adjustment',
     cite: 'INA § 201(b)(2)(A)(i)',
     eligibility() {
-      if (state.currentStatus === 'lpr') return 'ineligible'; // already LPR
-      if (state.mannerOfEntry === 'ewi' && !state.has245i && state.has245i !== 'unknown') return 'possible';
+      if (state.currentStatus === 'lpr') return 'ineligible';
+      if (state.hasUSCSpouse || state.hasUSCParent || state.hasUSCChild21) {
+        if (state.mannerOfEntry === 'ewi' && !state.has245i && state.has245i !== 'unknown') return 'possible';
+        if (state.mannerOfEntry !== 'ewi' && state.mannerOfEntry) return 'eligible';
+        return 'possible';
+      }
       return 'unknown';
     },
     statusText() {
       if (state.currentStatus === 'lpr') return 'Already LPR';
-      if (state.mannerOfEntry === 'ewi') return 'EWI bars § 245(a) — check § 245(i)';
+      if (state.hasUSCSpouse || state.hasUSCParent || state.hasUSCChild21) {
+        if (state.mannerOfEntry === 'ewi') return 'Has USC relative but EWI — check § 245(i)';
+        if (state.mannerOfEntry) return 'Has USC relative + inspected entry';
+        return 'Has USC relative — check entry';
+      }
       return 'Need family info (Sec. 5)';
     }
   },
@@ -1175,8 +1674,16 @@ const reliefOptions = [
     id: 'vawaSelfPetition',
     name: 'VAWA Self-Petition',
     cite: 'INA § 204(a)(1)(A)(iii)',
-    eligibility() { return 'unknown'; },
-    statusText() { return 'Need family/abuse info (Sec. 5)'; }
+    eligibility() {
+      if (state.vawaRelationship && state.vawaRelationship !== 'none' && state.vawaAbuse) return 'eligible';
+      if (state.vawaRelationship === 'none') return 'ineligible';
+      return 'unknown';
+    },
+    statusText() {
+      if (state.vawaRelationship && state.vawaRelationship !== 'none' && state.vawaAbuse) return 'Qualifies — file I-360 VAWA self-petition';
+      if (state.vawaRelationship === 'none') return 'No VAWA relationship';
+      return 'Need family/abuse info (Sec. 5)';
+    }
   },
   {
     id: 'vawaCancellation',
@@ -1200,13 +1707,23 @@ const reliefOptions = [
     name: 'Asylum',
     cite: 'INA § 208',
     eligibility() {
-      if (state.priorRemoval && state.reenteredAfterRemoval) return 'ineligible'; // reinstatement bars asylum
-      if (state.orderType === 'merits') return 'ineligible'; // already litigated
+      if (state.hasAggFelony === true) return 'ineligible';
+      if (state.priorRemoval && state.reenteredAfterRemoval) return 'ineligible';
+      if (state.orderType === 'merits') return 'ineligible';
+      if (state.fearHarm && state.persecutionGrounds && state.persecutionGrounds.length > 0) {
+        if (state.oneYearFiled === false) return 'possible'; // time-barred but exceptions may apply
+        return 'eligible';
+      }
+      if (state.fearHarm === false) return 'ineligible';
       return 'unknown';
     },
     statusText() {
+      if (state.hasAggFelony === true) return 'Aggravated felony bars asylum';
       if (state.priorRemoval && state.reenteredAfterRemoval) return 'Reinstated order bars asylum';
       if (state.orderType === 'merits') return 'Already litigated';
+      if (state.fearHarm && state.oneYearFiled === false) return 'Fear present but 1-year bar — check exceptions';
+      if (state.fearHarm && state.persecutionGrounds && state.persecutionGrounds.length > 0) return 'Fear + protected ground identified';
+      if (state.fearHarm === false) return 'No fear of return';
       return 'Need fear/persecution info (Sec. 8)';
     }
   },
@@ -1214,15 +1731,33 @@ const reliefOptions = [
     id: 'withholding',
     name: 'Withholding of Removal',
     cite: 'INA § 241(b)(3)',
-    eligibility() { return 'unknown'; },
-    statusText() { return 'Need fear info (Sec. 8)'; }
+    eligibility() {
+      if (state.hasAggFelony === true) return 'ineligible'; // "particularly serious crime" bar
+      if (state.fearHarm && state.persecutionGrounds && state.persecutionGrounds.length > 0) return 'possible';
+      if (state.fearHarm === false) return 'ineligible';
+      return 'unknown';
+    },
+    statusText() {
+      if (state.hasAggFelony === true) return 'Agg felony = presumed particularly serious crime';
+      if (state.fearHarm && state.persecutionGrounds && state.persecutionGrounds.length > 0) return 'Fear + nexus present — higher "clear probability" standard';
+      if (state.fearHarm === false) return 'No fear of return';
+      return 'Need fear info (Sec. 8)';
+    }
   },
   {
     id: 'cat',
     name: 'Convention Against Torture',
     cite: '8 CFR § 1208.16-18',
-    eligibility() { return 'unknown'; },
-    statusText() { return 'Need fear info (Sec. 8)'; }
+    eligibility() {
+      if (state.catFear === true) return 'possible';
+      if (state.catFear === false && state.fearHarm === false) return 'ineligible';
+      return 'unknown';
+    },
+    statusText() {
+      if (state.catFear === true) return 'CAT fear identified — no criminal bar, no nexus needed';
+      if (state.catFear === false && state.fearHarm === false) return 'No fear of torture';
+      return 'Need fear info (Sec. 8)';
+    }
   },
   {
     id: 'mtrInAbsentia',
@@ -1324,15 +1859,34 @@ const reliefOptions = [
     id: 'uVisa',
     name: 'U Visa (Crime Victim)',
     cite: 'INA § 101(a)(15)(U)',
-    eligibility() { return 'unknown'; },
-    statusText() { return 'Need crime victim info (Sec. 8)'; }
+    eligibility() {
+      if (state.crimeVictim === true && state.lawEnforcementCert === true) return 'eligible';
+      if (state.crimeVictim === true) return 'possible';
+      if (state.crimeVictim === false) return 'ineligible';
+      return 'unknown';
+    },
+    statusText() {
+      if (state.crimeVictim === true && state.lawEnforcementCert === true) return 'Crime victim + LE cert — file I-918';
+      if (state.crimeVictim === true && state.lawEnforcementCert === false) return 'Need LE certification (I-918B)';
+      if (state.crimeVictim === true) return 'Crime victim — check LE cert availability';
+      if (state.crimeVictim === false) return 'Not a crime victim';
+      return 'Need crime victim info (Sec. 8)';
+    }
   },
   {
     id: 'tVisa',
     name: 'T Visa (Trafficking Victim)',
     cite: 'INA § 101(a)(15)(T)',
-    eligibility() { return 'unknown'; },
-    statusText() { return 'Need trafficking info (Sec. 8)'; }
+    eligibility() {
+      if (state.traffickingVictim === true) return 'possible';
+      if (state.traffickingVictim === false) return 'ineligible';
+      return 'unknown';
+    },
+    statusText() {
+      if (state.traffickingVictim === true) return 'Trafficking victim — evaluate T visa eligibility';
+      if (state.traffickingVictim === false) return 'Not a trafficking victim';
+      return 'Need trafficking info (Sec. 8)';
+    }
   },
   {
     id: 'tps',
@@ -1378,10 +1932,23 @@ const reliefOptions = [
     name: '§ 212(c) Relief (Pre-AEDPA)',
     cite: 'INS v. St. Cyr, 533 U.S. 289 (2001)',
     eligibility() {
-      if (state.currentStatus !== 'lpr' && state.lprDate === '') return 'unknown';
-      return 'unknown'; // need criminal history from Sec. 6
+      if (state.prePleaDate) {
+        const plea = new Date(state.prePleaDate);
+        if (plea < new Date('1996-04-24')) return 'possible';
+        return 'ineligible';
+      }
+      if (state.hasConvictions === false) return 'ineligible';
+      return 'unknown';
     },
-    statusText() { return 'Need criminal history (Sec. 6) — pre-1996 plea?'; }
+    statusText() {
+      if (state.prePleaDate) {
+        const plea = new Date(state.prePleaDate);
+        if (plea < new Date('1996-04-24')) return 'Pre-AEDPA plea — § 212(c) available if 7yr LPR';
+        return 'Plea after AEDPA — § 212(c) unavailable';
+      }
+      if (state.hasConvictions === false) return 'No convictions';
+      return 'Need criminal history (Sec. 6) — pre-1996 plea?';
+    }
   },
 ];
 
@@ -1487,6 +2054,68 @@ function updateFieldFlags() {
     if (yrsPresent >= 10) entryFlags.push({ type: 'good', text: `${Math.floor(yrsPresent)} yrs presence — cancellation threshold` });
     setLiveFlags('flags-entry', entryFlags);
   }
+
+  // Spouse flags
+  const spouseFlags = [];
+  if (state.hasUSCSpouse) spouseFlags.push({ type: 'good', text: 'USC spouse — immediate relative petition available' });
+  if (state.hasLPRSpouse) spouseFlags.push({ type: 'info', text: 'LPR spouse — F2A category (some backlog)' });
+  setLiveFlags('flags-spouse', spouseFlags);
+
+  // USC parent flags
+  const uscParentFlags = [];
+  if (state.hasUSCParent) uscParentFlags.push({ type: 'good', text: 'USC parent — immediate relative or F1/F3 petition' });
+  setLiveFlags('flags-uscparent', uscParentFlags);
+
+  // USC child flags
+  const uscChildFlags = [];
+  if (state.hasUSCChild21) uscChildFlags.push({ type: 'good', text: 'USC child 21+ — immediate relative petition available' });
+  setLiveFlags('flags-uscchild', uscChildFlags);
+
+  // VAWA flags
+  const vawaFlags = [];
+  if (state.vawaRelationship && state.vawaRelationship !== 'none' && state.vawaAbuse) {
+    vawaFlags.push({ type: 'good', text: 'VAWA eligible — I-360 self-petition + VAWA cancellation' });
+  }
+  setLiveFlags('flags-vawa', vawaFlags);
+
+  // Criminal flags
+  const arrestFlags = [];
+  if (state.hasArrests) arrestFlags.push({ type: 'warn', text: 'Arrests on record — get RAP sheet and court dispositions' });
+  setLiveFlags('flags-arrests', arrestFlags);
+
+  const convFlags = [];
+  if (state.hasConvictions) convFlags.push({ type: 'bad', text: 'Convictions — analyze each for CIMT, agg felony, drug, DV' });
+  setLiveFlags('flags-convictions', convFlags);
+
+  const cimtFlags = [];
+  if (state.hasCIMT === true) cimtFlags.push({ type: 'bad', text: 'CIMT — check petty offense exception' });
+  if (state.hasCIMT === 'unsure') cimtFlags.push({ type: 'warn', text: 'Get full record of conviction for categorical analysis' });
+  setLiveFlags('flags-cimt', cimtFlags);
+
+  const aggfelFlags = [];
+  if (state.hasAggFelony === true) aggfelFlags.push({ type: 'bad', text: 'Agg felony — bars asylum, cancellation, vol. departure' });
+  if (state.hasAggFelony === 'unsure') aggfelFlags.push({ type: 'warn', text: 'Potential agg felony — need categorical/circumstance-specific analysis' });
+  setLiveFlags('flags-aggfel', aggfelFlags);
+
+  // Employer flags
+  const empFlags = [];
+  if (state.hasEmployerSponsor && state.i140PriorityDate) {
+    const pd = new Date(state.i140PriorityDate);
+    if (pd < new Date('2001-05-01')) empFlags.push({ type: 'good', text: '§ 245(i) grandfathered — pre-May 2001 petition' });
+  }
+  if (state.priorI140 === true) empFlags.push({ type: 'good', text: 'Approved I-140 — priority date retained' });
+  setLiveFlags('flags-employer', empFlags);
+
+  // One-year bar flags
+  const oneYearFlags = [];
+  if (state.oneYearFiled === false) oneYearFlags.push({ type: 'bad', text: '1-year bar — need changed/extraordinary circumstances exception' });
+  if (state.oneYearFiled === true) oneYearFlags.push({ type: 'good', text: 'Filed within 1 year' });
+  setLiveFlags('flags-oneyear', oneYearFlags);
+
+  // Update case summary and checklist (Sec. 9)
+  updateCaseSummary();
+  updateDocChecklist();
+  updateActionItems();
 }
 
 // ── KEY FLAGS PANEL ───────────────────────────────────────────────────────
@@ -1507,6 +2136,19 @@ function updateFlags() {
   if (state.mannerOfEntry === 'ewi' && state.priorRemoval && state.reenteredAfterRemoval) {
     flags.push('🚨 CRITICAL: EWI + prior removal + reentry = § 1326 exposure');
   }
+  if (state.hasAggFelony === true) flags.push('🚨 AGGRAVATED FELONY — bars asylum, cancellation, voluntary departure');
+  if (state.hasCIMT === true) flags.push('⚠️ CIMT — check petty offense exception, inadmissibility § 212(a)(2)');
+  if (state.hasDrugOffense === true) flags.push('⚠️ Drug offense — bars GMC, inadmissibility § 212(a)(2)(A)(i)(II)');
+  if (state.hasDV === true) flags.push('⚠️ DV conviction — deportable § 237(a)(2)(E)');
+  if (state.hasFraud === true) flags.push('⚠️ Fraud/misrep — § 212(a)(6)(C)(i) bar, need I-601 waiver');
+  if (state.vawaRelationship && state.vawaRelationship !== 'none' && state.vawaAbuse) {
+    flags.push('✅ VAWA — I-360 self-petition + VAWA cancellation + unlimited MTR');
+  }
+  if (state.hasUSCSpouse) flags.push('✅ USC spouse — immediate relative petition available');
+  if (state.hasUSCChild21) flags.push('✅ USC child 21+ — immediate relative petition available');
+  if (state.fearHarm && state.oneYearFiled === false) flags.push('⚠️ Asylum 1-year bar — need exception');
+  if (state.crimeVictim === true) flags.push('📋 Crime victim — evaluate U visa');
+  if (state.catFear === true) flags.push('📋 CAT fear — no criminal bar, no nexus required');
 
   const el = document.getElementById('key-flags-list');
   if (flags.length === 0) {
@@ -1516,6 +2158,130 @@ function updateFlags() {
   }
 
   updateRelief();
+}
+
+// ── CASE SUMMARY ─────────────────────────────────────────────────────────
+function updateCaseSummary() {
+  const el = document.getElementById('case-summary');
+  if (!el) return;
+  const lines = [];
+  if (state.firstName || state.lastName) lines.push(`<b>Client:</b> ${state.firstName} ${state.lastName}`);
+  if (state.dob) { const age = Math.floor((new Date() - new Date(state.dob))/(1000*60*60*24*365)); lines.push(`<b>Age:</b> ${age}`); }
+  if (state.countryBirth) lines.push(`<b>Country of Birth:</b> ${state.countryBirth}`);
+  if (state.countryCitizenship) lines.push(`<b>Nationality:</b> ${state.countryCitizenship}`);
+  if (state.mannerOfEntry) lines.push(`<b>Entry:</b> ${state.mannerOfEntry.toUpperCase()}${state.visaType ? ' (' + state.visaType + ')' : ''}`);
+  if (state.currentStatus) lines.push(`<b>Current Status:</b> ${state.currentStatus.toUpperCase()}`);
+  if (state.totalYears) lines.push(`<b>Time in US:</b> ~${state.totalYears} years`);
+  if (state.hasUSCSpouse) lines.push('<b>Family:</b> USC spouse');
+  else if (state.hasLPRSpouse) lines.push('<b>Family:</b> LPR spouse');
+  if (state.hasUSCParent) lines.push('<b>Family:</b> USC parent');
+  if (state.hasUSCChild21) lines.push('<b>Family:</b> USC child (21+)');
+  if (state.childrenUSC) lines.push('<b>Family:</b> USC minor children');
+  if (state.vawaRelationship && state.vawaRelationship !== 'none') lines.push(`<b>VAWA:</b> Abusive ${state.vawaRelationship}`);
+  if (state.hasConvictions) lines.push('<b>Criminal:</b> Has convictions');
+  if (state.hasAggFelony === true) lines.push('<span style="color:#c53030"><b>Criminal:</b> Aggravated felony</span>');
+  if (state.hasCIMT === true) lines.push('<span style="color:#c53030"><b>Criminal:</b> CIMT</span>');
+  if (state.fearHarm) lines.push(`<b>Fear:</b> ${state.fearCountry || 'Yes'}${state.persecutionGrounds && state.persecutionGrounds.length ? ' — ' + state.persecutionGrounds.join(', ') : ''}`);
+  if (state.crimeVictim) lines.push(`<b>U Visa:</b> Crime victim${state.crimeType ? ' (' + state.crimeType + ')' : ''}`);
+  if (state.orderType && state.orderType !== 'none') lines.push(`<b>Order:</b> ${state.orderType}`);
+  if (state.priorRemoval) lines.push('<span style="color:#c53030"><b>Prior removal</b></span>');
+  if (state.reenteredAfterRemoval) lines.push('<span style="color:#c53030"><b>Reentered after removal</b></span>');
+
+  el.innerHTML = lines.length ? lines.join('<br>') : 'Complete the sections above to generate a case summary.';
+}
+
+// ── DOCUMENT CHECKLIST ───────────────────────────────────────────────────
+function updateDocChecklist() {
+  const el = document.getElementById('checklist-conditional');
+  if (!el) return;
+  const items = [];
+
+  if (state.hasUSCSpouse || state.hasLPRSpouse || state.hasUSCParent || state.hasUSCChild21) {
+    items.push('<div style="margin-top:8px;font-weight:600;color:#2d3748;">Family-Based:</div>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> I-130 Petition for Alien Relative</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> I-485 Application to Register / Adjust Status</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> I-864 Affidavit of Support (petitioner)</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Proof of qualifying relationship (marriage cert, birth certs)</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Petitioner tax returns (3 years)</label>');
+  }
+  if (state.mannerOfEntry === 'ewi') {
+    items.push('<div style="margin-top:8px;font-weight:600;color:#2d3748;">EWI / Waiver:</div>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> I-601A Provisional Unlawful Presence Waiver (if qualifying relative exists)</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Extreme hardship declaration from qualifying relative</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Country conditions evidence</label>');
+  }
+  if (state.fearHarm) {
+    items.push('<div style="margin-top:8px;font-weight:600;color:#2d3748;">Asylum / Protection:</div>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> I-589 Application for Asylum</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Detailed personal declaration / affidavit</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Country conditions reports (State Dept, UNHCR, HRW, AI)</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Corroborating evidence (photos, police reports, medical records, news articles)</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Witness declarations from family/friends</label>');
+    if (state.pastHarm) items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Medical/psychological evaluation (past harm documentation)</label>');
+  }
+  if (state.crimeVictim) {
+    items.push('<div style="margin-top:8px;font-weight:600;color:#2d3748;">U Visa:</div>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> I-918 Petition for U Nonimmigrant Status</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> I-918 Supplement B (LE Certification)</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Personal statement describing crime and cooperation</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Police report / case number</label>');
+  }
+  if (state.vawaRelationship && state.vawaRelationship !== 'none' && state.vawaAbuse) {
+    items.push('<div style="margin-top:8px;font-weight:600;color:#2d3748;">VAWA:</div>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> I-360 VAWA Self-Petition</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Personal declaration describing abuse</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Evidence of qualifying relationship</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Evidence of abuse (police reports, protection orders, photos, medical records)</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Evidence of good moral character</label>');
+  }
+  if (state.hasConvictions) {
+    items.push('<div style="margin-top:8px;font-weight:600;color:#2d3748;">Criminal:</div>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> FBI RAP sheet (via FOIA or fingerprint card)</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Certified court dispositions for all arrests/convictions</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Sentencing documents</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Evidence of rehabilitation (letters, certificates, employment)</label>');
+  }
+  if (state.ntaReceived) {
+    items.push('<div style="margin-top:8px;font-weight:600;color:#2d3748;">Proceedings:</div>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Copy of NTA (Notice to Appear)</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Hearing notices and prior court filings</label>');
+    items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> Prior IJ/BIA decisions (if any)</label>');
+  }
+  items.push('<div style="margin-top:8px;font-weight:600;color:#2d3748;">Always:</div>');
+  items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> FOIA request to USCIS for A-file</label>');
+  items.push('<label style="display:block;cursor:pointer"><input type="checkbox"> FOIA request to CBP for entry records</label>');
+
+  el.innerHTML = items.join('');
+}
+
+// ── ACTION ITEMS ─────────────────────────────────────────────────────────
+function updateActionItems() {
+  const el = document.getElementById('action-items');
+  if (!el) return;
+  const items = [];
+
+  if (state.aNumber) items.push('File FOIA for A-file (A-Number: ' + state.aNumber + ')');
+  else if (state.firstName) items.push('Determine if client has A-Number; if so, file FOIA for A-file');
+  if (state.has245i === 'unknown') items.push('Check A-file for pre-May 2001 petition (§ 245(i) grandfathering)');
+  if (state.ntaReceived && state.ntaHasHearingDate === null) items.push('Review NTA for Pereira defect (missing time/date of hearing)');
+  if (state.orderType === 'inAbsentia') items.push('Pull immigration court record — verify notice was properly served for MTR');
+  if (state.hasConvictions) items.push('Obtain certified court dispositions and full RAP sheet');
+  if (state.hasCIMT === 'unsure' || state.hasAggFelony === 'unsure') items.push('Perform categorical approach analysis on convictions');
+  if (state.hasUSCSpouse || state.hasLPRSpouse) items.push('Consult with petitioning relative about filing I-130');
+  if (state.mannerOfEntry === 'ewi' && (state.hasUSCSpouse || state.hasUSCParent)) items.push('Evaluate I-601A provisional waiver — prepare extreme hardship declaration');
+  if (state.fearHarm && state.oneYearFiled === false) items.push('Document changed/extraordinary circumstances for one-year bar exception');
+  if (state.fearHarm) items.push('Obtain country conditions evidence (State Dept reports, NGO reports)');
+  if (state.crimeVictim && state.lawEnforcementCert !== true) items.push('Contact law enforcement for I-918B certification');
+  if (state.vawaRelationship && state.vawaRelationship !== 'none') items.push('Gather evidence of battery/extreme cruelty for VAWA self-petition');
+  if (state.hasEmployerSponsor && state.i140PriorityDate) {
+    const pd = new Date(state.i140PriorityDate);
+    if (pd < new Date('2001-05-01')) items.push('Confirm § 245(i) grandfathering — this is a major path');
+  }
+  if (state.priorRemoval && state.reenteredAfterRemoval) items.push('CRITICAL: Assess § 1326 criminal exposure and reinstatement risk');
+
+  el.innerHTML = items.length
+    ? '<ul style="margin:0;padding-left:20px;">' + items.map(i => `<li style="margin-bottom:6px">${i}</li>`).join('') + '</ul>'
+    : 'Action items will populate based on case data.';
 }
 
 // ── INIT ──────────────────────────────────────────────────────────────────
