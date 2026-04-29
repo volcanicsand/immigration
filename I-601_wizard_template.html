@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I-601 Waiver Wizard</title>
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<style>
+  :root {
+    --blue: #003366; --gold: #c8a72b; --green: #2e7d32; --red: #c62828;
+    --light: #f5f7fa; --border: #cdd4de;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--light); color: #222; font-size: 14px; }
+  header { background: var(--blue); color: white; padding: 14px 24px; }
+  header h1 { font-size: 20px; font-weight: 700; }
+  header p { font-size: 13px; opacity: 0.8; margin-top: 3px; }
+  .container { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
+
+  .progress-bar { display: flex; margin-bottom: 24px; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); background: white; }
+  .step { flex: 1; padding: 8px 4px; text-align: center; font-size: 11px; font-weight: 600; color: #666; cursor: pointer; border-right: 1px solid var(--border); transition: all 0.2s; }
+  .step:last-child { border-right: none; }
+  .step.active { background: var(--blue); color: white; }
+  .step.done { background: var(--green); color: white; }
+
+  .section { display: none; }
+  .section.active { display: block; }
+  .card { background: white; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 20px; overflow: hidden; }
+  .card-header { background: var(--blue); color: white; padding: 10px 16px; font-size: 14px; font-weight: 700; }
+  .card-header .badge { background: var(--gold); color: var(--blue); border-radius: 4px; padding: 2px 8px; font-size: 12px; margin-right: 8px; }
+  .card-body { padding: 16px; }
+
+  .info { background: #e8f0fe; border-left: 4px solid var(--blue); padding: 10px 14px; border-radius: 0 4px 4px 0; margin-bottom: 16px; font-size: 13px; color: #1a237e; line-height: 1.5; }
+  .warn { background: #fff8e1; border-left: 4px solid var(--gold); padding: 10px 14px; border-radius: 0 4px 4px 0; margin-bottom: 16px; font-size: 13px; color: #4a3800; line-height: 1.5; }
+
+  .row { display: grid; gap: 12px; margin-bottom: 12px; }
+  .c1 { grid-template-columns: 1fr; }
+  .c2 { grid-template-columns: 1fr 1fr; }
+  .c3 { grid-template-columns: 1fr 1fr 1fr; }
+  .c31 { grid-template-columns: 3fr 1fr; }
+  .c21 { grid-template-columns: 2fr 1fr; }
+
+  .field { display: flex; flex-direction: column; gap: 4px; }
+  .field label { font-size: 12px; font-weight: 600; color: #444; }
+  .field .note { font-weight: normal; color: #777; font-size: 11px; }
+  .field input, .field select, .field textarea {
+    border: 1px solid var(--border); border-radius: 4px; padding: 7px 10px; font-size: 13px; width: 100%;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--blue); }
+
+  .radio-group { display: flex; flex-wrap: wrap; gap: 10px; }
+  .ri { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+  .ri input { width: 16px; height: 16px; cursor: pointer; }
+  .ri label { font-size: 13px; cursor: pointer; font-weight: normal; }
+
+  .ci { display: flex; align-items: center; gap: 6px; cursor: pointer; margin-bottom: 8px; }
+  .ci input { width: 16px; height: 16px; cursor: pointer; }
+  .ci label { font-size: 13px; cursor: pointer; font-weight: normal; }
+
+  .sep { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+  .slabel { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #888; letter-spacing: 0.05em; margin: 16px 0 8px; }
+
+  .nav { display: flex; justify-content: space-between; margin-top: 24px; }
+  .btn { padding: 10px 24px; border-radius: 5px; border: none; cursor: pointer; font-size: 14px; font-weight: 600; transition: all 0.2s; }
+  .btn-prev { background: #e0e0e0; color: #333; }
+  .btn-next { background: var(--blue); color: white; }
+  .btn-next:hover { background: #004080; }
+  .btn-gen { background: var(--green); color: white; font-size: 15px; padding: 12px 32px; }
+  .btn-gen:hover { background: #1b5e20; }
+  .btn-gen:disabled { background: #aaa; cursor: not-allowed; }
+
+  #status { margin-top: 12px; font-size: 13px; color: var(--green); font-weight: 600; min-height: 20px; }
+  #status.err { color: var(--red); }
+
+  @media (max-width: 600px) {
+    .c2, .c3, .c31, .c21 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Form I-601 -- Application for Waiver of Grounds of Inadmissibility</h1>
+  <p>Fill and download the official USCIS PDF &bull; No server required</p>
+</header>
+
+<div class="container">
+
+<div class="progress-bar">
+  <div class="step active" onclick="goTo(0)">1. You</div>
+  <div class="step" onclick="goTo(1)">2. Address</div>
+  <div class="step" onclick="goTo(2)">3. History</div>
+  <div class="step" onclick="goTo(3)">4. Bio</div>
+  <div class="step" onclick="goTo(4)">5. Grounds</div>
+  <div class="step" onclick="goTo(5)">6. Grounds 2</div>
+  <div class="step" onclick="goTo(6)">7. Relative 1</div>
+  <div class="step" onclick="goTo(7)">8. Relative 2</div>
+  <div class="step" onclick="goTo(8)">9. Statement</div>
+  <div class="step" onclick="goTo(9)">10. Interp</div>
+  <div class="step" onclick="goTo(10)">11. Prep</div>
+  <div class="step" onclick="goTo(11)">12. Extra</div>
+  <div class="step" onclick="goTo(12)">13. Vaccine</div>
+  <div class="step" onclick="goTo(13)">14. Generate</div>
+</div>
+
+<!-- ================================================
+     SECTION 0: Attorney + Part 1 (Name, IDs, Mailing Address)
+================================================ -->
+<div class="section active" id="s0">
+  <div class="card">
+    <div class="card-header"><span class="badge">Optional</span>Attorney or Accredited Representative</div>
+    <div class="card-body">
+      <div class="info">Complete only if an attorney or accredited representative is filing. A Form G-28 must be attached.</div>
+      <div class="row c1">
+        <div class="field">
+          <label><input type="checkbox" id="g28_chk" onchange="chk('G28CheckBox[0]',this.checked);tog('atty_fields',this.checked)">
+          &nbsp;Form G-28 is attached</label>
+        </div>
+      </div>
+      <div id="atty_fields" style="display:none">
+        <div class="row c2">
+          <div class="field"><label>Attorney State Bar Number</label>
+            <input type="text" oninput="set('attyStateBarNumber[0]',this.value)"></div>
+          <div class="field"><label>USCIS Online Account Number</label>
+            <input type="text" oninput="set('attyUSCISOnlineNum[0]',this.value)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">Part 1 -- Information About You</div>
+    <div class="card-body">
+
+      <div class="slabel">Identification Numbers</div>
+      <div class="row c2">
+        <div class="field"><label>1. Alien Registration Number (A-Number)</label>
+          <input type="text" oninput="set('p1Line1ANum[0]',this.value)"></div>
+        <div class="field"><label>2. USCIS Online Account Number</label>
+          <input type="text" oninput="set('p1Line2USCISOnlineNum[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Your Full Legal Name</div>
+      <div class="row c3">
+        <div class="field"><label>3.A. Family Name (Last) *</label>
+          <input type="text" placeholder="SMITH" style="text-transform:uppercase"
+            oninput="set('p1Line3aFamilyName[0]',this.value.toUpperCase())"></div>
+        <div class="field"><label>3.B. Given Name (First) *</label>
+          <input type="text" placeholder="JANE" style="text-transform:uppercase"
+            oninput="set('p1Line3bGivenName[0]',this.value.toUpperCase())"></div>
+        <div class="field"><label>3.C. Middle Name</label>
+          <input type="text" oninput="set('p1Line3cMiddleName[0]',this.value.toUpperCase())"></div>
+      </div>
+
+      <div class="slabel">Other Names Used</div>
+      <div class="row c3">
+        <div class="field"><label>4.A. Family Name (Last)</label>
+          <input type="text" oninput="set('p1Line4aFamilyName[0]',this.value)"></div>
+        <div class="field"><label>4.B. Given Name (First)</label>
+          <input type="text" oninput="set('p1Line4bGivenName[0]',this.value)"></div>
+        <div class="field"><label>4.C. Middle Name</label>
+          <input type="text" oninput="set('p1Line4cMiddleName[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">5. U.S. Mailing Address</div>
+      <div class="row c1">
+        <div class="field"><label>In Care Of Name</label>
+          <input type="text" oninput="set('p1Line5InCareofName[0]',this.value)"></div>
+      </div>
+      <div class="row c31">
+        <div class="field"><label>Street Number and Name *</label>
+          <input type="text" oninput="set('p1Line5StreetNumberName[0]',this.value)"></div>
+        <div class="field"><label>Apt/Ste/Flr #</label>
+          <input type="text" oninput="set('p1Line5AptSteFlrNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1" style="margin-bottom:4px">
+        <div class="field"><label>Unit Type</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="mail_unit" onchange="chkExcl('p1Line5Unit[0]',['p1Line5Unit[1]','p1Line5Unit[2]'])"> <label>Apt</label></label>
+            <label class="ri"><input type="radio" name="mail_unit" onchange="chkExcl('p1Line5Unit[1]',['p1Line5Unit[0]','p1Line5Unit[2]'])"> <label>Ste</label></label>
+            <label class="ri"><input type="radio" name="mail_unit" onchange="chkExcl('p1Line5Unit[2]',['p1Line5Unit[0]','p1Line5Unit[1]'])"> <label>Flr</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>City or Town *</label>
+          <input type="text" oninput="set('p1Line5CityOrTown[0]',this.value)"></div>
+        <div class="field"><label>State</label>
+          <select onchange="set('p1Line5State[0]',this.value)"><?= STATE_OPTIONS ?></select></div>
+        <div class="field"><label>Zip Code</label>
+          <input type="text" maxlength="10" oninput="set('p1Line5ZipCode[0]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Province</label>
+          <input type="text" oninput="set('p1Line5Province[0]',this.value)"></div>
+        <div class="field"><label>Postal Code</label>
+          <input type="text" oninput="set('p1Line5PostalCode[0]',this.value)"></div>
+        <div class="field"><label>Country</label>
+          <input type="text" oninput="set('p1Line5Country[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">6. Is your physical address the same as your mailing address?</div>
+      <div class="radio-group" style="margin-bottom:14px">
+        <label class="ri"><input type="radio" name="same_addr" onchange="chkOne('p1Line6YesNo[0]','p1Line6YesNo[1]');tog('phys_addr',false)"> <label>Yes</label></label>
+        <label class="ri"><input type="radio" name="same_addr" onchange="chkOne('p1Line6YesNo[1]','p1Line6YesNo[0]');tog('phys_addr',true)"> <label>No</label></label>
+      </div>
+
+      <div id="phys_addr" style="display:none">
+        <div class="slabel">7. Physical Address</div>
+        <div class="row c31">
+          <div class="field"><label>Street Number and Name</label>
+            <input type="text" oninput="set('p1Line7StreetNumberName[0]',this.value)"></div>
+          <div class="field"><label>Apt/Ste/Flr #</label>
+            <input type="text" oninput="set('p1Line7AptSteFlrNumber[0]',this.value)"></div>
+        </div>
+        <div class="row c1" style="margin-bottom:4px">
+          <div class="field"><label>Unit Type</label>
+            <div class="radio-group">
+              <label class="ri"><input type="radio" name="phys_unit" onchange="chkExcl('p1Line7Unit[0]',['p1Line7Unit[1]','p1Line7Unit[2]'])"> <label>Apt</label></label>
+              <label class="ri"><input type="radio" name="phys_unit" onchange="chkExcl('p1Line7Unit[1]',['p1Line7Unit[0]','p1Line7Unit[2]'])"> <label>Ste</label></label>
+              <label class="ri"><input type="radio" name="phys_unit" onchange="chkExcl('p1Line7Unit[2]',['p1Line7Unit[0]','p1Line7Unit[1]'])"> <label>Flr</label></label>
+            </div>
+          </div>
+        </div>
+        <div class="row c3">
+          <div class="field"><label>City or Town</label>
+            <input type="text" oninput="set('p1Line7CityTown[0]',this.value)"></div>
+          <div class="field"><label>State</label>
+            <select onchange="set('p1Line7State[0]',this.value)"><?= STATE_OPTIONS ?></select></div>
+          <div class="field"><label>Zip Code</label>
+            <input type="text" maxlength="10" oninput="set('p1Line7ZipCode[0]',this.value)"></div>
+        </div>
+        <div class="row c3">
+          <div class="field"><label>Province</label>
+            <input type="text" oninput="set('p1Line7Province[0]',this.value)"></div>
+          <div class="field"><label>Postal Code</label>
+            <input type="text" oninput="set('p1Line7PostalCode[0]',this.value)"></div>
+          <div class="field"><label>Country</label>
+            <input type="text" oninput="set('p1Line7Country[0]',this.value)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 1: Part 1 continued (SSN, DOB, Gender, Birth Info, Citizenship)
+================================================ -->
+<div class="section" id="s1">
+  <div class="card">
+    <div class="card-header">Part 1 -- Personal Information</div>
+    <div class="card-body">
+
+      <div class="row c2">
+        <div class="field"><label>8. U.S. Social Security Number</label>
+          <input type="text" placeholder="000-00-0000" maxlength="11"
+            oninput="set('p1Line8SSN[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="row c1">
+        <div class="field"><label>9. Gender</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="gender" onchange="chkOne('p1Line9Gender[0]','p1Line9Gender[1]')"> <label>Male</label></label>
+            <label class="ri"><input type="radio" name="gender" onchange="chkOne('p1Line9Gender[1]','p1Line9Gender[0]')"> <label>Female</label></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row c3">
+        <div class="field"><label>10. Date of Birth <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" placeholder="01/15/1985" maxlength="10"
+            oninput="set('p1Line10DateofBirth[0]',this.value)"></div>
+        <div class="field"><label>11. City/Town of Birth</label>
+          <input type="text" oninput="set('p1Line11CityOrTownOfBirth[0]',this.value)"></div>
+        <div class="field"><label>12. Province of Birth</label>
+          <input type="text" oninput="set('p1Line12ProvinceOfBirth[0]',this.value)"></div>
+      </div>
+
+      <div class="row c2">
+        <div class="field"><label>13. Country of Birth</label>
+          <input type="text" oninput="set('p1Line13CountryOfBirth[0]',this.value)"></div>
+        <div class="field"><label>14. Country of Citizenship/Nationality</label>
+          <input type="text" oninput="set('p1Line14CountryOfCitzOrNat[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">15. Immigration Court Case</div>
+      <div class="row c2">
+        <div class="field"><label>15.A. Case Number</label>
+          <input type="text" oninput="set('p1Line15aCaseNumber[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>15.B. City</label>
+          <input type="text" oninput="set('p1Line15bCity[0]',this.value)"></div>
+        <div class="field"><label>15.B. Country</label>
+          <input type="text" oninput="set('p1Line15bCountry[0]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>1.D. City or Town (consular processing)</label>
+          <input type="text" oninput="set('p1Line1dCityOrTown[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 2: Part 1 continued (Prior Waivers, Removal, Entry History)
+================================================ -->
+<div class="section" id="s2">
+  <div class="card">
+    <div class="card-header">Part 1 -- Prior Waivers, Removal & Entry History</div>
+    <div class="card-body">
+
+      <div class="slabel">16. Have you previously applied for a waiver? (1st prior waiver)</div>
+      <div class="radio-group" style="margin-bottom:10px">
+        <label class="ri"><input type="radio" name="q16" onchange="chkOne('p1Line16aYesNo[0]','p1Line16aYesNo[1]')"> <label>Yes</label></label>
+        <label class="ri"><input type="radio" name="q16" onchange="chkOne('p1Line16aYesNo[1]','p1Line16aYesNo[0]')"> <label>No</label></label>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>16.B. Receipt Number</label>
+          <input type="text" oninput="set('p1Line16bReceiptNumber[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">17. Prior waiver application (2nd)</div>
+      <div class="radio-group" style="margin-bottom:10px">
+        <label class="ri"><input type="radio" name="q17" onchange="chkOne('p1Line17aYesNo[0]','p1Line17aYesNo[1]')"> <label>Yes</label></label>
+        <label class="ri"><input type="radio" name="q17" onchange="chkOne('p1Line17aYesNo[1]','p1Line17aYesNo[0]')"> <label>No</label></label>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>17.B. Receipt Number</label>
+          <input type="text" oninput="set('p1Line17bReceiptNumber[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">18. Prior waiver application (3rd)</div>
+      <div class="radio-group" style="margin-bottom:10px">
+        <label class="ri"><input type="radio" name="q18" onchange="chkOne('p1Line18aYesNo[0]','p1Line18aYesNo[1]')"> <label>Yes</label></label>
+        <label class="ri"><input type="radio" name="q18" onchange="chkOne('p1Line18aYesNo[1]','p1Line18aYesNo[0]')"> <label>No</label></label>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>18.B. Receipt Number</label>
+          <input type="text" oninput="set('p1Line18bReceiptNumber[0]',this.value)"></div>
+        <div class="field"><label>18.C. Filing Location</label>
+          <input type="text" oninput="set('p1Line18cFilingLocation[0]',this.value)"></div>
+        <div class="field"><label>18.D. Date Filed <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('p1Line18dDateFiled[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">19. Are you in removal proceedings?</div>
+      <div class="radio-group" style="margin-bottom:14px">
+        <label class="ri"><input type="radio" name="q19" onchange="chkOne('p1Line19YesNo[0]','p1Line19YesNo[1]')"> <label>Yes</label></label>
+        <label class="ri"><input type="radio" name="q19" onchange="chkOne('p1Line19YesNo[1]','p1Line19YesNo[0]')"> <label>No</label></label>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Entry Into the United States (Most Recent)</div>
+      <div class="row c3">
+        <div class="field"><label>Date of Entry <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('p2Line1aDateEntered[0]',this.value)"></div>
+        <div class="field"><label>Immigration Status at Entry</label>
+          <input type="text" oninput="set('p2Line1bImmigrationStatus[0]',this.value)"></div>
+        <div class="field"><label>Location/Port of Entry</label>
+          <input type="text" oninput="set('p2Line1cLocation[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Previous Entry / Departure</div>
+      <div class="row c3">
+        <div class="field"><label>Date of Entry <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('p2Line2aDateEntered[0]',this.value)"></div>
+        <div class="field"><label>Departure Date <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('p2Line2bDepartureDate[0]',this.value)"></div>
+        <div class="field"><label>Immigration Status</label>
+          <input type="text" oninput="set('p2Line2cImmigrationStatus[0]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Location</label>
+          <input type="text" oninput="set('p2Line2dLocation[0]',this.value)"></div>
+        <div class="field"><label>City or Town</label>
+          <input type="text" oninput="set('p2Line2eCityOrTown[0]',this.value)"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 3: Part 2 -- Biographic Information
+================================================ -->
+<div class="section" id="s3">
+  <div class="card">
+    <div class="card-header">Part 2 -- Biographic Information</div>
+    <div class="card-body">
+
+      <div class="slabel">1. Ethnicity</div>
+      <div class="radio-group" style="margin-bottom:14px">
+        <label class="ri"><input type="radio" name="ethnicity" onchange="chkOne('p3Line1Ethnicity[0]','p3Line1Ethnicity[1]')"> <label>Hispanic or Latino</label></label>
+        <label class="ri"><input type="radio" name="ethnicity" onchange="chkOne('p3Line1Ethnicity[1]','p3Line1Ethnicity[0]')"> <label>Not Hispanic or Latino</label></label>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">2. Race (select all that apply)</div>
+      <div class="row c1">
+        <div class="field">
+          <label class="ci"><input type="checkbox" onchange="chk('p3Line2Race[0]',this.checked)"> &nbsp;White</label>
+          <label class="ci"><input type="checkbox" onchange="chk('p3Line2Race[1]',this.checked)"> &nbsp;Asian</label>
+          <label class="ci"><input type="checkbox" onchange="chk('p3Line2Race[2]',this.checked)"> &nbsp;Black or African American</label>
+          <label class="ci"><input type="checkbox" onchange="chk('p3Line2Race[3]',this.checked)"> &nbsp;American Indian or Alaska Native</label>
+          <label class="ci"><input type="checkbox" onchange="chk('p3Line2Race[4]',this.checked)"> &nbsp;Native Hawaiian or Other Pacific Islander</label>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">3. Height</div>
+      <div class="row c2">
+        <div class="field"><label>Feet</label>
+          <select onchange="set('p3Line3HeightFeet[0]',this.value)">
+            <option value="">--</option>
+            <option>3</option><option>4</option><option>5</option><option>6</option><option>7</option>
+          </select></div>
+        <div class="field"><label>Inches</label>
+          <select onchange="set('p3Line3HeightInches[0]',this.value)">
+            <option value="">--</option>
+            <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+            <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option>
+          </select></div>
+      </div>
+
+      <div class="slabel">4. Weight (lbs) -- enter up to 3 digits</div>
+      <div class="row c3">
+        <div class="field"><label>Hundreds</label>
+          <input type="text" maxlength="1" oninput="set('p3Line4Weight1[0]',this.value)"></div>
+        <div class="field"><label>Tens</label>
+          <input type="text" maxlength="1" oninput="set('p3Line4Weight2[0]',this.value)"></div>
+        <div class="field"><label>Ones</label>
+          <input type="text" maxlength="1" oninput="set('p3Line4Weight3[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">5. Eye Color</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group" style="flex-wrap:wrap">
+            <label class="ri"><input type="radio" name="eye" onchange="setNof('p3Line5EyeColor',0,8)"> <label>Black</label></label>
+            <label class="ri"><input type="radio" name="eye" onchange="setNof('p3Line5EyeColor',1,8)"> <label>Blue</label></label>
+            <label class="ri"><input type="radio" name="eye" onchange="setNof('p3Line5EyeColor',2,8)"> <label>Brown</label></label>
+            <label class="ri"><input type="radio" name="eye" onchange="setNof('p3Line5EyeColor',3,8)"> <label>Gray</label></label>
+            <label class="ri"><input type="radio" name="eye" onchange="setNof('p3Line5EyeColor',4,8)"> <label>Green</label></label>
+            <label class="ri"><input type="radio" name="eye" onchange="setNof('p3Line5EyeColor',5,8)"> <label>Hazel</label></label>
+            <label class="ri"><input type="radio" name="eye" onchange="setNof('p3Line5EyeColor',6,8)"> <label>Maroon</label></label>
+            <label class="ri"><input type="radio" name="eye" onchange="setNof('p3Line5EyeColor',7,8)"> <label>Pink</label></label>
+            <label class="ri"><input type="radio" name="eye" onchange="setNof('p3Line5EyeColor',8,8)"> <label>Unknown/Other</label></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="slabel">6. Hair Color</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group" style="flex-wrap:wrap">
+            <label class="ri"><input type="radio" name="hair" onchange="setNof('p3Line6HairColor',0,8)"> <label>Bald</label></label>
+            <label class="ri"><input type="radio" name="hair" onchange="setNof('p3Line6HairColor',1,8)"> <label>Black</label></label>
+            <label class="ri"><input type="radio" name="hair" onchange="setNof('p3Line6HairColor',2,8)"> <label>Blond</label></label>
+            <label class="ri"><input type="radio" name="hair" onchange="setNof('p3Line6HairColor',3,8)"> <label>Brown</label></label>
+            <label class="ri"><input type="radio" name="hair" onchange="setNof('p3Line6HairColor',4,8)"> <label>Gray</label></label>
+            <label class="ri"><input type="radio" name="hair" onchange="setNof('p3Line6HairColor',5,8)"> <label>Red</label></label>
+            <label class="ri"><input type="radio" name="hair" onchange="setNof('p3Line6HairColor',6,8)"> <label>Sandy</label></label>
+            <label class="ri"><input type="radio" name="hair" onchange="setNof('p3Line6HairColor',7,8)"> <label>White</label></label>
+            <label class="ri"><input type="radio" name="hair" onchange="setNof('p3Line6HairColor',8,8)"> <label>Unknown/Other</label></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 4: Part 3 -- Grounds of Inadmissibility (Page 3-4)
+================================================ -->
+<div class="section" id="s4">
+  <div class="card">
+    <div class="card-header">Part 3 -- Grounds of Inadmissibility (Select All That Apply)</div>
+    <div class="card-body">
+      <div class="info">Check each ground of inadmissibility under INA &sect; 212(a) for which you are seeking a waiver. You may select more than one.</div>
+
+      <div class="slabel">Health-Related Grounds</div>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line1CB[0]',this.checked)">
+        &nbsp;1. Health-related grounds &mdash; INA &sect; 212(a)(1)</label>
+
+      <hr class="sep">
+      <div class="slabel">Criminal and Related Grounds</div>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line2CB[0]',this.checked)">
+        &nbsp;2. Crime involving moral turpitude (CIMT) &mdash; INA &sect; 212(a)(2)(A)(i)(I)</label>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line3CB[0]',this.checked)">
+        &nbsp;3. Controlled substance violation &mdash; INA &sect; 212(a)(2)(A)(i)(II)</label>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line4CB[0]',this.checked)">
+        &nbsp;4. Multiple criminal convictions &mdash; INA &sect; 212(a)(2)(B)</label>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line5CB[0]',this.checked)">
+        &nbsp;5. Controlled substance trafficking &mdash; INA &sect; 212(a)(2)(C)</label>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line6CB[0]',this.checked)">
+        &nbsp;6. Prostitution and commercialized vice &mdash; INA &sect; 212(a)(2)(D)</label>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line7CB[0]',this.checked)">
+        &nbsp;7. Serious criminal activity with immunity &mdash; INA &sect; 212(a)(2)(E)</label>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line8CB[0]',this.checked)">
+        &nbsp;8. Significant trafficking in persons &mdash; INA &sect; 212(a)(2)(H)</label>
+
+      <hr class="sep">
+      <div class="slabel">Security and Related Grounds</div>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line9CB[0]',this.checked)">
+        &nbsp;9. Espionage, sabotage, or illegal export of technology &mdash; INA &sect; 212(a)(3)(A)</label>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line10CB[0]',this.checked)">
+        &nbsp;10. Terrorist activities &mdash; INA &sect; 212(a)(3)(B)</label>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line11CB[0]',this.checked)">
+        &nbsp;11. Foreign policy &mdash; INA &sect; 212(a)(3)(C)</label>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line12CB[0]',this.checked)">
+        &nbsp;12. Immigrant membership in totalitarian party &mdash; INA &sect; 212(a)(3)(D)</label>
+
+      <hr class="sep">
+      <div class="slabel">Public Charge</div>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line13CB[0]',this.checked)">
+        &nbsp;13. Public charge &mdash; INA &sect; 212(a)(4)</label>
+
+      <hr class="sep">
+      <div class="slabel">Labor Certification and Related</div>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line14CB[0]',this.checked)">
+        &nbsp;14. Labor certification/qualification &mdash; INA &sect; 212(a)(5)</label>
+
+      <hr class="sep">
+      <div class="slabel">Illegal Entrants and Immigration Violators</div>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line15CB[0]',this.checked)">
+        &nbsp;15. Present without admission or parole &mdash; INA &sect; 212(a)(6)(A)</label>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line16CB[0]',this.checked)">
+        &nbsp;16. Failure to attend removal hearing &mdash; INA &sect; 212(a)(6)(B)</label>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line17CB[0]',this.checked)">
+        &nbsp;17. Fraud and misrepresentation &mdash; INA &sect; 212(a)(6)(C)(i)</label>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line18CB[0]',this.checked)">
+        &nbsp;18. Other &mdash; INA &sect; 212(a)(6)</label>
+      <div class="row c1" style="margin-left:28px">
+        <div class="field"><label>Specify</label>
+          <input type="text" oninput="set('p4Line18OtherSpecify[0]',this.value)"></div>
+      </div>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line19CB[0]',this.checked)">
+        &nbsp;19. Other &mdash; INA &sect; 212(a)(6) continued</label>
+      <div class="row c1" style="margin-left:28px">
+        <div class="field"><label>Specify</label>
+          <input type="text" oninput="set('p4Line19OtherSpecify[0]',this.value)"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 5: Part 3 continued -- More Grounds (Page 5)
+================================================ -->
+<div class="section" id="s5">
+  <div class="card">
+    <div class="card-header">Part 3 -- Grounds of Inadmissibility (continued)</div>
+    <div class="card-body">
+      <div class="slabel">Documentation Requirements</div>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line29CB[0]',this.checked)">
+        &nbsp;29. Immigrant without valid visa or entry document &mdash; INA &sect; 212(a)(7)(A)</label>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line30CB[0]',this.checked)">
+        &nbsp;30. Nonimmigrant without valid visa or entry document &mdash; INA &sect; 212(a)(7)(B)</label>
+
+      <hr class="sep">
+      <div class="slabel">Ineligible for Citizenship</div>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line31CB[0]',this.checked)">
+        &nbsp;31. Permanently ineligible for citizenship &mdash; INA &sect; 212(a)(8)</label>
+
+      <hr class="sep">
+      <div class="slabel">Unlawful Presence</div>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line32CB[0]',this.checked)">
+        &nbsp;32. Unlawful presence (3-year bar) &mdash; INA &sect; 212(a)(9)(B)(i)(I)</label>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line33CB[0]',this.checked)">
+        &nbsp;33. Unlawful presence (10-year bar) &mdash; INA &sect; 212(a)(9)(B)(i)(II)</label>
+
+      <hr class="sep">
+      <div class="slabel">Previously Removed</div>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line34CB[0]',this.checked)">
+        &nbsp;34. Previously removed &mdash; INA &sect; 212(a)(9)(A)</label>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line35CB[0]',this.checked)">
+        &nbsp;35. Unlawful presence after previous immigration violation &mdash; INA &sect; 212(a)(9)(C)</label>
+
+      <hr class="sep">
+      <div class="slabel">Miscellaneous Grounds</div>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line36CB[0]',this.checked)">
+        &nbsp;36. Practicing polygamist &mdash; INA &sect; 212(a)(10)(A)</label>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line37CB[0]',this.checked)">
+        &nbsp;37. Guardian required to accompany inadmissible alien &mdash; INA &sect; 212(a)(10)(B)</label>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line38CB[0]',this.checked)">
+        &nbsp;38. International child abduction &mdash; INA &sect; 212(a)(10)(C)</label>
+      <label class="ci"><input type="checkbox" onchange="chk('p4Line39CB[0]',this.checked)">
+        &nbsp;39. Other ground</label>
+      <div class="row c1" style="margin-left:28px">
+        <div class="field"><label>Specify</label>
+          <input type="text" oninput="set('p4Line39OtherSpecify[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">40. Explanation of Grounds</div>
+      <div class="row c1">
+        <div class="field"><label>Explain the grounds of inadmissibility and why a waiver should be granted</label>
+          <textarea rows="6" oninput="set('p4Line40Explanation[0]',this.value)"></textarea></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 6: Part 4 -- Qualifying Relative 1
+================================================ -->
+<div class="section" id="s6">
+  <div class="card">
+    <div class="card-header">Part 4 -- Information About Your Qualifying Relative (1st)</div>
+    <div class="card-body">
+      <div class="info">Provide information about the qualifying relative (U.S. citizen or LPR spouse, parent, or child) who would suffer extreme hardship if you are denied admission.</div>
+
+      <div class="slabel">Name</div>
+      <div class="row c3">
+        <div class="field"><label>1.A. Family Name (Last)</label>
+          <input type="text" oninput="set('p5Line1aFamilyName[0]',this.value)"></div>
+        <div class="field"><label>1.B. Given Name (First)</label>
+          <input type="text" oninput="set('p5Line1bGivenName[0]',this.value)"></div>
+        <div class="field"><label>1.C. Middle Name</label>
+          <input type="text" oninput="set('p5Line1cMiddleName[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Address</div>
+      <div class="row c31">
+        <div class="field"><label>Street Number and Name</label>
+          <input type="text" oninput="set('p5Line2StreetNumberName[0]',this.value)"></div>
+        <div class="field"><label>Apt/Ste/Flr #</label>
+          <input type="text" oninput="set('p5Line2AptSteFlrNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1" style="margin-bottom:4px">
+        <div class="field"><label>Unit Type</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="qr1_unit" onchange="chkExcl('p5Line2Unit[0]',['p5Line2Unit[1]','p5Line2Unit[2]'])"> <label>Apt</label></label>
+            <label class="ri"><input type="radio" name="qr1_unit" onchange="chkExcl('p5Line2Unit[1]',['p5Line2Unit[0]','p5Line2Unit[2]'])"> <label>Ste</label></label>
+            <label class="ri"><input type="radio" name="qr1_unit" onchange="chkExcl('p5Line2Unit[2]',['p5Line2Unit[0]','p5Line2Unit[1]'])"> <label>Flr</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>City or Town</label>
+          <input type="text" oninput="set('p5Line2CityOrTown[0]',this.value)"></div>
+        <div class="field"><label>State</label>
+          <select onchange="set('p5Line2State[0]',this.value)"><?= STATE_OPTIONS ?></select></div>
+        <div class="field"><label>Zip Code</label>
+          <input type="text" maxlength="10" oninput="set('p5Line2ZipCode[0]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Province</label>
+          <input type="text" oninput="set('p5Line2Province[0]',this.value)"></div>
+        <div class="field"><label>Postal Code</label>
+          <input type="text" oninput="set('p5Line2PostalCode[0]',this.value)"></div>
+        <div class="field"><label>Country</label>
+          <input type="text" oninput="set('p5Line2Country[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Contact & Relationship</div>
+      <div class="row c2">
+        <div class="field"><label>3. Daytime Phone Number</label>
+          <input type="text" oninput="set('p5Line3DayPhone[0]',this.value)"></div>
+        <div class="field"><label>4. Email Address</label>
+          <input type="email" oninput="set('p5Line4Email[0]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>5. Relationship to You</label>
+          <input type="text" placeholder="Spouse, Parent, Child" oninput="set('p5Line5Relationship[0]',this.value)"></div>
+        <div class="field"><label>6. Immigration Status</label>
+          <input type="text" placeholder="USC, LPR" oninput="set('p5Line6ImmigrationStatus[0]',this.value)"></div>
+        <div class="field"><label>7. Alien Registration Number</label>
+          <input type="text" oninput="set('p5Line7AlienNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>8. Date of Birth <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('p5Line8DateofBirth[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="row c1">
+        <div class="field">
+          <label class="ci"><input type="checkbox" onchange="chk('p5VAWACB[0]',this.checked)">
+            &nbsp;VAWA: This application is being filed under the Violence Against Women Act</label>
+        </div>
+      </div>
+
+      <div class="slabel">9. Statement of How Relative Will Suffer Extreme Hardship</div>
+      <div class="row c1">
+        <div class="field"><label>Describe the extreme hardship your qualifying relative would suffer</label>
+          <textarea rows="5" oninput="set('p5Line9ApplicantStatement[0]',this.value)"></textarea></div>
+      </div>
+
+      <hr class="sep">
+      <div class="row c1">
+        <div class="field">
+          <label class="ci"><input type="checkbox" onchange="chk('p5AddlRelatives[0]',this.checked)">
+            &nbsp;I have additional qualifying relatives (complete Part 5 on the next step)</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 7: Part 5 -- Qualifying Relative 2
+================================================ -->
+<div class="section" id="s7">
+  <div class="card">
+    <div class="card-header">Part 5 -- Additional Qualifying Relative (2nd)</div>
+    <div class="card-body">
+
+      <div class="slabel">Name</div>
+      <div class="row c3">
+        <div class="field"><label>1.A. Family Name (Last)</label>
+          <input type="text" oninput="set('p6Line1aFamilyName[0]',this.value)"></div>
+        <div class="field"><label>1.B. Given Name (First)</label>
+          <input type="text" oninput="set('Pt6Line1b_GivenName[0]',this.value)"></div>
+        <div class="field"><label>1.C. Middle Name</label>
+          <input type="text" oninput="set('Pt6Line1c_MiddleName[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Address</div>
+      <div class="row c31">
+        <div class="field"><label>Street Number and Name</label>
+          <input type="text" oninput="set('p6Line2StreetNumberName[0]',this.value)"></div>
+        <div class="field"><label>Apt/Ste/Flr #</label>
+          <input type="text" oninput="set('p6Line2AptSteFlrNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1" style="margin-bottom:4px">
+        <div class="field"><label>Unit Type</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="qr2_unit" onchange="chkExcl('p6Line2Unit[0]',['p6Line2Unit[1]','p6Line2Unit[2]'])"> <label>Apt</label></label>
+            <label class="ri"><input type="radio" name="qr2_unit" onchange="chkExcl('p6Line2Unit[1]',['p6Line2Unit[0]','p6Line2Unit[2]'])"> <label>Ste</label></label>
+            <label class="ri"><input type="radio" name="qr2_unit" onchange="chkExcl('p6Line2Unit[2]',['p6Line2Unit[0]','p6Line2Unit[1]'])"> <label>Flr</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>City or Town</label>
+          <input type="text" oninput="set('p6Line2CityOrTown[0]',this.value)"></div>
+        <div class="field"><label>State</label>
+          <select onchange="set('p6Line2State[0]',this.value)"><?= STATE_OPTIONS ?></select></div>
+        <div class="field"><label>Zip Code</label>
+          <input type="text" maxlength="10" oninput="set('p6Line2ZipCode[0]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Province</label>
+          <input type="text" oninput="set('p6Line2Province[0]',this.value)"></div>
+        <div class="field"><label>Postal Code</label>
+          <input type="text" oninput="set('p6Line2PostalCode[0]',this.value)"></div>
+        <div class="field"><label>Country</label>
+          <input type="text" oninput="set('p6Line2Country[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Contact & Relationship</div>
+      <div class="row c2">
+        <div class="field"><label>3. Daytime Phone Number</label>
+          <input type="text" oninput="set('p6Line3DayPhone[0]',this.value)"></div>
+        <div class="field"><label>4. Email Address</label>
+          <input type="email" oninput="set('p6Line4Email[0]',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>5. Relationship to You</label>
+          <input type="text" placeholder="Spouse, Parent, Child" oninput="set('p6Line5Relationship[0]',this.value)"></div>
+        <div class="field"><label>6. Immigration Status</label>
+          <input type="text" placeholder="USC, LPR" oninput="set('p6Line6ImmigrationStatus[0]',this.value)"></div>
+        <div class="field"><label>7. Alien Registration Number</label>
+          <input type="text" oninput="set('p6Line7AlienNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>8. Date of Birth <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('p6Line8DateofBirth[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+
+      <div class="slabel">9. Statement of How Relative Will Suffer Extreme Hardship</div>
+      <div class="row c1">
+        <div class="field"><label>Describe the extreme hardship your qualifying relative would suffer</label>
+          <textarea rows="5" oninput="set('p6Line9ApplicantStatement[0]',this.value)"></textarea></div>
+      </div>
+
+      <hr class="sep">
+      <div class="row c1">
+        <div class="field">
+          <label class="ci"><input type="checkbox" onchange="chk('p6OtherRelatives[0]',this.checked)">
+            &nbsp;I have additional qualifying relatives (attach additional pages)</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 8: Part 6 -- Applicant's Statement + Contact Info
+================================================ -->
+<div class="section" id="s8">
+  <div class="card">
+    <div class="card-header">Part 6 -- Applicant's Statement, Contact Information & Signature</div>
+    <div class="card-body">
+      <div class="info">Select whether you read and understand English or used an interpreter/preparer.</div>
+
+      <div class="slabel">Applicant's Statement</div>
+      <div class="warn">NOTE: Select the statement that applies to you.</div>
+      <div class="row c1">
+        <div class="field">
+          <div class="radio-group" style="flex-direction:column;gap:12px">
+            <label class="ri"><input type="radio" name="p7lang" onchange="setNof('p7Line',0,1)">
+              <label>I can read and understand English, and I have read and understand every question and instruction on this application and my answer to every question.</label></label>
+            <label class="ri"><input type="radio" name="p7lang" onchange="setNof('p7Line',1,1)">
+              <label>The interpreter named in Part 7 read to me every question and instruction on this application, and my answer to every question, in a language in which I am fluent, and I understood everything.</label></label>
+          </div>
+        </div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Contact Information</div>
+      <div class="row c3">
+        <div class="field"><label>1. Daytime Phone Number</label>
+          <input type="text" oninput="set('p7Line1DayPhone[0]',this.value)"></div>
+        <div class="field"><label>2. Mobile Phone Number</label>
+          <input type="text" oninput="set('p7Line2MobilePhone[0]',this.value)"></div>
+        <div class="field"><label>3. Email Address</label>
+          <input type="email" oninput="set('p7Line3Email[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Signature</div>
+      <div class="row c2">
+        <div class="field"><label>6. Date of Signature <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('p7Line6DateofSignature[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 9: Part 7 -- Interpreter
+================================================ -->
+<div class="section" id="s9">
+  <div class="card">
+    <div class="card-header"><span class="badge">Optional</span>Part 7 -- Interpreter's Contact Information, Certification & Signature</div>
+    <div class="card-body">
+
+      <div class="slabel">Interpreter's Full Name</div>
+      <div class="row c2">
+        <div class="field"><label>1.A. Family Name (Last)</label>
+          <input type="text" oninput="set('p8Line1aFamilyName[0]',this.value)"></div>
+        <div class="field"><label>1.B. Given Name (First)</label>
+          <input type="text" oninput="set('p8Line1bGivenName[0]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>2. Business or Organization Name</label>
+          <input type="text" oninput="set('p8Line2OrgName[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Interpreter's Contact Information</div>
+      <div class="row c3">
+        <div class="field"><label>3. Daytime Phone Number</label>
+          <input type="text" oninput="set('p8Line3DayPhone[0]',this.value)"></div>
+        <div class="field"><label>4. Mobile Phone Number</label>
+          <input type="text" oninput="set('p8Line4MobilePhone[0]',this.value)"></div>
+        <div class="field"><label>5. Email Address</label>
+          <input type="email" oninput="set('p8Line5Email[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Interpreter's Certification</div>
+      <div class="row c2">
+        <div class="field"><label>Language Interpreted</label>
+          <input type="text" oninput="set('P8Language[0]',this.value)"></div>
+        <div class="field"><label>7. Date of Signature <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('p8Line7DateofSignature[0]',this.value)"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 10: Part 8 -- Preparer
+================================================ -->
+<div class="section" id="s10">
+  <div class="card">
+    <div class="card-header"><span class="badge">Optional</span>Part 8 -- Contact Information, Declaration & Signature of Person Preparing this Application</div>
+    <div class="card-body">
+
+      <div class="slabel">Preparer's Full Name</div>
+      <div class="row c2">
+        <div class="field"><label>1.A. Family Name (Last)</label>
+          <input type="text" oninput="set('p9Line1aFamilyName[0]',this.value)"></div>
+        <div class="field"><label>1.B. Given Name (First)</label>
+          <input type="text" oninput="set('p9Line1bGivenName[0]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>2. Business or Organization Name</label>
+          <input type="text" oninput="set('p9Line2BusinessName[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Preparer's Contact Information</div>
+      <div class="row c3">
+        <div class="field"><label>3. Daytime Phone Number</label>
+          <input type="text" oninput="set('p9Line3DayPhone[0]',this.value)"></div>
+        <div class="field"><label>4. Mobile Phone Number</label>
+          <input type="text" oninput="set('p9Line4MobilePhone[0]',this.value)"></div>
+        <div class="field"><label>5. Email Address</label>
+          <input type="email" oninput="set('p9Line5Email[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Preparer's Signature</div>
+      <div class="row c2">
+        <div class="field"><label>6.B. Date of Signature <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('p9Line6bDateofSignature[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 11: Part 9 -- Additional Information
+================================================ -->
+<div class="section" id="s11">
+  <div class="card">
+    <div class="card-header">Part 9 -- Additional Information</div>
+    <div class="card-body">
+      <div class="info">If you need extra space to provide any additional information within this application, use this section. Your name and A-Number are auto-populated from Part 1.</div>
+
+      <div class="slabel">Your Name (from Part 1)</div>
+      <div class="row c3">
+        <div class="field"><label>1.A. Family Name (Last)</label>
+          <input type="text" oninput="set('p1Line3aFamilyName[1]',this.value)" placeholder="(copy from Part 1)"></div>
+        <div class="field"><label>1.B. Given Name (First)</label>
+          <input type="text" oninput="set('p1Line3bGivenName[1]',this.value)"></div>
+        <div class="field"><label>1.C. Middle Name</label>
+          <input type="text" oninput="set('p1Line3cMiddleName[1]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>A-Number</label>
+          <input type="text" oninput="set('p1Line1ANum[1]',this.value)" placeholder="(copy from Part 1)"></div>
+        <div class="field"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Additional Information Row 3</div>
+      <div class="row c3">
+        <div class="field"><label>3.A. Page Number</label>
+          <input type="text" oninput="set('p10Line3aPageNumber[0]',this.value)"></div>
+        <div class="field"><label>3.B. Part Number</label>
+          <input type="text" oninput="set('p10Line3bPartNumber[0]',this.value)"></div>
+        <div class="field"><label>3.C. Item Number</label>
+          <input type="text" oninput="set('p10Line3cItemNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>3.D. Additional Information</label>
+          <textarea rows="3" oninput="set('p10Line3dAdditionalInfo[0]',this.value)"></textarea></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Additional Information Row 4</div>
+      <div class="row c3">
+        <div class="field"><label>4.A. Page Number</label>
+          <input type="text" oninput="set('p10Line4aPageNumber[0]',this.value)"></div>
+        <div class="field"><label>4.B. Part Number</label>
+          <input type="text" oninput="set('p10Line4bPartNumber[0]',this.value)"></div>
+        <div class="field"><label>4.C. Item Number</label>
+          <input type="text" oninput="set('p10Line4cItemNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>4.D. Additional Information</label>
+          <textarea rows="3" oninput="set('p10Line4dAdditionalInfo[0]',this.value)"></textarea></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Additional Information Row 5</div>
+      <div class="row c3">
+        <div class="field"><label>5.A. Page Number</label>
+          <input type="text" oninput="set('p10Line5aPageNumber[0]',this.value)"></div>
+        <div class="field"><label>5.B. Part Number</label>
+          <input type="text" oninput="set('p10Line5bPartNumber[0]',this.value)"></div>
+        <div class="field"><label>5.C. Item Number</label>
+          <input type="text" oninput="set('p10Line5cItemNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>5.D. Additional Information</label>
+          <textarea rows="3" oninput="set('p10Line5dAdditionalInfo[0]',this.value)"></textarea></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Additional Information Row 6</div>
+      <div class="row c3">
+        <div class="field"><label>6.A. Page Number</label>
+          <input type="text" oninput="set('p10Line6aPageNumber[0]',this.value)"></div>
+        <div class="field"><label>6.B. Part Number</label>
+          <input type="text" oninput="set('p10Line6bPartNumber[0]',this.value)"></div>
+        <div class="field"><label>6.C. Item Number</label>
+          <input type="text" oninput="set('p10Line6cItemNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>6.D. Additional Information</label>
+          <textarea rows="3" oninput="set('p10Line6dAdditionalInfo[0]',this.value)"></textarea></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 12: Part 10 -- Vaccination Supplement
+================================================ -->
+<div class="section" id="s12">
+  <div class="card">
+    <div class="card-header">Part 10 -- Vaccination Supplement (for Health-Related Grounds)</div>
+    <div class="card-body">
+      <div class="info">Complete this section only if you checked the health-related ground of inadmissibility (INA &sect; 212(a)(1)) in Part 3.</div>
+
+      <div class="slabel">Applicant's Signature</div>
+      <div class="row c2">
+        <div class="field"><label>1.B. Date of Signature <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('p11Line1bAppDateofSignature[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">2. Type of Medical Authority</div>
+      <div class="radio-group" style="margin-bottom:14px">
+        <label class="ri"><input type="radio" name="health_type" onchange="chkOne('p11Line2Health[0]','p11Line2Health[1]')"> <label>Health Department</label></label>
+        <label class="ri"><input type="radio" name="health_type" onchange="chkOne('p11Line2Health[1]','p11Line2Health[0]')"> <label>Civil Surgeon</label></label>
+      </div>
+
+      <div class="row c1">
+        <div class="field"><label>3. Name of Health Department</label>
+          <input type="text" oninput="set('p11Line3NameofHealthDepartment[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">4. Health Department Address</div>
+      <div class="row c31">
+        <div class="field"><label>Street Number and Name</label>
+          <input type="text" oninput="set('p11Line4StreetNumberName[0]',this.value)"></div>
+        <div class="field"><label>Apt/Ste/Flr #</label>
+          <input type="text" oninput="set('p11Line4AptSteFlrNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1" style="margin-bottom:4px">
+        <div class="field"><label>Unit Type</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="hd_unit" onchange="chkExcl('p11Line4Unit[0]',['p11Line4Unit[1]','p11Line4Unit[2]'])"> <label>Apt</label></label>
+            <label class="ri"><input type="radio" name="hd_unit" onchange="chkExcl('p11Line4Unit[1]',['p11Line4Unit[0]','p11Line4Unit[2]'])"> <label>Ste</label></label>
+            <label class="ri"><input type="radio" name="hd_unit" onchange="chkExcl('p11Line4Unit[2]',['p11Line4Unit[0]','p11Line4Unit[1]'])"> <label>Flr</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>City or Town</label>
+          <input type="text" oninput="set('p11Line4CityTown[0]',this.value)"></div>
+        <div class="field"><label>State</label>
+          <select onchange="set('p11Line4State[0]',this.value)"><?= STATE_OPTIONS ?></select></div>
+        <div class="field"><label>Zip Code</label>
+          <input type="text" maxlength="10" oninput="set('p11Line4ZipCode[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">5. Health Department Official Signature</div>
+      <div class="row c2">
+        <div class="field"><label>5.B. Date of Signature <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('p11Line5bDateofSignature[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>5.C. Family Name (Last)</label>
+          <input type="text" oninput="set('p11Line5cFamilyName[0]',this.value)"></div>
+        <div class="field"><label>5.D. Given Name (First)</label>
+          <input type="text" oninput="set('p11Line5dGivenName[0]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>6. Daytime Phone Number</label>
+          <input type="text" oninput="set('p11Line6DayPhone[0]',this.value)"></div>
+        <div class="field"><label>7. Email Address</label>
+          <input type="email" oninput="set('p11Line7Email[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">8. Civil Surgeon Address</div>
+      <div class="row c31">
+        <div class="field"><label>Street Number and Name</label>
+          <input type="text" oninput="set('p11Line8StreetNumberName[0]',this.value)"></div>
+        <div class="field"><label>Apt/Ste/Flr #</label>
+          <input type="text" oninput="set('p11Line8AptSteFlrNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1" style="margin-bottom:4px">
+        <div class="field"><label>Unit Type</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="cs_unit" onchange="chkExcl('p11Line8Unit[0]',['p11Line8Unit[1]','p11Line8Unit[2]'])"> <label>Apt</label></label>
+            <label class="ri"><input type="radio" name="cs_unit" onchange="chkExcl('p11Line8Unit[1]',['p11Line8Unit[0]','p11Line8Unit[2]'])"> <label>Ste</label></label>
+            <label class="ri"><input type="radio" name="cs_unit" onchange="chkExcl('p11Line8Unit[2]',['p11Line8Unit[0]','p11Line8Unit[1]'])"> <label>Flr</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>City or Town</label>
+          <input type="text" oninput="set('p11Line8CityTown[0]',this.value)"></div>
+        <div class="field"><label>State</label>
+          <select onchange="set('p11Line8State[0]',this.value)"><?= STATE_OPTIONS ?></select></div>
+        <div class="field"><label>Zip Code</label>
+          <input type="text" maxlength="10" oninput="set('p11Line8ZipCode[0]',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">9. Civil Surgeon Signature</div>
+      <div class="row c2">
+        <div class="field"><label>9.B. Date of Signature <span class="note">MM/DD/YYYY</span></label>
+          <input type="text" maxlength="10" oninput="set('p11Line9bDateofSignature[0]',this.value)"></div>
+        <div class="field"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">10. State Health Department (Page 11)</div>
+      <div class="row c1">
+        <div class="field"><label>Name of State</label>
+          <input type="text" oninput="set('p11Line10NameofState[0]',this.value)"></div>
+      </div>
+
+      <div class="slabel">11. State Health Department Address</div>
+      <div class="row c31">
+        <div class="field"><label>Street Number and Name</label>
+          <input type="text" oninput="set('p11Line11StreetNumberName[0]',this.value)"></div>
+        <div class="field"><label>Apt/Ste/Flr #</label>
+          <input type="text" oninput="set('p11Line11AptSteFlrNumber[0]',this.value)"></div>
+      </div>
+      <div class="row c1" style="margin-bottom:4px">
+        <div class="field"><label>Unit Type</label>
+          <div class="radio-group">
+            <label class="ri"><input type="radio" name="shd_unit" onchange="chkExcl('p11Line11Unit[0]',['p11Line11Unit[1]','p11Line11Unit[2]'])"> <label>Apt</label></label>
+            <label class="ri"><input type="radio" name="shd_unit" onchange="chkExcl('p11Line11Unit[1]',['p11Line11Unit[0]','p11Line11Unit[2]'])"> <label>Ste</label></label>
+            <label class="ri"><input type="radio" name="shd_unit" onchange="chkExcl('p11Line11Unit[2]',['p11Line11Unit[0]','p11Line11Unit[1]'])"> <label>Flr</label></label>
+          </div>
+        </div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>City or Town</label>
+          <input type="text" oninput="set('p11Line11CityOrTown[0]',this.value)"></div>
+        <div class="field"><label>State</label>
+          <select onchange="set('p11Line11State[0]',this.value)"><?= STATE_OPTIONS ?></select></div>
+        <div class="field"><label>Zip Code</label>
+          <input type="text" maxlength="10" oninput="set('p11Line11ZipCode[0]',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>12. Daytime Phone Number</label>
+          <input type="text" oninput="set('p11Line12DayPhone[0]',this.value)"></div>
+        <div class="field"><label>13. Email Address</label>
+          <input type="email" oninput="set('p11Line13Email[0]',this.value)"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 13: Generate PDF
+================================================ -->
+<div class="section" id="s13">
+  <div class="card">
+    <div class="card-header">Generate Filled PDF</div>
+    <div class="card-body">
+      <div class="info">Review all sections before generating. Click the button below to download your filled I-601 PDF.</div>
+
+      <div style="text-align:center">
+        <button type="button" class="btn btn-gen" id="genBtn" onclick="generatePDF()">&#8595; Download Filled I-601 PDF</button>
+        <div id="status"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+  <button type="button" class="btn btn-prev" id="btnPrev" onclick="nav(-1)" style="display:none">&#8592; Previous</button>
+  <div></div>
+  <button type="button" class="btn btn-next" id="btnNext" onclick="nav(1)">Next &#8594;</button>
+</div>
+
+</div><!-- /container -->
+
+<script>
+// ============================================================
+// State
+// ============================================================
+const DATA = {};
+const PDF_B64 = '__PDF_BASE64__';
+
+let cur = 0;
+const TOTAL = 14;
+
+// ============================================================
+// Data setters
+// ============================================================
+function set(field, val) { DATA[field] = val || ''; }
+
+function chk(field, checked) { DATA[field] = checked ? 'Yes' : ''; }
+
+function chkOne(onField, offField) {
+  DATA[onField] = 'Yes';
+  DATA[offField] = '';
+}
+
+function chkExcl(onField, offFields) {
+  DATA[onField] = 'Yes';
+  offFields.forEach(f => DATA[f] = '');
+}
+
+function setNof(base, idx, max) {
+  for (let i = 0; i <= max; i++) DATA[`${base}[${i}]`] = (i === idx) ? 'Yes' : '';
+}
+
+function tog(id, show) { document.getElementById(id).style.display = show ? 'block' : 'none'; }
+
+// ============================================================
+// Navigation
+// ============================================================
+function goTo(n) {
+  if (n < 0 || n >= TOTAL) return;
+  document.getElementById('s' + cur).classList.remove('active');
+  const steps = document.querySelectorAll('.step');
+  steps[cur].classList.remove('active');
+  if (n > cur) steps[cur].classList.add('done');
+  cur = n;
+  document.getElementById('s' + cur).classList.add('active');
+  steps[cur].classList.remove('done');
+  steps[cur].classList.add('active');
+  document.getElementById('btnPrev').style.display = cur === 0 ? 'none' : 'inline-block';
+  document.getElementById('btnNext').style.display = cur === TOTAL - 1 ? 'none' : 'inline-block';
+  window.scrollTo(0, 0);
+}
+function nav(d) { goTo(cur + d); }
+
+// ============================================================
+// PDF Generation (pdf-lib, low-level annotation approach)
+// ============================================================
+async function generatePDF() {
+  const btn = document.getElementById('genBtn');
+  const status = document.getElementById('status');
+  btn.disabled = true;
+  btn.textContent = 'Generating...';
+  status.textContent = '';
+  status.className = '';
+
+  try {
+    const binary = atob(PDF_B64);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+
+    const { PDFDocument, PDFName, PDFString, PDFArray, PDFDict, PDFRef } = PDFLib;
+    const pdfDoc = await PDFDocument.load(bytes, { ignoreEncryption: true });
+    const pages = pdfDoc.getPages();
+
+    let filled = 0;
+
+    for (const page of pages) {
+      const node = page.node;
+      if (!node.has(PDFName.of('Annots'))) continue;
+
+      let annotsVal = node.get(PDFName.of('Annots'));
+      if (annotsVal instanceof PDFRef) {
+        annotsVal = pdfDoc.context.lookup(annotsVal);
+      }
+      if (!(annotsVal instanceof PDFArray)) continue;
+
+      for (let i = 0; i < annotsVal.size(); i++) {
+        let annotVal = annotsVal.get(i);
+        if (annotVal instanceof PDFRef) {
+          annotVal = pdfDoc.context.lookup(annotVal);
+        }
+        if (!(annotVal instanceof PDFDict)) continue;
+
+        const T = annotVal.get(PDFName.of('T'));
+        if (!T) continue;
+
+        let fieldName;
+        try {
+          fieldName = T.decodeText ? T.decodeText() : T.toString().replace(/^\(|\)$/g, '');
+        } catch(e) {
+          fieldName = T.toString().replace(/^\(|\)$/g, '');
+        }
+
+        const val = DATA[fieldName];
+        if (val) {
+          annotVal.set(PDFName.of('V'), PDFString.of(val));
+          filled++;
+        }
+      }
+    }
+
+    const pdfBytes = await pdfDoc.save();
+
+    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'I-601_filled.pdf';
+    a.click();
+    URL.revokeObjectURL(url);
+
+    status.textContent = `Done! ${filled} fields filled. Check your downloads folder.`;
+    btn.textContent = '\u2193 Download Filled I-601 PDF';
+    btn.disabled = false;
+
+  } catch (err) {
+    status.textContent = 'Error: ' + err.message;
+    status.className = 'err';
+    btn.textContent = '\u2193 Download Filled I-601 PDF';
+    btn.disabled = false;
+    console.error(err);
+  }
+}
+</script>
+
+</body>
+</html>
