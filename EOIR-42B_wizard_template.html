@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EOIR-42B Cancellation of Removal Wizard</title>
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<style>
+  :root {
+    --blue: #003366; --gold: #c8a72b; --green: #2e7d32; --red: #c62828;
+    --light: #f5f7fa; --border: #cdd4de;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--light); color: #222; font-size: 14px; }
+  header { background: var(--blue); color: white; padding: 14px 24px; }
+  header h1 { font-size: 20px; font-weight: 700; }
+  header p { font-size: 13px; opacity: 0.8; margin-top: 3px; }
+  .container { max-width: 900px; margin: 0 auto; padding: 24px 16px; }
+
+  .progress-bar { display: flex; margin-bottom: 24px; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); background: white; }
+  .step { flex: 1; padding: 8px 4px; text-align: center; font-size: 11px; font-weight: 600; color: #666; cursor: pointer; border-right: 1px solid var(--border); transition: all 0.2s; }
+  .step:last-child { border-right: none; }
+  .step.active { background: var(--blue); color: white; }
+  .step.done { background: var(--green); color: white; }
+
+  .section { display: none; }
+  .section.active { display: block; }
+  .card { background: white; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 20px; overflow: hidden; }
+  .card-header { background: var(--blue); color: white; padding: 10px 16px; font-size: 14px; font-weight: 700; }
+  .card-header .badge { background: var(--gold); color: var(--blue); border-radius: 4px; padding: 2px 8px; font-size: 12px; margin-right: 8px; }
+  .card-body { padding: 16px; }
+
+  .info { background: #e8f0fe; border-left: 4px solid var(--blue); padding: 10px 14px; border-radius: 0 4px 4px 0; margin-bottom: 16px; font-size: 13px; color: #1a237e; line-height: 1.5; }
+  .warn { background: #fff8e1; border-left: 4px solid var(--gold); padding: 10px 14px; border-radius: 0 4px 4px 0; margin-bottom: 16px; font-size: 13px; color: #4a3800; line-height: 1.5; }
+
+  .row { display: grid; gap: 12px; margin-bottom: 12px; }
+  .c1 { grid-template-columns: 1fr; }
+  .c2 { grid-template-columns: 1fr 1fr; }
+  .c3 { grid-template-columns: 1fr 1fr 1fr; }
+  .c4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .c31 { grid-template-columns: 3fr 1fr; }
+  .c21 { grid-template-columns: 2fr 1fr; }
+
+  .field { display: flex; flex-direction: column; gap: 4px; }
+  .field label { font-size: 12px; font-weight: 600; color: #444; }
+  .field .note { font-weight: normal; color: #777; font-size: 11px; }
+  .field input, .field select, .field textarea {
+    border: 1px solid var(--border); border-radius: 4px; padding: 7px 10px; font-size: 13px; width: 100%;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--blue); }
+
+  .radio-group { display: flex; flex-wrap: wrap; gap: 10px; }
+  .ri { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+  .ri input { width: 16px; height: 16px; cursor: pointer; }
+  .ri label { font-size: 13px; cursor: pointer; font-weight: normal; }
+
+  .ci { display: flex; align-items: center; gap: 6px; cursor: pointer; margin-bottom: 8px; }
+  .ci input { width: 16px; height: 16px; cursor: pointer; }
+  .ci label { font-size: 13px; cursor: pointer; font-weight: normal; }
+
+  .sep { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+  .slabel { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #888; letter-spacing: 0.05em; margin: 16px 0 8px; }
+
+  .nav { display: flex; justify-content: space-between; margin-top: 24px; }
+  .btn { padding: 10px 24px; border-radius: 5px; border: none; cursor: pointer; font-size: 14px; font-weight: 600; transition: all 0.2s; }
+  .btn-prev { background: #e0e0e0; color: #333; }
+  .btn-next { background: var(--blue); color: white; }
+  .btn-next:hover { background: #004080; }
+  .btn-gen { background: var(--green); color: white; font-size: 15px; padding: 12px 32px; }
+  .btn-gen:hover { background: #1b5e20; }
+  .btn-gen:disabled { background: #aaa; cursor: not-allowed; }
+
+  #status { margin-top: 12px; font-size: 13px; color: var(--green); font-weight: 600; min-height: 20px; }
+  #status.err { color: var(--red); }
+
+  @media (max-width: 600px) {
+    .c2, .c3, .c4, .c31, .c21 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Form EOIR-42B &mdash; Cancellation of Removal (Non-LPR)</h1>
+  <p>Application for Cancellation of Removal and Adjustment of Status for Certain Nonpermanent Residents &bull; Rev. Feb. 2025</p>
+</header>
+
+<div class="container">
+
+<div class="progress-bar">
+  <div class="step active" onclick="goTo(0)">1. Personal</div>
+  <div class="step" onclick="goTo(1)">2. Addresses</div>
+  <div class="step" onclick="goTo(2)">3. Entry</div>
+  <div class="step" onclick="goTo(3)">4. Marriage</div>
+  <div class="step" onclick="goTo(4)">5. Employment</div>
+  <div class="step" onclick="goTo(5)">6. Family</div>
+  <div class="step" onclick="goTo(6)">7. Parents</div>
+  <div class="step" onclick="goTo(7)">8. Misc</div>
+  <div class="step" onclick="goTo(8)">9. Preparer</div>
+  <div class="step" onclick="goTo(9)">10. Generate</div>
+</div>
+
+<!-- ================================================
+     SECTION 0: PART 1 -- Personal Information
+================================================ -->
+<div class="section active" id="s0">
+  <div class="card">
+    <div class="card-header"><span class="badge">Part 1</span> Personal Information</div>
+    <div class="card-body">
+
+      <div class="slabel">Name & Identification</div>
+      <div class="row c1">
+        <div class="field"><label>1. Present True Name <span class="note">(Last, First, Middle)</span></label>
+          <input type="text" oninput="set('Full name',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>2. Alien Registration Number(s)</label>
+          <input type="text" oninput="set('Anumber',this.value)"></div>
+        <div class="field"><label>3. Name Given at Birth <span class="note">(Last, First, Middle)</span></label>
+          <input type="text" oninput="set('Birth Name',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Birth & Physical Description</div>
+      <div class="row c2">
+        <div class="field"><label>4. Birth Place <span class="note">(City and Country)</span></label>
+          <input type="text" oninput="set('Birth Place',this.value)"></div>
+        <div class="field"><label>5. Date of Birth <span class="note">(Month, Day, Year)</span></label>
+          <input type="text" placeholder="MM/DD/YYYY" oninput="set('Birth Date',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>6. Sex</label>
+          <div class="radio-group">
+            <div class="ri"><input type="radio" name="sex" onchange="setBtn('Gender1','Yes');setBtn('Gender2','')"><label>Male</label></div>
+            <div class="ri"><input type="radio" name="sex" onchange="setBtn('Gender1','');setBtn('Gender2','Yes')"><label>Female</label></div>
+          </div>
+        </div>
+        <div class="field"><label>7. Height</label>
+          <input type="text" placeholder="e.g. 5'6&quot;" oninput="set('Height',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>8. Hair Color</label>
+          <input type="text" oninput="set('Hair Color',this.value)"></div>
+        <div class="field"><label>9. Eye Color</label>
+          <input type="text" oninput="set('Eye color',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Nationality & Contact</div>
+      <div class="row c2">
+        <div class="field"><label>10. Current Nationality and Citizenship</label>
+          <input type="text" oninput="set('Nationality',this.value)"></div>
+        <div class="field"><label>11. Social Security Number</label>
+          <input type="text" oninput="set('Social Security',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>12. Home Phone Number</label>
+          <input type="text" oninput="set('Home Phone',this.value)"></div>
+        <div class="field"><label>13. Work Phone Number</label>
+          <input type="text" oninput="set('Work Phone',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">15. Additional Names Used</div>
+      <div class="row c3">
+        <div class="field"><label>Name 1</label>
+          <input type="text" oninput="set('Name 1',this.value)"></div>
+        <div class="field"><label>Name 2</label>
+          <input type="text" oninput="set('Name 2',this.value)"></div>
+        <div class="field"><label>Name 3</label>
+          <input type="text" oninput="set('Name 3',this.value)"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 1: Addresses / Residence History
+================================================ -->
+<div class="section" id="s1">
+  <div class="card">
+    <div class="card-header"><span class="badge">Part 1</span> Current Address & Residence History</div>
+    <div class="card-body">
+
+      <div class="slabel">14. Current Address</div>
+      <div class="row c31">
+        <div class="field"><label>Street Number and Name</label>
+          <input type="text" oninput="set('Number and Street',this.value)"></div>
+        <div class="field"><label>Apt / In Care Of</label>
+          <input type="text" oninput="set('Apt number andor in care of',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>City or Town</label>
+          <input type="text" oninput="set('City or Town',this.value)"></div>
+        <div class="field"><label>State / Country</label>
+          <input type="text" oninput="set('StateCountry',this.value)"></div>
+        <div class="field"><label>Zip Code</label>
+          <input type="text" maxlength="10" oninput="set('Zip Code',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">16. Residence History <span class="note">(Present address first, going back at least 10 years)</span></div>
+      <div class="info">List your present address first, then work back in time for at least 10 years. Include street, city, state, and zip.</div>
+
+      <div class="slabel">Address 1 (Present)</div>
+      <div class="row c21">
+        <div class="field"><label>Street, City, State, Zip</label>
+          <input type="text" oninput="set('Resided1',this.value)"></div>
+        <div class="field"><label>From <span class="note">(MM/DD/YYYY)</span></label>
+          <input type="text" oninput="set('ResidedDate1',this.value)"></div>
+      </div>
+      <div class="row c21">
+        <div class="field"><label></label></div>
+        <div class="field"><label>To</label>
+          <input type="text" value="PRESENT" oninput="set('PRESENT',this.value)"></div>
+      </div>
+
+      <div class="slabel">Address 2</div>
+      <div class="row c21">
+        <div class="field"><label>Street, City, State, Zip</label>
+          <input type="text" oninput="set('Resided2',this.value)"></div>
+        <div class="field"><label>From</label>
+          <input type="text" oninput="set('ResidedDate3',this.value)"></div>
+      </div>
+      <div class="row c21">
+        <div class="field"><label></label></div>
+        <div class="field"><label>To</label>
+          <input type="text" oninput="set('ResidedDate4',this.value)"></div>
+      </div>
+
+      <div class="slabel">Address 3</div>
+      <div class="row c21">
+        <div class="field"><label>Street, City, State, Zip</label>
+          <input type="text" oninput="set('Resided3',this.value)"></div>
+        <div class="field"><label>From</label>
+          <input type="text" oninput="set('ResidedDate5',this.value)"></div>
+      </div>
+      <div class="row c21">
+        <div class="field"><label></label></div>
+        <div class="field"><label>To</label>
+          <input type="text" oninput="set('ResidedDate6',this.value)"></div>
+      </div>
+
+      <div class="slabel">Address 4</div>
+      <div class="row c21">
+        <div class="field"><label>Street, City, State, Zip</label>
+          <input type="text" oninput="set('Resided4',this.value)"></div>
+        <div class="field"><label>From</label>
+          <input type="text" oninput="set('ResidedDate7',this.value)"></div>
+      </div>
+      <div class="row c21">
+        <div class="field"><label></label></div>
+        <div class="field"><label>To</label>
+          <input type="text" oninput="set('ResidedDate8',this.value)"></div>
+      </div>
+
+      <div class="slabel">Address 5</div>
+      <div class="row c21">
+        <div class="field"><label>Street, City, State, Zip</label>
+          <input type="text" oninput="set('Resided5',this.value)"></div>
+        <div class="field"><label>From</label>
+          <input type="text" oninput="set('ResidedDate9',this.value)"></div>
+      </div>
+      <div class="row c21">
+        <div class="field"><label></label></div>
+        <div class="field"><label>To</label>
+          <input type="text" oninput="set('Residedsince',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">17. Resided With (Since last entry into the U.S.)</div>
+      <div class="row c1">
+        <div class="field"><label>Person 1 <span class="note">(Name, address, relationship)</span></label>
+          <input type="text" oninput="set('CurrentlyReside1',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>Person 2</label>
+          <input type="text" oninput="set('CurrenltyReside2',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>Person 3</label>
+          <input type="text" oninput="set('CurrentlyReside3',this.value)"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 2: PART 3 -- Entry & Presence in U.S.
+================================================ -->
+<div class="section" id="s2">
+  <div class="card">
+    <div class="card-header"><span class="badge">Part 3</span> Entry & Presence in the United States</div>
+    <div class="card-body">
+
+      <div class="slabel">First Arrival</div>
+      <div class="row c2">
+        <div class="field"><label>18. Name Used at First Arrival <span class="note">(Last, First, Middle)</span></label>
+          <input type="text" oninput="set('18 I first arrived in the United States under the name of Last First Middle',this.value)"></div>
+        <div class="field"><label>19. Date of First Arrival <span class="note">(Month, Day, Year)</span></label>
+          <input type="text" placeholder="MM/DD/YYYY" oninput="set('19 I first arrived in the United States on Month Day Year',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>20. Place or Port of First Arrival <span class="note">(City and State)</span></label>
+          <input type="text" oninput="set('1_3',this.value)"></div>
+        <div class="field"><label></label></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">21. Manner of Entry</div>
+      <div class="radio-group" style="margin-bottom:12px">
+        <div class="ri"><input type="radio" name="entry" onchange="setBtn('Inspected or admitted','Yes');setBtn('was not inspected and admitted','')"><label>Was inspected and admitted</label></div>
+        <div class="ri"><input type="radio" name="entry" onchange="setBtn('Inspected or admitted','');setBtn('was not inspected and admitted','Yes')"><label>Was NOT inspected and admitted</label></div>
+      </div>
+
+      <div class="row c2">
+        <div class="field"><label>Visa Type (if applicable)</label>
+          <input type="text" oninput="set('Specify Type  of Visa',this.value)"></div>
+        <div class="field"><label>Valid Until</label>
+          <input type="text" placeholder="MM/DD/YYYY" oninput="set('and valid until',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>LPR Card Category (if applicable)</label>
+          <input type="text" oninput="set('Category on Lawful Permanent Resident card',this.value)"></div>
+        <div class="field"><label>LPR Card Valid Until</label>
+          <input type="text" oninput="set('Month Day Year_2',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>If entered without documents or inspection, explain</label>
+          <input type="text" oninput="set('Other describe on line below',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">22. Application for Extension of Stay</div>
+      <div class="row c2">
+        <div class="field"><label>Date Applied <span class="note">(Month, Day, Year)</span></label>
+          <input type="text" oninput="set('22 I applied on',this.value)"></div>
+        <div class="field"><label>Result</label>
+          <div class="radio-group">
+            <div class="ri"><input type="radio" name="ext" onchange="setBtn('granted on','Yes');setBtn('denied on','')"><label>Granted</label></div>
+            <div class="ri"><input type="radio" name="ext" onchange="setBtn('granted on','');setBtn('denied on','Yes')"><label>Denied</label></div>
+          </div>
+        </div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Date Granted/Denied</label>
+          <input type="text" oninput="set('Month Day Year_3',this.value)"></div>
+        <div class="field"><label>Valid Until (if granted)</label>
+          <input type="text" oninput="set('Month Day Year_4',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">23. Status at Time NTA Was Served</div>
+      <div class="row c1">
+        <div class="field"><label>21(continued). Status when served with NTA</label>
+          <input type="text" oninput="set('21 I',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">24. Departures from the United States</div>
+      <div class="ci"><input type="checkbox" onchange="setBtn('If you have never departed from the United States since your original date of entry please mark an X in this box', this.checked?'Yes':'')"><label>I have NEVER departed the U.S. since original entry</label></div>
+
+      <div class="slabel">Departure 1</div>
+      <div class="row c4">
+        <div class="field"><label>Departed</label>
+          <input type="text" oninput="set('Departure Date Month Day Year',this.value)"></div>
+        <div class="field"><label>Returned</label>
+          <input type="text" oninput="set('Return Date Month Day Year',this.value)"></div>
+        <div class="field"><label>Destination</label>
+          <input type="text" oninput="set('Destination1',this.value)"></div>
+        <div class="field"><label>Purpose</label>
+          <input type="text" oninput="set('Purpose of Travel',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Manner of Departure</label>
+          <input type="text" oninput="set('Departure1',this.value)"></div>
+        <div class="field"><label>Manner of Return</label>
+          <input type="text" oninput="set('Return1',this.value)"></div>
+      </div>
+
+      <div class="slabel">Departure 2</div>
+      <div class="row c4">
+        <div class="field"><label>Departed</label>
+          <input type="text" oninput="set('Departure Date Month Day Year_2',this.value)"></div>
+        <div class="field"><label>Returned</label>
+          <input type="text" oninput="set('Return Date Month Day Year_2',this.value)"></div>
+        <div class="field"><label>Destination</label>
+          <input type="text" oninput="set('Destination2',this.value)"></div>
+        <div class="field"><label>Purpose</label>
+          <input type="text" oninput="set('Purpose of Travel_2',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Manner of Departure</label>
+          <input type="text" oninput="set('Departure2',this.value)"></div>
+        <div class="field"><label>Manner of Return</label>
+          <input type="text" oninput="set('Manner of Return_2',this.value)"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 3: PART 4 -- Marital Status & Spouse
+================================================ -->
+<div class="section" id="s3">
+  <div class="card">
+    <div class="card-header"><span class="badge">Part 4</span> Marital Status & Spouse</div>
+    <div class="card-body">
+
+      <div class="slabel">25. Marital Status</div>
+      <div class="radio-group" style="margin-bottom:12px">
+        <div class="ri"><input type="radio" name="marital" onchange="setBtn('I am not married','Yes');setBtn('I am married','')"><label>Not Married</label></div>
+        <div class="ri"><input type="radio" name="marital" onchange="setBtn('I am not married','');setBtn('I am married','Yes')"><label>Married</label></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Spouse Information (if married)</div>
+      <div class="row c1">
+        <div class="field"><label>26. Spouse's Name <span class="note">(Last, First, Middle)</span></label>
+          <input type="text" oninput="set('26 If married the name of my spouse is Last First Middle',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>27. Spouse's Maiden / Prior Name</label>
+          <input type="text" oninput="set('27 My spouses name before marriage was',this.value)"></div>
+        <div class="field"><label>28. Place of Marriage <span class="note">(City and Country)</span></label>
+          <input type="text" oninput="set('28 The marriage took place in City and Country',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>29. Date of Marriage <span class="note">(Month, Day, Year)</span></label>
+          <input type="text" placeholder="MM/DD/YYYY" oninput="set('29 Date of marriage Month Day Year',this.value)"></div>
+        <div class="field"><label>30. Spouse's A-Number</label>
+          <input type="text" oninput="set('2_3',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>31. Spouse's Birth Place & Date <span class="note">(City, Country, MM/DD/YYYY)</span></label>
+          <input type="text" oninput="set('31 Place and date of birth of my spouse City  Country Month Day Year',this.value)"></div>
+        <div class="field"><label>32. Spouse's Citizenship</label>
+          <input type="text" oninput="set('32 My spouse is a citizen of Country',this.value)"></div>
+      </div>
+
+      <div class="row c2">
+        <div class="field"><label>33. Spouse's Immigration Status</label>
+          <input type="text" oninput="set('Immigration Status of Listed RelativeRow1',this.value)"></div>
+        <div class="field"><label>34. Spouse's Current Address</label>
+          <input type="text" oninput="set('Complete Address of Current Residence if Living',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">35. Your Prior Marriages</div>
+      <div class="radio-group" style="margin-bottom:12px">
+        <div class="ri"><input type="radio" name="priormarr" onchange="setBtn('have not been previously married If previously married list the name of each prior spouse the dates on which each mar','Yes');setBtn('have_2','')"><label>Never previously married</label></div>
+        <div class="ri"><input type="radio" name="priormarr" onchange="setBtn('have not been previously married If previously married list the name of each prior spouse the dates on which each mar','');setBtn('have_2','Yes')"><label>Previously married</label></div>
+      </div>
+
+      <div class="row c2">
+        <div class="field"><label>Prior Spouse Name <span class="note">(Last, First, Middle)</span></label>
+          <input type="text" oninput="set('Name of prior spouse Last First MiddleRow1',this.value)"></div>
+        <div class="field"><label>Marriage Began</label>
+          <input type="text" oninput="set('Date marriage began Date marriage endedRow1',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Marriage Ended</label>
+          <input type="text" oninput="set('Date marriage began Date marriage endedRow1_2',this.value)"></div>
+        <div class="field"><label>Place Ended <span class="note">(City, Country)</span></label>
+          <input type="text" oninput="set('Place marriage ended City and CountryRow1',this.value)"></div>
+        <div class="field"><label>How Terminated</label>
+          <input type="text" oninput="set('Description or manner of how marriage was terminated or endedRow1',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">36. Spouse's Prior Marriages</div>
+      <div class="radio-group" style="margin-bottom:12px">
+        <div class="ri"><input type="radio" name="spouseprior" onchange="setBtn('has not been previously married If previously married list the names of each prior spouse the dates on','Yes');setBtn('has','')"><label>Never previously married</label></div>
+        <div class="ri"><input type="radio" name="spouseprior" onchange="setBtn('has not been previously married If previously married list the names of each prior spouse the dates on','');setBtn('has','Yes')"><label>Previously married</label></div>
+      </div>
+
+      <div class="row c2">
+        <div class="field"><label>Prior Spouse Name</label>
+          <input type="text" oninput="set('Name of prior spouse Last First MiddleRow1_2',this.value)"></div>
+        <div class="field"><label>Marriage Began</label>
+          <input type="text" oninput="set('Date marriage began Date marriage endedRow2',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Marriage Ended</label>
+          <input type="text" oninput="set('Date marriage began Date marriage endedRow2_2',this.value)"></div>
+        <div class="field"><label>Place Ended</label>
+          <input type="text" oninput="set('Place marriage ended City and CountryRow2',this.value)"></div>
+        <div class="field"><label>How Terminated</label>
+          <input type="text" oninput="set('Description or manner of how marriage was terminated or endedRow2',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">37. Child Support / Spousal Maintenance Obligation</div>
+      <div class="radio-group">
+        <div class="ri"><input type="radio" name="childsupport" onchange="setBtn('37 Have you been ordered by any court or are otherwise under any legal obligation to provide child support andor spousal maintenance as a','Yes')"><label>Yes</label></div>
+        <div class="ri"><input type="radio" name="childsupport" onchange="setBtn('37 Have you been ordered by any court or are otherwise under any legal obligation to provide child support andor spousal maintenance as a','No')"><label>No</label></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 4: PART 5 -- Employment & Financial
+================================================ -->
+<div class="section" id="s4">
+  <div class="card">
+    <div class="card-header"><span class="badge">Part 5</span> Employment & Financial Status</div>
+    <div class="card-body">
+
+      <div class="slabel">38. Employment History</div>
+      <div class="info">List your present employment first. If not employed, write "Unemployed" and explain how you support yourself.</div>
+
+      <div class="slabel">Employer 1 (Current)</div>
+      <div class="row c1">
+        <div class="field"><label>Employer Name and Address</label>
+          <input type="text" oninput="set('Full Name and Address of EmployerRow1',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Type of Work</label>
+          <input type="text" oninput="set('Type of Work Performed',this.value)"></div>
+        <div class="field"><label>Employed From</label>
+          <input type="text" oninput="set('Employed From Month Day Year',this.value)"></div>
+        <div class="field"><label>Weekly Earnings</label>
+          <input type="text" placeholder="$" oninput="set('Earnings1',this.value)"></div>
+      </div>
+
+      <div class="slabel">Employer 2</div>
+      <div class="row c1">
+        <div class="field"><label>Employer Name and Address</label>
+          <input type="text" oninput="set('Full Name and Address of EmployerRow2',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Type of Work</label>
+          <input type="text" oninput="set('Type of Work Performed_2',this.value)"></div>
+        <div class="field"><label>Employed From</label>
+          <input type="text" oninput="set('Employed From Month Day Year_2',this.value)"></div>
+        <div class="field"><label>Weekly Earnings</label>
+          <input type="text" placeholder="$" oninput="set('Earnings2',this.value)"></div>
+      </div>
+
+      <div class="slabel">Employer 3</div>
+      <div class="row c1">
+        <div class="field"><label>Employer Name and Address</label>
+          <input type="text" oninput="set('Full Name and Address of EmployerRow3',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Type of Work</label>
+          <input type="text" oninput="set('Type of Work Performed_3',this.value)"></div>
+        <div class="field"><label>Employed From</label>
+          <input type="text" oninput="set('Employed From Month Day Year_3',this.value)"></div>
+        <div class="field"><label>Weekly Earnings</label>
+          <input type="text" placeholder="$" oninput="set('Earnings3',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">39. Self-Employment</div>
+      <div class="row c1">
+        <div class="field"><label>If self-employed, describe the business, name, address, and net income</label>
+          <textarea rows="3" oninput="set('39 If selfemployed describe the nature of the business the name of the business its address and net income derived therefrom 1',this.value)"></textarea></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">40-41. Assets</div>
+      <div class="row c2">
+        <div class="field"><label>40. Estimated Total of Assets</label>
+          <input type="text" placeholder="$" oninput="set('Estimated Total of Assets',this.value)"></div>
+        <div class="field"><label>Estimated Average Weekly Earnings</label>
+          <input type="text" placeholder="$" oninput="set('Estimated Average Weekly Earnings',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">42. Tax Filing Years</div>
+      <div class="row c2">
+        <div class="field"><label>Years filed with IRS (line 1)</label>
+          <input type="text" oninput="set('42 Please list each of the years in which you have filed an income tax return with the Internal Revenue Service 1',this.value)"></div>
+        <div class="field"><label>Years filed with IRS (line 2)</label>
+          <input type="text" oninput="set('42 Please list each of the years in which you have filed an income tax return with the Internal Revenue Service 2',this.value)"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 5: PART 6 -- Family (Children)
+================================================ -->
+<div class="section" id="s5">
+  <div class="card">
+    <div class="card-header"><span class="badge">Part 6</span> Family &mdash; Children</div>
+    <div class="card-body">
+
+      <div class="slabel">43. Number of Children</div>
+      <div class="row c1">
+        <div class="field"><label>Number of Children</label>
+          <input type="text" oninput="set('43 I have',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Child 1</div>
+      <div class="row c2">
+        <div class="field"><label>Name <span class="note">(Last, First, Middle)</span></label>
+          <input type="text" oninput="set('Childname1',this.value)"></div>
+        <div class="field"><label>A-Number</label>
+          <input type="text" oninput="set('ChildAnumber1',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Birth Date</label>
+          <input type="text" placeholder="MM/DD/YYYY" oninput="set('childbirthdate1',this.value)"></div>
+        <div class="field"><label>Birth Place <span class="note">(City, Country)</span></label>
+          <input type="text" oninput="set('childbirthplace1',this.value)"></div>
+        <div class="field"><label>Immigration Status</label>
+          <input type="text" oninput="set('Immigration Status of ChildRow1',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Estimated Total Assets</label>
+          <input type="text" placeholder="$" oninput="set('Estimated Total of Assets_2',this.value)"></div>
+        <div class="field"><label>Estimated Weekly Earnings</label>
+          <input type="text" placeholder="$" oninput="set('Estimated Average Weekly Earnings_2',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Child 2</div>
+      <div class="row c2">
+        <div class="field"><label>Name</label>
+          <input type="text" oninput="set('Childname2',this.value)"></div>
+        <div class="field"><label>A-Number</label>
+          <input type="text" oninput="set('ChildAnumber2',this.value)"></div>
+      </div>
+      <div class="row c3">
+        <div class="field"><label>Birth Date</label>
+          <input type="text" placeholder="MM/DD/YYYY" oninput="set('childbirthdate2',this.value)"></div>
+        <div class="field"><label>Birth Place</label>
+          <input type="text" oninput="set('childbirthplace2',this.value)"></div>
+        <div class="field"><label>Immigration Status</label>
+          <input type="text" oninput="set('Immigration Status of ChildRow2',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Estimated Total Assets</label>
+          <input type="text" placeholder="$" oninput="set('Estimated Total of Assets_3',this.value)"></div>
+        <div class="field"><label>Estimated Weekly Earnings</label>
+          <input type="text" placeholder="$" oninput="set('Estimated Average Weekly Earnings_3',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Child 3</div>
+      <div class="row c2">
+        <div class="field"><label>Name</label>
+          <input type="text" oninput="set('Childname3',this.value)"></div>
+        <div class="field"><label>Birth Place</label>
+          <input type="text" oninput="set('childbirthplace3',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">44. If Application Denied, Would Family Accompany You?</div>
+      <div class="row c1">
+        <div class="field"><label>To Country of Birth</label>
+          <div class="radio-group">
+            <div class="ri"><input type="radio" name="accomp_birth" onchange="setBtn('country of birth','Yes')"><label>Yes</label></div>
+            <div class="ri"><input type="radio" name="accomp_birth" onchange="setBtn('country of birth','No')"><label>No</label></div>
+          </div>
+        </div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>If No, explain</label>
+          <textarea rows="2" oninput="set('responses please explain 1',this.value)"></textarea></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">45. Spouse/Children Information (Summary)</div>
+      <div class="row c1">
+        <div class="field"><label>Members of family including spouse and/or children</label>
+          <textarea rows="3" oninput="set('45 Members of my family including my spouse andor children',this.value)"></textarea></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">46. Family Members <span class="note">(Parents, siblings, aunts, uncles, grandparents)</span></div>
+      <div class="row c1">
+        <div class="field"><label>Family member information</label>
+          <textarea rows="4" oninput="set('46 Please give the requested information about your parents brothers sisters aunts uncles and grandparents living or deceased As to residence',this.value)"></textarea></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 6: PART 6 continued -- Parents
+================================================ -->
+<div class="section" id="s6">
+  <div class="card">
+    <div class="card-header"><span class="badge">Part 6</span> Family &mdash; Parents (Hardship Basis)</div>
+    <div class="card-body">
+
+      <div class="warn">Questions 47-50 must be answered if this application is based on hardship to a parent or parents.</div>
+
+      <div class="slabel">47. Parent's Arrival in the U.S.</div>
+      <div class="row c1">
+        <div class="field"><label>Date, place, manner, and terms of admission</label>
+          <textarea rows="3" oninput="set('manner and terms of admission into the United States 1',this.value)"></textarea></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">48. Father's Employment</div>
+      <div class="radio-group" style="margin-bottom:12px">
+        <div class="ri"><input type="radio" name="fatheremp" onchange="setBtn('is','Yes');setBtn('is not employed If employed please give salary and the name and address of places of employment','')"><label>Employed</label></div>
+        <div class="ri"><input type="radio" name="fatheremp" onchange="setBtn('is','');setBtn('is not employed If employed please give salary and the name and address of places of employment','Yes')"><label>Not Employed</label></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Employer Name and Address</label>
+          <input type="text" oninput="set('Full Name and Address of EmployerRow1_2',this.value)"></div>
+        <div class="field"><label>Earnings Per Week</label>
+          <input type="text" placeholder="$" oninput="set('fill_30_2',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">49. Mother's Employment</div>
+      <div class="radio-group" style="margin-bottom:12px">
+        <div class="ri"><input type="radio" name="motheremp" onchange="setBtn('is_2','Yes');setBtn('is not employed If employed please give salary and the name and address of the places of employment','')"><label>Employed</label></div>
+        <div class="ri"><input type="radio" name="motheremp" onchange="setBtn('is_2','');setBtn('is not employed If employed please give salary and the name and address of the places of employment','Yes')"><label>Not Employed</label></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Employer Name and Address</label>
+          <input type="text" oninput="set('Full Name and Address of EmployerRow1_3',this.value)"></div>
+        <div class="field"><label>Earnings Per Week</label>
+          <input type="text" placeholder="$" oninput="set('fill_31',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">50. Parent's Assets</div>
+      <div class="row c2">
+        <div class="field"><label>Father's Total Assets</label>
+          <input type="text" placeholder="$" oninput="set('TOTAL',this.value)"></div>
+        <div class="field"><label>Mother's Total Assets</label>
+          <input type="text" placeholder="$" oninput="set('TOTAL_2',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Spouse's Employment &amp; Assets</div>
+      <div class="radio-group" style="margin-bottom:12px">
+        <div class="ri"><input type="radio" name="spouseemp" onchange="setBtn('is_3','Yes');setBtn('is not employed If employed please give salary and the name and address of the places of employment_2','')"><label>Employed</label></div>
+        <div class="ri"><input type="radio" name="spouseemp" onchange="setBtn('is_3','');setBtn('is not employed If employed please give salary and the name and address of the places of employment_2','Yes')"><label>Not Employed</label></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Spouse Employer and Address</label>
+          <input type="text" oninput="set('Full Name and Address of Employer',this.value)"></div>
+        <div class="field"><label>Spouse Earnings Per Week</label>
+          <input type="text" placeholder="$" oninput="set('fill_40',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Spouse Total Assets</label>
+          <input type="text" placeholder="$" oninput="set('TOTAL_3',this.value)"></div>
+        <div class="field"><label></label></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Qualifying Relatives for Hardship</div>
+      <div class="info">Check who would suffer exceptional and extremely unusual hardship if you are removed.</div>
+      <div class="ci"><input type="checkbox" onchange="setBtn('Removal spouse', this.checked?'Yes':'')"><label>Spouse</label></div>
+      <div class="row c2">
+        <div class="ci"><input type="checkbox" onchange="setBtn('remspousecit', this.checked?'Yes':'')"><label>Spouse is U.S. Citizen</label></div>
+        <div class="ci"><input type="checkbox" onchange="setBtn('remspouseperm', this.checked?'Yes':'')"><label>Spouse is LPR</label></div>
+      </div>
+      <div class="ci"><input type="checkbox" onchange="setBtn('Removalchild', this.checked?'Yes':'')"><label>Child</label></div>
+      <div class="row c2">
+        <div class="ci"><input type="checkbox" onchange="setBtn('remchildcit', this.checked?'Yes':'')"><label>Child is U.S. Citizen</label></div>
+        <div class="ci"><input type="checkbox" onchange="setBtn('remchildperm', this.checked?'Yes':'')"><label>Child is LPR</label></div>
+      </div>
+      <div class="ci"><input type="checkbox" onchange="setBtn('Removal father', this.checked?'Yes':'')"><label>Father</label></div>
+      <div class="row c2">
+        <div class="ci"><input type="checkbox" onchange="setBtn('remfathercit', this.checked?'Yes':'')"><label>Father is U.S. Citizen</label></div>
+        <div class="ci"><input type="checkbox" onchange="setBtn('remfatherperm', this.checked?'Yes':'')"><label>Father is LPR</label></div>
+      </div>
+      <div class="ci"><input type="checkbox" onchange="setBtn('Removal mother', this.checked?'Yes':'')"><label>Mother</label></div>
+      <div class="row c2">
+        <div class="ci"><input type="checkbox" onchange="setBtn('remmothercit', this.checked?'Yes':'')"><label>Mother is U.S. Citizen</label></div>
+        <div class="ci"><input type="checkbox" onchange="setBtn('remmotherperm', this.checked?'Yes':'')"><label>Mother is LPR</label></div>
+      </div>
+      <div class="ci"><input type="checkbox" onchange="setBtn('rembattered', this.checked?'Yes':'')"><label>VAWA / Battered Spouse or Child</label></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 7: PART 7 -- Miscellaneous
+================================================ -->
+<div class="section" id="s7">
+  <div class="card">
+    <div class="card-header"><span class="badge">Part 7</span> Miscellaneous Information</div>
+    <div class="card-body">
+
+      <div class="slabel">51-56. Criminal & Admissibility Questions</div>
+      <div class="info">Answer each question. If you answer "Yes" to any, explain in the fields below.</div>
+
+      <div class="ci"><input type="checkbox" onchange="setBtn('have never either in the United States or in any foreign country been arrested summoned into court as a defendant con', this.checked?'':'Yes')"><label>51. I HAVE been arrested, summoned, indicted, convicted, fined, or imprisoned</label></div>
+
+      <div class="row c1">
+        <div class="field"><label>If yes, provide details <span class="note">(offense, date, place, disposition, sentence)</span></label>
+          <textarea rows="3" oninput="set('and the time actually served You are required to submit documentation of any such occurrences 1',this.value)"></textarea></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>Additional offenses (line 2)</label>
+          <textarea rows="2" oninput="set('and the time actually served You are required to submit documentation of any such occurrences 2',this.value)"></textarea></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">52-53. Public Assistance</div>
+      <div class="ci"><input type="checkbox" onchange="setBtn('have not received public or private relief or assistance eg', this.checked?'':'Yes')"><label>52. I HAVE received public or private relief/assistance (Welfare, Unemployment, Medicaid, TANF, etc.)</label></div>
+      <div class="row c2">
+        <div class="field"><label>Type of assistance and total received (line 1)</label>
+          <input type="text" oninput="set('total amount received during this time 1',this.value)"></div>
+        <div class="field"><label>Type and total (line 2)</label>
+          <input type="text" oninput="set('total amount received during this time 2',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">54. Address Reports (INA § 265)</div>
+      <div class="radio-group" style="margin-bottom:12px">
+        <div class="ri"><input type="radio" name="addrreports" onchange="setBtn('have not submitted address reports as required by section 265 of the Immigration and Nationality Act','Yes')"><label>Have NOT submitted</label></div>
+        <div class="ri"><input type="radio" name="addrreports" onchange="setBtn('have not submitted address reports as required by section 265 of the Immigration and Nationality Act','')"><label>Have submitted</label></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>If not submitted, explain</label>
+          <textarea rows="2" oninput="set('No If no please explain 1',this.value)"></textarea></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">55. Exchange Visitor (J-1) Status</div>
+      <div class="radio-group" style="margin-bottom:12px">
+        <div class="ri"><input type="radio" name="j1" onchange="setBtn('have not been admitted as or after arrival in the United States acquired the status of an exchange alien','Yes')"><label>Have NOT been an exchange visitor</label></div>
+        <div class="ri"><input type="radio" name="j1" onchange="setBtn('have not been admitted as or after arrival in the United States acquired the status of an exchange alien','')"><label>Have been an exchange visitor</label></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">56. Crewman Entry</div>
+      <div class="radio-group" style="margin-bottom:12px">
+        <div class="ri"><input type="radio" name="crewman" onchange="setBtn('have not entered the United States as a crewman after June 30 1964','Yes')"><label>Have NOT entered as a crewman</label></div>
+        <div class="ri"><input type="radio" name="crewman" onchange="setBtn('have not entered the United States as a crewman after June 30 1964','')"><label>Have entered as a crewman</label></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">57-59. Military Service</div>
+      <div class="radio-group" style="margin-bottom:12px">
+        <div class="ri"><input type="radio" name="military" onchange="setBtn('No If Yes please state branch Army Navy etc and','Yes')"><label>Served in U.S. military</label></div>
+        <div class="ri"><input type="radio" name="military" onchange="setBtn('No If Yes please state branch Army Navy etc and','')"><label>Did not serve</label></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Branch & Service Number</label>
+          <input type="text" oninput="set('service number',this.value)"></div>
+        <div class="field"><label>Date Entered</label>
+          <input type="text" oninput="set('Date of entry on duty Month Day Year',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Place of Entry</label>
+          <input type="text" oninput="set('Place of entry on duty City and State',this.value)"></div>
+        <div class="field"><label>Date of Discharge</label>
+          <input type="text" oninput="set('Date of discharge Month Day Year',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>Type of Discharge</label>
+          <input type="text" oninput="set('Type of discharge Honorable Dishonorable etc',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>58. Selective Service Information</label>
+          <input type="text" oninput="set('58 If male did you register under the Military Selective Service Act or any applicable previous Selective Service Draft Laws',this.value)"></div>
+      </div>
+      <div class="row c1">
+        <div class="field"><label>59. Exemptions from Service</label>
+          <input type="text" oninput="set('59 Were you ever exempted from service because of conscientious objection alienage or any other reason',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">60. Organizations & Affiliations</div>
+      <div class="info">List all political organizations, associations, clubs, societies, or similar groups since your 16th birthday. Include any foreign military service.</div>
+
+      <div class="row c4">
+        <div class="field"><label>Organization</label>
+          <input type="text" oninput="set('Name of OrganizationRow1',this.value)"></div>
+        <div class="field"><label>Location</label>
+          <input type="text" oninput="set('Location of OrganizationRow1',this.value)"></div>
+        <div class="field"><label>Nature</label>
+          <input type="text" oninput="set('Nature of OrganizationRow1',this.value)"></div>
+        <div class="field"><label>From - To</label>
+          <input type="text" oninput="set('Member From Month Day YearRow1',this.value)"></div>
+      </div>
+      <div class="row c4">
+        <div class="field"><label>Organization 2</label>
+          <input type="text" oninput="set('Name of OrganizationRow2',this.value)"></div>
+        <div class="field"><label>Location</label>
+          <input type="text" oninput="set('Location of OrganizationRow2',this.value)"></div>
+        <div class="field"><label>Nature</label>
+          <input type="text" oninput="set('Nature of OrganizationRow2',this.value)"></div>
+        <div class="field"><label>From - To</label>
+          <input type="text" oninput="set('Member From Month Day YearRow2',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">61-62. Removal & Admissibility History</div>
+      <div class="ci"><input type="checkbox" onchange="setBtn('Deported excluded or removed', this.checked?'Yes':'')"><label>61a. Been ordered deported, excluded, or removed</label></div>
+      <div class="ci"><input type="checkbox" onchange="setBtn('Overstay', this.checked?'Yes':'')"><label>61b. Overstayed voluntary departure</label></div>
+      <div class="ci"><input type="checkbox" onchange="setBtn('Failed to appear', this.checked?'Yes':'')"><label>61c. Failed to appear for removal/deportation</label></div>
+
+      <hr class="sep">
+      <div class="ci"><input type="checkbox" onchange="setBtn('Habitual drunkard', this.checked?'Yes':'')"><label>62a. Habitual drunkard</label></div>
+      <div class="ci"><input type="checkbox" onchange="setBtn('Drug trafficker', this.checked?'Yes':'')"><label>62b. Drug trafficker or assisted in illicit trafficking</label></div>
+      <div class="ci"><input type="checkbox" onchange="setBtn('Illegal gambling', this.checked?'Yes':'')"><label>62c. Illegal gambling</label></div>
+      <div class="ci"><input type="checkbox" onchange="setBtn('Commercialized Vice', this.checked?'Yes':'')"><label>62d. Commercialized vice (prostitution, etc.)</label></div>
+      <div class="ci"><input type="checkbox" onchange="setBtn('Polygamist', this.checked?'Yes':'')"><label>62e. Polygamist</label></div>
+      <div class="ci"><input type="checkbox" onchange="setBtn('Smuggling', this.checked?'Yes':'')"><label>62f. Alien smuggling</label></div>
+      <div class="ci"><input type="checkbox" onchange="setBtn('Persecutor', this.checked?'Yes':'')"><label>62g. Persecutor of others</label></div>
+      <div class="ci"><input type="checkbox" onchange="setBtn('False Testimony', this.checked?'Yes':'')"><label>62h. Given false testimony for immigration benefits</label></div>
+      <div class="ci"><input type="checkbox" onchange="setBtn('Immunity', this.checked?'Yes':'')"><label>62i. Claimed diplomatic immunity to avoid prosecution</label></div>
+      <div class="ci"><input type="checkbox" onchange="setBtn('security grounds', this.checked?'Yes':'')"><label>62j. Inadmissible/deportable on security-related grounds</label></div>
+
+      <div class="row c1">
+        <div class="field"><label>If you answered Yes to any above, explain</label>
+          <textarea rows="3" oninput="set('If you answered Yes to any of the above questions explain 1',this.value)"></textarea></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">63. Approved Visa Petition</div>
+      <div class="radio-group" style="margin-bottom:12px">
+        <div class="ri"><input type="radio" name="visapet" onchange="setBtn('63 Are you the beneficiary of an approved visa petition','Yes')"><label>Yes</label></div>
+        <div class="ri"><input type="radio" name="visapet" onchange="setBtn('63 Are you the beneficiary of an approved visa petition','No')"><label>No</label></div>
+      </div>
+      <div class="radio-group" style="margin-bottom:12px">
+        <div class="ri"><input type="radio" name="visatrip" onchange="setBtn('If yes can you arrange a trip outside the United States to obtain an immigrant visa','Yes')"><label>Can arrange trip abroad for visa</label></div>
+        <div class="ri"><input type="radio" name="visatrip" onchange="setBtn('If yes can you arrange a trip outside the United States to obtain an immigrant visa','No')"><label>Cannot arrange trip</label></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">64. Education</div>
+      <div class="row c1">
+        <div class="field"><label>Schools attended <span class="note">(Name, Type, Degree, Location, Dates)</span></label>
+          <input type="text" oninput="set('School',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">65. Supporting Documents</div>
+      <div class="row c1">
+        <div class="field"><label>List of attached certificates and supporting documents</label>
+          <textarea rows="3" oninput="set('SupportingDocs',this.value)"></textarea></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 8: PART 8 -- Preparer
+================================================ -->
+<div class="section" id="s8">
+  <div class="card">
+    <div class="card-header"><span class="badge">Part 8</span> Preparer Information</div>
+    <div class="card-body">
+
+      <div class="info">Complete this section only if the form was prepared by someone other than the applicant.</div>
+
+      <div class="row c2">
+        <div class="field"><label>Preparer's Printed Name</label>
+          <input type="text" oninput="set('Print Name',this.value)"></div>
+        <div class="field"><label>Date</label>
+          <input type="text" placeholder="MM/DD/YYYY" oninput="set('Date',this.value)"></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label>Daytime Telephone</label>
+          <input type="text" oninput="set('Daytime Telephone',this.value)"></div>
+        <div class="field"><label>Address <span class="note">(Number, Street, City, State, Zip)</span></label>
+          <input type="text" oninput="set('Address of Preparer Number and Street City State Zip Code',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Part 9 &mdash; Signature (Before Immigration Judge)</div>
+      <div class="warn">Part 9 is signed in court before the Immigration Judge. The number of corrections (if any) can be noted here.</div>
+      <div class="row c2">
+        <div class="field"><label>Corrections numbered ___ to ___</label>
+          <input type="text" oninput="set('if any that were made by me or at',this.value)"></div>
+        <div class="field"><label>Immigration Judge Name</label>
+          <input type="text" oninput="set('Immigration Judge',this.value)"></div>
+      </div>
+
+      <hr class="sep">
+      <div class="slabel">Part 10 &mdash; Proof of Service</div>
+      <div class="radio-group" style="margin-bottom:12px">
+        <div class="ri"><input type="radio" name="service" onchange="setBtn('delivered in person','Yes');setBtn('mailed first class postage prepaid','')"><label>Delivered in person</label></div>
+        <div class="ri"><input type="radio" name="service" onchange="setBtn('delivered in person','');setBtn('mailed first class postage prepaid','Yes')"><label>Mailed first class</label></div>
+      </div>
+      <div class="ci"><input type="checkbox" onchange="setBtn('No service needed I electronically filed this document and the opposing party is participating in ECAS', this.checked?'Yes':'')"><label>No service needed (electronically filed via ECAS)</label></div>
+      <div class="row c2">
+        <div class="field"><label>Date of Service</label>
+          <input type="text" placeholder="MM/DD/YYYY" oninput="set('Date Month Day Year',this.value)"></div>
+        <div class="field"><label>ICE Office Address</label>
+          <input type="text" oninput="set('Number and Street City State Zip Code',this.value)"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================
+     SECTION 9: Generate PDF
+================================================ -->
+<div class="section" id="s9">
+  <div class="card">
+    <div class="card-header">Generate Filled EOIR-42B PDF</div>
+    <div class="card-body" style="text-align:center; padding: 40px 16px;">
+      <p style="margin-bottom: 20px; font-size: 15px;">Review your entries, then click below to download the filled PDF.</p>
+      <button class="btn btn-gen" id="genBtn" onclick="generatePDF()">Download Filled EOIR-42B PDF</button>
+      <div id="status"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+  <button class="btn btn-prev" id="btnPrev" style="display:none" onclick="nav(-1)">&larr; Previous</button>
+  <button class="btn btn-next" id="btnNext" onclick="nav(1)">Next &rarr;</button>
+</div>
+
+</div><!-- /.container -->
+
+<script>
+// ============================================================
+// Data store
+// ============================================================
+const DATA = {};
+const PDF_B64 = '__PDF_BASE64__';
+
+let cur = 0;
+const TOTAL = 10;
+
+// ============================================================
+// Field setters
+// ============================================================
+function set(field, val) { DATA[field] = val || ''; }
+function setBtn(field, val) { DATA[field] = val || ''; }
+
+function tog(id, show) { document.getElementById(id).style.display = show ? 'block' : 'none'; }
+
+// ============================================================
+// Navigation
+// ============================================================
+function goTo(n) {
+  if (n < 0 || n >= TOTAL) return;
+  document.getElementById('s' + cur).classList.remove('active');
+  const steps = document.querySelectorAll('.step');
+  steps[cur].classList.remove('active');
+  if (n > cur) steps[cur].classList.add('done');
+  cur = n;
+  document.getElementById('s' + cur).classList.add('active');
+  steps[cur].classList.remove('done');
+  steps[cur].classList.add('active');
+  document.getElementById('btnPrev').style.display = cur === 0 ? 'none' : 'inline-block';
+  document.getElementById('btnNext').style.display = cur === TOTAL - 1 ? 'none' : 'inline-block';
+  window.scrollTo(0, 0);
+}
+function nav(d) { goTo(cur + d); }
+
+// ============================================================
+// PDF Generation (pdf-lib, low-level annotation approach)
+// ============================================================
+async function generatePDF() {
+  const btn = document.getElementById('genBtn');
+  const status = document.getElementById('status');
+  btn.disabled = true;
+  btn.textContent = 'Generating...';
+  status.textContent = '';
+  status.className = '';
+
+  try {
+    const binary = atob(PDF_B64);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+
+    const { PDFDocument, PDFName, PDFString, PDFArray, PDFDict, PDFRef } = PDFLib;
+    const pdfDoc = await PDFDocument.load(bytes, { ignoreEncryption: true });
+    const pages = pdfDoc.getPages();
+
+    let filled = 0;
+
+    for (const page of pages) {
+      const node = page.node;
+      if (!node.has(PDFName.of('Annots'))) continue;
+
+      let annotsVal = node.get(PDFName.of('Annots'));
+      if (annotsVal instanceof PDFRef) {
+        annotsVal = pdfDoc.context.lookup(annotsVal);
+      }
+      if (!(annotsVal instanceof PDFArray)) continue;
+
+      for (let i = 0; i < annotsVal.size(); i++) {
+        let annotVal = annotsVal.get(i);
+        if (annotVal instanceof PDFRef) {
+          annotVal = pdfDoc.context.lookup(annotVal);
+        }
+        if (!(annotVal instanceof PDFDict)) continue;
+
+        const T = annotVal.get(PDFName.of('T'));
+        if (!T) continue;
+
+        let fieldName;
+        try {
+          fieldName = T.decodeText ? T.decodeText() : T.toString().replace(/^\(|\)$/g, '');
+        } catch(e) {
+          fieldName = T.toString().replace(/^\(|\)$/g, '');
+        }
+
+        const val = DATA[fieldName];
+        if (val) {
+          annotVal.set(PDFName.of('V'), PDFString.of(val));
+          filled++;
+        }
+      }
+    }
+
+    const pdfBytes = await pdfDoc.save();
+
+    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'EOIR-42B_filled.pdf';
+    a.click();
+    URL.revokeObjectURL(url);
+
+    status.textContent = `Done! ${filled} fields filled. Check your downloads folder.`;
+    btn.textContent = 'Download Filled EOIR-42B PDF';
+    btn.disabled = false;
+
+  } catch (err) {
+    status.textContent = 'Error: ' + err.message;
+    status.className = 'err';
+    btn.textContent = 'Download Filled EOIR-42B PDF';
+    btn.disabled = false;
+    console.error(err);
+  }
+}
+</script>
+
+</body>
+</html>
